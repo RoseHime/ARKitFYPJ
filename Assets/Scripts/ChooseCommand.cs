@@ -6,7 +6,7 @@ using UnityEngine.Collections;
 
 public class ChooseCommand : MonoBehaviour {
 
-    bool b_selectedCommand;
+    //bool b_selectedCommand;
     public GameObject go_CommandButton;
     private GameObject go_CommandPanel;
     private GameObject go_MainCamera;
@@ -19,7 +19,7 @@ public class ChooseCommand : MonoBehaviour {
 
     private void Start()
     {
-        b_selectedCommand = false;
+        //b_selectedCommand = false;
         go_CommandPanel = go_CommandButton.transform.parent.gameObject;
         go_MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         ti = go_MainCamera.GetComponent<TouchInput>();
