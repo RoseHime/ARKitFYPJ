@@ -66,7 +66,7 @@ public class PlayerUnitUpdate : MonoBehaviour
 
     private void Update()
     {
-        if (go_CommandMenu.activeSelf == false)
+        if (ti.b_TargetChose == false)
         {
             b_UnitIsSeleceted = false;
         }

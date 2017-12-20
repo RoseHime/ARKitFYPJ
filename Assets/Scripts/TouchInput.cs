@@ -11,11 +11,9 @@ public class TouchInput : MonoBehaviour {
     private RaycastHit hit;
     Vector3 v3_rayPointTarget;
     public bool b_TargetChose;
-    public bool b_CancelInput;
 
     private void Start()
     {
-        b_CancelInput = false;
         b_TargetChose = false;
     }
     // Update is called once per frame
@@ -24,7 +22,7 @@ public class TouchInput : MonoBehaviour {
 
         if (!b_TargetChose)
         {
-            if (Input.touchCount > 0 && !b_CancelInput)
+            if (Input.touchCount > 0)
             {
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
 
@@ -52,7 +50,7 @@ public class TouchInput : MonoBehaviour {
                 }
             }
         }
-        else if (b_TargetChose && b_CancelInput)
+        else if (b_TargetChose)
         {
             PickTargetPoint();
         }
@@ -60,17 +58,15 @@ public class TouchInput : MonoBehaviour {
 
     public void PickTargetPoint()
     {
-        if (b_CancelInput)
+        if (Input.touchCount > 0)
         {
-            if (Input.touchCount > 0)
-            {
-                Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
 
-                if (Physics.Raycast(ray, out hit, 100.0f, GameLayerMask))
-                {
-                    v3_rayPointTarget = hit.point;
-                    Debug.Log(hit.point);
-                }
+            if (Physics.Raycast(ray, out hit, 100.0f, GameLayerMask))
+            {
+                v3_rayPointTarget = hit.point;
+                Debug.Log(hit.point);
+                b_TargetChose = false;
             }
         }
     }

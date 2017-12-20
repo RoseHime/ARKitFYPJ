@@ -34,9 +34,18 @@ public class ChooseCommand : MonoBehaviour {
             }
             else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
             {
-                ti.b_TargetChose = true;
-                ti.b_CancelInput = true;
                 go_CommandPanel.SetActive(false);
+            }
+        }
+    }
+
+    public void OffClickCommand()
+    {
+        if (b_selectedCommand)
+        {
+            if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
+            {
+                ti.b_TargetChose = true;
             }
         }
     }
