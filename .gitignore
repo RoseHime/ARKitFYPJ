@@ -32,3 +32,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+ProjectSettings/TagManager.asset
+Assets/UnityARKitPlugin/Plugins/iOS/UnityARKit/Editor/UnityARBuildPostprocessor.cs
+Assets/UnityARKitPlugin/Examples/UnityARKitScene/UnityARKitScene.unity
