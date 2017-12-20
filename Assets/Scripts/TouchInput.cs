@@ -13,10 +13,14 @@ public class TouchInput : MonoBehaviour {
     public bool b_TargetChose;
     public bool b_CancelInput;
 
+    public bool b_BuildTower;
+    public GameObject go_towerPrefab;
+
     private void Start()
     {
         b_CancelInput = false;
         b_TargetChose = false;
+        b_BuildTower = false;
     }
     // Update is called once per frame
     void Update()
@@ -70,6 +74,11 @@ public class TouchInput : MonoBehaviour {
                 {
                     v3_rayPointTarget = hit.point;
                     Debug.Log(hit.point);
+                    if (b_BuildTower)
+                    {
+                        transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
+                        b_BuildTower = false;
+                    }
                 }
             }
         }
