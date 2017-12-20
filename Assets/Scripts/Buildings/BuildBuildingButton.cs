@@ -20,7 +20,6 @@ public class BuildBuildingButton : MonoBehaviour {
         ti.go_towerPrefab = buildingPrefab;
         ti.b_BuildTower = true;
         ti.b_TargetChose = true;
-        ti.b_CancelInput = true;
         transform.parent.parent.gameObject.SetActive(false);
     }
 }

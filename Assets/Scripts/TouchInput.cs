@@ -4,41 +4,52 @@ using UnityEngine;
 
 public class TouchInput : MonoBehaviour {
 
-    public LayerMask touchInputMask;
-    public LayerMask GameLayerMask;
-    //private List<GameObject> touchList = new List<GameObject>();
-    //private GameObject[] touchesOld;
+    
+
+    public LayerMask touchInputMask;    
     private RaycastHit hit;
     Vector3 v3_rayPointTarget;
     public bool b_TargetChose;
-    public bool b_CancelInput;
+    public bool b_CheckFinger;
+    public bool b_CommandGiven;
+
+    //For Unit Selection
+    private GameObject go_PlayerUnit;
 
     public bool b_BuildTower;
     public GameObject go_towerPrefab;
 
     private void Start()
     {
-        b_CancelInput = false;
         b_TargetChose = false;
         b_BuildTower = false;
+        b_CheckFinger = false;
     }
     // Update is called once per frame
     void Update()
     {
-
-        if (!b_TargetChose)
+        if (!b_TargetChose && !b_CheckFinger)
         {
-            if (Input.touchCount > 0 && !b_CancelInput)
+            if (Input.touchCount > 0)
             {
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
 
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
+
+                    //Check what the ray hit
+                    if (recipient.tag == "PlayerUnit")
+                    {
+                        go_PlayerUnit = recipient;
+                    }
+
+
                     Debug.Log(hit.point);
 
                     if (Input.GetTouch(0).phase == TouchPhase.Began)
                     {
+                        go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
                         recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                     if (Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -49,36 +60,38 @@ public class TouchInput : MonoBehaviour {
                     {
                         recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
-                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    if (Input.GetTouch(0).phase == TouchPhase.Canceled)
                     {
                         recipient.SendMessage("OnTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                 }
             }
         }
-        else if (b_TargetChose && b_CancelInput)
+        else if (b_TargetChose && !b_CheckFinger)
         {
             PickTargetPoint();
+            if (b_CommandGiven && Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
+            }
         }
-	}
+    }
 
     public void PickTargetPoint()
     {
-        if (b_CancelInput)
+        if (Input.touchCount > 0)
         {
-            if (Input.touchCount > 0)
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
             {
-                Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-
-                if (Physics.Raycast(ray, out hit, 100.0f, GameLayerMask))
+                v3_rayPointTarget = hit.point;
+                Debug.Log(hit.point);
+                b_TargetChose = false;
+                b_CommandGiven = true;
+                if (b_BuildTower)
                 {
-                    v3_rayPointTarget = hit.point;
-                    Debug.Log(hit.point);
-                    if (b_BuildTower)
-                    {
-                        transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
-                        b_BuildTower = false;
-                    }
+                    transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
+                    b_BuildTower = false;
                 }
             }
         }
