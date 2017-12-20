@@ -13,115 +13,49 @@ public class PlayerUnitUpdate : MonoBehaviour
 
     public Color defaultColour;
     public Color selectedColour;
-    private Material mat;
-    private Transform tran;
-    private Collider coll;
-    Vector3 _playerPos;
-    bool toMove;
-
-    public GameObject go_Land;
-
-    //Command Variable
-    bool b_UnitIsSeleceted;
+    public bool b_Selected;
     public GameObject go_CommandMenu;
-    private GameObject go_MainCamera;
-    private TouchInput ti;
 
-    private void Awake()
-    {
-        coll = GetComponent<Collider>();
-    }
+    private Vector3 v3_currentPos;
+    private Vector3 v3_targetPos;
 
     void Start()
     {
-        b_UnitIsSeleceted = false;
-        mat = GetComponent<Renderer>().material;
-        tran = GetComponent<Transform>();
-        go_MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        ti = go_MainCamera.GetComponent<TouchInput>();
         go_CommandMenu.SetActive(false);
-        toMove = false;
+        b_Selected = false;
     }
 
     void OnTouchDown()
     {
-        if (!b_UnitIsSeleceted)
-        {
-            go_CommandMenu.SetActive(true);
-            b_UnitIsSeleceted = true;
-        }
+        go_CommandMenu.SetActive(true);
     }
-    //void OnTouchUp()
-    //{
-    //    mat.color = defaultColour;
-    //}
-    //void OnTouchStay()
-    //{
-    //    mat.color = selectedColour;
-    //}
-    //void OnTouchExit()
-    //{
-    //    mat.color = defaultColour;
-    //}
 
     private void Update()
     {
-        if (ti.b_TargetChose == false)
-        {
-            b_UnitIsSeleceted = false;
-        }
+        if (b_Selected)
+            gameObject.GetComponent<Renderer>().material.color = selectedColour;
+        else if (!b_Selected)
+            gameObject.GetComponent<Renderer>().material.color = defaultColour;
 
-        if (ti.b_TargetChose)
-        {
-            mat.color = selectedColour;
-            tran.position = Vector3.MoveTowards(tran.position, ti.rayHitTarget(), Time.deltaTime);
-            if (tran.position == ti.rayHitTarget())
-                ti.b_TargetChose = false;
-        }
-        else if (!ti.b_TargetChose)
-        {
-            mat.color = defaultColour;
-        }
-
-        CheckWhetherStillOnGround();
+        MoveToTargetPos();
     }
 
-    //[MenuItem("Tools/Transfrom Tools/Align %t")]
-    //static void AlignToGround()
-    //{
-    //    Transform[] transforms = Selection.transforms;
-    //    foreach(Transform myTransform in transforms)
-    //    {
-    //        RaycastHit hit;
-    //        if (Physics.Raycast(myTransform.position, -Vector3.up, out hit))
-    //        {
-    //            Vector3 targetPosition = hit.point;
-    //            if (myTransform.GetComponent<MeshFilter>() != null)
-    //            {
-    //                Bounds bounds = myTransform.GetComponent<MeshFilter>().sharedMesh.bounds;
-    //                targetPosition.y += bounds.extents.y;
-    //            }
-    //            myTransform.position = targetPosition;
-    //            Vector3 targetRotation = new Vector3(hit.normal.x, myTransform.eulerAngles.y, hit.normal.z);
-    //            myTransform.eulerAngles = targetRotation;
-    //        }
-    //    }
-    //}
+    public void SetTargetPos(Vector3 v3_targetpos)
+    {
+        v3_targetPos = v3_targetpos;
+    }
+
+    private void MoveToTargetPos()
+    {
+        v3_currentPos = gameObject.transform.position;
+        if (v3_currentPos != v3_targetPos)
+        {
+            gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_currentPos, Time.deltaTime);
+        }
+    }
 
     void CheckWhetherStillOnGround()
     {
-        float distance_between = go_Land.transform.position.y - gameObject.transform.position.y;
-        if (((go_Land.transform.position.y - gameObject.transform.position.y) > distance_between) ||
-            ((go_Land.transform.position.y - gameObject.transform.position.y) < distance_between))
-        {
-            tran.position.Set(tran.position.x, tran.position.y - distance_between, tran.position.z);
-        }
-    }
 
-    public bool isSelected()
-    {
-        if (b_UnitIsSeleceted)
-            return true;
-        return false;
     }
 }

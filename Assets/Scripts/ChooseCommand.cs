@@ -26,39 +26,27 @@ public class ChooseCommand : MonoBehaviour {
 
     public void OnClickCommand()
     {
-        if (b_selectedCommand)
+        if (go_CommandButton.GetComponentInChildren<Text>().text == "STOP")
         {
-            if (go_CommandButton.GetComponentInChildren<Text>().text == "STOP")
-            {
-                go_CommandPanel.SetActive(false);
-            }
-            else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
-            {
-                go_CommandPanel.SetActive(false);
-            }
+            go_CommandPanel.SetActive(false);
+        }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
+        {
+            ti.b_TargetChose = true;
+            ti.b_CheckFinger = true;
         }
     }
 
     public void OffClickCommand()
     {
-        if (b_selectedCommand)
+        if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
-            if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
-            {
-                ti.b_TargetChose = true;
-            }
+            ti.b_CheckFinger = false;
+            go_CommandPanel.SetActive(false);
         }
     }
 
     private void Update()
     {
-        if (go_CommandPanel.activeSelf == true)
-        {
-            b_selectedCommand = true;
-        }
-        if (go_CommandPanel.activeSelf == false)
-        {
-            b_selectedCommand = false;
-        }
     }
 }
