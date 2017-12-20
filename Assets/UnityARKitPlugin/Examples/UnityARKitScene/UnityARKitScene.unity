@@ -238,11 +238,9 @@ MonoBehaviour:
   touchInputMask:
     serializedVersion: 2
     m_Bits: 256
-  GameLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
   b_TargetChose: 0
-  b_CancelInput: 0
+  b_CheckFinger: 0
+  b_CommandGiven: 0
   b_BuildTower: 0
   go_towerPrefab: {fileID: 0}
 --- !u!1 &16
@@ -1018,7 +1016,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1001756340568002, guid: fbfb55b9571a6984f92a22868db507f6, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114381919662541366, guid: fbfb55b9571a6984f92a22868db507f6, type: 2}
@@ -1336,7 +1334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286139108}
   - component: {fileID: 1286139109}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: HitCubeParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1381,7 +1379,7 @@ GameObject:
   - component: {fileID: 1288608444}
   - component: {fileID: 1288608443}
   - component: {fileID: 1288608442}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1504,7 +1502,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1416709310}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: PlayerUnit
   m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
@@ -2412,7 +2410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColour: {r: 1, g: 1, b: 1, a: 0}
   selectedColour: {r: 1, g: 0, b: 0, a: 0}
-  go_Land: {fileID: 1288608440}
+  b_Selected: 0
   go_CommandMenu: {fileID: 1959423097}
 --- !u!1 &2134065874
 GameObject:
