@@ -42,6 +42,7 @@ public class TouchInput : MonoBehaviour {
                     if (recipient.tag == "PlayerUnit")
                     {
                         go_PlayerUnit = recipient;
+                        go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
                     }
 
 
@@ -49,7 +50,6 @@ public class TouchInput : MonoBehaviour {
 
                     if (Input.GetTouch(0).phase == TouchPhase.Began)
                     {
-                        go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
                         recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                     if (Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -70,10 +70,6 @@ public class TouchInput : MonoBehaviour {
         else if (b_TargetChose && !b_CheckFinger)
         {
             PickTargetPoint();
-            if (b_CommandGiven && Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
-            }
         }
     }
 
@@ -88,6 +84,8 @@ public class TouchInput : MonoBehaviour {
                 Debug.Log(hit.point);
                 b_TargetChose = false;
                 b_CommandGiven = true;
+                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
+                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
                 if (b_BuildTower)
                 {
                     transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
