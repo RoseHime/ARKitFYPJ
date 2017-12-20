@@ -35,9 +35,11 @@ public class PlayerUnitUpdate : MonoBehaviour
         if (b_Selected)
             gameObject.GetComponent<Renderer>().material.color = selectedColour;
         else if (!b_Selected)
+        {
             gameObject.GetComponent<Renderer>().material.color = defaultColour;
+            MoveToTargetPos();
+        }
 
-        MoveToTargetPos();
     }
 
     public void SetTargetPos(Vector3 v3_targetpos)
