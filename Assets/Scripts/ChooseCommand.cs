@@ -12,6 +12,8 @@ public class ChooseCommand : MonoBehaviour {
     private GameObject go_MainCamera;
     private TouchInput ti;
 
+    public GameObject go_BuildingPanel;
+
     //Testing use
     private string text;
 
@@ -26,6 +28,7 @@ public class ChooseCommand : MonoBehaviour {
 
     public void OnClickCommand()
     {
+
         if (go_CommandButton.GetComponentInChildren<Text>().text == "STOP")
         {
             go_CommandPanel.SetActive(false);
@@ -35,6 +38,12 @@ public class ChooseCommand : MonoBehaviour {
             ti.b_TargetChose = true;
             ti.b_CheckFinger = true;
         }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
+        {
+            go_BuildingPanel.SetActive(true);
+            go_CommandPanel.SetActive(false);
+        }
+
     }
 
     public void OffClickCommand()

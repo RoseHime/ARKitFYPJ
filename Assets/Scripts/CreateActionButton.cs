@@ -21,7 +21,7 @@ public class CreateActionButton : MonoBehaviour
 
         if (go_actionPanel.activeSelf == true)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
                 goButton.transform.SetParent(go_actionPanel.transform, false);
@@ -49,6 +49,9 @@ public class CreateActionButton : MonoBehaviour
                             break;
                         case 4:
                             goButton.GetComponentInChildren<Text>().text = "UPRANK";
+                            break;
+                        case 5:
+                            goButton.GetComponentInChildren<Text>().text = "BUILD";
                             break;
 
 

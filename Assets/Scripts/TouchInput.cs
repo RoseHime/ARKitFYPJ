@@ -16,9 +16,13 @@ public class TouchInput : MonoBehaviour {
     //For Unit Selection
     private GameObject go_PlayerUnit;
 
+    public bool b_BuildTower;
+    public GameObject go_towerPrefab;
+
     private void Start()
     {
         b_TargetChose = false;
+        b_BuildTower = false;
         b_CheckFinger = false;
     }
     // Update is called once per frame
@@ -74,7 +78,6 @@ public class TouchInput : MonoBehaviour {
         if (Input.touchCount > 0)
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-
             if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
             {
                 v3_rayPointTarget = hit.point;
@@ -83,6 +86,11 @@ public class TouchInput : MonoBehaviour {
                 b_CommandGiven = true;
                 go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
                 go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                if (b_BuildTower)
+                {
+                    transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
+                    b_BuildTower = false;
+                }
             }
         }
     }
