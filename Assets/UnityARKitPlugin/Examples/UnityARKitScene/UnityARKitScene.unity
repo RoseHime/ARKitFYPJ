@@ -912,7 +912,7 @@ GameObject:
   - component: {fileID: 874923028}
   m_Layer: 5
   m_Name: Build_Panel
-  m_TagString: Untagged
+  m_TagString: BuildPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2259,6 +2259,7 @@ MonoBehaviour:
   go_actionButton: {fileID: 1813826958055662, guid: 850cd4002c618a446b01513f53072f00,
     type: 2}
   go_actionPanel: {fileID: 1959423097}
+  go_buildPanel: {fileID: 874923027}
 --- !u!1 &2018562068
 GameObject:
   m_ObjectHideFlags: 0

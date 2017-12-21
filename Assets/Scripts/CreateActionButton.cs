@@ -12,6 +12,8 @@ public class CreateActionButton : MonoBehaviour
     private float go_unitInfo_Length;
     private float go_actionButton_Length;
     Vector3 tempPos;
+
+    public GameObject go_buildPanel;
     // Use this for initialization
     void Start()
     {
@@ -26,6 +28,7 @@ public class CreateActionButton : MonoBehaviour
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
                 goButton.transform.SetParent(go_actionPanel.transform, false);
                 goButton.transform.localScale = new Vector3(1, 1, 1);
+                goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
                 if (i == 0)
                 {
                     //goButton.transform.localPosition = Vector3.zero;
