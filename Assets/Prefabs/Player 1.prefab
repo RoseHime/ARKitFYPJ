@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23780132600219630}
   - component: {fileID: 54978582407961820}
   - component: {fileID: 114649427061982820}
+  - component: {fileID: 114702642588811074}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: PlayerUnit
@@ -111,10 +112,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_HealthPoint: 100
   f_speed: 0.2
+  f_range: 10
   defaultColour: {r: 1, g: 1, b: 1, a: 0}
   selectedColour: {r: 1, g: 0, b: 0, a: 0}
   b_Selected: 0
   go_CommandMenu: {fileID: 0}
+  b_Moving: 0
+--- !u!114 &114702642588811074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1075592682676440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639a31065142c54419ccc88c5b239823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectedColor: {r: 0, g: 0.97794116, b: 0.20907702, a: 0}
 --- !u!136 &136185177073289066
 CapsuleCollider:
   m_ObjectHideFlags: 1
