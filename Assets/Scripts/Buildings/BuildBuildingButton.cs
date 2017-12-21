@@ -19,8 +19,12 @@ public class BuildBuildingButton : MonoBehaviour {
     {
         ti.go_towerPrefab = buildingPrefab;
         ti.b_BuildTower = true;
-        ti.b_TargetChose = true;
         ti.b_CheckFinger = false;
         transform.parent.parent.gameObject.SetActive(false);
+    }
+
+    public void offClick()
+    {
+        ti.b_TargetChose = true;
     }
 }

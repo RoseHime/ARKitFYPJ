@@ -35,7 +35,6 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
-            ti.b_TargetChose = true;
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
         {
@@ -49,6 +48,7 @@ public class ChooseCommand : MonoBehaviour {
     {
         if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
+            ti.b_TargetChose = true;
             go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")

@@ -2139,6 +2139,7 @@ GameObject:
   - component: {fileID: 1955147687}
   - component: {fileID: 1955147686}
   - component: {fileID: 1955147689}
+  - component: {fileID: 1955147690}
   m_Layer: 5
   m_Name: BuildButton
   m_TagString: Untagged
@@ -2263,6 +2264,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingPrefab: {fileID: 1174124799999796, guid: 3370fe32c6aea604683dbc6f8df4b26e,
     type: 2}
+--- !u!114 &1955147690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1955147684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1955147689}
+          m_MethodName: offClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1959423097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,7 +2379,7 @@ MonoBehaviour:
   go_actionButton: {fileID: 1813826958055662, guid: 850cd4002c618a446b01513f53072f00,
     type: 2}
   go_actionPanel: {fileID: 1959423097}
-  go_buildPanel: {fileID: 0}
+  go_buildPanel: {fileID: 874923027}
 --- !u!1 &2018562068
 GameObject:
   m_ObjectHideFlags: 0
