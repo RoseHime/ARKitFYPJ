@@ -11,7 +11,6 @@ public class TouchInput : MonoBehaviour {
     Vector3 v3_rayPointTarget;
     public bool b_TargetChose;
     public bool b_CheckFinger;
-    public bool b_CommandGiven;
 
     //For Unit Selection
     private GameObject go_PlayerUnit;
@@ -82,15 +81,17 @@ public class TouchInput : MonoBehaviour {
             {
                 v3_rayPointTarget = hit.point;
                 Debug.Log(hit.point);
-                b_TargetChose = false;
-                b_CommandGiven = true;
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
+                {
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                }
                 if (b_BuildTower)
                 {
                     transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
                     b_BuildTower = false;
                 }
+                b_TargetChose = false;
             }
         }
     }
