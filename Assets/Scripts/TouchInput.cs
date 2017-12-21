@@ -27,7 +27,7 @@ public class TouchInput : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (!b_TargetChose && !b_CheckFinger)
+        if (!b_TargetChose)
         {
             if (Input.touchCount > 0)
             {
@@ -74,7 +74,7 @@ public class TouchInput : MonoBehaviour {
                 b_CheckFinger = false;
             }
         }
-        else if (b_TargetChose && !b_CheckFinger)
+        else if (b_TargetChose)
         {
             PickTargetPoint();
         }

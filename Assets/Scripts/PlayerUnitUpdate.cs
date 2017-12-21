@@ -71,6 +71,8 @@ public class PlayerUnitUpdate : MonoBehaviour
     public void SetTargetPos(Vector3 v3_targetpos)
     {
         v3_targetPos = v3_targetpos;
+        b_Moving = true;
+        b_Selected = false;
     }
 
     private void MoveToTargetPos()
@@ -78,7 +80,6 @@ public class PlayerUnitUpdate : MonoBehaviour
         v3_currentPos = gameObject.transform.position;
         if (v3_currentPos != (v3_targetPos + offset_Y))
         {
-            b_Moving = true;
             gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
         }
         else
