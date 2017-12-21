@@ -9,7 +9,7 @@ public class PlayerUnitUpdate : MonoBehaviour
     //Unit Individual Info
     public int i_HealthPoint;
     public float f_speed;
-
+    public float f_range;
 
     public Color defaultColour;
     public Color selectedColour;
@@ -96,5 +96,10 @@ public class PlayerUnitUpdate : MonoBehaviour
                                                                         rcHitPosition.y + f_distanceY, 
                                                                         gameObject.GetComponent<Transform>().transform.position.z);
         }
+    }
+
+    public float GetRange()
+    {
+        return f_range;
     }
 }

@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 263193801}
   m_Layer: 0
   m_Name: EnemyList
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -619,7 +619,7 @@ Prefab:
     - target: {fileID: 54978582407961820, guid: 7394f9614bdaa36409797f67e8fe410e,
         type: 2}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1075592682676440, guid: 7394f9614bdaa36409797f67e8fe410e, type: 2}
       propertyPath: m_IsActive
@@ -1186,12 +1186,12 @@ Prefab:
     - target: {fileID: 54978582407961820, guid: 7394f9614bdaa36409797f67e8fe410e,
         type: 2}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54978582407961820, guid: 7394f9614bdaa36409797f67e8fe410e,
         type: 2}
       propertyPath: m_Constraints
-      value: 126
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7394f9614bdaa36409797f67e8fe410e, type: 2}
@@ -1902,6 +1902,10 @@ Prefab:
     - target: {fileID: 4993298346231876, guid: 556f8cee0bd73be41974b73a3eb5c8de, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069993560415648, guid: 556f8cee0bd73be41974b73a3eb5c8de, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 556f8cee0bd73be41974b73a3eb5c8de, type: 2}
