@@ -24,7 +24,7 @@ public class PlayerUnitUpdate : MonoBehaviour
     private float f_distanceY;
     private Vector3 offset_Y;
 
-
+    public bool b_buildBuilding;
     public bool b_Moving;
 
     void Start()
@@ -33,6 +33,7 @@ public class PlayerUnitUpdate : MonoBehaviour
         go_CommandMenu.SetActive(false);
         b_Selected = false;
         b_Moving = false;
+        b_buildBuilding = false;
     }
 
     void OnTouchDown()
@@ -84,6 +85,11 @@ public class PlayerUnitUpdate : MonoBehaviour
         }
         else
         {
+            if (b_buildBuilding)
+            {
+                GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<BuildStructures>().BuildBuilding(v3_currentPos);
+                b_buildBuilding = false;
+            }
             b_Moving = false;
         }
     }

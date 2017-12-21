@@ -8,7 +8,7 @@ TagManager:
   - Button
   - TowerBullet
   - Enemy
-  - BuildPanel
+  - GameFunctions
   layers:
   - Default
   - TransparentFX
