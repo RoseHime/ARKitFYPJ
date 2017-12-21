@@ -25,6 +25,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 //DO something
                 gameObject.GetComponent<Renderer>().material.color = detectedColor;
             }
+            else
+            {
+                gameObject.GetComponent<Renderer>().material.color = gameObject.GetComponent<PlayerUnitUpdate>().GetDefault();
+            }
 
         }
     }

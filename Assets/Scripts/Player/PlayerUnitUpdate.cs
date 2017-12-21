@@ -108,4 +108,8 @@ public class PlayerUnitUpdate : MonoBehaviour
     {
         return f_range;
     }
+    public Color GetDefault()
+    {
+        return defaultColour;
+    }
 }
