@@ -172,8 +172,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 30
-  field of view: 60
+  far clip plane: 100
+  field of view: 100
   orthographic: 0
   orthographic size: 100
   m_Depth: -1
@@ -240,7 +240,6 @@ MonoBehaviour:
   b_TargetChose: 0
   b_CheckFinger: 0
   b_BuildTower: 0
-  go_towerPrefab: {fileID: 0}
 --- !u!1 &16
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList: {fileID: 263193800}
+  go_TowerPrefab: {fileID: 0}
 --- !u!1 &922811256
 GameObject:
   m_ObjectHideFlags: 0
