@@ -9,8 +9,12 @@ public class TouchInput : MonoBehaviour {
     public LayerMask touchInputMask;    
     private RaycastHit hit;
     Vector3 v3_rayPointTarget;
+    Vector3 v3_lastTouchPosition;
+
     public bool b_TargetChose;
     public bool b_CheckFinger;
+
+    private bool b_TempChoose;
 
     //For Unit Selection
     private GameObject go_PlayerUnit;
@@ -23,6 +27,7 @@ public class TouchInput : MonoBehaviour {
         b_TargetChose = false;
         b_BuildTower = false;
         b_CheckFinger = false;
+        b_TempChoose = false;
     }
     // Update is called once per frame
     void Update()
@@ -31,9 +36,13 @@ public class TouchInput : MonoBehaviour {
         {
             if (!b_CheckFinger)
             {
+                if (b_TargetChose && !b_TempChoose)
+                {
+                    b_TempChoose = true;
+                }
                 b_CheckFinger = true;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-
+                v3_lastTouchPosition = Input.GetTouch(0).position;
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
@@ -72,7 +81,12 @@ public class TouchInput : MonoBehaviour {
             if (b_CheckFinger)
             {
                 b_CheckFinger = false;
-                PickTargetPoint();
+                if (b_TempChoose)
+                {
+                    b_TempChoose = false;
+                    PickTargetPoint();
+                }
+                
             }
         }
 
@@ -80,26 +94,23 @@ public class TouchInput : MonoBehaviour {
 
     public void PickTargetPoint()
     {
-        if (Input.touchCount > 0)
+        Ray ray = GetComponent<Camera>().ScreenPointToRay(v3_lastTouchPosition);
+        if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
         {
-            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
+            v3_rayPointTarget = hit.point;
+            Debug.Log(hit.point);
+            if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
             {
-                v3_rayPointTarget = hit.point;
-                Debug.Log(hit.point);
-                if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
-                {
-                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
-                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
-                }
-                if (b_BuildTower)
-                {
-                    transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
-                    b_BuildTower = false;
-                }
-                b_TargetChose = false;
+                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
+                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
             }
-        }
+            if (b_BuildTower)
+            {
+                transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
+                b_BuildTower = false;
+            }
+            b_TargetChose = false;
+        }        
     }
 
     public Vector3 rayHitTarget()
