@@ -172,8 +172,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 100
-  field of view: 100
+  far clip plane: 200
+  field of view: 50
   orthographic: 0
   orthographic size: 100
   m_Depth: -1
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 263193801}
   m_Layer: 0
   m_Name: EnemyList
-  m_TagString: Enemy
+  m_TagString: EnemyList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1905,7 +1905,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1069993560415648, guid: 556f8cee0bd73be41974b73a3eb5c8de, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 556f8cee0bd73be41974b73a3eb5c8de, type: 2}
