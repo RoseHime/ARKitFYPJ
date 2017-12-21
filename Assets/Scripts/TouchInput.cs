@@ -81,8 +81,11 @@ public class TouchInput : MonoBehaviour {
             {
                 v3_rayPointTarget = hit.point;
                 Debug.Log(hit.point);
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
+                {
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                }
                 if (b_BuildTower)
                 {
                     transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
