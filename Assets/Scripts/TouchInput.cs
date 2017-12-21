@@ -16,7 +16,7 @@ public class TouchInput : MonoBehaviour {
     private GameObject go_PlayerUnit;
 
     public bool b_BuildTower;
-    public GameObject go_towerPrefab;
+    public GameObject go_towerPrefab = null;
 
     private void Start()
     {

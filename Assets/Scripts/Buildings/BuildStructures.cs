@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BuildStructures : MonoBehaviour {
 
+    public GameObject enemyList;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,5 +21,6 @@ public class BuildStructures : MonoBehaviour {
         GameObject tempBuilding = Instantiate(prefab);
         tempBuilding.transform.position = position;
         tempBuilding.name = "Tower";
+        tempBuilding.GetComponent<TowerBehaviour>().enemyList = enemyList;
     }
 }
