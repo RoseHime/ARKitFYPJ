@@ -15,6 +15,7 @@ public class PlayerUnitUpdate : MonoBehaviour
     public Color selectedColour;
     public bool b_Selected;
     public GameObject go_CommandMenu;
+    private Rigidbody rb_Body;
     RaycastHit rcHit;
     Vector3 rcHitPosition;
 
@@ -24,10 +25,11 @@ public class PlayerUnitUpdate : MonoBehaviour
     private Vector3 offset_Y;
 
 
-    private bool b_Moving;
+    public bool b_Moving;
 
     void Start()
     {
+        rb_Body = gameObject.GetComponent<Rigidbody>();
         go_CommandMenu.SetActive(false);
         b_Selected = false;
         b_Moving = false;
@@ -52,13 +54,18 @@ public class PlayerUnitUpdate : MonoBehaviour
             gameObject.GetComponent<Renderer>().material.color = selectedColour;
         else if (!b_Selected)
         {
-            b_Moving = true;
             gameObject.GetComponent<Renderer>().material.color = defaultColour;
         }
 
         if (b_Moving)
+        {
+            rb_Body.isKinematic = false;
             MoveToTargetPos();
-
+        }
+        else
+        {
+            rb_Body.isKinematic = true;
+        }
     }
 
     public void SetTargetPos(Vector3 v3_targetpos)
@@ -71,6 +78,7 @@ public class PlayerUnitUpdate : MonoBehaviour
         v3_currentPos = gameObject.transform.position;
         if (v3_currentPos != (v3_targetPos + offset_Y))
         {
+            b_Moving = true;
             gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
         }
         else
