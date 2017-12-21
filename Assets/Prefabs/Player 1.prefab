@@ -112,11 +112,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_HealthPoint: 100
   f_speed: 0.2
-  f_range: 10
+  f_range: 0.5
   defaultColour: {r: 1, g: 1, b: 1, a: 0}
   selectedColour: {r: 1, g: 0, b: 0, a: 0}
   b_Selected: 0
   go_CommandMenu: {fileID: 0}
+  b_buildBuilding: 0
   b_Moving: 0
 --- !u!114 &114702642588811074
 MonoBehaviour:
