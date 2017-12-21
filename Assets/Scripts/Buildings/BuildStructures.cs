@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildStructures : MonoBehaviour {
 
     public GameObject enemyList;
+    public GameObject go_TowerPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -16,9 +17,9 @@ public class BuildStructures : MonoBehaviour {
 		
 	}
 
-    public void BuildBuilding(GameObject prefab,Vector3 position)
+    public void BuildBuilding(Vector3 position)
     {
-        GameObject tempBuilding = Instantiate(prefab);
+        GameObject tempBuilding = Instantiate(go_TowerPrefab);
         tempBuilding.transform.position = position;
         tempBuilding.name = "Tower";
         tempBuilding.GetComponent<TowerBehaviour>().enemyList = enemyList;

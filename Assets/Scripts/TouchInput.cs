@@ -20,7 +20,6 @@ public class TouchInput : MonoBehaviour {
     private GameObject go_PlayerUnit;
 
     public bool b_BuildTower;
-    public GameObject go_towerPrefab = null;
 
     private void Start()
     {
@@ -103,12 +102,10 @@ public class TouchInput : MonoBehaviour {
             {
                 go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
                 go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
-            }
-            if (b_BuildTower)
-            {
-                transform.GetComponent<BuildStructures>().BuildBuilding(go_towerPrefab, v3_rayPointTarget);
+                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_buildBuilding = b_BuildTower;
                 b_BuildTower = false;
             }
+            
             b_TargetChose = false;
         }        
     }
