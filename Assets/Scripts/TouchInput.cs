@@ -31,39 +31,47 @@ public class TouchInput : MonoBehaviour {
         {
             if (Input.touchCount > 0)
             {
-                Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-
-                if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+                if (!b_CheckFinger)
                 {
-                    GameObject recipient = hit.transform.gameObject;
+                    Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
 
-                    //Check what the ray hit
-                    if (recipient.tag == "PlayerUnit")
+                    if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                     {
-                        go_PlayerUnit = recipient;
-                        go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
-                    }
+                        GameObject recipient = hit.transform.gameObject;
+
+                        //Check what the ray hit
+                        if (recipient.tag == "PlayerUnit")
+                        {
+                            go_PlayerUnit = recipient;
+                            go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
+                        }
 
 
-                    Debug.Log(hit.point);
+                        Debug.Log(hit.point);
 
-                    if (Input.GetTouch(0).phase == TouchPhase.Began)
-                    {
-                        recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
-                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
-                    {
-                        recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
-                    if (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved)
-                    {
-                        recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
-                    if (Input.GetTouch(0).phase == TouchPhase.Canceled)
-                    {
-                        recipient.SendMessage("OnTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
+                        if (Input.GetTouch(0).phase == TouchPhase.Began)
+                        {
+                            recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
+                        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                        {
+                            recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
+                        if (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved)
+                        {
+                            recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
+                        if (Input.GetTouch(0).phase == TouchPhase.Canceled)
+                        {
+                            recipient.SendMessage("OnTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
                     }
                 }
+                b_CheckFinger = true;
+            }
+            else
+            {
+                b_CheckFinger = false;
             }
         }
         else if (b_TargetChose && !b_CheckFinger)

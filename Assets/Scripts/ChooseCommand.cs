@@ -36,7 +36,6 @@ public class ChooseCommand : MonoBehaviour {
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
             ti.b_TargetChose = true;
-            ti.b_CheckFinger = true;
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
         {
@@ -50,7 +49,6 @@ public class ChooseCommand : MonoBehaviour {
     {
         if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
-            ti.b_CheckFinger = false;
             go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
