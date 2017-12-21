@@ -196,7 +196,7 @@ MonoBehaviour:
   f_fireRate: 1
   b_active: 1
   f_damage: 1
-  f_bulletSpeed: 10
+  f_bulletSpeed: 0.1
   bullet_Prefab: {fileID: 1212370343907792}
   enemyList: {fileID: 0}
 --- !u!114 &114895725248508974

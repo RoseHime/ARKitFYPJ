@@ -7,7 +7,7 @@ public class TowerBehaviour : MonoBehaviour {
     public float f_fireRate = 1;
     public bool b_active = true;
     public float f_damage = 1;
-    public float f_bulletSpeed = 10;
+    public float f_bulletSpeed = 0.1f;
 
     public GameObject bullet_Prefab;
 
