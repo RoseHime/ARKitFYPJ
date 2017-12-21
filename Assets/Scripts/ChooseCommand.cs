@@ -53,6 +53,11 @@ public class ChooseCommand : MonoBehaviour {
             ti.b_CheckFinger = false;
             go_CommandPanel.SetActive(false);
         }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
+        {
+            go_BuildingPanel.SetActive(true);
+            go_CommandPanel.SetActive(false);
+        }
     }
 
     private void Update()
