@@ -83,7 +83,9 @@ public class PlayerUnitUpdate : MonoBehaviour
     {
         if ((gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y) != f_distanceY)
         {
-            gameObject.GetComponent<Transform>().transform.position.Set(0, rcHitPosition.y + f_distanceY, 0);
+            gameObject.GetComponent<Transform>().transform.position.Set(gameObject.GetComponent<Transform>().transform.position.x, 
+                                                                        rcHitPosition.y + f_distanceY, 
+                                                                        gameObject.GetComponent<Transform>().transform.position.z);
         }
     }
 }
