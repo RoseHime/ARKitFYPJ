@@ -84,12 +84,14 @@ public class PlayerUnitUpdate : MonoBehaviour
         if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
         {
             Vector3 targetDir = (v3_targetPos + offset_Y) - v3_currentPos;
+            float angle = Vector3.Angle(targetDir, gameObject.transform.forward);
             float f_rotateSpeed = f_speed * Time.deltaTime;
-            Vector3 v3_newDir = Vector3.RotateTowards(gameObject.transform.forward, targetDir, f_rotateSpeed, 0.0f);
-            gameObject.transform.rotation = Quaternion.LookRotation(v3_newDir);
-            if (gameObject.transform.rotation == Quaternion.LookRotation(v3_newDir))
+            Quaternion rotation = Quaternion.LookRotation(targetDir);
+            //Vector3 v3_newDir = Vector3.RotateTowards(gameObject.transform.forward, targetDir, f_rotateSpeed, 0.0f);
+            gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, rotation, f_rotateSpeed * Time.deltaTime);
+            if (angle <= 0)
             {
-                gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
+                gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, (f_speed + 1.0f) * Time.deltaTime);
             }
         }
         else
