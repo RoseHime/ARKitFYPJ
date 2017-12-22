@@ -73,6 +73,7 @@ public class CreateActionButton : MonoBehaviour
             goButton.transform.localScale = new Vector3(1, 1, 1);
             goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
             goButton.GetComponent<ChooseCommand>().go_BarracksPanel = go_barracksPanel;
+            go_barracksPanel.GetComponent<BarracksPanelInfo>().go_SelectedBarracks = go_selectedUnit;
             goButton.transform.localPosition = new Vector3(go_unitInfo.transform.localPosition.x + (go_unitInfo_Length / 2) + (go_actionButton_Length / 2), go_unitInfo.transform.localPosition.y - 30, 0);
             goButton.GetComponentInChildren<Text>().text = "CREATE";
             tempPos = goButton.transform.localPosition;
