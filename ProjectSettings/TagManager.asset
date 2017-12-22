@@ -9,6 +9,8 @@ TagManager:
   - TowerBullet
   - Enemy
   - GameFunctions
+  - BuildPanel
+  - EnemyList
   layers:
   - Default
   - TransparentFX
