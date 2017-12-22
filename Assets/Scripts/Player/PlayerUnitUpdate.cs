@@ -14,7 +14,7 @@ public class PlayerUnitUpdate : MonoBehaviour
     public Color defaultColour;
     public Color selectedColour;
     public bool b_Selected;
-    public GameObject go_CommandMenu;
+    private GameObject go_CommandMenu;
     private Rigidbody rb_Body;
     RaycastHit rcHit;
     Vector3 rcHitPosition;
@@ -26,16 +26,15 @@ public class PlayerUnitUpdate : MonoBehaviour
 
     public bool b_buildBuilding;
     public bool b_Moving;
-    private bool b_Rotating;
 
     void Start()
     {
         rb_Body = gameObject.GetComponent<Rigidbody>();
+        go_CommandMenu = GameObject.FindGameObjectWithTag("Command");
         go_CommandMenu.SetActive(false);
         b_Selected = false;
         b_Moving = false;
         b_buildBuilding = false;
-        b_Rotating = false;
     }
 
     void OnTouchDown()
@@ -61,7 +60,7 @@ public class PlayerUnitUpdate : MonoBehaviour
             gameObject.GetComponent<Renderer>().material.color = defaultColour;
         }
 
-        if (b_Moving && !b_Rotating)
+        if (b_Moving)
         {
             rb_Body.isKinematic = false;
             MoveToTargetPos();
@@ -70,19 +69,13 @@ public class PlayerUnitUpdate : MonoBehaviour
         {
             rb_Body.isKinematic = true;
         }
-
-        if (b_Rotating)
-        {
-            CheckAngleWithTarget();
-            RotateTowardTarget();
-        }
     }
 
     public void SetTargetPos(Vector3 v3_targetpos)
     {
         v3_targetPos = v3_targetpos;
         b_Selected = false;
-        b_Rotating = true;
+        b_Moving = true;
     }
 
     private void MoveToTargetPos()
@@ -90,6 +83,8 @@ public class PlayerUnitUpdate : MonoBehaviour
         v3_currentPos = gameObject.transform.position;
         if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
         {
+            Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
+            gameObject.transform.LookAt(v3_seeTarget);
             gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
         }
         else
@@ -101,25 +96,6 @@ public class PlayerUnitUpdate : MonoBehaviour
             }
             b_Moving = false;
         }
-    }
-
-    void CheckAngleWithTarget()
-    {
-        float f_angle = Vector3.Angle(v3_targetPos, gameObject.transform.forward);
-        if (f_angle <= 0.0f)
-        {
-            b_Moving = true;
-            b_Rotating = false;
-        }
-    }
-
-    void RotateTowardTarget()
-    {
-        Vector3 targetDir = (v3_targetPos + offset_Y) - v3_currentPos;
-        float f_rotateSpeed = f_speed * Time.deltaTime;
-        Quaternion rotation = Quaternion.LookRotation(targetDir);
-        //Vector3 v3_newDir = Vector3.RotateTowards(gameObject.transform.forward, targetDir, f_rotateSpeed, 0.0f);
-        gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, rotation, f_rotateSpeed);
     }
 
     void CheckWhetherStillOnGround()

@@ -20,7 +20,6 @@ public class CreateActionButton : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         go_unitInfo_Length = go_unitInfo.GetComponent<RectTransform>().rect.width;
         go_actionButton_Length = go_actionButton.GetComponent<RectTransform>().rect.width;
 

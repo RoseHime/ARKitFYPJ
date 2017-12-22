@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i_HealthPoint: 100
-  f_speed: 0.1
+  f_speed: 0.05
   f_range: 0.05
   defaultColour: {r: 1, g: 1, b: 1, a: 0}
   selectedColour: {r: 1, g: 0, b: 0, a: 0}
