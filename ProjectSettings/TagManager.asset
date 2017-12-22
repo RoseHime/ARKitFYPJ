@@ -14,6 +14,7 @@ TagManager:
   - BuildingList
   - Canvas
   - EnemyList
+  - Command
   layers:
   - Default
   - TransparentFX
