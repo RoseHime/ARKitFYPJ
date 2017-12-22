@@ -38,6 +38,7 @@ public class PlayerUnitUpdate : MonoBehaviour
 
     void OnTouchDown()
     {
+        go_CommandMenu.GetComponent<CreateActionButton>().go_selectedUnit = gameObject;
         go_CommandMenu.SetActive(true);
     }
 

@@ -13,6 +13,8 @@ public class CreateActionButton : MonoBehaviour
     private float go_actionButton_Length;
     Vector3 tempPos;
 
+    public GameObject go_selectedUnit;
+
     public GameObject go_buildPanel;
     // Use this for initialization
     void Start()
@@ -21,7 +23,7 @@ public class CreateActionButton : MonoBehaviour
         go_unitInfo_Length = go_unitInfo.GetComponent<RectTransform>().rect.width;
         go_actionButton_Length = go_actionButton.GetComponent<RectTransform>().rect.width;
 
-        if (go_actionPanel.activeSelf == true)
+        if (go_actionPanel.activeSelf == true && go_selectedUnit.tag == "PlayerUnit")
         {
             for (int i = 0; i < 6; i++)
             {
@@ -68,6 +70,18 @@ public class CreateActionButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (go_selectedUnit != null)
+        {
+            if (go_selectedUnit.tag == "PlayerUnit")
+            {
+                PlayerUnitUpdate plrUnit = go_selectedUnit.GetComponent<PlayerUnitUpdate>();
+                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.i_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+            }
+            else if (go_selectedUnit.tag == "SelectableBuilding")
+            {
+                BuildingInfo building = go_selectedUnit.GetComponent<BuildingInfo>();
+                go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
+            }
+        }
     }
 }

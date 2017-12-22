@@ -52,6 +52,10 @@ public class TouchInput : MonoBehaviour {
                         go_PlayerUnit = recipient;
                         go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
                     }
+                    else if (recipient.tag == "SelectableBuilding")
+                    {
+                        // I still havn't written anything here, probably will soon
+                    }
 
 
                     Debug.Log(hit.point);

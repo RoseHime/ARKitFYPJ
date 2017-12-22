@@ -19,9 +19,12 @@ public class BuildStructures : MonoBehaviour {
 
     public void BuildBuilding(Vector3 position)
     {
+        Vector3 originalScale = go_TowerPrefab.transform.localScale;
         GameObject tempBuilding = Instantiate(go_TowerPrefab);
         tempBuilding.transform.position = position;
         tempBuilding.name = "Tower";
         tempBuilding.GetComponent<TowerBehaviour>().enemyList = enemyList;
+        tempBuilding.transform.parent = GameObject.FindGameObjectWithTag("BuildingList").transform;
+        tempBuilding.transform.localScale = originalScale;
     }
 }

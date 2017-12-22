@@ -8,6 +8,7 @@ public class TowerBehaviour : MonoBehaviour {
     public bool b_active = true;
     public float f_damage = 1;
     public float f_bulletSpeed = 0.1f;
+    public float f_range = 0.5f;
 
     public GameObject bullet_Prefab;
 
@@ -24,7 +25,7 @@ public class TowerBehaviour : MonoBehaviour {
 	void Update () {
         Transform nearestEnemy = null;
 
-        float tempDistance = float.MaxValue;
+        float tempDistance = f_range * f_range;
         foreach (Transform child in enemyList.transform)
         {
             if ((child.position - transform.position).sqrMagnitude < tempDistance)
@@ -34,9 +35,9 @@ public class TowerBehaviour : MonoBehaviour {
             }
         }
 
-		if ((f_bulletTimer += Time.deltaTime) > 1/f_fireRate)
+        if (nearestEnemy != null)
         {
-            if (nearestEnemy != null)
+            if ((f_bulletTimer += Time.deltaTime) > 1/f_fireRate)
             {
                 Vector3 direction = (nearestEnemy.position - transform.position).normalized;
 
