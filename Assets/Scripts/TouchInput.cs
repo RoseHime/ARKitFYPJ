@@ -31,7 +31,7 @@ public class TouchInput : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 /*|| Input.GetMouseButtonDown(0)*/)
         {
             if (!b_CheckFinger)
             {
@@ -41,6 +41,7 @@ public class TouchInput : MonoBehaviour {
                 }
                 b_CheckFinger = true;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+                //Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 v3_lastTouchPosition = Input.GetTouch(0).position;
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
@@ -56,6 +57,7 @@ public class TouchInput : MonoBehaviour {
                     {
                         // I still havn't written anything here, probably will soon
                     }
+                    //recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
 
 
                     Debug.Log(hit.point);

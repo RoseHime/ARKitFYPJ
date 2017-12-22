@@ -20,6 +20,36 @@ public class CreateActionButton : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        CreateButtons();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (go_selectedUnit != null)
+        {
+            if (go_selectedUnit.tag == "PlayerUnit")
+            {
+                PlayerUnitUpdate plrUnit = go_selectedUnit.GetComponent<PlayerUnitUpdate>();
+                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.i_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+            }
+            else if (go_selectedUnit.tag == "SelectableBuilding")
+            {
+                BuildingInfo building = go_selectedUnit.GetComponent<BuildingInfo>();
+                go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
+            }
+        }
+    }
+
+    public void CreateButtons()
+    {
+        foreach (Transform button in gameObject.transform)
+        {
+            if (button.gameObject.name == "ActionButton")
+            {
+                Destroy(button.gameObject);
+            }
+        }
 
         go_unitInfo_Length = go_unitInfo.GetComponent<RectTransform>().rect.width;
         go_actionButton_Length = go_actionButton.GetComponent<RectTransform>().rect.width;
@@ -29,6 +59,7 @@ public class CreateActionButton : MonoBehaviour
             for (int i = 0; i < 6; i++)
             {
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
+                goButton.name = "ActionButton";
                 goButton.transform.SetParent(go_actionPanel.transform, false);
                 goButton.transform.localScale = new Vector3(1, 1, 1);
                 goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
@@ -77,24 +108,6 @@ public class CreateActionButton : MonoBehaviour
             goButton.transform.localPosition = new Vector3(go_unitInfo.transform.localPosition.x + (go_unitInfo_Length / 2) + (go_actionButton_Length / 2), go_unitInfo.transform.localPosition.y - 30, 0);
             goButton.GetComponentInChildren<Text>().text = "CREATE";
             tempPos = goButton.transform.localPosition;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (go_selectedUnit != null)
-        {
-            if (go_selectedUnit.tag == "PlayerUnit")
-            {
-                PlayerUnitUpdate plrUnit = go_selectedUnit.GetComponent<PlayerUnitUpdate>();
-                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.i_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
-            }
-            else if (go_selectedUnit.tag == "SelectableBuilding")
-            {
-                BuildingInfo building = go_selectedUnit.GetComponent<BuildingInfo>();
-                go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
-            }
         }
     }
 }

@@ -34,6 +34,7 @@ public class BuildingInfo : MonoBehaviour {
     {
         Transform go_commandPanel = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0);
         go_commandPanel.GetComponent<CreateActionButton>().go_selectedUnit = gameObject;
+        go_commandPanel.GetComponent<CreateActionButton>().CreateButtons();
         go_commandPanel.gameObject.SetActive(true);
     }
 }
