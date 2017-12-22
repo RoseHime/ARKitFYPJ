@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - GameFunctions
   - BuildPanel
+  - SelectableBuilding
+  - BuildingList
+  - Canvas
   - EnemyList
   layers:
   - Default

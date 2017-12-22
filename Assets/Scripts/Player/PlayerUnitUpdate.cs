@@ -40,6 +40,7 @@ public class PlayerUnitUpdate : MonoBehaviour
 
     void OnTouchDown()
     {
+        go_CommandMenu.GetComponent<CreateActionButton>().go_selectedUnit = gameObject;
         go_CommandMenu.SetActive(true);
     }
 
@@ -98,7 +99,7 @@ public class PlayerUnitUpdate : MonoBehaviour
         {
             if (b_buildBuilding)
             {
-                GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<BuildStructures>().BuildBuilding(v3_currentPos);
+                GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>().BuildBuilding(v3_currentPos);
                 b_buildBuilding = false;
             }
             b_Moving = false;

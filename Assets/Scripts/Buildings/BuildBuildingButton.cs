@@ -17,7 +17,7 @@ public class BuildBuildingButton : MonoBehaviour {
 
     public void onClick()
     {
-        GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<BuildStructures>().go_TowerPrefab = buildingPrefab;
+        GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>().go_TowerPrefab = buildingPrefab;
         ti.b_BuildTower = true;
         transform.parent.parent.gameObject.SetActive(false);
     }
