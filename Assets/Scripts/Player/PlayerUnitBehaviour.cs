@@ -11,7 +11,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        T_Enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
     }
 
     // Update is called once per frame

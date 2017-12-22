@@ -16,6 +16,7 @@ public class CreateActionButton : MonoBehaviour
     public GameObject go_selectedUnit;
 
     public GameObject go_buildPanel;
+    public GameObject go_barracksPanel;
     // Use this for initialization
     void Start()
     {
@@ -64,6 +65,17 @@ public class CreateActionButton : MonoBehaviour
                     }
                 }
             }
+        }
+        else if (go_actionPanel.activeSelf == true && go_selectedUnit.tag == "SelectableBuilding" && go_selectedUnit.name == "Barracks")
+        {
+            GameObject goButton = (GameObject)Instantiate(go_actionButton);
+            goButton.transform.SetParent(go_actionPanel.transform, false);
+            goButton.transform.localScale = new Vector3(1, 1, 1);
+            goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+            goButton.GetComponent<ChooseCommand>().go_BarracksPanel = go_barracksPanel;
+            goButton.transform.localPosition = new Vector3(go_unitInfo.transform.localPosition.x + (go_unitInfo_Length / 2) + (go_actionButton_Length / 2), go_unitInfo.transform.localPosition.y - 30, 0);
+            goButton.GetComponentInChildren<Text>().text = "CREATE";
+            tempPos = goButton.transform.localPosition;
         }
     }
 

@@ -13,6 +13,7 @@ TagManager:
   - SelectableBuilding
   - BuildingList
   - Canvas
+  - EnemyList
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114964524080263104}
   - component: {fileID: 114457016606558022}
   m_Layer: 0
-  m_Name: TowerCube 1
+  m_Name: TowerCube
   m_TagString: SelectableBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
