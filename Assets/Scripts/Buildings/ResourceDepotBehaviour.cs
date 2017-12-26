@@ -16,17 +16,17 @@ public class ResourceDepotBehaviour : MonoBehaviour {
 
     }
 
-    public void CollectGold(int gold)
+    public void StoreGold(int gold)
     {
         playerInfo.i_gold += gold;
     }
 
-    public void CollectWood(int wood)
+    public void StoreWood(int wood)
     {
         playerInfo.i_wood += wood;
     }
 
-    public void CollectMagicstone(int magicstone)
+    public void StoreMagicstone(int magicstone)
     {
         playerInfo.i_magicStone += magicstone;
     }

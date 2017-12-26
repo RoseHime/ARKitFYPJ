@@ -57,20 +57,23 @@ public class TouchInput : MonoBehaviour {
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
-
+                    if (go_PlayerUnit != null)
+                    {
+                        //go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                    }
                     //Check what the ray hit
                     if (recipient.tag == "PlayerUnit")
                     {
-                        if (go_PlayerUnit != null)
-                        {
-                            go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
-                        }
                         go_PlayerUnit = recipient;
                         go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
                     }
                     else if (recipient.tag == "SelectableBuilding")
                     {
                         // I still havn't written anything here, probably will soon
+                    }
+                    else
+                    {
+
                     }
                     
 
@@ -99,8 +102,15 @@ public class TouchInput : MonoBehaviour {
                         recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
                         Debug.Log(hit.point);
                     }
-
-                    
+                }
+                else
+                {
+                    if (go_PlayerUnit != null)
+                    {
+                        //go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                        //Transform go_commandPanel = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0);
+                        //go_commandPanel.gameObject.SetActive(false);
+                    }
                 }
             }
         }

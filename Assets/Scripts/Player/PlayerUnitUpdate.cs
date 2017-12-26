@@ -92,6 +92,7 @@ public class PlayerUnitUpdate : MonoBehaviour
             Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
             gameObject.transform.LookAt(v3_seeTarget);
             gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
+            GetComponent<Rigidbody>().useGravity = true;
         }
         else
         {
@@ -101,6 +102,7 @@ public class PlayerUnitUpdate : MonoBehaviour
                 b_buildBuilding = false;
             }
             b_Moving = false;
+            GetComponent<Rigidbody>().useGravity = false;
         }
     }
 
