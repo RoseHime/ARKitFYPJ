@@ -16,6 +16,7 @@ TagManager:
   - EnemyList
   - Command
   - PlayerInfo
+  - Resources
   layers:
   - Default
   - TransparentFX
