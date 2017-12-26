@@ -20,7 +20,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         foreach (Transform T_enemyChild in T_Enemy)
         {
-            if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitUpdate>().GetRange())
+            if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitUpdate>().GetRange() * gameObject.GetComponent<PlayerUnitUpdate>().GetRange())
             {
                 //DO something
                 gameObject.GetComponent<Renderer>().material.color = detectedColor;

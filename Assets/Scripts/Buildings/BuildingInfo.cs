@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildingInfo : MonoBehaviour {
 
-    int i_health = 50;
+    public int i_health = 50;
 
     private TowerBehaviour towerBehaviour;
 
@@ -16,7 +16,7 @@ public class BuildingInfo : MonoBehaviour {
         }
 	}
 
-    public string GetUnitsInfo()
+    public virtual string GetUnitsInfo()
     {
         string unitInfo;
         if (towerBehaviour != null)

@@ -15,6 +15,7 @@ TagManager:
   - Canvas
   - EnemyList
   - Command
+  - PlayerInfo
   layers:
   - Default
   - TransparentFX
