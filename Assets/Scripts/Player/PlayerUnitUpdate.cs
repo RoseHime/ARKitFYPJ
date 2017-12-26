@@ -30,7 +30,7 @@ public class PlayerUnitUpdate : MonoBehaviour
     void Start()
     {
         rb_Body = gameObject.GetComponent<Rigidbody>();
-        go_CommandMenu = GameObject.FindGameObjectWithTag("Command");
+        go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
         b_Selected = false;
         b_Moving = false;
