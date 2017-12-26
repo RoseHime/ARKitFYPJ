@@ -31,7 +31,7 @@ public class TouchInput : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0 /*|| Input.GetMouseButtonDown(0)*/)
+        if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
             if (!b_CheckFinger)
             {
@@ -40,9 +40,20 @@ public class TouchInput : MonoBehaviour {
                     b_TempChoose = true;
                 }
                 b_CheckFinger = true;
-                Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-                //Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-                v3_lastTouchPosition = Input.GetTouch(0).position;
+                Ray ray;
+                if (Input.touchCount > 0)
+                {
+                    ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+
+                    v3_lastTouchPosition = Input.GetTouch(0).position;
+                }
+                else
+                {
+                    ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+                    v3_lastTouchPosition = Input.mousePosition;
+                }
+                
+                
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
@@ -50,6 +61,10 @@ public class TouchInput : MonoBehaviour {
                     //Check what the ray hit
                     if (recipient.tag == "PlayerUnit")
                     {
+                        if (go_PlayerUnit != null)
+                        {
+                            go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
+                        }
                         go_PlayerUnit = recipient;
                         go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
                     }
@@ -57,27 +72,35 @@ public class TouchInput : MonoBehaviour {
                     {
                         // I still havn't written anything here, probably will soon
                     }
-                    //recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
+                    
 
-
-                    Debug.Log(hit.point);
-
-                    if (Input.GetTouch(0).phase == TouchPhase.Began)
+                    if (Input.touchCount > 0)
+                    {
+                        if (Input.GetTouch(0).phase == TouchPhase.Began)
+                        {
+                            recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
+                        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                        {
+                            recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
+                        if (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved)
+                        {
+                            recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
+                        if (Input.GetTouch(0).phase == TouchPhase.Canceled)
+                        {
+                            recipient.SendMessage("OnTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
+                        }
+                    }
+                    else
                     {
                         recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
-                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
-                    {
                         recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
+                        Debug.Log(hit.point);
                     }
-                    if (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved)
-                    {
-                        recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
-                    if (Input.GetTouch(0).phase == TouchPhase.Canceled)
-                    {
-                        recipient.SendMessage("OnTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
+
+                    
                 }
             }
         }
@@ -85,6 +108,7 @@ public class TouchInput : MonoBehaviour {
         {
             if (b_CheckFinger)
             {
+                //Debug.Log("dOES IT GO TRYU");
                 b_CheckFinger = false;
                 if (b_TempChoose)
                 {
