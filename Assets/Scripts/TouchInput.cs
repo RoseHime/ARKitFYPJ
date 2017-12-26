@@ -9,15 +9,15 @@ public class TouchInput : MonoBehaviour {
     public LayerMask touchInputMask;    
     private RaycastHit hit;
     Vector3 v3_rayPointTarget;
-    Vector3 v3_lastTouchPosition;
 
     public bool b_TargetChose;
-    public bool b_CheckFinger;
-
-    private bool b_TempChoose;
+    private bool b_SomethingIsSelected;
+    public bool b_Cancelled;
+    public bool b_StopRun;
 
     //For Unit Selection
     private GameObject go_PlayerUnit;
+    private GameObject go_PlayerBuilding;
 
     public bool b_BuildTower;
 
@@ -25,140 +25,185 @@ public class TouchInput : MonoBehaviour {
     {
         b_TargetChose = false;
         b_BuildTower = false;
-        b_CheckFinger = false;
-        b_TempChoose = false;
+        b_SomethingIsSelected = false;
+        b_Cancelled = false;
+        b_StopRun = false;
     }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+        if (b_Cancelled) // When Action Button STOP is pressed.
         {
-            if (!b_CheckFinger)
+            b_SomethingIsSelected = false;
+            if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)           //If the selected is a unit
             {
-                if (b_TargetChose && !b_TempChoose)
-                {
-                    b_TempChoose = true;
-                }
-                b_CheckFinger = true;
-                Ray ray;
-                if (Input.touchCount > 0)
-                {
-                    ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+                go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+            }
+            //else if (go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected)
+            //{
+            //    go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected = false;
+            //}
+            b_Cancelled = false;
+        }
 
-                    v3_lastTouchPosition = Input.GetTouch(0).position;
-                }
-                else
-                {
-                    ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-                    v3_lastTouchPosition = Input.mousePosition;
-                }
-                
-                
+        //Touch Input
+        if (Input.touches.Length > 0)
+        {
+            if (!b_SomethingIsSelected)
+            {
+                Ray ray;
+                ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
-                    if (go_PlayerUnit != null)
-                    {
-                        //go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
-                    }
-                    //Check what the ray hit
                     if (recipient.tag == "PlayerUnit")
                     {
                         go_PlayerUnit = recipient;
-                        go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = true;
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
                     }
                     else if (recipient.tag == "SelectableBuilding")
                     {
                         // I still havn't written anything here, probably will soon
+                        //go_PlayerBuilding = recipient;
+                        //go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected = true;
                     }
                     else
                     {
 
                     }
-                    
+                    b_SomethingIsSelected = true;
 
-                    if (Input.touchCount > 0)
+                    if (Input.GetTouch(0).phase == TouchPhase.Began)
                     {
-                        if (Input.GetTouch(0).phase == TouchPhase.Began)
-                        {
-                            recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
-                        }
-                        if (Input.GetTouch(0).phase == TouchPhase.Ended)
-                        {
-                            recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
-                        }
-                        if (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved)
-                        {
-                            recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
-                        }
-                        if (Input.GetTouch(0).phase == TouchPhase.Canceled)
-                        {
-                            recipient.SendMessage("OnTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
-                        }
-                    }
-                    else
-                    {
-                        recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
-                        recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
-                        Debug.Log(hit.point);
-                    }
-                }
-                else
-                {
-                    if (go_PlayerUnit != null)
-                    {
-                        //go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected = false;
-                        //Transform go_commandPanel = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0);
-                        //go_commandPanel.gameObject.SetActive(false);
+                        recipient.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                 }
             }
-        }
-        else
-        {
-            if (b_CheckFinger)
+            if (b_TargetChose && b_SomethingIsSelected)
             {
-                //Debug.Log("dOES IT GO TRYU");
-                b_CheckFinger = false;
-                if (b_TempChoose)
-                {
-                    b_TempChoose = false;
+                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                     PickTargetPoint();
-                }
-                
             }
         }
 
+        //Mouse Input
+        if (Input.GetMouseButton(0))  // if there is a left click on mouse
+        {
+            if (!b_SomethingIsSelected)
+            {
+                Ray ray;
+                ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+                {
+                    GameObject recipient = hit.transform.gameObject;
+                    if (recipient.tag == "PlayerUnit")
+                    {
+                        go_PlayerUnit = recipient;
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        go_PlayerUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                    }
+                    else if (recipient.tag == "SelectableBuilding")
+                    {
+                        // I still havn't written anything here, probably will soon
+                        go_PlayerBuilding = recipient;
+                        go_PlayerBuilding.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                    }
+                    else
+                    {
+
+                    }
+                    b_SomethingIsSelected = true;
+
+                   //if (Input.GetMouseButtonDown(0))
+                   //{
+                   //    recipient.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                   //    Debug.Log("HERE");
+                   //}
+                   //if (Input.GetMouseButtonUp(0))
+                   //{
+                   //    recipient.SendMessage("OffClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                   //}
+                }
+            }
+            if (b_TargetChose && b_SomethingIsSelected)
+            {
+                Debug.Log("HERE@");
+                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                    PickTargetPoint();
+            }
+        }
     }
 
     public void PickTargetPoint()
     {
-        Ray ray = GetComponent<Camera>().ScreenPointToRay(v3_lastTouchPosition);
-        if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
+        if (Input.touches.Length > 0) // Get the new touch
         {
-            v3_rayPointTarget = hit.point;
-            GameObject go_ObjectHit = hit.transform.gameObject;
-            Debug.Log(hit.point);
-            if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
             {
-             if (go_ObjectHit.name == "GoldMine")
+                v3_rayPointTarget = hit.point;
+                GameObject go_ObjectHit = hit.transform.gameObject;
+                Debug.Log(hit.point);
+                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                 {
-                    go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().OnHarvestMode();
+                    if (go_ObjectHit.name == "GoldMine")
+                    {
+                        Debug.Log("Select Gold Mine");
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_StartHarvest = true;
+                    }
+                    else
+                    {
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
+                        b_BuildTower = false;
+                    }
                 }
-                else
-                {
-                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
-                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_buildBuilding = b_BuildTower;
-                    b_BuildTower = false;
-                }
+
+                b_TargetChose = false;
             }
-            
-            b_TargetChose = false;
-        }        
+        }
+
+        else if (Input.GetMouseButton(0))
+        {
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
+            {
+                v3_rayPointTarget = hit.point;
+                GameObject go_ObjectHit = hit.transform.gameObject;
+                Debug.Log(hit.point);
+                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                {
+                    if (go_ObjectHit.name == "GoldMine")
+                    {
+                        Debug.Log("Select Gold Mine");
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_StartHarvest = true;
+                    }
+                    else
+                    {
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
+                        b_BuildTower = false;
+                    }
+                }
+
+                b_TargetChose = false;
+            }
+        }
     }
 
     public Vector3 rayHitTarget()
     {
         return v3_rayPointTarget;
+    }
+
+    void CheckIfUnitIsSelected()
+    {
+        if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+        {
+            b_StopRun = true;
+        }
     }
 }

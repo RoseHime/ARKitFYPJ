@@ -32,34 +32,20 @@ public class ChooseCommand : MonoBehaviour {
 
         if (go_CommandButton.GetComponentInChildren<Text>().text == "STOP")
         {
+            Debug.Log("OnCLick");
+            ti.b_Cancelled = true;
             go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
-        }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
-        {
-            go_BuildingPanel.SetActive(true);
-            go_CommandPanel.SetActive(false);
-        }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATE")
-        {
-            go_BarracksPanel.SetActive(true);
-            go_CommandPanel.SetActive(false);
-        }
-    }
-
-    public void OffClickCommand()
-    {
-        if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
-        {
+            Debug.Log("OnClickMOVE");
             ti.b_TargetChose = true;
-            go_CommandPanel.SetActive(false);
+            //go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
         {
             go_BuildingPanel.SetActive(true);
-            go_CommandPanel.SetActive(false);
+            //go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATE")
         {
@@ -67,6 +53,24 @@ public class ChooseCommand : MonoBehaviour {
             go_CommandPanel.SetActive(false);
         }
     }
+    //public void OffClickCommand()
+    //{
+    //    if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
+    //    {
+    //        ti.b_TargetChose = true;
+    //        go_CommandPanel.SetActive(false);
+    //    }
+    //    else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
+    //    {
+    //        go_BuildingPanel.SetActive(true);
+    //        go_CommandPanel.SetActive(false);
+    //    }
+    //    else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATE")
+    //    {
+    //        go_BarracksPanel.SetActive(true);
+    //        go_CommandPanel.SetActive(false);
+    //    }
+    //}
 
     private void Update()
     {

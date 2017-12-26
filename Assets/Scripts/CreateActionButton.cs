@@ -30,7 +30,7 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.tag == "PlayerUnit")
             {
-                PlayerUnitUpdate plrUnit = go_selectedUnit.GetComponent<PlayerUnitUpdate>();
+                PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
                 go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.i_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
             }
             else if (go_selectedUnit.tag == "SelectableBuilding")
@@ -56,7 +56,7 @@ public class CreateActionButton : MonoBehaviour
 
         if (go_selectedUnit.tag == "PlayerUnit")
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; ++i)
             {
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
                 goButton.name = "ActionButton";
@@ -109,5 +109,25 @@ public class CreateActionButton : MonoBehaviour
             goButton.GetComponentInChildren<Text>().text = "CREATE";
             tempPos = goButton.transform.localPosition;
         }
+        else if (go_selectedUnit.tag == "SelectableBuilding" && go_selectedUnit.name == "ResourceDepot")
+        {
+            GameObject goButton = (GameObject)Instantiate(go_actionButton);
+            goButton.name = "ActionButton";
+            goButton.transform.SetParent(go_actionPanel.transform, false);
+            goButton.transform.localScale = new Vector3(1, 1, 1);
+            goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+        
+                //goButton.transform.localPosition = Vector3.zero;
+                goButton.transform.localPosition = new Vector3(go_unitInfo.transform.localPosition.x + (go_unitInfo_Length / 2) + (go_actionButton_Length / 2), go_unitInfo.transform.localPosition.y - 30, 0);
+                goButton.GetComponentInChildren<Text>().text = "STOP";
+                tempPos = goButton.transform.localPosition;
+            
+        }
+
+    }
+
+    public void DestroyButton()
+    {
+       
     }
 }

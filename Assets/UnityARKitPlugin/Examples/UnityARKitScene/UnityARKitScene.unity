@@ -238,7 +238,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   b_TargetChose: 0
-  b_CheckFinger: 0
+  b_Cancelled: 0
   b_BuildTower: 0
 --- !u!1 &16
 GameObject:
@@ -364,9 +364,25 @@ Prefab:
     - target: {fileID: 54584327222324498, guid: ed9164be89bb71043b01241c3284f9be,
         type: 2}
       propertyPath: m_Constraints
-      value: 94
+      value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114735630649699186, guid: ed9164be89bb71043b01241c3284f9be,
+        type: 2}
+      propertyPath: i_HealthPoint
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735630649699186, guid: ed9164be89bb71043b01241c3284f9be,
+        type: 2}
+      propertyPath: f_speed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735630649699186, guid: ed9164be89bb71043b01241c3284f9be,
+        type: 2}
+      propertyPath: f_range
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114101978247582630, guid: ed9164be89bb71043b01241c3284f9be, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ed9164be89bb71043b01241c3284f9be, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &137677162 stripped
@@ -901,6 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i_health: 50
+  b_Selected: 0
   i_woodDistributed: 1
   f_cooldown: 1
 --- !u!136 &599291493
@@ -1718,6 +1735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i_health: 50
+  b_Selected: 0
   i_goldDistributed: 1
   f_cooldown: 1
 --- !u!1 &1121666029
@@ -2123,7 +2141,7 @@ GameObject:
   - component: {fileID: 1416709310}
   m_Layer: 8
   m_Name: PlayerUnit
-  m_TagString: PlayerUnit
+  m_TagString: PlayerList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2155,7 +2173,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4763681637928714, guid: 75228a32bbf5dd74e9f1a66984ac191b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.016
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 4763681637928714, guid: 75228a32bbf5dd74e9f1a66984ac191b, type: 2}
       propertyPath: m_LocalPosition.z
