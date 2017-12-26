@@ -122,4 +122,8 @@ public class PlayerUnitUpdate : MonoBehaviour
     {
         return defaultColour;
     }
+    public float GetSpeed()
+    {
+        return f_speed;
+    }
 }

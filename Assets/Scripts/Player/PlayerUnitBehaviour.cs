@@ -19,12 +19,15 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private GameObject go_GoldMine;
     private GameObject go_Depot;
 
+    private int i_resource;
     bool b_StartHarvest;
 
     // Use this for initialization
     void Start()
     {
+        i_resource = 0;
         T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
+        PUS = PlayerUnitState.PUS_GUARD;
     }
 
     // Update is called once per frame
@@ -75,7 +78,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
     }
 
-    void OnHarvestMode()
+    public void OnHarvestMode()
     {
         go_GoldMine = GameObject.FindGameObjectWithTag("Resources");
         go_Depot = GameObject.FindGameObjectWithTag("BuildingList");
@@ -91,7 +94,35 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         if (b_StartHarvest)
         {
+            if (!go_GoldMine.GetComponent<GoldMineBehaviour>().CollectGold())
+            {
+                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position, 
+                                                                    go_GoldMine.GetComponent<Transform>().position, 
+                                                                    gameObject.GetComponent<PlayerUnitUpdate>().GetSpeed() * Time.deltaTime);
+            }
+            else if (go_GoldMine.GetComponent<GoldMineBehaviour>().CollectGold())
+            {
+                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                                                                    go_Depot.GetComponent<Transform>().position,
+                                                                    gameObject.GetComponent<PlayerUnitUpdate>().GetSpeed() * Time.deltaTime);
+            }
+        }
+    }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == go_GoldMine)
+        {
+            if (i_resource != 1 && go_GoldMine.GetComponent<GoldMineBehaviour>().CollectGold())
+            {
+                i_resource += go_GoldMine.GetComponent<GoldMineBehaviour>().i_goldDistributed;
+            }
+
+        }
+        else if (collision.gameObject == go_Depot)
+        {
+            go_Depot.GetComponent<ResourceDepotBehaviour>().CollectGold(i_resource);
+            i_resource = 0;
         }
     }
 }

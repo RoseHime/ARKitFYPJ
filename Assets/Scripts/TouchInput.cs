@@ -127,12 +127,20 @@ public class TouchInput : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
         {
             v3_rayPointTarget = hit.point;
+            GameObject go_ObjectHit = hit.transform.gameObject;
             Debug.Log(hit.point);
             if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
             {
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_buildBuilding = b_BuildTower;
-                b_BuildTower = false;
+             if (go_ObjectHit.name == "GoldMine")
+                {
+                    go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().OnHarvestMode();
+                }
+                else
+                {
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_buildBuilding = b_BuildTower;
+                    b_BuildTower = false;
+                }
             }
             
             b_TargetChose = false;
