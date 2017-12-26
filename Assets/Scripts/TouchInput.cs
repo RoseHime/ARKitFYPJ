@@ -100,7 +100,7 @@ public class TouchInput : MonoBehaviour {
                     {
                         recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
                         recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
-                        Debug.Log(hit.point);
+                        //Debug.Log(hit.point);
                     }
                 }
                 else
@@ -137,7 +137,7 @@ public class TouchInput : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
         {
             v3_rayPointTarget = hit.point;
-            Debug.Log(hit.point);
+            //Debug.Log(hit.point);
             if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
             {
                 go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);

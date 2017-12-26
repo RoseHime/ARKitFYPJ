@@ -18,14 +18,14 @@ public class BuildingInfo : MonoBehaviour {
 
     public virtual string GetUnitsInfo()
     {
-        string unitInfo;
+        string unitInfo = "NAME:" + gameObject.name + "\n";
         if (towerBehaviour != null)
         {         
-            unitInfo = "HP:" + i_health + "\nDMG" + towerBehaviour.f_damage + "\nRANGE" + towerBehaviour.f_range + "\nSPD" + towerBehaviour.f_fireRate;         
+            unitInfo += "HP:" + i_health + "\nDMG" + towerBehaviour.f_damage + "\nRANGE" + towerBehaviour.f_range + "\nSPD" + towerBehaviour.f_fireRate;         
         }
         else
         {
-            unitInfo = "HP:" + i_health;
+            unitInfo += "HP:" + i_health;
         }
         return unitInfo;
     }

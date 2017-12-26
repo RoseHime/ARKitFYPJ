@@ -45,8 +45,8 @@ public class TreeBehaviour : BuildingInfo
 
     public override string GetUnitsInfo()
     {
-        string unitInfo;
-        unitInfo = "WOOD" + i_woodDistributed + "\nRATE:" + (1 / f_cooldown);
+        string unitInfo = "NAME:" + gameObject.name + "\n";
+        unitInfo += "WOOD" + i_woodDistributed + "\nRATE:" + (1 / f_cooldown);
         return unitInfo;
     }
 }
