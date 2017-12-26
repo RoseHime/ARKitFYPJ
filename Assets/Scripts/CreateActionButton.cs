@@ -54,7 +54,7 @@ public class CreateActionButton : MonoBehaviour
         go_unitInfo_Length = go_unitInfo.GetComponent<RectTransform>().rect.width;
         go_actionButton_Length = go_actionButton.GetComponent<RectTransform>().rect.width;
 
-        if (go_actionPanel.activeSelf == true && go_selectedUnit.tag == "PlayerUnit")
+        if (go_selectedUnit.tag == "PlayerUnit")
         {
             for (int i = 0; i < 6; i++)
             {
@@ -97,7 +97,7 @@ public class CreateActionButton : MonoBehaviour
                 }
             }
         }
-        else if (go_actionPanel.activeSelf == true && go_selectedUnit.tag == "SelectableBuilding" && go_selectedUnit.name == "Barracks")
+        else if (go_selectedUnit.tag == "SelectableBuilding" && go_selectedUnit.name == "Barracks")
         {
             GameObject goButton = (GameObject)Instantiate(go_actionButton);
             goButton.transform.SetParent(go_actionPanel.transform, false);

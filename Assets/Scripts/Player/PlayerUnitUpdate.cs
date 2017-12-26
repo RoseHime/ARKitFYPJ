@@ -27,14 +27,17 @@ public class PlayerUnitUpdate : MonoBehaviour
     public bool b_buildBuilding;
     public bool b_Moving;
 
+    private Material unitMaterial;
+
     void Start()
     {
         rb_Body = gameObject.GetComponent<Rigidbody>();
-        go_CommandMenu = GameObject.FindGameObjectWithTag("Command");
+        go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
         b_Selected = false;
         b_Moving = false;
         b_buildBuilding = false;
+        unitMaterial = GetComponent<Renderer>().material;
     }
 
     void OnTouchDown()
@@ -46,19 +49,21 @@ public class PlayerUnitUpdate : MonoBehaviour
 
     private void Update()
     {
+        if (b_Selected)
+        {
+            unitMaterial.color = selectedColour;
+        }           
+        else if (!b_Selected)
+        {
+            unitMaterial.color = defaultColour;
+        }
+
         CheckWhetherStillOnGround();
         if (Physics.Raycast(gameObject.GetComponent<Transform>().transform.position, Vector3.down, out rcHit))
         {
             rcHitPosition = rcHit.point;
             f_distanceY = gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y;
             offset_Y = new Vector3(0, f_distanceY, 0);
-        }
-
-        if (b_Selected)
-            gameObject.GetComponent<Renderer>().material.color = selectedColour;
-        else if (!b_Selected)
-        {
-            gameObject.GetComponent<Renderer>().material.color = defaultColour;
         }
 
         if (b_Moving)

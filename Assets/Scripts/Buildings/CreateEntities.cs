@@ -27,7 +27,8 @@ public class CreateEntities: MonoBehaviour {
         GameObject tempBuilding = Instantiate(go_TowerPrefab);
         tempBuilding.transform.position = position;
         tempBuilding.name = go_TowerPrefab.name;
-        tempBuilding.GetComponent<TowerBehaviour>().enemyList = enemyList;
+        if (tempBuilding.GetComponent<TowerBehaviour>() != null)
+            tempBuilding.GetComponent<TowerBehaviour>().enemyList = enemyList;
         tempBuilding.transform.parent = GameObject.FindGameObjectWithTag("BuildingList").transform;
         tempBuilding.transform.localScale = originalScale;
     }
