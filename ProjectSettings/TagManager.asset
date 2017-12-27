@@ -17,6 +17,10 @@ TagManager:
   - Command
   - Parent
   - PlayerList
+  - PlayerInfo
+  - Resources
+  - BulletPool
+  - Terrain
   layers:
   - Default
   - TransparentFX

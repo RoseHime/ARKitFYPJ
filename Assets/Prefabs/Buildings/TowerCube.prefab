@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2316b0d6eb262754ebd8887566d37cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  i_health: 50
 --- !u!114 &114841056135199918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,6 +210,7 @@ MonoBehaviour:
   f_speed: 10
   direction: {x: 0, y: 0, z: 0}
   f_lifetime: 5
+  target: 1
 --- !u!114 &114964524080263104
 MonoBehaviour:
   m_ObjectHideFlags: 1

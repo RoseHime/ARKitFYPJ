@@ -4,67 +4,63 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour {
 
-    enum EnemyUnitState {
-           EUS_GUARD,
-           EUS_ATTACK,
-           EUS_MOVE,
-           EUS_HARVEST,
-           EUS_MAX_STATES
+    public enum EnemyUnitState {
+        EUS_MOVE,
+        EUS_IDLE,
+        EUS_CHASE,
+        EUS_ATTACK
     };
 
     public float f_health = 50;
     public float f_range = 0.5f;
-    public float f_atkRange = 0.02f;
+    public float f_atkRange = 0.1f;
     public float f_speed = 0.01f;
+    public float f_bulletSpeed = 0.1f;
+    public float f_damage = 1;
+    public float f_fireRate = 1;
+    private float f_fireCooldown = 0;
+
+    private GameObject bullet_Prefab;
     private Transform T_playerList;
-    //private GameObject[] goList_playerList;
     private GameObject go_LockOnPlayerUnit;
-    EnemyUnitState EUS;
+    public EnemyUnitState EUS = EnemyUnitState.EUS_IDLE;
 
-    RaycastHit rcHit;
-    Vector3 rcHitPosition;
-    private float f_distanceY;
-    private Vector3 offset_Y;
-
-
+    public Vector3 destination;
 
     // Use this for initialization
-    void Start () {
-        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;
-        EUS = EnemyUnitState.EUS_GUARD;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start() {
+        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;        
+        bullet_Prefab = transform.GetChild(0).gameObject;
+    }
 
-        CheckWhetherStillOnGround();
-        if (Physics.Raycast(gameObject.GetComponent<Transform>().transform.position, Vector3.down, out rcHit))
-        {
-            rcHitPosition = rcHit.point;
-            f_distanceY = gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y;
-            offset_Y = new Vector3(0, f_distanceY, 0);
-        }
-
+    // Update is called once per frame
+    void Update() {
         switch (EUS)
         {
             case EnemyUnitState.EUS_MOVE:
+                {
+                    Move();
+                }
                 break;
-
+            case EnemyUnitState.EUS_IDLE:
+                {
+                    Idle();
+                }
+                break;
+            case EnemyUnitState.EUS_CHASE:
+                {
+                    Chase();
+                }
+                break;
             case EnemyUnitState.EUS_ATTACK:
                 {
-                    AttackPlayerUnit();
-                    break;
+                    Attack();
                 }
-
-            case EnemyUnitState.EUS_GUARD:
-                {
-                    DetectPlayerUnit();
-                    break;
-                }
+                break;
         }
-
+        SnapToGround();
         DeathCheck();
-	}
+    }
 
     void DeathCheck()
     {
@@ -74,40 +70,110 @@ public class EnemyBehaviour : MonoBehaviour {
         }
     }
 
-    void DetectPlayerUnit()
+    GameObject DetectPlayerUnit()
     {
+        float tempDist = float.MaxValue;
+
+        GameObject nearestUnit = null;
+
         foreach (Transform go_playerUnitChild in T_playerList)
         {
-            go_LockOnPlayerUnit = go_playerUnitChild.gameObject;
-            float f_distanceCheck = (go_playerUnitChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude;
-            if (f_distanceCheck < f_range*f_range)
+            if ((go_playerUnitChild.position - transform.position).sqrMagnitude < tempDist)
             {
-                EUS = EnemyUnitState.EUS_ATTACK;
-                Debug.Log("Enemy Saw U");
+                tempDist = (go_playerUnitChild.position - transform.position).sqrMagnitude;
+                nearestUnit = go_playerUnitChild.gameObject;
             }
         }
+
+        return nearestUnit;
     }
 
-    void AttackPlayerUnit()
+
+    void Idle()
     {
-        gameObject.GetComponent<Transform>().LookAt(go_LockOnPlayerUnit.GetComponent<Transform>().position);
-        float f_distanceCheck = (go_LockOnPlayerUnit.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position).sqrMagnitude;
-        if (f_distanceCheck >= f_atkRange && f_distanceCheck <= f_range*f_range)
-            gameObject.GetComponent<Transform>().position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position, go_LockOnPlayerUnit.GetComponent<Transform>().position, f_speed * Time.deltaTime);
-        else if (f_distanceCheck > f_range*f_range)
+        GameObject tempPlayer = DetectPlayerUnit();
+        if ((tempPlayer.transform.position - transform.position).sqrMagnitude <= f_range * f_range)
         {
-            Debug.Log("ENemy lost sight of u");
-            EUS = EnemyUnitState.EUS_GUARD;
+            go_LockOnPlayerUnit = tempPlayer;
+            EUS = EnemyUnitState.EUS_CHASE;
         }
     }
 
-    void CheckWhetherStillOnGround()
+
+    void Chase()
     {
-        if ((gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y) != f_distanceY)
+        Vector3 difference = go_LockOnPlayerUnit.transform.position - transform.position;
+
+        if (difference.sqrMagnitude < f_atkRange * f_atkRange)
         {
-            gameObject.GetComponent<Transform>().transform.position.Set(gameObject.GetComponent<Transform>().transform.position.x,
-                                                                        rcHitPosition.y + f_distanceY,
-                                                                        gameObject.GetComponent<Transform>().transform.position.z);
+            EUS = EnemyUnitState.EUS_ATTACK;
+        }
+        else if (difference.sqrMagnitude > f_range)
+        {
+            EUS = EnemyUnitState.EUS_IDLE;
+        }
+        else
+        {
+            difference.y = 0;
+            transform.position += difference.normalized * Time.deltaTime * f_speed;
+        }
+    }
+
+    void Attack()
+    {
+        Vector3 difference = go_LockOnPlayerUnit.transform.position - transform.position;
+
+        if (difference.sqrMagnitude < f_atkRange * f_atkRange)
+        {
+            if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+            {
+                f_fireCooldown = 0;
+                FireBullet(difference.normalized);
+            }
+        }
+        else
+        {
+            EUS = EnemyUnitState.EUS_CHASE;
+        }
+    }
+
+    void Move()
+    {
+        Vector3 offset = destination - transform.position;
+        offset.y = 0;
+        if (offset.sqrMagnitude < 0.01 * 0.01)
+        {
+            EUS = EnemyUnitState.EUS_IDLE;
+        }
+        else
+        {
+            transform.position += offset.normalized * Time.deltaTime * f_speed;
+        }
+    }
+
+    void FireBullet(Vector3 direction)
+    {
+        GameObject tempBullet = Instantiate(bullet_Prefab);
+        tempBullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletPool").transform);
+        tempBullet.transform.position = gameObject.transform.position;
+        tempBullet.transform.localScale = bullet_Prefab.transform.lossyScale;
+        tempBullet.name = "TempBullet";
+
+        BulletBehaviour bullet_behaviour = tempBullet.GetComponent<BulletBehaviour>();
+        bullet_behaviour.f_speed = f_bulletSpeed;
+        bullet_behaviour.f_damage = f_damage;
+        bullet_behaviour.direction = direction;
+
+        tempBullet.SetActive(true);
+    }
+
+    void SnapToGround()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position + new Vector3(0,1,0), -Vector3.up);
+        if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray,out hit,float.MaxValue))
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z);
         }
     }
 }

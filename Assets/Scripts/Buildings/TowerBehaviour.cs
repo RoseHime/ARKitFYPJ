@@ -50,9 +50,9 @@ public class TowerBehaviour : MonoBehaviour {
     void FireBullet(Vector3 direction)
     {
         GameObject tempBullet = Instantiate(bullet_Prefab);
-        tempBullet.transform.SetParent(gameObject.transform);
+        tempBullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletPool").transform);
         tempBullet.transform.position = gameObject.transform.position;
-        tempBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        tempBullet.transform.localScale = tempBullet.transform.lossyScale;
         tempBullet.name = "TempBullet";
 
         BulletBehaviour bullet_behaviour = tempBullet.GetComponent<BulletBehaviour>();

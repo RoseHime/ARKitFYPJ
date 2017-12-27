@@ -31,7 +31,7 @@ public class CreateActionButton : MonoBehaviour
             if (go_selectedUnit.tag == "PlayerUnit")
             {
                 PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
-                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.i_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
             }
             else if (go_selectedUnit.tag == "SelectableBuilding")
             {
