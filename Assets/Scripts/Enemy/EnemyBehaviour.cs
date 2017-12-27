@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour {
 
-    enum EnemyUnitState {
+    public enum EnemyUnitState {
+        EUS_MOVE,
         EUS_IDLE,
         EUS_CHASE,
         EUS_ATTACK
@@ -22,12 +23,13 @@ public class EnemyBehaviour : MonoBehaviour {
     private GameObject bullet_Prefab;
     private Transform T_playerList;
     private GameObject go_LockOnPlayerUnit;
-    EnemyUnitState EUS;
+    public EnemyUnitState EUS = EnemyUnitState.EUS_IDLE;
+
+    public Vector3 destination;
 
     // Use this for initialization
     void Start() {
-        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;
-        EUS = EnemyUnitState.EUS_IDLE;
+        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;        
         bullet_Prefab = transform.GetChild(0).gameObject;
     }
 
@@ -35,6 +37,11 @@ public class EnemyBehaviour : MonoBehaviour {
     void Update() {
         switch (EUS)
         {
+            case EnemyUnitState.EUS_MOVE:
+                {
+                    Move();
+                }
+                break;
             case EnemyUnitState.EUS_IDLE:
                 {
                     Idle();
@@ -129,6 +136,21 @@ public class EnemyBehaviour : MonoBehaviour {
             EUS = EnemyUnitState.EUS_CHASE;
         }
     }
+
+    void Move()
+    {
+        Vector3 offset = destination - transform.position;
+        offset.y = 0;
+        if (offset.sqrMagnitude < 0.01 * 0.01)
+        {
+            EUS = EnemyUnitState.EUS_IDLE;
+        }
+        else
+        {
+            transform.position += offset.normalized * Time.deltaTime * f_speed;
+        }
+    }
+
     void FireBullet(Vector3 direction)
     {
         GameObject tempBullet = Instantiate(bullet_Prefab);

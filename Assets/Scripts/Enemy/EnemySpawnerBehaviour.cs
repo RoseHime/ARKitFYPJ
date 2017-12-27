@@ -41,5 +41,8 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
         tempEnemy.transform.position = gameObject.transform.position;
         tempEnemy.transform.localScale = go_enemyPrefab.transform.localScale;
         tempEnemy.name = go_enemyPrefab.name;
+
+        tempEnemy.GetComponent<EnemyBehaviour>().destination = transform.GetChild(0).position;
+        tempEnemy.GetComponent<EnemyBehaviour>().EUS = EnemyBehaviour.EnemyUnitState.EUS_MOVE;
     }
 }
