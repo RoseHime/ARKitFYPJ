@@ -15,8 +15,12 @@ TagManager:
   - Canvas
   - EnemyList
   - Command
+  - Parent
+  - PlayerList
   - PlayerInfo
   - Resources
+  - BulletPool
+  - Terrain
   layers:
   - Default
   - TransparentFX

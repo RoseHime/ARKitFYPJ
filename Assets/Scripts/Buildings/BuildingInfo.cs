@@ -8,9 +8,9 @@ public class BuildingInfo : MonoBehaviour {
 
     private TowerBehaviour towerBehaviour;
 
-	// Use this for initialization
-	void Start () {
-		if (transform.GetComponent<TowerBehaviour>() != null)
+    // Use this for initialization
+    void Start () {
+        if (transform.GetComponent<TowerBehaviour>() != null)
         {
             towerBehaviour = transform.GetComponent<TowerBehaviour>();
         }
@@ -30,7 +30,7 @@ public class BuildingInfo : MonoBehaviour {
         return unitInfo;
     }
 
-    void OnTouchDown()
+    void OnClick()
     {
         Transform go_commandPanel = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0);
         go_commandPanel.GetComponent<CreateActionButton>().go_selectedUnit = gameObject;

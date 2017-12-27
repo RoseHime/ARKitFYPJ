@@ -12,6 +12,14 @@ public class BulletBehaviour : MonoBehaviour {
 
     float f_lifetimeCounter = 0;
 
+    public enum BULLETTARGET
+    {
+        PLAYER,
+        ENEMY,
+    }
+
+    public BULLETTARGET target;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -25,11 +33,26 @@ public class BulletBehaviour : MonoBehaviour {
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        if (collisionInfo.gameObject.tag == "Enemy")
+        //Debug.Log("Detected Collision");
+        switch (target)
         {
-            collisionInfo.transform.GetComponent<EnemyBehaviour>().f_health -= f_damage;
-            Destroy(gameObject);
+            case BULLETTARGET.ENEMY:
+                if (collisionInfo.gameObject.tag == "Enemy")
+                {
+                    collisionInfo.transform.GetComponent<EnemyBehaviour>().f_health -= f_damage;
+                    Destroy(gameObject);
+                }
+                break;
+            case BULLETTARGET.PLAYER:         
+                if (collisionInfo.gameObject.tag == "PlayerUnit")
+                {
+                    //Debug.Log("It went in");
+                    collisionInfo.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
+                    Destroy(gameObject);
+                }
+                break;
         }
+
     }
 
     void MoveBullet()
