@@ -118,7 +118,6 @@ public class TouchInput : MonoBehaviour {
         {
             if (b_CheckFinger)
             {
-                //Debug.Log("dOES IT GO TRYU");
                 b_CheckFinger = false;
                 if (b_TempChoose)
                 {
@@ -140,9 +139,18 @@ public class TouchInput : MonoBehaviour {
             //Debug.Log(hit.point);
             if (go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_Selected)
             {
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
-                go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_buildBuilding = b_BuildTower;
-                b_BuildTower = false;
+                GameObject recipient = hit.transform.gameObject;
+                if (recipient.tag == "SelectableBuilding")
+                {
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().go_targetedBuilding = recipient;
+                }
+                else
+                {
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().SetTargetPos(v3_rayPointTarget);
+                    go_PlayerUnit.GetComponent<PlayerUnitUpdate>().b_buildBuilding = b_BuildTower;
+                    b_BuildTower = false;
+                }
+
             }
             
             b_TargetChose = false;

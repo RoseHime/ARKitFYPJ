@@ -29,6 +29,8 @@ public class PlayerUnitUpdate : MonoBehaviour
 
     private Material unitMaterial;
 
+    public GameObject go_targetedBuilding;
+
     void Start()
     {
         rb_Body = gameObject.GetComponent<Rigidbody>();
