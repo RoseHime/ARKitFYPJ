@@ -27,7 +27,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private int i_resource;
     public bool b_StartHarvest;
-    bool b_HoldingResource;
+    public bool b_HoldingResource;
 
     public bool b_Selected;
     private GameObject go_CommandMenu;
@@ -43,6 +43,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public bool b_buildBuilding;
     public bool b_Moving;
 
+    NavMeshAgent navmesh_PlayerUnit;
+
     // Use this for initialization
     void Start()
     {
@@ -57,6 +59,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
         b_Selected = false;
         b_Moving = false;
         b_buildBuilding = false;
+
+        navmesh_PlayerUnit = GetComponent<NavMeshAgent>();
     }
 
       
@@ -71,7 +75,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         if (b_Moving)
             PUS = PlayerUnitState.PUS_MOVE;
-        else
+        else if (!b_Moving && !b_StartHarvest)
             PUS = PlayerUnitState.PUS_GUARD;
 
         CheckWhetherStillOnGround();
@@ -86,6 +90,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             case PlayerUnitState.PUS_MOVE:
                 {
+                    b_StartHarvest = false;
                     rb_Body.isKinematic = false;
                     MoveToTargetPos();
                     break;
@@ -146,19 +151,22 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         if (b_StartHarvest)
         {
-            GetComponent<Rigidbody>().useGravity = true;
+            //GetComponent<Rigidbody>().useGravity = true;
             if (!b_HoldingResource)
             {
                 gameObject.transform.LookAt(go_GoldMine.GetComponent<Transform>().position);
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                                                                                                go_GoldMine.GetComponent<Transform>().position,
-                                                                                                GetSpeed() * Time.deltaTime);
+                // gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                //                                                                                 go_GoldMine.GetComponent<Transform>().position,
+                //                                                                                 GetSpeed() * Time.deltaTime);
+                navmesh_PlayerUnit.destination = go_GoldMine.GetComponent<Transform>().position;
             }
             else if (b_HoldingResource)
             {
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                                                                                                go_Depot.GetComponent<Transform>().position,
-                                                                                                GetSpeed() * Time.deltaTime);
+                gameObject.transform.LookAt(go_Depot.GetComponent<Transform>().position);
+                //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                //                                                                                go_Depot.GetComponent<Transform>().position,
+                //                                                                                GetSpeed() * Time.deltaTime);
+                navmesh_PlayerUnit.destination = go_Depot.GetComponent<Transform>().position;
             }
         }
     }
@@ -188,6 +196,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
         v3_targetPos = v3_targetpos;
        // b_Selected = false;
         b_Moving = true;
+    }
+
+    public void SetBuildingTargetPos(Vector3 v3_bTargetPos)
+    {
+        v3_targetPos = v3_bTargetPos;
+        b_StartHarvest = true;
     }
 
     private void MoveToTargetPos()
