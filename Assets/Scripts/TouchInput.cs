@@ -11,7 +11,7 @@ public class TouchInput : MonoBehaviour {
     Vector3 v3_rayPointTarget;
 
     public bool b_TargetChose;
-    private bool b_SomethingIsSelected;
+    public bool b_SomethingIsSelected;
     public bool b_Cancelled;
     public bool b_StopRun;
 
@@ -62,6 +62,7 @@ public class TouchInput : MonoBehaviour {
                     {
                         go_PlayerUnit = recipient;
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        b_SomethingIsSelected = true;
                     }
                     else if (recipient.tag == "SelectableBuilding")
                     {
@@ -73,7 +74,6 @@ public class TouchInput : MonoBehaviour {
                     {
 
                     }
-                    b_SomethingIsSelected = true;
 
                     if (Input.GetTouch(0).phase == TouchPhase.Began)
                     {
@@ -104,6 +104,7 @@ public class TouchInput : MonoBehaviour {
                         go_PlayerUnit = recipient;
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
                         go_PlayerUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                        b_SomethingIsSelected = true;
                     }
                     else if (recipient.tag == "SelectableBuilding")
                     {
@@ -115,7 +116,6 @@ public class TouchInput : MonoBehaviour {
                     {
 
                     }
-                    b_SomethingIsSelected = true;
 
                    //if (Input.GetMouseButtonDown(0))
                    //{
