@@ -42,8 +42,8 @@ public class GoldMineBehaviour : BuildingInfo {
 
     public override string GetUnitsInfo()
     {
-        string unitInfo;
-        unitInfo = "GOLD" + i_goldDistributed + "\nRATE:" + (1 / f_cooldown);
+        string unitInfo = "NAME:" + gameObject.name + "\n";
+        unitInfo += "GOLD" + i_goldDistributed + "\nRATE:" + (1 / f_cooldown);
         return unitInfo;
     }
 }
