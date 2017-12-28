@@ -103,10 +103,17 @@ public class EnemyBehaviour : MonoBehaviour {
     void Idle()
     {
         GameObject tempPlayer = DetectPlayerUnit();
-        if ((tempPlayer.transform.position - transform.position).sqrMagnitude <= f_range * f_range)
+        if (tempPlayer != null)
         {
-            go_LockOnUnit = tempPlayer;
-            EUS = EnemyUnitState.EUS_CHASE;
+            if ((tempPlayer.transform.position - transform.position).sqrMagnitude <= f_range * f_range)
+            {
+                go_LockOnUnit = tempPlayer;
+                EUS = EnemyUnitState.EUS_CHASE;
+            }
+            else if (isMoving)
+            {
+                EUS = EnemyUnitState.EUS_MOVE;
+            }
         }
         else if (isMoving)
         {

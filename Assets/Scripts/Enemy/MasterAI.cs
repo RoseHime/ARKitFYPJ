@@ -16,10 +16,13 @@ public class MasterAI : MonoBehaviour {
 
     bool startStrategy = false;
 
+    private int i_WaypointCount;
+    private int i_CurrentWaypoint = 0;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+        i_WaypointCount = transform.GetChild(0).childCount;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -45,7 +48,6 @@ public class MasterAI : MonoBehaviour {
                     checkIfAllSpawned = false;
                 }
             }
-
             if (checkIfAllSpawned)
             {
                 startStrategy = true;
@@ -53,8 +55,26 @@ public class MasterAI : MonoBehaviour {
         }
         else
         {
-
+            if (!CheckIfUnitsMoving() && i_CurrentWaypoint < i_WaypointCount)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    spawnerList[i].MoveUnits(transform.GetChild(i).GetChild(i_CurrentWaypoint).position);
+                }
+                i_CurrentWaypoint++;
+            }
         }
+    }
 
+    bool CheckIfUnitsMoving()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (spawnerList[i].isMoving)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
