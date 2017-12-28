@@ -130,6 +130,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             case PlayerUnitState.PUS_MOVE:
                 {
+                    b_StartHarvest = false;
                     rb_Body.isKinematic = false;
                     MoveToTargetPos();
                     break;
@@ -250,6 +251,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         s_name = name;
         v3_targetPos = v3_bTargetPos;
         // b_Selected = false;
+        b_Moving = false;
         b_StartHarvest = true;
     }
 
