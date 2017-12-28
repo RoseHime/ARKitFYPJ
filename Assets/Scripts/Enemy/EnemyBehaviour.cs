@@ -22,10 +22,12 @@ public class EnemyBehaviour : MonoBehaviour {
 
     private GameObject bullet_Prefab;
     private Transform T_playerList;
-    private GameObject go_LockOnPlayerUnit;
+    private GameObject go_LockOnUnit;
     public EnemyUnitState EUS = EnemyUnitState.EUS_IDLE;
 
     public Vector3 destination;
+
+    bool isMoving = false;
 
     // Use this for initialization
     void Start() {
@@ -85,6 +87,15 @@ public class EnemyBehaviour : MonoBehaviour {
             }
         }
 
+        foreach (Transform building in GameObject.FindGameObjectWithTag("BuildingList").transform)
+        {
+            if ((building.position - transform.position).sqrMagnitude < tempDist)
+            {
+                tempDist = (building.position - transform.position).sqrMagnitude;
+                nearestUnit = building.gameObject;
+            }
+        }
+
         return nearestUnit;
     }
 
@@ -94,60 +105,88 @@ public class EnemyBehaviour : MonoBehaviour {
         GameObject tempPlayer = DetectPlayerUnit();
         if ((tempPlayer.transform.position - transform.position).sqrMagnitude <= f_range * f_range)
         {
-            go_LockOnPlayerUnit = tempPlayer;
+            go_LockOnUnit = tempPlayer;
             EUS = EnemyUnitState.EUS_CHASE;
+        }
+        else if (isMoving)
+        {
+            EUS = EnemyUnitState.EUS_MOVE;
         }
     }
 
 
     void Chase()
     {
-        Vector3 difference = go_LockOnPlayerUnit.transform.position - transform.position;
+        if (go_LockOnUnit != null)
+        {
+            Vector3 difference = go_LockOnUnit.transform.position - transform.position;
 
-        if (difference.sqrMagnitude < f_atkRange * f_atkRange)
-        {
-            EUS = EnemyUnitState.EUS_ATTACK;
-        }
-        else if (difference.sqrMagnitude > f_range)
-        {
-            EUS = EnemyUnitState.EUS_IDLE;
-        }
-        else
-        {
-            difference.y = 0;
-            transform.position += difference.normalized * Time.deltaTime * f_speed;
-        }
-    }
-
-    void Attack()
-    {
-        Vector3 difference = go_LockOnPlayerUnit.transform.position - transform.position;
-
-        if (difference.sqrMagnitude < f_atkRange * f_atkRange)
-        {
-            if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+            if (difference.sqrMagnitude < f_atkRange * f_atkRange)
             {
-                f_fireCooldown = 0;
-                FireBullet(difference.normalized);
+                EUS = EnemyUnitState.EUS_ATTACK;
+            }
+            else if (difference.sqrMagnitude > f_range)
+            {
+                EUS = EnemyUnitState.EUS_IDLE;
+            }
+            else
+            {
+                difference.y = 0;
+                transform.position += difference.normalized * Time.deltaTime * f_speed;
             }
         }
         else
         {
-            EUS = EnemyUnitState.EUS_CHASE;
+            EUS = EnemyUnitState.EUS_IDLE;
+        }
+
+    }
+
+    void Attack()
+    {
+        if (go_LockOnUnit != null)
+        {
+            Vector3 difference = go_LockOnUnit.transform.position - transform.position;
+
+            if (difference.sqrMagnitude < f_atkRange * f_atkRange)
+            {
+                if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                {
+                    f_fireCooldown = 0;
+                    FireBullet(difference.normalized);
+                }
+            }
+            else
+            {
+                EUS = EnemyUnitState.EUS_CHASE;
+            }
+        }
+        else
+        {
+            EUS = EnemyUnitState.EUS_IDLE;
         }
     }
 
     void Move()
     {
+        isMoving = true;
         Vector3 offset = destination - transform.position;
         offset.y = 0;
         if (offset.sqrMagnitude < 0.01 * 0.01)
         {
             EUS = EnemyUnitState.EUS_IDLE;
+            isMoving = false;
         }
         else
         {
             transform.position += offset.normalized * Time.deltaTime * f_speed;
+        }
+
+        GameObject tempPlayer = DetectPlayerUnit();
+        if ((tempPlayer.transform.position - transform.position).sqrMagnitude <= f_range * f_range)
+        {
+            go_LockOnUnit = tempPlayer;
+            EUS = EnemyUnitState.EUS_CHASE;
         }
     }
 

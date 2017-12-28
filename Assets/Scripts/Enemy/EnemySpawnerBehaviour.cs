@@ -11,7 +11,9 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 
     public int i_maxUnits = 1;
 
+    public List<GameObject> localEnemyList;
 
+    public bool isMoving = false;
     
 	// Use this for initialization
 	void Start () {
@@ -26,10 +28,18 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
         }
         else
         {
-            if (GameObject.FindGameObjectWithTag("EnemyList").transform.childCount < i_maxUnits)
+            if (localEnemyList.Count < i_maxUnits)
             {
                 SpawnUnit();
                 f_cooldown = 0;
+            }
+        }
+
+        foreach(GameObject thing in localEnemyList)
+        {
+            if (thing == null)
+            {
+                localEnemyList.Remove(thing);
             }
         }
 	}
@@ -44,5 +54,12 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 
         tempEnemy.GetComponent<EnemyBehaviour>().destination = transform.GetChild(0).position;
         tempEnemy.GetComponent<EnemyBehaviour>().EUS = EnemyBehaviour.EnemyUnitState.EUS_MOVE;
+
+        localEnemyList.Add(tempEnemy);
+    }
+
+    void MoveUnits(Vector3 position)
+    {
+
     }
 }
