@@ -42,6 +42,8 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
                 localEnemyList.Remove(thing);
             }
         }
+
+        isMoving = CheckIfMoving();
 	}
 
     void SpawnUnit()
@@ -58,8 +60,28 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
         localEnemyList.Add(tempEnemy);
     }
 
-    void MoveUnits(Vector3 position)
+    public void MoveUnits(Vector3 position)
     {
+        isMoving = true;
+        foreach (GameObject unit in localEnemyList)
+        {
+            unit.GetComponent<EnemyBehaviour>().EUS = EnemyBehaviour.EnemyUnitState.EUS_MOVE;
+            unit.GetComponent<EnemyBehaviour>().destination = position;
+        }
+    }
 
+    bool CheckIfMoving()
+    {
+        bool check = false;
+        foreach (GameObject unit in localEnemyList)
+        {
+            if (unit.GetComponent<EnemyBehaviour>().EUS != EnemyBehaviour.EnemyUnitState.EUS_IDLE)
+            {
+                check = true;
+                break;
+            }
+        }
+
+        return check;
     }
 }
