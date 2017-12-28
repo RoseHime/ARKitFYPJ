@@ -30,7 +30,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private int i_resourceWOOD;
     private int i_resourceGOLD;
     public bool b_StartHarvest;
-    bool b_HoldingResource;
+    public bool b_HoldingResource;
+    private bool b_isHarvesting;
+    private float f_HarvestingTime;
+    private bool b_isWoodHarvested;
+    private bool b_isGoldHarvested;
 
     public bool b_Selected;
     private GameObject go_CommandMenu;
@@ -63,6 +67,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
         b_Selected = false;
         b_Moving = false;
         b_buildBuilding = false;
+
+        b_isHarvesting = false;
+        f_HarvestingTime = 0;
+        b_isGoldHarvested = false;
+        b_isWoodHarvested = false;
+
         RaycastHit hit;
         Ray ray = new Ray(transform.position + new Vector3(0, 10, 0), -Vector3.up);
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray, out hit, float.MaxValue))
@@ -72,8 +82,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             offset_Y = new Vector3(0, f_distanceY, 0);
         }
-
-
     }
 
 
@@ -92,12 +100,24 @@ public class PlayerUnitBehaviour : MonoBehaviour
             PUS = PlayerUnitState.PUS_GUARD;
 
         CheckWhetherStillOnGround();
-        //if (Physics.Raycast(gameObject.GetComponent<Transform>().transform.position, Vector3.down, out rcHit))
-        //{
-        //    rcHitPosition = rcHit.point;
-        //    f_distanceY = gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y;
-        //    offset_Y = new Vector3(0, f_distanceY, 0);
-        //}
+     
+        if (b_isHarvesting)
+        {
+            f_HarvestingTime += Time.deltaTime;
+            if (f_HarvestingTime >= 2)
+            {
+                f_speed = 0.05f;
+                b_HoldingResource = true;
+
+                if (b_isGoldHarvested)
+                    i_resourceGOLD += go_Resource.GetComponent<GoldMineBehaviour>().CollectGold();
+                else if (b_isWoodHarvested)
+                    i_resourceWOOD += go_Resource.GetComponent<TreeBehaviour>().CollectWood();
+
+                f_HarvestingTime = 0;
+                b_isHarvesting = false;
+            }
+        }
 
         RaycastHit hit;
         Ray ray = new Ray(transform.position + new Vector3(0, 10, 0), -Vector3.up);
@@ -129,6 +149,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 }
             case PlayerUnitState.PUS_HARVEST:
                 {
+                    IgnoreCollision();
                     rb_Body.isKinematic = false;
                     OnHarvestMode();
                     break;
@@ -198,32 +219,29 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         if (collision.gameObject == go_Resource)
         {
-            Debug.Log("Touch GoldMine");
-            if (s_name == "GoldMine")
-            {
-                if (i_resourceGOLD != 1 && go_Resource.GetComponent<GoldMineBehaviour>().CollectGold())
-                {
-                    b_HoldingResource = true;
-                    i_resourceGOLD += go_Resource.GetComponent<GoldMineBehaviour>().i_goldDistributed;
-                }
-            }
-            else if (s_name == "Tree")
-            {
-                if (i_resourceWOOD != 1 && go_Resource.GetComponent<TreeBehaviour>().CollectWood())
-                {
-                    b_HoldingResource = true;
-                    i_resourceWOOD += go_Resource.GetComponent<TreeBehaviour>().i_woodDistributed;
-                }
-            }
+            if (collision.gameObject.name == "GoldMine")
+                b_isGoldHarvested = true;
+            else if (collision.gameObject.name == "Tree")
+                b_isWoodHarvested = true;
 
+            f_speed = 0;
+            b_isHarvesting = true;
         }
         else if (collision.gameObject == go_Depot)
         {
-            go_Depot.GetComponent<ResourceDepotBehaviour>().StoreGold(i_resourceGOLD);
-            go_Depot.GetComponent<ResourceDepotBehaviour>().StoreWood(i_resourceWOOD);
+            if (b_isGoldHarvested)
+            {
+                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreGold(i_resourceGOLD);
+                i_resourceGOLD = 0;
+                b_isGoldHarvested = false;
+            }
+            else if (b_isWoodHarvested)
+            {
+                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreWood(i_resourceWOOD);
+                i_resourceWOOD = 0;
+                b_isWoodHarvested = false;
+            }
             b_HoldingResource = false;
-            i_resourceGOLD = 0;
-            i_resourceWOOD = 0;
         }
     }
 
@@ -245,6 +263,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private void MoveToTargetPos()
     {
+        f_speed = 0.05f;
         v3_currentPos = gameObject.transform.position;
         if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
         {
@@ -262,6 +281,15 @@ public class PlayerUnitBehaviour : MonoBehaviour
             }
             b_Moving = false;
             //GetComponent<Rigidbody>().useGravity = false;
+        }
+    }
+
+    void IgnoreCollision()
+    {
+        GameObject go_PlayerUnitList = GameObject.FindGameObjectWithTag("PlayerList");
+        foreach (Transform go_PULChild in go_PlayerUnitList.transform)
+        {
+            Physics.IgnoreCollision(go_PULChild.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
         }
     }
 

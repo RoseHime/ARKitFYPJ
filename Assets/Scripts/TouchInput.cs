@@ -154,6 +154,11 @@ public class TouchInput : MonoBehaviour {
                         Debug.Log("Select Gold Mine");
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
                     }
+                    else if (go_ObjectHit.name == "Tree")
+                    {
+                        Debug.Log("Select Tree");
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                    }
                     else
                     {
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
@@ -180,6 +185,11 @@ public class TouchInput : MonoBehaviour {
                     {
                         Debug.Log("Select Gold Mine");
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
+                    }
+                    else if (go_ObjectHit.name == "Tree")
+                    {
+                        Debug.Log("Select Tree");
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
                     }
                     else
                     {
