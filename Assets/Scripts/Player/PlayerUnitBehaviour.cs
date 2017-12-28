@@ -257,7 +257,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         v3_targetPos = v3_targetpos;
         // b_Selected = false;
-        b_StartHarvest = false;
         b_Moving = true;
     }
 
