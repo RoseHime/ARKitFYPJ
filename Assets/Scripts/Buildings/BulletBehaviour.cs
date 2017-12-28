@@ -42,12 +42,22 @@ public class BulletBehaviour : MonoBehaviour {
                     collisionInfo.transform.GetComponent<EnemyBehaviour>().f_health -= f_damage;
                     Destroy(gameObject);
                 }
+                else if(collisionInfo.gameObject.transform.parent == GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
+                {
+                    collisionInfo.transform.GetComponent<BuildingInfo>().f_health -= f_damage;
+                    Destroy(gameObject);
+                }
                 break;
             case BULLETTARGET.PLAYER:         
                 if (collisionInfo.gameObject.tag == "PlayerUnit")
                 {
                     //Debug.Log("It went in");
                     collisionInfo.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
+                    Destroy(gameObject);
+                }
+                else if (collisionInfo.gameObject.transform.parent == GameObject.FindGameObjectWithTag("BuildingList").transform)
+                {
+                    collisionInfo.transform.GetComponent<BuildingInfo>().f_health -= f_damage;
                     Destroy(gameObject);
                 }
                 break;

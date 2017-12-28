@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildingInfo : MonoBehaviour {
 
-    public int i_health = 50;
+    public float f_health = 50;
 
     private TowerBehaviour towerBehaviour;
 
@@ -16,16 +16,24 @@ public class BuildingInfo : MonoBehaviour {
         }
 	}
 
+    void Update ()
+    {
+        if (f_health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public virtual string GetUnitsInfo()
     {
         string unitInfo = "NAME:" + gameObject.name + "\n";
         if (towerBehaviour != null)
         {         
-            unitInfo += "HP:" + i_health + "\nDMG" + towerBehaviour.f_damage + "\nRANGE" + towerBehaviour.f_range + "\nSPD" + towerBehaviour.f_fireRate;         
+            unitInfo += "HP:" + f_health + "\nDMG" + towerBehaviour.f_damage + "\nRANGE" + towerBehaviour.f_range + "\nSPD" + towerBehaviour.f_fireRate;         
         }
         else
         {
-            unitInfo += "HP:" + i_health;
+            unitInfo += "HP:" + f_health;
         }
         return unitInfo;
     }
