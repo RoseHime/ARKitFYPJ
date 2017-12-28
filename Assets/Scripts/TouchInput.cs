@@ -152,7 +152,7 @@ public class TouchInput : MonoBehaviour {
                     if (go_ObjectHit.name == "GoldMine")
                     {
                         Debug.Log("Select Gold Mine");
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_StartHarvest = true;
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
                     }
                     else
                     {
@@ -179,7 +179,7 @@ public class TouchInput : MonoBehaviour {
                     if (go_ObjectHit.name == "GoldMine")
                     {
                         Debug.Log("Select Gold Mine");
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position);
+                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
                     }
                     else
                     {

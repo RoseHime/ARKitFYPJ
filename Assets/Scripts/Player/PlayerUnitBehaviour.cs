@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class PlayerUnitBehaviour : MonoBehaviour
 {
+
     enum PlayerUnitState
     {
         PUS_GUARD,
@@ -17,15 +18,17 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private Transform T_Enemy;
     public Color detectedColor;
-    private GameObject go_GoldMine;
+    private GameObject go_Resource;
     private GameObject go_Depot;
+    string s_name;
 
     //Unit Individual Info
     public float f_HealthPoint;
     public float f_speed;
     public float f_range;
 
-    private int i_resource;
+    private int i_resourceWOOD;
+    private int i_resourceGOLD;
     public bool b_StartHarvest;
     bool b_HoldingResource;
 
@@ -48,12 +51,15 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
-        i_resource = 0;
+
+        i_resourceWOOD = 0;
+        i_resourceGOLD = 0;
         T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
         PUS = PlayerUnitState.PUS_GUARD;
+        rb_Body = gameObject.GetComponent<Rigidbody>();
+
         b_StartHarvest = false;
         b_HoldingResource = false;
-        rb_Body = gameObject.GetComponent<Rigidbody>();
         b_Selected = false;
         b_Moving = false;
         b_buildBuilding = false;
@@ -82,7 +88,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         if (b_Moving)
             PUS = PlayerUnitState.PUS_MOVE;
-        else
+        else if (!b_Moving && !b_StartHarvest)
             PUS = PlayerUnitState.PUS_GUARD;
 
         CheckWhetherStillOnGround();
@@ -151,7 +157,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public void OnHarvestMode()
     {
-        go_GoldMine = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(0).gameObject;
+        if (s_name == "GoldMine")
+            go_Resource = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(0).gameObject;
+        else if (s_name == "Tree")
+            go_Resource = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(1).gameObject;
+
         go_Depot = GameObject.FindGameObjectWithTag("BuildingList");
         foreach (Transform go_PlayerBuilding in go_Depot.transform)
         {
@@ -167,13 +177,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //GetComponent<Rigidbody>().useGravity = true;
             if (!b_HoldingResource)
             {
-                gameObject.transform.LookAt(go_GoldMine.GetComponent<Transform>().position);
+                Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
+                gameObject.transform.LookAt(lookAtMine);
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                                                                                                go_GoldMine.GetComponent<Transform>().position,
+                                                                                                go_Resource.GetComponent<Transform>().position,
                                                                                                 GetSpeed() * Time.deltaTime);
             }
             else if (b_HoldingResource)
             {
+                Vector3 lookAtDepot = new Vector3(go_Depot.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Depot.GetComponent<Transform>().position.z);
+                gameObject.transform.LookAt(lookAtDepot);
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
                                                                                                 go_Depot.GetComponent<Transform>().position,
                                                                                                 GetSpeed() * Time.deltaTime);
@@ -183,28 +196,50 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == go_GoldMine)
+        if (collision.gameObject == go_Resource)
         {
             Debug.Log("Touch GoldMine");
-            if (i_resource != 1 && go_GoldMine.GetComponent<GoldMineBehaviour>().CollectGold())
+            if (s_name == "GoldMine")
             {
-                b_HoldingResource = true;
-                i_resource += go_GoldMine.GetComponent<GoldMineBehaviour>().i_goldDistributed;
+                if (i_resourceGOLD != 1 && go_Resource.GetComponent<GoldMineBehaviour>().CollectGold())
+                {
+                    b_HoldingResource = true;
+                    i_resourceGOLD += go_Resource.GetComponent<GoldMineBehaviour>().i_goldDistributed;
+                }
+            }
+            else if (s_name == "Tree")
+            {
+                if (i_resourceWOOD != 1 && go_Resource.GetComponent<TreeBehaviour>().CollectWood())
+                {
+                    b_HoldingResource = true;
+                    i_resourceWOOD += go_Resource.GetComponent<TreeBehaviour>().i_woodDistributed;
+                }
             }
 
         }
         else if (collision.gameObject == go_Depot)
         {
-            go_Depot.GetComponent<ResourceDepotBehaviour>().StoreGold(i_resource);
+            go_Depot.GetComponent<ResourceDepotBehaviour>().StoreGold(i_resourceGOLD);
+            go_Depot.GetComponent<ResourceDepotBehaviour>().StoreWood(i_resourceWOOD);
             b_HoldingResource = false;
-            i_resource = 0;
+            i_resourceGOLD = 0;
+            i_resourceWOOD = 0;
         }
+    }
+
+    public void SetBuildingTargetPos(Vector3 v3_bTargetPos, string name)
+    {
+        s_name = name;
+        v3_targetPos = v3_bTargetPos;
+        // b_Selected = false;
+        b_StartHarvest = true;
     }
 
     public void SetTargetPos(Vector3 v3_targetpos)
     {
         v3_targetPos = v3_targetpos;
-       // b_Selected = false;
+        // b_Selected = false;
+        b_StartHarvest = false;
         b_Moving = true;
     }
 
