@@ -5,10 +5,7 @@ using UnityEngine;
 public class TreeBehaviour : BuildingInfo
 {
 
-    public int i_woodDistributed = 1;
-
-    public float f_cooldown = 1;
-    private float f_timer = 0;
+    private int i_woodDistributed = 1;
 
     // Use this for initialization
     void Start()
@@ -19,20 +16,12 @@ public class TreeBehaviour : BuildingInfo
     // Update is called once per frame
     void Update()
     {
-        if (f_timer < f_cooldown)
-        {
-            f_timer += Time.deltaTime;
-        }
+
     }
 
-    public bool CollectWood()
+    public int CollectWood()
     {
-        if (f_timer >= f_cooldown)
-        {
-            f_timer = 0;
-            return true;
-        }
-        return false;
+        return i_woodDistributed;
     }
 
     void OnTouchDown()
@@ -43,10 +32,10 @@ public class TreeBehaviour : BuildingInfo
         go_commandPanel.gameObject.SetActive(true);
     }
 
-    public override string GetUnitsInfo()
-    {
-        string unitInfo = "NAME:" + gameObject.name + "\n";
-        unitInfo += "WOOD" + i_woodDistributed + "\nRATE:" + (1 / f_cooldown);
-        return unitInfo;
-    }
+   //public override string GetUnitsInfo()
+   //{
+   //    string unitInfo = "NAME:" + gameObject.name + "\n";
+   //    unitInfo += "WOOD" + i_woodDistributed + "\nRATE:" + (1 / f_cooldown);
+   //    return unitInfo;
+   //}
 }

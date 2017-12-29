@@ -124,13 +124,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1921152424527950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639a31065142c54419ccc88c5b239823, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e3d738ff7bd6304cb19c56b0322c652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectedColor: {r: 0, g: 1, b: 0.17241383, a: 0}
-  i_HealthPoint: 100
-  f_speed: 0.2
-  f_range: 0.5
+  detectedColor: {r: 0.36551726, g: 1, b: 0, a: 0}
+  f_HealthPoint: 100
+  f_speed: 0.05
+  f_range: 0.2
   b_StartHarvest: 0
   b_Selected: 0
   b_buildBuilding: 0
