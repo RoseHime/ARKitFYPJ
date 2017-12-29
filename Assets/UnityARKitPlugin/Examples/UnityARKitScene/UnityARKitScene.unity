@@ -456,6 +456,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpawnerCube (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114052620447670194, guid: 7e7537338c7bd844fa4c6f4ac528f4c6,
+        type: 2}
+      propertyPath: f_morale
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_IsPrefabParent: 0
@@ -1338,6 +1343,11 @@ Prefab:
     - target: {fileID: 1760772436123010, guid: 7e7537338c7bd844fa4c6f4ac528f4c6, type: 2}
       propertyPath: m_Name
       value: EnemySpawnerCube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114052620447670194, guid: 7e7537338c7bd844fa4c6f4ac528f4c6,
+        type: 2}
+      propertyPath: f_morale
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
@@ -2439,6 +2449,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114293640816252610, guid: 7e7537338c7bd844fa4c6f4ac528f4c6,
+        type: 2}
+      propertyPath: f_morale
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e7537338c7bd844fa4c6f4ac528f4c6, type: 2}
   m_IsPrefabParent: 0
@@ -3346,6 +3361,7 @@ MonoBehaviour:
   i_maxUnits: 3
   localEnemyList: []
   isMoving: 0
+  f_morale: 50
 --- !u!1 &1872933126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,6 +3886,7 @@ MonoBehaviour:
   i_maxUnits: 3
   localEnemyList: []
   isMoving: 0
+  f_morale: 50
 --- !u!1 &2018562068
 GameObject:
   m_ObjectHideFlags: 0

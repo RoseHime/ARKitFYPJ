@@ -41,7 +41,7 @@ public class MasterAI : MonoBehaviour {
         if (!startStrategy)
         {
             bool checkIfAllSpawned = true;
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < spawnerList.Count; ++i)
             {
                 if (spawnerList[i].localEnemyList.Count != spawnerList[i].i_maxUnits)
                 {
@@ -51,26 +51,58 @@ public class MasterAI : MonoBehaviour {
             if (checkIfAllSpawned)
             {
                 startStrategy = true;
+                for (int i = 0; i < spawnerList.Count; i++)
+                {
+                    spawnerList[i].isRetreating = false;
+                }
             }
         }
         else
         {
             if (!CheckIfUnitsMoving() && i_CurrentWaypoint < i_WaypointCount)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < spawnerList.Count; i++)
                 {
-                    spawnerList[i].MoveUnits(transform.GetChild(i).GetChild(i_CurrentWaypoint).position);
+                    if (!spawnerList[i].isRetreating)
+                    {
+                        spawnerList[i].MoveUnits(transform.GetChild(i).GetChild(i_CurrentWaypoint).position);
+                    }                    
                 }
                 i_CurrentWaypoint++;
+            }
+            for (int i = 0; i < spawnerList.Count; i++)
+            {
+                if (spawnerList[i].f_morale <= 20 && !spawnerList[i].isRetreating)
+                {
+                    spawnerList[i].RetreatUnits(spawnerList[i].transform.GetChild(0).position);
+                }
+            }
+
+            if (!CheckIfUnitsAlive())
+            {
+                startStrategy = false;
+                i_CurrentWaypoint = 0;
             }
         }
     }
 
     bool CheckIfUnitsMoving()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < spawnerList.Count; i++)
         {
-            if (spawnerList[i].isMoving)
+            if (spawnerList[i].isMoving && !spawnerList[i].isRetreating)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool CheckIfUnitsAlive()
+    {
+        for (int i = 0;i < spawnerList.Count; i++)
+        {
+            if (spawnerList[i].localEnemyList.Count > 0 && !spawnerList[i].isRetreating)
             {
                 return true;
             }
