@@ -36,14 +36,17 @@ public class TouchInput : MonoBehaviour {
         if (b_Cancelled) // When Action Button STOP is pressed.
         {
             b_SomethingIsSelected = false;
-            if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)           //If the selected is a unit
+            if (go_PlayerUnit != null)
             {
-                go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)           //If the selected is a unit
+                {
+                    go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                }
+                //else if (go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected)
+                //{
+                //    go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected = false;
+                //}
             }
-            //else if (go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected)
-            //{
-            //    go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected = false;
-            //}
             b_Cancelled = false;
         }
 
@@ -149,9 +152,9 @@ public class TouchInput : MonoBehaviour {
                 Debug.Log(hit.point);
                 if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                 {
-                    if (go_ObjectHit.name == "GoldMine")
+                    if (go_ObjectHit.name == "StoneMine")
                     {
-                        Debug.Log("Select Gold Mine");
+                        Debug.Log("Select Stone Mine");
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
                     }
                     else if (go_ObjectHit.name == "Tree")
@@ -181,21 +184,28 @@ public class TouchInput : MonoBehaviour {
                 Debug.Log(hit.point);
                 if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                 {
-                    if (go_ObjectHit.name == "GoldMine")
+                    if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
                     {
-                        Debug.Log("Select Gold Mine");
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
-                    }
-                    else if (go_ObjectHit.name == "Tree")
-                    {
-                        Debug.Log("Select Tree");
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                        if (go_ObjectHit.name == "StoneMine")
+                        {
+                            Debug.Log("Select Stone Mine");
+                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
+                        }
+                        else if (go_ObjectHit.name == "Tree")
+                        {
+                            Debug.Log("Select Tree");
+                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                        }
+                        else
+                        {
+                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
+                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
+                            b_BuildTower = false;
+                        }
                     }
                     else
                     {
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
-                        b_BuildTower = false;
                     }
                 }
 

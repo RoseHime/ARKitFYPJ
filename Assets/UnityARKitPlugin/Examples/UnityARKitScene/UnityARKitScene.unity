@@ -851,10 +851,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e022fc716803f74abee51afa6e99039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_gold: 0
+  i_stone: 0
   i_wood: 0
   i_magicStone: 0
-  goldText: {fileID: 2018562070}
+  stoneText: {fileID: 2018562070}
   woodText: {fileID: 2134747454}
   magicStoneText: {fileID: 601926366}
 --- !u!4 &274106733
@@ -1008,6 +1008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d738ff7bd6304cb19c56b0322c652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PUN: 0
   detectedColor: {r: 0, g: 1, b: 0.04827571, a: 0}
   f_HealthPoint: 100
   f_speed: 0.05
@@ -1199,7 +1200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &555720248
 Transform:
   m_ObjectHideFlags: 0
@@ -4042,7 +4043,7 @@ GameObject:
   - component: {fileID: 2018562071}
   - component: {fileID: 2018562070}
   m_Layer: 5
-  m_Name: Resource_Amount_GOLD
+  m_Name: Resource_Amount_STONE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
