@@ -56,7 +56,7 @@ public class CreateActionButton : MonoBehaviour
 
         if (go_selectedUnit.tag == "PlayerUnit")
         {
-            for (int i = 0; i < 6; ++i)
+            for (int i = 0; i < go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getAmountOfButton(); ++i)
             {
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
                 goButton.name = "ActionButton";

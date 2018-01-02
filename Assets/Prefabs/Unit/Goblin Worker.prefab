@@ -127,11 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d738ff7bd6304cb19c56b0322c652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PUN: 0
   detectedColor: {r: 0.36551726, g: 1, b: 0, a: 0}
   f_HealthPoint: 100
   f_speed: 0.05
   f_range: 0.2
   b_StartHarvest: 0
+  b_HoldingResource: 0
   b_Selected: 0
   b_buildBuilding: 0
   b_Moving: 0

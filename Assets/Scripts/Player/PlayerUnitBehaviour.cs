@@ -5,6 +5,15 @@ using UnityEngine.AI;
 
 public class PlayerUnitBehaviour : MonoBehaviour
 {
+    public enum PlayerUnitType
+    {
+        PUN_WORKER,
+        PUN_MELEE,
+        PUN_RANGE,
+        PUN_TANK,
+        PUN_MAX
+    }
+    public PlayerUnitType PUN;
 
     enum PlayerUnitState
     {
@@ -28,15 +37,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float f_range;
 
     private int i_resourceWOOD;
-    private int i_resourceGOLD;
+    private int i_resourceSTONE;
     public bool b_StartHarvest;
     public bool b_HoldingResource;
     private bool b_isHarvesting;
     private float f_HarvestingTime;
     private bool b_isWoodHarvested;
-    private bool b_isGoldHarvested;
+    private bool b_isStoneHarvested;
 
     public bool b_Selected;
+    private int i_AmountOfButtons;
     private GameObject go_CommandMenu;
     private Rigidbody rb_Body;
     RaycastHit rcHit;
@@ -57,21 +67,23 @@ public class PlayerUnitBehaviour : MonoBehaviour
         go_CommandMenu.SetActive(false);
 
         i_resourceWOOD = 0;
-        i_resourceGOLD = 0;
+        i_resourceSTONE = 0;
         T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
         PUS = PlayerUnitState.PUS_GUARD;
         rb_Body = gameObject.GetComponent<Rigidbody>();
-
-        b_StartHarvest = false;
-        b_HoldingResource = false;
         b_Selected = false;
         b_Moving = false;
-        b_buildBuilding = false;
 
-        b_isHarvesting = false;
-        f_HarvestingTime = 0;
-        b_isGoldHarvested = false;
-        b_isWoodHarvested = false;
+        if (PUN == PlayerUnitType.PUN_WORKER)
+        {
+            b_StartHarvest = false;
+            b_HoldingResource = false;
+            b_buildBuilding = false;
+            b_isHarvesting = false;
+            f_HarvestingTime = 0;
+            b_isStoneHarvested = false;
+            b_isWoodHarvested = false;
+        }
 
         RaycastHit hit;
         Ray ray = new Ray(transform.position + new Vector3(0, 10, 0), -Vector3.up);
@@ -109,8 +121,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 f_speed = 0.05f;
                 b_HoldingResource = true;
 
-                if (b_isGoldHarvested)
-                    i_resourceGOLD += go_Resource.GetComponent<GoldMineBehaviour>().CollectGold();
+                if (b_isStoneHarvested)
+                    i_resourceSTONE += go_Resource.GetComponent<StoneMineBehaviour>().CollectStone();
                 else if (b_isWoodHarvested)
                     i_resourceWOOD += go_Resource.GetComponent<TreeBehaviour>().CollectWood();
 
@@ -150,9 +162,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 }
             case PlayerUnitState.PUS_HARVEST:
                 {
-                    IgnoreCollision();
-                    rb_Body.isKinematic = false;
-                    OnHarvestMode();
+                    if (PUN == PlayerUnitType.PUN_WORKER)
+                    {
+                        IgnoreCollision();
+                        rb_Body.isKinematic = false;
+                        OnHarvestMode();
+                    }
                     break;
                 }
         }
@@ -179,7 +194,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public void OnHarvestMode()
     {
-        if (s_name == "GoldMine")
+        if (s_name == "StoneMine")
             go_Resource = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(0).gameObject;
         else if (s_name == "Tree")
             go_Resource = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(1).gameObject;
@@ -220,8 +235,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         if (collision.gameObject == go_Resource)
         {
-            if (collision.gameObject.name == "GoldMine")
-                b_isGoldHarvested = true;
+            if (collision.gameObject.name == "StoneMine")
+                b_isStoneHarvested = true;
             else if (collision.gameObject.name == "Tree")
                 b_isWoodHarvested = true;
 
@@ -230,11 +245,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         else if (collision.gameObject == go_Depot)
         {
-            if (b_isGoldHarvested)
+            if (b_isStoneHarvested)
             {
-                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreGold(i_resourceGOLD);
-                i_resourceGOLD = 0;
-                b_isGoldHarvested = false;
+                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreStone(i_resourceSTONE);
+                i_resourceSTONE = 0;
+                b_isStoneHarvested = false;
             }
             else if (b_isWoodHarvested)
             {
@@ -318,5 +333,22 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float GetSpeed()
     {
         return f_speed;
+    }
+
+    public PlayerUnitType getType()
+    {
+        return PUN;
+    }
+
+    public int getAmountOfButton()
+    {
+        if (PUN == PlayerUnitType.PUN_WORKER)
+        {
+            return i_AmountOfButtons = 6;
+        }
+        else
+        {
+            return i_AmountOfButtons = 5;
+        }
     }
 }
