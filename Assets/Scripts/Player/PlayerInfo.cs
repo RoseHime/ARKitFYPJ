@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour {
 
-    public int i_gold;
+    public int i_stone;
     public int i_wood;
     public int i_magicStone;
 
-    public Text goldText;
+    public Text stoneText;
     public Text woodText;
     public Text magicStoneText;
 
@@ -20,7 +20,7 @@ public class PlayerInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        goldText.text = "" + i_gold;
+        stoneText.text = "" + i_stone;
         woodText.text = "" + i_wood;
         magicStoneText.text = "" + i_magicStone;
     }

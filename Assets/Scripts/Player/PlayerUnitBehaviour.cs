@@ -28,7 +28,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float f_range;
 
     private int i_resourceWOOD;
-    private int i_resourceGOLD;
+    private int i_resourceSTONE;
     public bool b_StartHarvest;
     public bool b_HoldingResource;
     private bool b_isHarvesting;
@@ -110,7 +110,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 b_HoldingResource = true;
 
                 if (b_isGoldHarvested)
-                    i_resourceGOLD += go_Resource.GetComponent<GoldMineBehaviour>().CollectGold();
+                    i_resourceGOLD += go_Resource.GetComponent<StoneMineBehaviour>().CollectStone();
                 else if (b_isWoodHarvested)
                     i_resourceWOOD += go_Resource.GetComponent<TreeBehaviour>().CollectWood();
 
@@ -220,7 +220,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         if (collision.gameObject == go_Resource)
         {
-            if (collision.gameObject.name == "GoldMine")
+            if (collision.gameObject.name == "StoneMine")
                 b_isGoldHarvested = true;
             else if (collision.gameObject.name == "Tree")
                 b_isWoodHarvested = true;
@@ -232,8 +232,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             if (b_isGoldHarvested)
             {
-                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreGold(i_resourceGOLD);
-                i_resourceGOLD = 0;
+                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreStone(i_resourceSTONE);
+                i_resourceSTONE = 0;
                 b_isGoldHarvested = false;
             }
             else if (b_isWoodHarvested)

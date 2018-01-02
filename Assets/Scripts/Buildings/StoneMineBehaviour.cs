@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldMineBehaviour : BuildingInfo
+public class StoneMineBehaviour : BuildingInfo
 {
 
-    private int i_goldDistributed = 1;
+    private int i_stoneDistributed = 1;
 
     // Use this for initialization
     void Start()
@@ -18,9 +18,9 @@ public class GoldMineBehaviour : BuildingInfo
        
     }
 
-    public int CollectGold()
+    public int CollectStone()
     {
-        return i_goldDistributed;
+        return i_stoneDistributed;
     }
 
     void OnTouchDown()

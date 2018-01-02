@@ -16,9 +16,9 @@ public class ResourceDepotBehaviour : MonoBehaviour {
 
     }
 
-    public void StoreGold(int gold)
+    public void StoreStone(int stone)
     {
-        playerInfo.i_gold += gold;
+        playerInfo.i_stone += stone;
     }
 
     public void StoreWood(int wood)
