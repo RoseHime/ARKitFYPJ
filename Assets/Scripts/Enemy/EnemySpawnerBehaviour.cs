@@ -100,10 +100,11 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
     {
         isMoving = true;
         isRetreating = false;
+        //Debug.Log("MOVE LA!");
         foreach (GameObject unit in localEnemyList)
         {
-            unit.GetComponent<EnemyBehaviour>().EUS = EnemyBehaviour.EnemyUnitState.EUS_MOVE;
             unit.GetComponent<EnemyBehaviour>().destination = position;
+            unit.GetComponent<EnemyBehaviour>().EUS = EnemyBehaviour.EnemyUnitState.EUS_MOVE;
         }
     }
 

@@ -5,6 +5,10 @@ using UnityEngine;
 public class BuildingInfo : MonoBehaviour {
 
     public float f_health = 50;
+    public bool b_IsUnderAttack = false;
+
+    float f_underAttackCooldown = 0;
+    float f_previousHealth = 50;
 
     private TowerBehaviour towerBehaviour;
 
@@ -14,6 +18,7 @@ public class BuildingInfo : MonoBehaviour {
         {
             towerBehaviour = transform.GetComponent<TowerBehaviour>();
         }
+        f_previousHealth = f_health;
 	}
 
     void Update ()
@@ -22,6 +27,23 @@ public class BuildingInfo : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        if (f_health < f_previousHealth)
+        {
+            f_underAttackCooldown = 0;
+            b_IsUnderAttack = true;
+        }
+        else
+        {
+            if (f_underAttackCooldown < 5)
+            {
+                f_underAttackCooldown += Time.deltaTime;
+                if (f_underAttackCooldown >= 5)
+                {
+                    b_IsUnderAttack = false;
+                }
+            }
+        }
+        f_previousHealth = f_health;
     }
 
     public virtual string GetUnitsInfo()
