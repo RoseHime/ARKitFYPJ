@@ -1,19 +1,15 @@
 fileFormatVersion: 2
-guid: 895be67a535a8b849ae110a72b6a82f9
-timeCreated: 1514966322
+guid: cf3799a6ded343548b3b347bc8aba13f
+timeCreated: 1514970560
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pasted__group8
-    100004: pasted__pasted__DefenseTower2
     400000: //RootNode
-    400002: pasted__group8
-    400004: pasted__pasted__DefenseTower2
-    2300000: pasted__pasted__DefenseTower2
-    3300000: pasted__pasted__DefenseTower2
-    4300000: pasted__pasted__DefenseTower2
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: polySurface14
     9500000: //RootNode
   materials:
     importMaterials: 1
