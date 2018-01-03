@@ -26,6 +26,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     PlayerUnitState PUS;
 
     private Transform T_Enemy;
+    private GameObject go_TargetedEnemy;
     public Color detectedColor;
     private GameObject go_Resource;
     private GameObject go_Depot;
@@ -34,6 +35,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     //Unit Individual Info
     public float f_HealthPoint;
     public float f_range;
+    public float f_atkDmg;
 
     private int i_resourceWOOD;
     private int i_resourceSTONE;
@@ -69,6 +71,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private float f_onLandSpeed;
 
     NavMeshAgent _navMeshAgent;
+
+    //Projectile
+    private GameObject bullet_Prefab;
+    public float f_bulletSpeed = 0.1f;
+    public float f_fireRate = 1;
+    private float f_fireCooldown = 0;
 
     // Use this for initialization
     void Start()
@@ -134,6 +142,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
             PUS = PlayerUnitState.PUS_GUARD;
 
         CheckWhetherStillOnGround();
+        if (PUN != PlayerUnitType.PUN_WORKER)
+        {
+            DetectEnemyUnit();
+        }
      
         if (b_isHarvesting)
         {
@@ -172,6 +184,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             case PlayerUnitState.PUS_ATTACK:
                 {
+                    AttackEnemyUnit();
                     break;
                 }
 
@@ -194,23 +207,93 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
     }
 
-    void DetectEnemyUnit()
+    GameObject DetectEnemyUnit()
     {
+        GameObject nearestTarget = null;
+
         foreach (Transform T_enemyChild in T_Enemy)
         {
             if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= GetRange() * GetRange())
             {
                 //DO something
+                nearestTarget = T_enemyChild.gameObject;
                 PUS = PlayerUnitState.PUS_ATTACK;
                 gameObject.GetComponent<Renderer>().material.color = Color.green;
                 //Debug.Log("Detected");
             }
             else
             {
+                nearestTarget = null;
+                PUS = PlayerUnitState.PUS_GUARD;
                 gameObject.GetComponent<Renderer>().material.color = Color.gray;
             }
-
         }
+
+        foreach (Transform T_enemyBuilding in GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
+        {
+            if ((T_enemyBuilding.position - transform.position).sqrMagnitude < GetRange() * GetRange())
+            {
+                nearestTarget = T_enemyBuilding.gameObject;
+            }
+        }
+
+        return nearestTarget;
+    }
+
+    void AttackEnemyUnit()
+    {
+        if (go_TargetedEnemy != null)
+        {
+            Vector3 difference = go_TargetedEnemy.transform.position - transform.position;
+
+            if (difference.sqrMagnitude < GetRange() * GetRange())
+            {
+                if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
+                {
+                    if (_navMeshAgent.transform.position != go_TargetedEnemy.transform.position)
+                    {
+                        _navMeshAgent.SetDestination(go_TargetedEnemy.transform.position);
+
+                    }
+                    else
+                    {
+                        //DealDmg();
+                    }
+                }
+                else if (PUN == PlayerUnitType.PUN_RANGE)
+                {
+                    if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                    {
+                        f_fireCooldown = 0;
+                        FireBullet(difference.normalized);
+                    }
+                }
+            }
+            else
+            {
+                //Chase?
+            }
+        }
+        else
+        {
+            PUS = PlayerUnitState.PUS_GUARD;
+        }
+    }
+
+    void FireBullet(Vector3 direction)
+    {
+        GameObject tempBullet = Instantiate(bullet_Prefab);
+        tempBullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletPool").transform);
+        tempBullet.transform.position = gameObject.transform.position;
+        tempBullet.transform.localScale = bullet_Prefab.transform.lossyScale;
+        tempBullet.name = "TempBullet";
+
+        BulletBehaviour bullet_behaviour = tempBullet.GetComponent<BulletBehaviour>();
+        bullet_behaviour.f_speed = f_bulletSpeed;
+        bullet_behaviour.f_damage = GetAttack();
+        bullet_behaviour.direction = direction;
+
+        tempBullet.SetActive(true);
     }
 
     public void OnHarvestMode()
@@ -389,5 +472,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float GetSpeed()
     {
         return _navMeshAgent.speed;
+    }
+
+    public float GetAttack()
+    {
+        return f_atkDmg;
     }
 }
