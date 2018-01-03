@@ -9,8 +9,16 @@ public class EnemyBehaviour : MonoBehaviour {
         EUS_MOVE,
         EUS_IDLE,
         EUS_CHASE,
+        EUS_DEFEND,
         EUS_ATTACK
     };
+
+    public enum EnemyType
+    {
+        ET_RANGED,
+        ET_MELEE,
+        ET_TOTAL
+    }
 
     public float f_health = 50;
     public float f_range = 0.5f;
@@ -20,28 +28,29 @@ public class EnemyBehaviour : MonoBehaviour {
     public float f_damage = 1;
     public float f_fireRate = 1;
     private float f_fireCooldown = 0;
+    public float f_defendRange = 1.0f;
 
     private GameObject bullet_Prefab;
     private Transform T_playerList;
     private GameObject go_LockOnUnit;
     public EnemyUnitState EUS = EnemyUnitState.EUS_IDLE;
+    public EnemyType ET = EnemyType.ET_RANGED;
 
     public Vector3 destination;
 
     bool isMoving = false;
+    public bool isDefending = false;
 
     NavMeshAgent _navMeshAgent;
-    NavMeshObstacle _navMeshOb;
+    //NavMeshObstacle _navMeshOb;
 
     // Use this for initialization
     void Start() {
-        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;        
-        bullet_Prefab = transform.GetChild(0).gameObject;
+        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;     
+        if (ET == EnemyType.ET_RANGED)   
+            bullet_Prefab = transform.GetChild(0).gameObject;
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _navMeshOb = GetComponent<NavMeshObstacle>();
-
-        _navMeshAgent.SetDestination(GameObject.FindGameObjectWithTag("PlayerUnit").transform.position);
-
+        //_navMeshOb = GetComponent<NavMeshObstacle>();
     }
 
     // Update is called once per frame
@@ -61,6 +70,11 @@ public class EnemyBehaviour : MonoBehaviour {
             case EnemyUnitState.EUS_CHASE:
                 {
                     Chase();
+                }
+                break;
+            case EnemyUnitState.EUS_DEFEND:
+                {
+                    Defend();
                 }
                 break;
             case EnemyUnitState.EUS_ATTACK:
@@ -141,22 +155,43 @@ public class EnemyBehaviour : MonoBehaviour {
             {
                 EUS = EnemyUnitState.EUS_ATTACK;
                 _navMeshAgent.ResetPath();
+                //_navMeshOb.enabled = true;
             }
-            else if (difference.sqrMagnitude > f_range)
+            else if (difference.sqrMagnitude > f_range || (transform.position - destination).sqrMagnitude > f_defendRange)
             {
-                EUS = EnemyUnitState.EUS_IDLE;
-                _navMeshAgent.ResetPath();
+                if (isDefending)
+                {
+                    EUS = EnemyUnitState.EUS_DEFEND;
+                }
+                else
+                {
+                    EUS = EnemyUnitState.EUS_IDLE;
+                    _navMeshAgent.ResetPath();
+                    //_navMeshAgent.enabled = false;
+                    //_navMeshOb.enabled = true;
+                }
             }
             else
             {
                 //transform.position += difference.normalized * Time.deltaTime * f_speed;
+               // _navMeshAgent.enabled = true;
                 _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
+                //_navMeshOb.enabled = false;
             }
         }
         else
         {
-            EUS = EnemyUnitState.EUS_IDLE;
-            _navMeshAgent.ResetPath();
+            if (isDefending)
+            {
+                EUS = EnemyUnitState.EUS_DEFEND;
+            }
+            else
+            {
+                EUS = EnemyUnitState.EUS_IDLE;
+                _navMeshAgent.ResetPath();
+                //_navMeshAgent.enabled = false;
+                //_navMeshOb.enabled = true;
+            }
         }
 
     }
@@ -172,7 +207,12 @@ public class EnemyBehaviour : MonoBehaviour {
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
                     f_fireCooldown = 0;
-                    FireBullet(difference.normalized);
+                    if (ET == EnemyType.ET_RANGED)
+                        FireBullet(difference.normalized);
+                    else
+                    {
+                        AttackUnit(go_LockOnUnit);
+                    }
                 }
             }
             else
@@ -196,12 +236,16 @@ public class EnemyBehaviour : MonoBehaviour {
             EUS = EnemyUnitState.EUS_IDLE;
             isMoving = false;
             _navMeshAgent.ResetPath();
+            //_navMeshAgent.enabled = false;
+            //_navMeshOb.enabled = true;
             //Debug.Log("ITS TIME TO STOP");
         }
         else
         {
             //transform.position += offset.normalized * Time.deltaTime * f_speed;
+            //_navMeshAgent.enabled = true;
             _navMeshAgent.SetDestination(destination);
+            //_navMeshOb.enabled = false;
         }
 
         GameObject tempPlayer = DetectPlayerUnit();
@@ -231,6 +275,18 @@ public class EnemyBehaviour : MonoBehaviour {
         tempBullet.SetActive(true);
     }
 
+    void AttackUnit(GameObject target)
+    {
+        if (target.tag == "PlayerUnit")
+        {
+            target.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
+        }
+        else if (target.transform.parent == GameObject.FindGameObjectWithTag("BuildingList").transform)
+        {
+            target.transform.GetComponent<BuildingInfo>().f_health -= f_damage;
+        }
+    }
+
     void SnapToGround()
     {
         RaycastHit hit;
@@ -238,6 +294,15 @@ public class EnemyBehaviour : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray,out hit,float.MaxValue))
         {
             transform.position = new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z);
+        }
+    }
+
+    void Defend()
+    {
+        _navMeshAgent.SetDestination(destination);
+        if ((transform.position - destination).sqrMagnitude < 0.05f * 0.05f)
+        {
+            EUS = EnemyUnitState.EUS_IDLE;
         }
     }
 }
