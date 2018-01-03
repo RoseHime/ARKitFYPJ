@@ -9,6 +9,7 @@ public class EnemyBehaviour : MonoBehaviour {
         EUS_MOVE,
         EUS_IDLE,
         EUS_CHASE,
+        EUS_DEFEND,
         EUS_ATTACK
     };
 
@@ -27,6 +28,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public float f_damage = 1;
     public float f_fireRate = 1;
     private float f_fireCooldown = 0;
+    public float f_defendRange = 1.0f;
 
     private GameObject bullet_Prefab;
     private Transform T_playerList;
@@ -37,6 +39,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public Vector3 destination;
 
     bool isMoving = false;
+    public bool isDefending = false;
 
     NavMeshAgent _navMeshAgent;
     //NavMeshObstacle _navMeshOb;
@@ -67,6 +70,11 @@ public class EnemyBehaviour : MonoBehaviour {
             case EnemyUnitState.EUS_CHASE:
                 {
                     Chase();
+                }
+                break;
+            case EnemyUnitState.EUS_DEFEND:
+                {
+                    Defend();
                 }
                 break;
             case EnemyUnitState.EUS_ATTACK:
@@ -149,12 +157,19 @@ public class EnemyBehaviour : MonoBehaviour {
                 _navMeshAgent.ResetPath();
                 //_navMeshOb.enabled = true;
             }
-            else if (difference.sqrMagnitude > f_range)
+            else if (difference.sqrMagnitude > f_range || (transform.position - destination).sqrMagnitude > f_defendRange)
             {
-                EUS = EnemyUnitState.EUS_IDLE;
-                _navMeshAgent.ResetPath();
-               // _navMeshAgent.enabled = false;
-                //_navMeshOb.enabled = true;
+                if (isDefending)
+                {
+                    EUS = EnemyUnitState.EUS_DEFEND;
+                }
+                else
+                {
+                    EUS = EnemyUnitState.EUS_IDLE;
+                    _navMeshAgent.ResetPath();
+                    //_navMeshAgent.enabled = false;
+                    //_navMeshOb.enabled = true;
+                }
             }
             else
             {
@@ -166,10 +181,17 @@ public class EnemyBehaviour : MonoBehaviour {
         }
         else
         {
-            EUS = EnemyUnitState.EUS_IDLE;
-            _navMeshAgent.ResetPath();
-            //_navMeshAgent.enabled = false;
-            //_navMeshOb.enabled = true;
+            if (isDefending)
+            {
+                EUS = EnemyUnitState.EUS_DEFEND;
+            }
+            else
+            {
+                EUS = EnemyUnitState.EUS_IDLE;
+                _navMeshAgent.ResetPath();
+                //_navMeshAgent.enabled = false;
+                //_navMeshOb.enabled = true;
+            }
         }
 
     }
@@ -272,6 +294,15 @@ public class EnemyBehaviour : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray,out hit,float.MaxValue))
         {
             transform.position = new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z);
+        }
+    }
+
+    void Defend()
+    {
+        _navMeshAgent.SetDestination(destination);
+        if ((transform.position - destination).sqrMagnitude < 0.05f * 0.05f)
+        {
+            EUS = EnemyUnitState.EUS_IDLE;
         }
     }
 }
