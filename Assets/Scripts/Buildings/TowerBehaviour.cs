@@ -13,25 +13,50 @@ public class TowerBehaviour : MonoBehaviour {
     public GameObject bullet_Prefab;
 
     public GameObject enemyList;
+    public GameObject playerList;
 
     float f_bulletTimer = 0;
 
+    public enum TOWERTYPE
+    {
+        PLAYER,
+        ENEMY
+    }
+
+    public TOWERTYPE type = TOWERTYPE.PLAYER;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+        enemyList = GameObject.FindGameObjectWithTag("EnemyList");
+        playerList = GameObject.FindGameObjectWithTag("PlayerList");
+    }
 	
 	// Update is called once per frame
 	void Update () {
         Transform nearestEnemy = null;
 
         float tempDistance = f_range * f_range;
-        foreach (Transform child in enemyList.transform)
+
+        if (type == TOWERTYPE.PLAYER)
         {
-            if ((child.position - transform.position).sqrMagnitude < tempDistance)
+            foreach (Transform child in enemyList.transform)
             {
-                tempDistance = (child.position - transform.position).sqrMagnitude;
-                nearestEnemy = child;
+                if ((child.position - transform.position).sqrMagnitude < tempDistance)
+                {
+                    tempDistance = (child.position - transform.position).sqrMagnitude;
+                    nearestEnemy = child;
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in playerList.transform)
+            {
+                if ((child.position - transform.position).sqrMagnitude < tempDistance)
+                {
+                    tempDistance = (child.position - transform.position).sqrMagnitude;
+                    nearestEnemy = child;
+                }
             }
         }
 
@@ -54,6 +79,15 @@ public class TowerBehaviour : MonoBehaviour {
         tempBullet.transform.position = gameObject.transform.position;
         tempBullet.transform.localScale = bullet_Prefab.transform.lossyScale;
         tempBullet.name = "TempBullet";
+
+        if (type == TOWERTYPE.PLAYER)
+        {
+            tempBullet.GetComponent<BulletBehaviour>().target = BulletBehaviour.BULLETTARGET.ENEMY;
+        }
+        else
+        {
+            tempBullet.GetComponent<BulletBehaviour>().target = BulletBehaviour.BULLETTARGET.PLAYER;
+        }
 
         BulletBehaviour bullet_behaviour = tempBullet.GetComponent<BulletBehaviour>();
         bullet_behaviour.f_speed = f_bulletSpeed;
