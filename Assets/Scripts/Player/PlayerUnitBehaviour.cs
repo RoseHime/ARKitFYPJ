@@ -60,11 +60,21 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public bool b_buildBuilding;
     public bool b_Moving;
 
+    //Navmesh Agent
+    [SerializeField]
+    Transform _destination;
+    NavMeshHit navMeshHit;
+
+    NavMeshAgent _navMeshAgent;
+
     // Use this for initialization
     void Start()
     {
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
+
+        _navMeshAgent = this.GetComponent<NavMeshAgent>();
+        //_navMeshAgent.updateRotation = false;
 
         i_resourceWOOD = 0;
         i_resourceSTONE = 0;
@@ -101,6 +111,17 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int slope = 1 << NavMesh.GetAreaFromName("WalkableSlope");
+        _navMeshAgent.SamplePathPosition(-1, 0.0f, out navMeshHit);
+        if (navMeshHit.mask == slope)
+        {
+            Debug.Log("Slope");
+            _navMeshAgent.speed = 0.1f;
+        }
+        else
+            Debug.Log("Land");
+
+
         if (f_HealthPoint <= 0)
         {
             Destroy(gameObject);
@@ -287,8 +308,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
         if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
         {
             Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
-            gameObject.transform.LookAt(v3_seeTarget);
-            gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
+            //gameObject.transform.LookAt(v3_seeTarget);
+            //gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
+            _navMeshAgent.SetDestination(v3_targetPos + offset_Y);
             //GetComponent<Rigidbody>().useGravity = true;
         }
         else
