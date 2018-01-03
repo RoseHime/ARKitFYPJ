@@ -136,13 +136,25 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             PUS = PlayerUnitState.PUS_HARVEST;
         }
-        if (b_Moving)
-            PUS = PlayerUnitState.PUS_MOVE;
-        else if (!b_Moving && !b_StartHarvest)
-            PUS = PlayerUnitState.PUS_GUARD;
+
+        if (PUN == PlayerUnitType.PUN_WORKER)
+        {
+            if (b_Moving)
+                PUS = PlayerUnitState.PUS_MOVE;
+            else if (!b_Moving && !b_StartHarvest)
+                PUS = PlayerUnitState.PUS_GUARD;
+        }
+        else
+        {
+            if (b_Moving)
+                PUS = PlayerUnitState.PUS_MOVE;
+            else if (!b_Moving)
+                PUS = PlayerUnitState.PUS_GUARD;
+        }
+
 
         CheckWhetherStillOnGround();
-        if (PUN != PlayerUnitType.PUN_WORKER)
+        if (PUN != PlayerUnitType.PUN_WORKER && !b_Moving)
         {
             DetectEnemyUnit();
         }
@@ -175,7 +187,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             case PlayerUnitState.PUS_MOVE:
                 {
-                    b_StartHarvest = false;
+                    if (PUN == PlayerUnitType.PUN_WORKER)
+                        b_StartHarvest = false;
                     //rb_Body.isKinematic = false;
                     MoveToTargetPos();
                     break;

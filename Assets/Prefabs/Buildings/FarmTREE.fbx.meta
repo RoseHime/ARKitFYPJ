@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: 13ce1d862a4917f4f9baa81d5fb44184
-timeCreated: 1514967748
+guid: eedaa646514ca1b46b5203b45a68b91e
+timeCreated: 1514972869
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Props:Pine_Tree
     400000: //RootNode
-    400002: Props:Pine_Tree
-    2300000: Props:Pine_Tree
-    3300000: Props:Pine_Tree
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Props:Pine_Tree
     9500000: //RootNode
   materials:
