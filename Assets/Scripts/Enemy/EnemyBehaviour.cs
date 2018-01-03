@@ -12,6 +12,13 @@ public class EnemyBehaviour : MonoBehaviour {
         EUS_ATTACK
     };
 
+    public enum EnemyType
+    {
+        ET_RANGED,
+        ET_MELEE,
+        ET_TOTAL
+    }
+
     public float f_health = 50;
     public float f_range = 0.5f;
     public float f_atkRange = 0.1f;
@@ -25,23 +32,22 @@ public class EnemyBehaviour : MonoBehaviour {
     private Transform T_playerList;
     private GameObject go_LockOnUnit;
     public EnemyUnitState EUS = EnemyUnitState.EUS_IDLE;
+    public EnemyType ET = EnemyType.ET_RANGED;
 
     public Vector3 destination;
 
     bool isMoving = false;
 
     NavMeshAgent _navMeshAgent;
-    NavMeshObstacle _navMeshOb;
+    //NavMeshObstacle _navMeshOb;
 
     // Use this for initialization
     void Start() {
-        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;        
-        bullet_Prefab = transform.GetChild(0).gameObject;
+        T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;     
+        if (ET == EnemyType.ET_RANGED)   
+            bullet_Prefab = transform.GetChild(0).gameObject;
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _navMeshOb = GetComponent<NavMeshObstacle>();
-
-        _navMeshAgent.SetDestination(GameObject.FindGameObjectWithTag("PlayerUnit").transform.position);
-
+        //_navMeshOb = GetComponent<NavMeshObstacle>();
     }
 
     // Update is called once per frame
@@ -141,22 +147,29 @@ public class EnemyBehaviour : MonoBehaviour {
             {
                 EUS = EnemyUnitState.EUS_ATTACK;
                 _navMeshAgent.ResetPath();
+                //_navMeshOb.enabled = true;
             }
             else if (difference.sqrMagnitude > f_range)
             {
                 EUS = EnemyUnitState.EUS_IDLE;
                 _navMeshAgent.ResetPath();
+               // _navMeshAgent.enabled = false;
+                //_navMeshOb.enabled = true;
             }
             else
             {
                 //transform.position += difference.normalized * Time.deltaTime * f_speed;
+               // _navMeshAgent.enabled = true;
                 _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
+                //_navMeshOb.enabled = false;
             }
         }
         else
         {
             EUS = EnemyUnitState.EUS_IDLE;
             _navMeshAgent.ResetPath();
+            //_navMeshAgent.enabled = false;
+            //_navMeshOb.enabled = true;
         }
 
     }
@@ -172,7 +185,12 @@ public class EnemyBehaviour : MonoBehaviour {
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
                     f_fireCooldown = 0;
-                    FireBullet(difference.normalized);
+                    if (ET == EnemyType.ET_RANGED)
+                        FireBullet(difference.normalized);
+                    else
+                    {
+                        AttackUnit(go_LockOnUnit);
+                    }
                 }
             }
             else
@@ -196,12 +214,16 @@ public class EnemyBehaviour : MonoBehaviour {
             EUS = EnemyUnitState.EUS_IDLE;
             isMoving = false;
             _navMeshAgent.ResetPath();
+            //_navMeshAgent.enabled = false;
+            //_navMeshOb.enabled = true;
             //Debug.Log("ITS TIME TO STOP");
         }
         else
         {
             //transform.position += offset.normalized * Time.deltaTime * f_speed;
+            //_navMeshAgent.enabled = true;
             _navMeshAgent.SetDestination(destination);
+            //_navMeshOb.enabled = false;
         }
 
         GameObject tempPlayer = DetectPlayerUnit();
@@ -229,6 +251,18 @@ public class EnemyBehaviour : MonoBehaviour {
         bullet_behaviour.direction = direction;
 
         tempBullet.SetActive(true);
+    }
+
+    void AttackUnit(GameObject target)
+    {
+        if (target.tag == "PlayerUnit")
+        {
+            target.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
+        }
+        else if (target.transform.parent == GameObject.FindGameObjectWithTag("BuildingList").transform)
+        {
+            target.transform.GetComponent<BuildingInfo>().f_health -= f_damage;
+        }
     }
 
     void SnapToGround()
