@@ -33,7 +33,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     //Unit Individual Info
     public float f_HealthPoint;
-    public float f_speed;
     public float f_range;
 
     private int i_resourceWOOD;
@@ -62,8 +61,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     //Navmesh Agent
     [SerializeField]
-    Transform _destination;
     NavMeshHit navMeshHit;
+    //Area Mask
+    private int slope;
+    private float f_goingUpSlope;
+    private float f_goingDownSlope;
+    private float f_onLandSpeed;
 
     NavMeshAgent _navMeshAgent;
 
@@ -75,12 +78,14 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         //_navMeshAgent.updateRotation = false;
+        //Area Mask
+        slope = 1 << NavMesh.GetAreaFromName("WalkableSlope");
 
         i_resourceWOOD = 0;
         i_resourceSTONE = 0;
         T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
         PUS = PlayerUnitState.PUS_GUARD;
-        rb_Body = gameObject.GetComponent<Rigidbody>();
+        //rb_Body = gameObject.GetComponent<Rigidbody>();
         b_Selected = false;
         b_Moving = false;
 
@@ -104,6 +109,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             offset_Y = new Vector3(0, f_distanceY, 0);
         }
+
+        f_goingUpSlope = _navMeshAgent.speed / 2;
+        f_goingDownSlope = _navMeshAgent.speed * 1.5f;
+        f_onLandSpeed = _navMeshAgent.speed;
     }
 
 
@@ -111,17 +120,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int slope = 1 << NavMesh.GetAreaFromName("WalkableSlope");
-        _navMeshAgent.SamplePathPosition(-1, 0.0f, out navMeshHit);
-        if (navMeshHit.mask == slope)
-        {
-            Debug.Log("Slope");
-            _navMeshAgent.speed = 0.1f;
-        }
-        else
-            Debug.Log("Land");
-
-
         if (f_HealthPoint <= 0)
         {
             Destroy(gameObject);
@@ -142,7 +140,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
             f_HarvestingTime += Time.deltaTime;
             if (f_HarvestingTime >= 2)
             {
-                f_speed = 0.05f;
                 b_HoldingResource = true;
 
                 if (b_isStoneHarvested)
@@ -167,7 +164,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             case PlayerUnitState.PUS_MOVE:
                 {
                     b_StartHarvest = false;
-                    rb_Body.isKinematic = false;
+                    //rb_Body.isKinematic = false;
                     MoveToTargetPos();
                     break;
 
@@ -180,7 +177,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             case PlayerUnitState.PUS_GUARD:
                 {
-                    rb_Body.isKinematic = true;
+                    //rb_Body.isKinematic = true;
                     DetectEnemyUnit();
                     break;
                 }
@@ -189,7 +186,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     if (PUN == PlayerUnitType.PUN_WORKER)
                     {
                         IgnoreCollision();
-                        rb_Body.isKinematic = false;
+                        //rb_Body.isKinematic = false;
                         OnHarvestMode();
                     }
                     break;
@@ -238,19 +235,19 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //GetComponent<Rigidbody>().useGravity = true;
             if (!b_HoldingResource)
             {
-                Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
-                gameObject.transform.LookAt(lookAtMine);
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                                                                                                go_Resource.GetComponent<Transform>().position,
-                                                                                                GetSpeed() * Time.deltaTime);
+                //Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
+                //gameObject.transform.LookAt(lookAtMine);
+                //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                //                                                                                go_Resource.GetComponent<Transform>().position,
+                //                                                                                GetSpeed() * Time.deltaTime);
             }
             else if (b_HoldingResource)
             {
-                Vector3 lookAtDepot = new Vector3(go_Depot.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Depot.GetComponent<Transform>().position.z);
-                gameObject.transform.LookAt(lookAtDepot);
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                                                                                                go_Depot.GetComponent<Transform>().position,
-                                                                                                GetSpeed() * Time.deltaTime);
+                //Vector3 lookAtDepot = new Vector3(go_Depot.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Depot.GetComponent<Transform>().position.z);
+                //gameObject.transform.LookAt(lookAtDepot);
+                //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                //                                                                                go_Depot.GetComponent<Transform>().position,
+                //                                                                                GetSpeed() * Time.deltaTime);
             }
         }
     }
@@ -264,7 +261,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
             else if (collision.gameObject.name == "Tree")
                 b_isWoodHarvested = true;
 
-            f_speed = 0;
             b_isHarvesting = true;
         }
         else if (collision.gameObject == go_Depot)
@@ -303,7 +299,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private void MoveToTargetPos()
     {
-        f_speed = 0.05f;
         v3_currentPos = gameObject.transform.position;
         if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
         {
@@ -312,6 +307,23 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
             _navMeshAgent.SetDestination(v3_targetPos + offset_Y);
             //GetComponent<Rigidbody>().useGravity = true;
+            _navMeshAgent.SamplePathPosition(-1, 0.0f, out navMeshHit);
+            if ((navMeshHit.mask == slope) && v3_targetPos.y > gameObject.transform.position.y)
+            {
+                Debug.Log("Going up Slope");
+                _navMeshAgent.speed = f_goingUpSlope;
+            }
+            else if ((navMeshHit.mask == slope) && v3_targetPos.y < gameObject.transform.position.y)
+            {
+                Debug.Log("Going down  Slope");
+                _navMeshAgent.speed = f_goingDownSlope;
+            }
+            else
+            {
+                Debug.Log("Land");
+                _navMeshAgent.speed = f_onLandSpeed;
+            }
+
         }
         else
         {
@@ -355,10 +367,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         return f_range;
     }
-    public float GetSpeed()
-    {
-        return f_speed;
-    }
+
 
     public PlayerUnitType getType()
     {
@@ -375,5 +384,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             return i_AmountOfButtons = 5;
         }
+    }
+
+    public float GetSpeed()
+    {
+        return _navMeshAgent.speed;
     }
 }
