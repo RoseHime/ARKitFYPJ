@@ -1,15 +1,17 @@
 fileFormatVersion: 2
-guid: dc615cc3da80bce4db8487ad80bd9b92
-timeCreated: 1514363084
+guid: ea899602a60794646bbad9641e48ca2d
+timeCreated: 1514887373
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Path
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pPlane18
+    400002: Path
+    2300000: Path
+    3300000: Path
+    4300000: Path
     9500000: //RootNode
   materials:
     importMaterials: 1

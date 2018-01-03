@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour {
 
@@ -29,10 +30,18 @@ public class EnemyBehaviour : MonoBehaviour {
 
     bool isMoving = false;
 
+    NavMeshAgent _navMeshAgent;
+    NavMeshObstacle _navMeshOb;
+
     // Use this for initialization
     void Start() {
         T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;        
         bullet_Prefab = transform.GetChild(0).gameObject;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshOb = GetComponent<NavMeshObstacle>();
+
+        _navMeshAgent.SetDestination(GameObject.FindGameObjectWithTag("PlayerUnit").transform.position);
+
     }
 
     // Update is called once per frame
@@ -131,20 +140,23 @@ public class EnemyBehaviour : MonoBehaviour {
             if (difference.sqrMagnitude < f_atkRange * f_atkRange)
             {
                 EUS = EnemyUnitState.EUS_ATTACK;
+                _navMeshAgent.ResetPath();
             }
             else if (difference.sqrMagnitude > f_range)
             {
                 EUS = EnemyUnitState.EUS_IDLE;
+                _navMeshAgent.ResetPath();
             }
             else
             {
-                difference.y = 0;
-                transform.position += difference.normalized * Time.deltaTime * f_speed;
+                //transform.position += difference.normalized * Time.deltaTime * f_speed;
+                _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
             }
         }
         else
         {
             EUS = EnemyUnitState.EUS_IDLE;
+            _navMeshAgent.ResetPath();
         }
 
     }
@@ -183,10 +195,13 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             EUS = EnemyUnitState.EUS_IDLE;
             isMoving = false;
+            _navMeshAgent.ResetPath();
+            //Debug.Log("ITS TIME TO STOP");
         }
         else
         {
-            transform.position += offset.normalized * Time.deltaTime * f_speed;
+            //transform.position += offset.normalized * Time.deltaTime * f_speed;
+            _navMeshAgent.SetDestination(destination);
         }
 
         GameObject tempPlayer = DetectPlayerUnit();

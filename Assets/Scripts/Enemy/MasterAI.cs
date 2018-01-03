@@ -27,12 +27,14 @@ public class MasterAI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         i_PincerWaypointCount = transform.GetChild(0).GetChild(0).childCount;
-        i_TurtleWaypointCount = transform.GetChild(1).GetChild(0).childCount;
-        i_DirectWaypointCount = transform.GetChild(2).GetChild(0).childCount;
+        //i_TurtleWaypointCount = transform.GetChild(1).GetChild(0).childCount;
+        //i_DirectWaypointCount = transform.GetChild(2).GetChild(0).childCount;
+        //Debug.Log(i_PincerWaypointCount);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        //Debug.Log("test");
         switch (masterStrategy)
         {
             case STRATEGY.PINCER:
@@ -57,6 +59,7 @@ public class MasterAI : MonoBehaviour {
                 if (spawnerList[i].localEnemyList.Count != spawnerList[i].i_maxUnits)
                 {
                     checkIfAllSpawned = false;
+                    //Debug.Log("Not all have spawned");
                 }
             }
             if (checkIfAllSpawned)
@@ -72,11 +75,13 @@ public class MasterAI : MonoBehaviour {
         {
             if (!CheckIfUnitsMoving() && i_CurrentWaypoint < i_PincerWaypointCount)
             {
+                //Debug.Log("Ready to go!");
                 for (int i = 0; i < spawnerList.Count; i++)
                 {
                     if (!spawnerList[i].isRetreating)
                     {
                         spawnerList[i].MoveUnits(transform.GetChild(0).GetChild(i).GetChild(i_CurrentWaypoint).position);
+                        //Debug.Log("Move!");
                     }                    
                 }
                 i_CurrentWaypoint++;
@@ -101,7 +106,7 @@ public class MasterAI : MonoBehaviour {
     {
         for (int i = 0; i < spawnerList.Count; i++)
         {
-            if (spawnerList[i].isMoving && !spawnerList[i].isRetreating)
+            if (spawnerList[i].isMoving)
             {
                 return true;
             }
