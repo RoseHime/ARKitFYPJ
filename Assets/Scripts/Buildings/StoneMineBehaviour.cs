@@ -5,7 +5,8 @@ using UnityEngine;
 public class StoneMineBehaviour : BuildingInfo
 {
 
-    private int i_stoneDistributed = 1;
+    public int i_stoneDistributed = 1;
+    public int i_totalAmountOfStones = 2000;
 
     // Use this for initialization
     void Start()
@@ -20,6 +21,14 @@ public class StoneMineBehaviour : BuildingInfo
 
     public int CollectStone()
     {
+        if (i_totalAmountOfStones >= i_stoneDistributed)
+        {
+            i_totalAmountOfStones -= i_stoneDistributed;
+        }
+        else
+        {
+            i_stoneDistributed = 0;
+        }
         return i_stoneDistributed;
     }
 
@@ -31,10 +40,11 @@ public class StoneMineBehaviour : BuildingInfo
         go_commandPanel.gameObject.SetActive(true);
     }
 
-   //public override string GetUnitsInfo()
-   //{
-   //    string unitInfo = "NAME:" + gameObject.name + "\n";
-   //    unitInfo += "GOLD" + i_goldDistributed + "\nRATE:" + (1);
-   //    return unitInfo;
-   //}
+    public override string GetUnitsInfo()
+    {
+        string unitInfo = "NAME:" + gameObject.name + "\n";
+        unitInfo += "STONE" + i_stoneDistributed;
+        unitInfo += "\nTotal Stones:" + i_totalAmountOfStones;
+        return unitInfo;
+    }
 }

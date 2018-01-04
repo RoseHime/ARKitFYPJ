@@ -24,17 +24,40 @@ public class MasterAI : MonoBehaviour {
 
     bool b_IsDefending = false;
 
+    int playerStrength = 0;
+    int enemyStrength = 0;
+
 	// Use this for initialization
 	void Start () {
         i_PincerWaypointCount = transform.GetChild(0).GetChild(0).childCount;
-        //i_TurtleWaypointCount = transform.GetChild(1).GetChild(0).childCount;
+        i_TurtleWaypointCount = transform.GetChild(1).GetChild(0).childCount;
         //i_DirectWaypointCount = transform.GetChild(2).GetChild(0).childCount;
         //Debug.Log(i_PincerWaypointCount);
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
         //Debug.Log("test");
+        playerStrength = GameObject.FindGameObjectWithTag("PlayerList").transform.childCount + GameObject.FindGameObjectWithTag("BuildingList").transform.childCount;
+        enemyStrength = GameObject.FindGameObjectWithTag("EnemyList").transform.childCount + GameObject.FindGameObjectWithTag("EnemyBuildingList").transform.childCount;
+
+
+        if (Mathf.Abs(enemyStrength - playerStrength) < 10)
+        {
+            if (enemyStrength > playerStrength)
+            {
+                masterStrategy = STRATEGY.PINCER;
+            }
+            else
+            {
+                masterStrategy = STRATEGY.TURTLE;
+            }
+        }
+        else
+        {
+            masterStrategy = STRATEGY.TURTLE;
+        }
         switch (masterStrategy)
         {
             case STRATEGY.PINCER:

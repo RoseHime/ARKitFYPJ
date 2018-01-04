@@ -22,7 +22,7 @@ public class CreateUnitButton : MonoBehaviour {
         {
             CreateEntities createEntitiy = GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>();
             createEntitiy.go_playerPrefab = go_unitPrefab;
-            createEntitiy.BuildPlayerUnit(transform.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.position + new Vector3(0.05f,0,0));
+            createEntitiy.BuildPlayerUnit(transform.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
             transform.parent.parent.gameObject.SetActive(false);
         }
     }

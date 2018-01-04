@@ -229,7 +229,7 @@ MonoBehaviour:
   f_bulletSpeed: 0.1
   f_range: 0.5
   bullet_Prefab: {fileID: 1496126844265432}
-  enemyList: {fileID: 0}
+  type: 0
 --- !u!135 &135437665053237430
 SphereCollider:
   m_ObjectHideFlags: 1

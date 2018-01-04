@@ -55,6 +55,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        SnapToGround();
         switch (EUS)
         {
             case EnemyUnitState.EUS_MOVE:
@@ -83,7 +84,7 @@ public class EnemyBehaviour : MonoBehaviour {
                 }
                 break;
         }
-        SnapToGround();
+
         DeathCheck();
     }
 
@@ -157,7 +158,7 @@ public class EnemyBehaviour : MonoBehaviour {
                 _navMeshAgent.ResetPath();
                 //_navMeshOb.enabled = true;
             }
-            else if (difference.sqrMagnitude > f_range || (transform.position - destination).sqrMagnitude > f_defendRange)
+            else if (difference.sqrMagnitude > f_range * f_range || ((transform.position - destination).sqrMagnitude > f_defendRange * f_defendRange && isDefending))
             {
                 if (isDefending)
                 {
@@ -174,9 +175,10 @@ public class EnemyBehaviour : MonoBehaviour {
             else
             {
                 //transform.position += difference.normalized * Time.deltaTime * f_speed;
-               // _navMeshAgent.enabled = true;
-                _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
-                //_navMeshOb.enabled = false;
+                // _navMeshAgent.enabled = true;
+                _navMeshAgent.ResetPath();
+               _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
+               //_navMeshOb.enabled = false;
             }
         }
         else
@@ -231,7 +233,7 @@ public class EnemyBehaviour : MonoBehaviour {
         isMoving = true;
         Vector3 offset = destination - transform.position;
         offset.y = 0;
-        if (offset.sqrMagnitude < 0.01 * 0.01)
+        if (offset.sqrMagnitude < 0.05 * 0.05)
         {
             EUS = EnemyUnitState.EUS_IDLE;
             isMoving = false;
@@ -293,7 +295,7 @@ public class EnemyBehaviour : MonoBehaviour {
         Ray ray = new Ray(transform.position + new Vector3(0,1,0), -Vector3.up);
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray,out hit,float.MaxValue))
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, hit.point.y + 0.05f, transform.position.z);
         }
     }
 
