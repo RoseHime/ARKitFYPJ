@@ -194,12 +194,18 @@ public class MasterAI : MonoBehaviour {
             foreach (Transform building in GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
             {
                 BuildingInfo buildInfo = building.GetComponent<BuildingInfo>();
-                if (buildInfo.b_IsUnderAttack)
+                if (buildInfo != null)
                 {
-                    b_IsDefending = true;
-                    for (int i = 0; i < spawnerList.Count; i++)
+                    if (buildInfo.b_IsUnderAttack)
                     {
-                        spawnerList[i].MoveUnits(buildInfo.transform.GetChild(0).position);
+                        b_IsDefending = true;
+                        for (int i = 0; i < spawnerList.Count; i++)
+                        {
+                            if (spawnerList[i].transform.childCount > 0)
+                                spawnerList[i].MoveUnits(buildInfo.transform.GetChild(0).position);
+                            else
+                                spawnerList[i].MoveUnits(buildInfo.transform.position);
+                        }
                     }
                 }
             }
