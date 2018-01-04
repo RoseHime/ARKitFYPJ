@@ -66,7 +66,7 @@ public class TowerBehaviour : MonoBehaviour {
             {
                 Vector3 direction = (nearestEnemy.position - transform.position).normalized;
 
-                if (transform.GetChild(0) != null)
+                if (transform.childCount > 0)
                 {
                     direction = (nearestEnemy.position - transform.GetChild(0).position).normalized;
                 }
@@ -82,7 +82,7 @@ public class TowerBehaviour : MonoBehaviour {
         GameObject tempBullet = Instantiate(bullet_Prefab);
         tempBullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletPool").transform);
         tempBullet.transform.position = gameObject.transform.position;
-        if (transform.GetChild(0) != null)
+        if (transform.childCount > 0)
         {
             tempBullet.transform.position = transform.GetChild(0).position;
         }

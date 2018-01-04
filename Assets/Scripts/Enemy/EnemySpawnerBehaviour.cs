@@ -38,7 +38,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
             squadIsFull = false;
         }
 
-        if (f_cooldown <= f_spawnRate)
+        if (f_cooldown <= 1/f_spawnRate)
         {
             f_cooldown += Time.deltaTime;
         }

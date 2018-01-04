@@ -9,48 +9,78 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1121524478717816}
+  m_RootGameObject: {fileID: 1074789220832462}
   m_IsPrefabParent: 1
---- !u!1 &1121524478717816
+--- !u!1 &1074789220832462
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4235604628962386}
-  - component: {fileID: 33673340484496648}
-  - component: {fileID: 23297995349457480}
-  - component: {fileID: 95283254724752798}
-  - component: {fileID: 208381387965098444}
-  - component: {fileID: 114543851677161688}
-  - component: {fileID: 65576752808938814}
+  - component: {fileID: 4966478426082844}
+  - component: {fileID: 33569594036343440}
+  - component: {fileID: 23184680304507102}
+  - component: {fileID: 95515450285241964}
+  - component: {fileID: 208502495561745426}
+  - component: {fileID: 114863751181815570}
+  - component: {fileID: 65362987667767168}
+  - component: {fileID: 114096023070364744}
   m_Layer: 8
-  m_Name: Baracks
+  m_Name: Barracks
   m_TagString: SelectableBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!4 &4235604628962386
+--- !u!1 &1105626181824050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4119360170697864}
+  m_Layer: 8
+  m_Name: Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4119360170697864
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121524478717816}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_GameObject: {fileID: 1105626181824050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 4966478426082844}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4966478426082844
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074789220832462}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.39, y: 0.625, z: -5.704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4119360170697864}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23297995349457480
+--- !u!23 &23184680304507102
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121524478717816}
+  m_GameObject: {fileID: 1074789220832462}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +88,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: cc845d9fa52012046b84d0b0c50af149, type: 2}
+  - {fileID: 2100000, guid: 8bdf770e91d4dfa44b020fc9e87eed34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,32 +107,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33673340484496648
+--- !u!33 &33569594036343440
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121524478717816}
+  m_GameObject: {fileID: 1074789220832462}
   m_Mesh: {fileID: 4300000, guid: cf3799a6ded343548b3b347bc8aba13f, type: 3}
---- !u!65 &65576752808938814
+--- !u!65 &65362987667767168
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121524478717816}
+  m_GameObject: {fileID: 1074789220832462}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3847909, y: 0.155741, z: 0.44402647}
   m_Center: {x: 0.000000022351742, y: 0.07920225, z: 0}
---- !u!95 &95283254724752798
+--- !u!95 &95515450285241964
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121524478717816}
+  m_GameObject: {fileID: 1074789220832462}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cf3799a6ded343548b3b347bc8aba13f, type: 3}
   m_Controller: {fileID: 0}
@@ -113,12 +143,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114543851677161688
+--- !u!114 &114096023070364744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121524478717816}
+  m_GameObject: {fileID: 1074789220832462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c268fe6b497ede841b34bcd11e2979cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go_enemyPrefab: {fileID: 1249712020433492, guid: 556f8cee0bd73be41974b73a3eb5c8de,
+    type: 2}
+  f_spawnRate: 1
+  i_maxUnits: 10
+  localEnemyList: []
+  isMoving: 0
+  isRetreating: 1
+  f_morale: 50
+  f_moraleIncreaseRate: 1
+  f_moraleCooldown: 5
+--- !u!114 &114863751181815570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074789220832462}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2316b0d6eb262754ebd8887566d37cea, type: 3}
@@ -126,12 +177,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 300
   b_IsUnderAttack: 0
---- !u!208 &208381387965098444
+--- !u!208 &208502495561745426
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121524478717816}
+  m_GameObject: {fileID: 1074789220832462}
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
