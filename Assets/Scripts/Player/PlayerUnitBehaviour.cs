@@ -281,6 +281,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     else
                     {
                         //DealDmg();
+                        go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health -= 1;
                     }
                 }
                 else if (PUN == PlayerUnitType.PUN_RANGE)
