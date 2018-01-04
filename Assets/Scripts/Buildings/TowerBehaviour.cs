@@ -12,8 +12,8 @@ public class TowerBehaviour : MonoBehaviour {
 
     public GameObject bullet_Prefab;
 
-    public GameObject enemyList;
-    public GameObject playerList;
+    GameObject enemyList;
+    GameObject playerList;
 
     float f_bulletTimer = 0;
 
@@ -66,6 +66,11 @@ public class TowerBehaviour : MonoBehaviour {
             {
                 Vector3 direction = (nearestEnemy.position - transform.position).normalized;
 
+                if (transform.GetChild(0) != null)
+                {
+                    direction = (nearestEnemy.position - transform.GetChild(0).position).normalized;
+                }
+
                 FireBullet(direction);
                 f_bulletTimer = 0;
             }
@@ -77,6 +82,10 @@ public class TowerBehaviour : MonoBehaviour {
         GameObject tempBullet = Instantiate(bullet_Prefab);
         tempBullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletPool").transform);
         tempBullet.transform.position = gameObject.transform.position;
+        if (transform.GetChild(0) != null)
+        {
+            tempBullet.transform.position = transform.GetChild(0).position;
+        }
         tempBullet.transform.localScale = bullet_Prefab.transform.lossyScale;
         tempBullet.name = "TempBullet";
 

@@ -203,9 +203,13 @@ public class TouchInput : MonoBehaviour {
                             b_BuildTower = false;
                         }
                     }
-                    else
+                    else if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_MELEE ||
+                             go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_RANGE ||
+                             go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_TANK)
+
                     {
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
+                        Debug.Log("Move");
                     }
                 }
 

@@ -1,19 +1,17 @@
 fileFormatVersion: 2
-guid: 4455668f096f06e46b64c629959e051b
-timeCreated: 1514966322
+guid: eb1c4cfcb2eb8094e831ad231cca7ca3
+timeCreated: 1514970560
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: pasted__group8
-    100004: pasted__pasted__Barracks2
-    400000: //RootNode
-    400002: pasted__group8
-    400004: pasted__pasted__Barracks2
-    2300000: pasted__pasted__Barracks2
-    3300000: pasted__pasted__Barracks2
-    4300000: pasted__pasted__Barracks2
+    100000: polySurface13
+    100002: //RootNode
+    400000: polySurface13
+    400002: //RootNode
+    2300000: polySurface13
+    3300000: polySurface13
+    4300000: polySurface13
     9500000: //RootNode
   materials:
     importMaterials: 1

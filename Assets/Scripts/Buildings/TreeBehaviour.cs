@@ -5,7 +5,8 @@ using UnityEngine;
 public class TreeBehaviour : BuildingInfo
 {
 
-    private int i_woodDistributed = 1;
+    public int i_woodDistributed = 1;
+    public int i_totalAmountOfWood = 2000;
 
     // Use this for initialization
     void Start()
@@ -21,6 +22,14 @@ public class TreeBehaviour : BuildingInfo
 
     public int CollectWood()
     {
+        if (i_totalAmountOfWood >= i_woodDistributed)
+        {
+            i_totalAmountOfWood -= i_woodDistributed;
+        }
+        else
+        {
+            i_woodDistributed = 0;
+        }
         return i_woodDistributed;
     }
 
@@ -32,10 +41,11 @@ public class TreeBehaviour : BuildingInfo
         go_commandPanel.gameObject.SetActive(true);
     }
 
-   //public override string GetUnitsInfo()
-   //{
-   //    string unitInfo = "NAME:" + gameObject.name + "\n";
-   //    unitInfo += "WOOD" + i_woodDistributed + "\nRATE:" + (1 / f_cooldown);
-   //    return unitInfo;
-   //}
+    public override string GetUnitsInfo()
+    {
+        string unitInfo = "NAME:" + gameObject.name + "\n";
+        unitInfo += "WOOD" + i_woodDistributed;
+        unitInfo += "\nTotal Wood:" + i_totalAmountOfWood;
+        return unitInfo;
+    }
 }

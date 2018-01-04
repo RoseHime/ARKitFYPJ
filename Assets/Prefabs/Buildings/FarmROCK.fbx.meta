@@ -10,7 +10,9 @@ ModelImporter:
     400000: //RootNode
     400002: Props:Mine_able_Stone13
     2300000: Props:Mine_able_Stone13
+    2300002: //RootNode
     3300000: Props:Mine_able_Stone13
+    3300002: //RootNode
     4300000: Props:Mine_able_Stone13
     9500000: //RootNode
   materials:
