@@ -15,8 +15,8 @@ NavMeshProjectSettings:
     cost: 1
   - name: WalkableSlope
     cost: 4
-  - name: 
-    cost: 1
+  - name: HarvestRoute
+    cost: 5
   - name: 
     cost: 1
   - name: 

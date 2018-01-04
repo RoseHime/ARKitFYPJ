@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 6374bfcc2334a694ab08ddc5fbb48812
-timeCreated: 1514972869
+guid: dad6cc2cf9368a14cacbdeb7b1816d03
+timeCreated: 1515057528
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Props:Mine_able_Stone13
+    4300000: polySurface14
     9500000: //RootNode
   materials:
     importMaterials: 1

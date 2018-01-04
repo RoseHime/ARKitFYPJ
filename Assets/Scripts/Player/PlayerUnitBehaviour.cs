@@ -45,6 +45,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private float f_HarvestingTime;
     private bool b_isWoodHarvested;
     private bool b_isStoneHarvested;
+    private GameObject go_TargetedTree;
+    public bool b_toHarvestStone;
+    public bool b_toHarvestTree;
 
     public bool b_Selected;
     private int i_AmountOfButtons;
@@ -106,6 +109,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
             f_HarvestingTime = 0;
             b_isStoneHarvested = false;
             b_isWoodHarvested = false;
+            b_toHarvestStone = false;
+            b_toHarvestTree = false;
         }
 
         RaycastHit hit;
@@ -136,6 +141,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             PUS = PlayerUnitState.PUS_HARVEST;
         }
+        else if (!b_StartHarvest)
+        {
+            b_toHarvestStone = false;
+            b_toHarvestTree = false;
+        }
 
         if (PUN == PlayerUnitType.PUN_WORKER)
         {
@@ -165,7 +175,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if (f_HarvestingTime >= 2)
             {
                 b_HoldingResource = true;
-
+                _navMeshAgent.speed = f_onLandSpeed;
                 if (b_isStoneHarvested)
                     i_resourceSTONE += go_Resource.GetComponent<StoneMineBehaviour>().CollectStone();
                 else if (b_isWoodHarvested)
@@ -311,15 +321,25 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public void OnHarvestMode()
     {
-        if (s_name == "StoneMine")
+        if (b_toHarvestStone)
+        {
+            b_toHarvestTree = false;
             go_Resource = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(0).gameObject;
-        else if (s_name == "Tree")
-            go_Resource = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(1).gameObject;
+        }
+        else if (b_toHarvestTree)
+        {
+            b_toHarvestStone = false;
+            foreach (Transform GetTree in GameObject.FindGameObjectWithTag("Resources").transform)
+            {
+                if (GetTree.name == s_name)
+                    go_Resource = GetTree.gameObject;
+            }
+        }
 
         go_Depot = GameObject.FindGameObjectWithTag("BuildingList");
         foreach (Transform go_PlayerBuilding in go_Depot.transform)
         {
-            if (go_PlayerBuilding.gameObject.name == "ResourceDepot")
+            if (go_PlayerBuilding.gameObject.name == "Base")
             {
                 go_Depot = go_PlayerBuilding.gameObject;
                 break;
@@ -336,6 +356,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
                 //                                                                                go_Resource.GetComponent<Transform>().position,
                 //                                                                                GetSpeed() * Time.deltaTime);
+                _navMeshAgent.SetDestination(go_Resource.GetComponent<Transform>().position);
             }
             else if (b_HoldingResource)
             {
@@ -344,6 +365,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
                 //                                                                                go_Depot.GetComponent<Transform>().position,
                 //                                                                                GetSpeed() * Time.deltaTime);
+                _navMeshAgent.SetDestination(go_Depot.GetComponent<Transform>().position);
             }
         }
     }
@@ -352,17 +374,21 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         if (collision.gameObject == go_Resource)
         {
-            if (collision.gameObject.name == "StoneMine")
+            Debug.Log("Collided");
+            _navMeshAgent.speed = 0f;
+            if (collision.gameObject.tag == "StoneMine" && b_toHarvestStone)
                 b_isStoneHarvested = true;
-            else if (collision.gameObject.name == "Tree")
+            else if (collision.gameObject.tag == "Tree" && b_toHarvestTree)
                 b_isWoodHarvested = true;
 
             b_isHarvesting = true;
         }
         else if (collision.gameObject == go_Depot)
         {
+            //_navMeshAgent.speed = 0f;
             if (b_isStoneHarvested)
             {
+
                 go_Depot.GetComponent<ResourceDepotBehaviour>().StoreStone(i_resourceSTONE);
                 i_resourceSTONE = 0;
                 b_isStoneHarvested = false;
@@ -398,7 +424,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         v3_currentPos = gameObject.transform.position;
         if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
         {
-            Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
+            //Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
             //gameObject.transform.LookAt(v3_seeTarget);
             //gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
             _navMeshAgent.SetDestination(v3_targetPos + offset_Y);

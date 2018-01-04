@@ -22,6 +22,8 @@ TagManager:
   - BulletPool
   - Terrain
   - EnemyBuildingList
+  - StoneMine
+  - Tree
   layers:
   - Default
   - TransparentFX

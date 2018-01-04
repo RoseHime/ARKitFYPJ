@@ -21,6 +21,8 @@ public class TouchInput : MonoBehaviour {
 
     public bool b_BuildTower;
 
+    private GameObject go_AllTree;
+
     private void Start()
     {
         b_TargetChose = false;
@@ -190,11 +192,14 @@ public class TouchInput : MonoBehaviour {
                         {
                             Debug.Log("Select Stone Mine");
                             go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
+                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
                         }
-                        else if (go_ObjectHit.name == "Tree")
+                        else if (go_ObjectHit.tag == "Tree")
                         {
                             Debug.Log("Select Tree");
                             go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
+
                         }
                         else
                         {
@@ -228,6 +233,15 @@ public class TouchInput : MonoBehaviour {
         if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
         {
             b_StopRun = true;
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        foreach (Transform GetTree in GameObject.FindGameObjectWithTag("Resources").transform)
+        {
+            if (GetTree.tag == "Tree")
+                go_AllTree = GetTree.gameObject;
         }
     }
 }

@@ -1,15 +1,33 @@
 fileFormatVersion: 2
-guid: 6374bfcc2334a694ab08ddc5fbb48812
-timeCreated: 1514972869
+guid: ef9e2a6b3fad27149977ced01ba0ad71
+timeCreated: 1515035979
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Props:Mine_able_Stone13
+    100000: group
+    100002: group1
+    100004: //RootNode
+    100006: pasted__Minotaur
+    100008: pasted__Minotaur 1
+    100010: pasted__polySurface11
+    100012: pasted__polySurface9
+    100014: transform1
+    100016: transform2
+    100018: transform3
+    400000: group
+    400002: group1
+    400004: //RootNode
+    400006: pasted__Minotaur
+    400008: pasted__Minotaur 1
+    400010: pasted__polySurface11
+    400012: pasted__polySurface9
+    400014: transform1
+    400016: transform2
+    400018: transform3
+    2300000: pasted__Minotaur
+    3300000: pasted__Minotaur
+    4300000: pasted__Minotaur
     9500000: //RootNode
   materials:
     importMaterials: 1
