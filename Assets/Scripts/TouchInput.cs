@@ -134,7 +134,7 @@ public class TouchInput : MonoBehaviour {
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
             debugText.text = "Touch Registered in PickTarget";
-            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
+            if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
             {
                 v3_rayPointTarget = hit.point;
                 debugText.text = "Target:" + v3_rayPointTarget;
@@ -172,7 +172,7 @@ public class TouchInput : MonoBehaviour {
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             debugText.text = "Touch Registered in PickTarget";
-            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
+            if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
             {
                 v3_rayPointTarget = hit.point;
                 debugText.text = "Target:" + v3_rayPointTarget;
