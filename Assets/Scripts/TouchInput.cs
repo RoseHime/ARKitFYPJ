@@ -62,7 +62,7 @@ public class TouchInput : MonoBehaviour {
         //Touch Input
         if (Input.touches.Length > 0)
         {
-            debugText.text = "Touch Registered";
+            //debugText.text = "Touch Registered";
             if (!b_SomethingIsSelected)
             {
                 Ray ray;
@@ -91,12 +91,11 @@ public class TouchInput : MonoBehaviour {
                 }
             }
         }
-
 #if UNITY_EDITOR
         //Mouse Input
         if (Input.GetMouseButton(0))  // if there is a left click on mouse
         {
-            debugText.text = "Click Registered";
+            //debugText.text = "Click Registered";         
             if (!b_SomethingIsSelected)
             {
                 Ray ray;
@@ -134,44 +133,32 @@ public class TouchInput : MonoBehaviour {
         if (Input.touches.Length > 0) // Get the new touch
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-            if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+            debugText.text = "Touch Registered in PickTarget";
+            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
             {
                 v3_rayPointTarget = hit.point;
+                debugText.text = "Target:" + v3_rayPointTarget;
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 Debug.Log(hit.point);
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
                     if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                     {
-                        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                        if (go_ObjectHit.name == "StoneMine")
                         {
-                            if (go_ObjectHit.name == "StoneMine")
-                            {
-                                Debug.Log("Select Stone Mine");
-                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
-                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
-                            }
-                            else if (go_ObjectHit.tag == "Tree")
-                            {
-                                Debug.Log("Select Tree");
-                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
-                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
-
-                            }
-                            else
-                            {
-                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
-                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
-                                b_BuildTower = false;
-                            }
+                            Debug.Log("Select Stone Mine");
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
                         }
-                        else if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_MELEE ||
-                                 go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_RANGE ||
-                                 go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_TANK)
-
+                        else if (go_ObjectHit.name == "Tree")
+                        {
+                            Debug.Log("Select Tree");
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                        }
+                        else
                         {
                             go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
-                            Debug.Log("Move");
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
+                            b_BuildTower = false;
                         }
                     }
                 }
@@ -184,9 +171,11 @@ public class TouchInput : MonoBehaviour {
         else if (Input.GetMouseButton(0))
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+            debugText.text = "Touch Registered in PickTarget";
+            if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
             {
                 v3_rayPointTarget = hit.point;
+                debugText.text = "Target:" + v3_rayPointTarget;
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 Debug.Log(hit.point);
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
