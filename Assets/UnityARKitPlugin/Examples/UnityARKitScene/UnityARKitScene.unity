@@ -2249,6 +2249,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1461241392697140, guid: 7228fe6cbccb6b140a9c0225621f1ce7, type: 2}
+      propertyPath: m_TagString
+      value: SelectableBuilding
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7228fe6cbccb6b140a9c0225621f1ce7, type: 2}
   m_IsPrefabParent: 0
@@ -5532,6 +5536,10 @@ Prefab:
     - target: {fileID: 1029580355345346, guid: 7228fe6cbccb6b140a9c0225621f1ce7, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461241392697140, guid: 7228fe6cbccb6b140a9c0225621f1ce7, type: 2}
+      propertyPath: m_TagString
+      value: SelectableBuilding
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7228fe6cbccb6b140a9c0225621f1ce7, type: 2}
