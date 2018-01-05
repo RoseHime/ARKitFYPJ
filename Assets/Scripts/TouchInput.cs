@@ -22,7 +22,6 @@ public class TouchInput : MonoBehaviour {
 
     public bool b_BuildTower;
 
-    private GameObject go_AllTree;
 
     public Text debugText;
 
@@ -71,22 +70,18 @@ public class TouchInput : MonoBehaviour {
                     {
                         go_PlayerUnit = recipient;
                         go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        go_PlayerUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                         b_SomethingIsSelected = true;
                     }
                     else if (recipient.tag == "SelectableBuilding")
                     {
                         // I still havn't written anything here, probably will soon
-                        //go_PlayerBuilding = recipient;
-                        //go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected = true;
+                        go_PlayerBuilding = recipient;
+                        go_PlayerBuilding.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                     else
                     {
 
-                    }
-
-                    if (Input.GetTouch(0).phase == TouchPhase.Began)
-                    {
-                        recipient.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                 }
             }
@@ -238,15 +233,6 @@ public class TouchInput : MonoBehaviour {
         if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
         {
             b_StopRun = true;
-        }
-    }
-
-    public void FixedUpdate()
-    {
-        foreach (Transform GetTree in GameObject.FindGameObjectWithTag("Resources").transform)
-        {
-            if (GetTree.tag == "Tree")
-                go_AllTree = GetTree.gameObject;
         }
     }
 }

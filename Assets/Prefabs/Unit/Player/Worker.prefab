@@ -26,9 +26,9 @@ GameObject:
   - component: {fileID: 195001313728039388}
   - component: {fileID: 114096629866329702}
   - component: {fileID: 54635442569786274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Worker
-  m_TagString: Untagged
+  m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +135,8 @@ MonoBehaviour:
   f_atkDmg: 0
   b_StartHarvest: 0
   b_HoldingResource: 0
+  b_toHarvestStone: 0
+  b_toHarvestTree: 0
   b_Selected: 0
   b_buildBuilding: 0
   b_Moving: 0
