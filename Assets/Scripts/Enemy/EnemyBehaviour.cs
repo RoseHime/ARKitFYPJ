@@ -302,7 +302,7 @@ public class EnemyBehaviour : MonoBehaviour {
     void Defend()
     {
         _navMeshAgent.SetDestination(destination);
-        if ((transform.position - destination).sqrMagnitude < 0.05f * 0.05f)
+        if ((transform.position - destination).sqrMagnitude < 0.1f * 0.1f)
         {
             EUS = EnemyUnitState.EUS_IDLE;
         }

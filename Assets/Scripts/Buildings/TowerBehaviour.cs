@@ -71,6 +71,7 @@ public class TowerBehaviour : MonoBehaviour {
                     direction = (nearestEnemy.position - transform.GetChild(0).position).normalized;
                 }
 
+                Debug.Log(nearestEnemy.transform.position);
                 FireBullet(direction);
                 f_bulletTimer = 0;
             }
