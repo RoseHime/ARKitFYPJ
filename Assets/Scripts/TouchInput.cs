@@ -57,11 +57,12 @@ public class TouchInput : MonoBehaviour {
         //Touch Input
         if (Input.touches.Length > 0)
         {
+            debugText.text = "Touch Registered";
             if (!b_SomethingIsSelected)
             {
                 Ray ray;
                 ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
-
+                debugText.text = "Ray Created";
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
