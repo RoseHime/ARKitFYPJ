@@ -16,7 +16,7 @@ public class ChooseCommand : MonoBehaviour {
     public GameObject go_BarracksPanel;
 
     //Testing use
-    private string text;
+    //private string text;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class ChooseCommand : MonoBehaviour {
         go_CommandPanel = go_CommandButton.transform.parent.gameObject;
         go_MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         ti = go_MainCamera.GetComponent<TouchInput>();
-        text = go_CommandButton.GetComponentInChildren<Text>().text;
+        //text = go_CommandButton.GetComponentInChildren<Text>().text;
     }
 
     public void OnClickCommand()

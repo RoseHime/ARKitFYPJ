@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TouchInput : MonoBehaviour {
 
@@ -22,6 +23,8 @@ public class TouchInput : MonoBehaviour {
     public bool b_BuildTower;
 
     private GameObject go_AllTree;
+
+    public Text debugText;
 
     private void Start()
     {
@@ -63,6 +66,7 @@ public class TouchInput : MonoBehaviour {
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
+                    debugText.text = recipient.name + "\n" + hit.point;
                     if (recipient.tag == "PlayerUnit")
                     {
                         go_PlayerUnit = recipient;
@@ -104,6 +108,7 @@ public class TouchInput : MonoBehaviour {
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
+                    debugText.text = recipient.name + "\n" + hit.point;
                     if (recipient.tag == "PlayerUnit")
                     {
                         go_PlayerUnit = recipient;
