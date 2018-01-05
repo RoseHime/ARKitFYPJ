@@ -96,11 +96,12 @@ public class TouchInput : MonoBehaviour {
         //Mouse Input
         if (Input.GetMouseButton(0))  // if there is a left click on mouse
         {
+            debugText.text = "Click Registered";
             if (!b_SomethingIsSelected)
             {
                 Ray ray;
                 ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-
+                debugText.text = "Ray Created";
                 if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
                 {
                     GameObject recipient = hit.transform.gameObject;
