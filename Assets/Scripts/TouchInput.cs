@@ -17,8 +17,10 @@ public class TouchInput : MonoBehaviour {
     public bool b_StopRun;
 
     //For Unit Selection
-    private GameObject go_PlayerUnit;
-    private GameObject go_PlayerBuilding;
+    //private GameObject go_PlayerUnit;
+    //private GameObject go_PlayerBuilding;
+
+    public GameObject go_SelectedUnit;
 
     public bool b_BuildTower;
 
@@ -40,11 +42,14 @@ public class TouchInput : MonoBehaviour {
         if (b_Cancelled) // When Action Button STOP is pressed.
         {
             b_SomethingIsSelected = false;
-            if (go_PlayerUnit != null)
+            if (go_SelectedUnit != null)
             {
-                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)           //If the selected is a unit
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
-                    go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)           //If the selected is a unit
+                    {
+                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                    }
                 }
                 //else if (go_PlayerBuilding.GetComponent<BuildingInfo>().b_Selected)
                 //{
@@ -67,36 +72,30 @@ public class TouchInput : MonoBehaviour {
                 {
                     GameObject recipient = hit.transform.gameObject;
                     debugText.text = recipient.name + "\n" + hit.point;
-                    if (recipient.tag == "PlayerUnit")
+                    if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
                     {
-                        go_PlayerUnit = recipient;
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-                        go_PlayerUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                        go_SelectedUnit = recipient;
+                        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                         b_SomethingIsSelected = true;
-                    }
-                    else if (recipient.tag == "SelectableBuilding")
-                    {
-                        // I still havn't written anything here, probably will soon
-                        go_PlayerBuilding = recipient;
-                        go_PlayerBuilding.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
-                    else
-                    {
-
                     }
                 }
             }
             if (b_TargetChose && b_SomethingIsSelected)
             {
-                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
-                    PickTargetPoint();
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                {
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                        PickTargetPoint();
+                }
             }
         }
 
         //Mouse Input
         if (Input.GetMouseButton(0))  // if there is a left click on mouse
         {
-            debugText.text = "Click Registered";
+            debugText.text = "Click Registered";         
             if (!b_SomethingIsSelected)
             {
                 Ray ray;
@@ -106,41 +105,25 @@ public class TouchInput : MonoBehaviour {
                 {
                     GameObject recipient = hit.transform.gameObject;
                     debugText.text = recipient.name + "\n" + hit.point;
-                    if (recipient.tag == "PlayerUnit")
+                    if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
                     {
-                        go_PlayerUnit = recipient;
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-                        go_PlayerUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                        go_SelectedUnit = recipient;
+                        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                         b_SomethingIsSelected = true;
                     }
-                    else if (recipient.tag == "SelectableBuilding")
-                    {
-                        // I still havn't written anything here, probably will soon
-                        go_PlayerBuilding = recipient;
-                        go_PlayerBuilding.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
-                    }
-                    else
-                    {
-
-                    }
-
-                   //if (Input.GetMouseButtonDown(0))
-                   //{
-                   //    recipient.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
-                   //    Debug.Log("HERE");
-                   //}
-                   //if (Input.GetMouseButtonUp(0))
-                   //{
-                   //    recipient.SendMessage("OffClick", hit.point, SendMessageOptions.DontRequireReceiver);
-                   //}
                 }
             }
             if (b_TargetChose && b_SomethingIsSelected)
             {
-                Debug.Log("HERE@");
-                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
-                    PickTargetPoint();
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                {
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                        PickTargetPoint();
+                }
             }
+
         }
     }
 
@@ -154,25 +137,29 @@ public class TouchInput : MonoBehaviour {
                 v3_rayPointTarget = hit.point;
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 Debug.Log(hit.point);
-                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
-                    if (go_ObjectHit.name == "StoneMine")
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                     {
-                        Debug.Log("Select Stone Mine");
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
-                    }
-                    else if (go_ObjectHit.name == "Tree")
-                    {
-                        Debug.Log("Select Tree");
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
-                    }
-                    else
-                    {
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
-                        b_BuildTower = false;
+                        if (go_ObjectHit.name == "StoneMine")
+                        {
+                            Debug.Log("Select Stone Mine");
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                        }
+                        else if (go_ObjectHit.name == "Tree")
+                        {
+                            Debug.Log("Select Tree");
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                        }
+                        else
+                        {
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
+                            b_BuildTower = false;
+                        }
                     }
                 }
+                
 
                 b_TargetChose = false;
             }
@@ -186,40 +173,42 @@ public class TouchInput : MonoBehaviour {
                 v3_rayPointTarget = hit.point;
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 Debug.Log(hit.point);
-                if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
-                    if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                     {
-                        if (go_ObjectHit.name == "StoneMine")
+                        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
                         {
-                            Debug.Log("Select Stone Mine");
-                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
-                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
-                        }
-                        else if (go_ObjectHit.tag == "Tree")
-                        {
-                            Debug.Log("Select Tree");
-                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
-                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
+                            if (go_ObjectHit.name == "StoneMine")
+                            {
+                                Debug.Log("Select Stone Mine");
+                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(go_ObjectHit.transform.position, go_ObjectHit.name);
+                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
+                            }
+                            else if (go_ObjectHit.tag == "Tree")
+                            {
+                                Debug.Log("Select Tree");
+                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(v3_rayPointTarget, go_ObjectHit.name);
+                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
 
+                            }
+                            else
+                            {
+                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
+                                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
+                                b_BuildTower = false;
+                            }
                         }
-                        else
-                        {
-                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
-                            go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = b_BuildTower;
-                            b_BuildTower = false;
-                        }
-                    }
-                    else if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_MELEE ||
-                             go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_RANGE ||
-                             go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_TANK)
+                        else if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_MELEE ||
+                                 go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_RANGE ||
+                                 go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_TANK)
 
-                    {
-                        go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
-                        Debug.Log("Move");
+                        {
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(v3_rayPointTarget);
+                            Debug.Log("Move");
+                        }
                     }
                 }
-
                 b_TargetChose = false;
             }
         }
@@ -232,7 +221,7 @@ public class TouchInput : MonoBehaviour {
 
     void CheckIfUnitIsSelected()
     {
-        if (go_PlayerUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
         {
             b_StopRun = true;
         }

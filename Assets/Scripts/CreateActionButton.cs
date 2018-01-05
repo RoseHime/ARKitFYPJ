@@ -39,6 +39,12 @@ public class CreateActionButton : MonoBehaviour
                 go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
             }
         }
+
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().go_SelectedUnit == null)
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
+            gameObject.SetActive(false);
+        }
     }
 
     public void CreateButtons()
