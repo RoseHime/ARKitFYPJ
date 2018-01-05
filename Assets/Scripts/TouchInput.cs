@@ -62,7 +62,7 @@ public class TouchInput : MonoBehaviour {
         //Touch Input
         if (Input.touches.Length > 0)
         {
-            debugText.text = "Touch Registered";
+            //debugText.text = "Touch Registered";
             if (!b_SomethingIsSelected)
             {
                 Ray ray;
@@ -91,11 +91,11 @@ public class TouchInput : MonoBehaviour {
                 }
             }
         }
-
+#if UNITY_EDITOR
         //Mouse Input
         if (Input.GetMouseButton(0))  // if there is a left click on mouse
         {
-            debugText.text = "Click Registered";         
+            //debugText.text = "Click Registered";         
             if (!b_SomethingIsSelected)
             {
                 Ray ray;
@@ -125,6 +125,7 @@ public class TouchInput : MonoBehaviour {
             }
 
         }
+#endif
     }
 
     public void PickTargetPoint()
@@ -132,9 +133,11 @@ public class TouchInput : MonoBehaviour {
         if (Input.touches.Length > 0) // Get the new touch
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.GetTouch(0).position);
+            debugText.text = "Touch Registered in PickTarget";
             if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
             {
                 v3_rayPointTarget = hit.point;
+                debugText.text = "Target:" + v3_rayPointTarget;
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 Debug.Log(hit.point);
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
@@ -164,13 +167,15 @@ public class TouchInput : MonoBehaviour {
                 b_TargetChose = false;
             }
         }
-
+#if UNITY_EDITOR
         else if (Input.GetMouseButton(0))
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            debugText.text = "Touch Registered in PickTarget";
             if (Physics.Raycast(ray, out hit, 100.0f, touchInputMask))
             {
                 v3_rayPointTarget = hit.point;
+                debugText.text = "Target:" + v3_rayPointTarget;
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 Debug.Log(hit.point);
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
@@ -212,6 +217,7 @@ public class TouchInput : MonoBehaviour {
                 b_TargetChose = false;
             }
         }
+#endif
     }
 
     public Vector3 rayHitTarget()
