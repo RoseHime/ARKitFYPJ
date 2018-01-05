@@ -557,7 +557,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4481510235282936, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.189
+      value: 0.165
       objectReference: {fileID: 0}
     - target: {fileID: 4481510235282936, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
       propertyPath: m_LocalPosition.y
@@ -565,7 +565,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4481510235282936, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4.154
+      value: 4.153
       objectReference: {fileID: 0}
     - target: {fileID: 4481510235282936, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
       propertyPath: m_LocalRotation.x
@@ -611,6 +611,11 @@ Prefab:
     - target: {fileID: 1578180408063394, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 136090847495952612, guid: 1f3a9113709bae74aba8d95772ad6214,
+        type: 2}
+      propertyPath: m_Height
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
@@ -1724,6 +1729,11 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 136090847495952612, guid: 1f3a9113709bae74aba8d95772ad6214,
+        type: 2}
+      propertyPath: m_Height
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
   m_IsPrefabParent: 0
@@ -2543,6 +2553,11 @@ Prefab:
     - target: {fileID: 1578180408063394, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 136090847495952612, guid: 1f3a9113709bae74aba8d95772ad6214,
+        type: 2}
+      propertyPath: m_Height
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f3a9113709bae74aba8d95772ad6214, type: 2}
