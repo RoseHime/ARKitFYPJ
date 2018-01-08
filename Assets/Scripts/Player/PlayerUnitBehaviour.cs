@@ -362,8 +362,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //GetComponent<Rigidbody>().useGravity = true;
             if (!b_HoldingResource)
             {
-                //Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
-                //gameObject.transform.LookAt(lookAtMine);
+                Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
+                gameObject.transform.LookAt(lookAtMine);
                 //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
                 //                                                                                go_Resource.GetComponent<Transform>().position,
                 //                                                                                GetSpeed() * Time.deltaTime);
@@ -371,8 +371,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
             }
             else if (b_HoldingResource)
             {
-                //Vector3 lookAtDepot = new Vector3(go_Depot.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Depot.GetComponent<Transform>().position.z);
-                //gameObject.transform.LookAt(lookAtDepot);
+                Vector3 lookAtDepot = new Vector3(go_Depot.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Depot.GetComponent<Transform>().position.z);
+                gameObject.transform.LookAt(lookAtDepot);
                 //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
                 //                                                                                go_Depot.GetComponent<Transform>().position,
                 //                                                                                GetSpeed() * Time.deltaTime);

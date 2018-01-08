@@ -14,7 +14,6 @@ public class ChooseCommand : MonoBehaviour {
 
     public GameObject go_BuildingPanel;
     public GameObject go_BarracksPanel;
-    private GameObject go_CrossHair;
 
     //Testing use
     //private string text;

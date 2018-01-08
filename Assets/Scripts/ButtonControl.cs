@@ -48,7 +48,6 @@ public class ButtonControl : MonoBehaviour {
                     if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                     {
                         go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-
                     }
                     go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                     b_SomethingIsSelected = true;
