@@ -46,7 +46,11 @@ public class ButtonControl : MonoBehaviour {
                 {
                     go_SelectedUnit = recipient;
                     if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                    {
                         go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+
+                    }
+                    go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
                     b_SomethingIsSelected = true;
                     btn.GetComponentInChildren<Text>().text = "Back";
                 }
@@ -59,7 +63,10 @@ public class ButtonControl : MonoBehaviour {
         else if (b_SomethingIsSelected && s_text == "Back")
         {
             if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+            {
                 go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+            }
             b_SomethingIsSelected = false;
             btn.GetComponentInChildren<Text>().text = "Select";
             //btn.interactable = false;
@@ -67,5 +74,27 @@ public class ButtonControl : MonoBehaviour {
 
 
         
+    }
+
+    public Transform getCrossHair()
+    {
+        return i_Crosshair.transform;
+    }
+
+    public Vector3 getTargetPoint(Vector3 pos)
+    {
+        return v3_rayPointTarget = pos;
+    }
+
+    public GameObject go_SelectUnit()
+    {
+        return go_SelectedUnit;
+    }
+
+    public bool Setfalse(bool b)
+    {
+        if (b == false)
+            b_SomethingIsSelected = false;
+        return true;
     }
 }

@@ -137,12 +137,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         if (b_Selected)
         {
-            this.GetComponent<NavMeshAgent>().enabled = true;
-        }
-        else if (!b_Selected)
-        {
-            this.GetComponent<NavMeshAgent>().enabled = false;
-
+            _navMeshAgent.enabled = true;
         }
 
         if (f_HealthPoint <= 0)
@@ -225,6 +220,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             case PlayerUnitState.PUS_GUARD:
                 {
+                    this.GetComponent<NavMeshAgent>().enabled = false;
                     //rb_Body.isKinematic = true;
                     DetectEnemyUnit();
                     break;
@@ -389,7 +385,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             Debug.Log("Collided");
             _navMeshAgent.speed = 0f;
-            if (collision.gameObject.tag == "StoneMine" && b_toHarvestStone)
+            if (collision.gameObject.tag == "StoneMine" && b_toHarvestStone && !b_HoldingResource)
                 b_isStoneHarvested = true;
             else if (collision.gameObject.tag == "Tree" && b_toHarvestTree)
                 b_isWoodHarvested = true;
@@ -529,5 +525,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float GetAttack()
     {
         return f_atkDmg;
+    }
+
+    public GameObject getCommand()
+    {
+        return go_CommandMenu;
     }
 }

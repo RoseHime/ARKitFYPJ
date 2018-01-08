@@ -25,6 +25,8 @@ TagManager:
   - StoneMine
   - Tree
   - EnemyAI
+  - ControlButton
+  - Crosshair
   layers:
   - Default
   - TransparentFX

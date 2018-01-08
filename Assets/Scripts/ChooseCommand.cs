@@ -9,11 +9,12 @@ public class ChooseCommand : MonoBehaviour {
     //bool b_selectedCommand;
     public GameObject go_CommandButton;
     private GameObject go_CommandPanel;
-    private GameObject go_MainCamera;
-    private TouchInput ti;
+    private ButtonControl bc;
+    private RaycastHit hit;
 
     public GameObject go_BuildingPanel;
     public GameObject go_BarracksPanel;
+    private GameObject go_CrossHair;
 
     //Testing use
     //private string text;
@@ -22,43 +23,33 @@ public class ChooseCommand : MonoBehaviour {
     {
         //b_selectedCommand = false;
         go_CommandPanel = go_CommandButton.transform.parent.gameObject;
-        go_MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        ti = go_MainCamera.GetComponent<TouchInput>();
-        //text = go_CommandButton.GetComponentInChildren<Text>().text;
+        bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
+        //go_CrossHair = GameObject.FindGameObjectWithTag("Crosshair");
     }
 
     public void OnClickCommand()
     {
-
-        if (go_CommandButton.GetComponentInChildren<Text>().text == "STOP")
-        {
-            Debug.Log("OnCLick");
-            ti.b_Cancelled = true;
-            go_BuildingPanel.SetActive(false);
-            go_CommandPanel.SetActive(false);
-        }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
+        if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
             Debug.Log("OnClickMOVE");
-            ti.b_TargetChose = true;
             //go_CommandPanel.SetActive(false);
-        }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
-        {
-            go_BuildingPanel.SetActive(true);
-            //go_CommandPanel.SetActive(false);
-        }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATE")
-        {
-            go_BarracksPanel.SetActive(true);
-            go_CommandPanel.SetActive(false);
-        }
-        else if (go_CommandButton.name == "UpgradeActionButton")
-        {
-            if (GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().LevelUp())
+            Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
+            if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
             {
-                go_CommandPanel.SetActive(false);
-                ti.b_Cancelled = true;
+                GameObject go_ObjectHit = hit.transform.gameObject;
+                if (go_ObjectHit.name == "StoneMine")
+                {
+                    Debug.Log("Select Stone Mine");
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
+
+                }
+                else
+                {
+                    Debug.Log("Walk here");
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+
+                }
             }
         }
     }
