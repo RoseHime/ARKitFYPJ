@@ -179,7 +179,10 @@ public class EnemyBehaviour : MonoBehaviour {
                 // _navMeshAgent.enabled = true;
                 _navMeshAgent.ResetPath();
                _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
-               //_navMeshOb.enabled = false;
+                Vector3 look = go_LockOnUnit.transform.position;
+                look.y = transform.position.y;
+                transform.LookAt(look);
+                //_navMeshOb.enabled = false;
             }
         }
         else
@@ -210,6 +213,9 @@ public class EnemyBehaviour : MonoBehaviour {
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
                     f_fireCooldown = 0;
+                    Vector3 look = go_LockOnUnit.transform.position;
+                    look.y = transform.position.y;
+                    transform.LookAt(look);
                     if (ET == EnemyType.ET_RANGED)
                         FireBullet(difference.normalized);
                     else
@@ -247,11 +253,15 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             //transform.position += offset.normalized * Time.deltaTime * f_speed;
             //_navMeshAgent.enabled = true;
+            Vector3 look = destination;
+            look.y = transform.position.y;
+            transform.LookAt(look);
             _navMeshAgent.SetDestination(destination);
             //_navMeshOb.enabled = false;
         }
 
         GameObject tempPlayer = DetectPlayerUnit();
+
         if (tempPlayer != null)
         {
             if ((tempPlayer.transform.position - transform.position).sqrMagnitude <= f_range * f_range)
