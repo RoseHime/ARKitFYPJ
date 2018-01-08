@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733349839666316}
-  m_Mesh: {fileID: 4300000, guid: a8e911c56cfc8794099a96e40582126a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4d72bce375e28d1439bca96a9c243f73, type: 3}
 --- !u!54 &54070167127466714
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -176,6 +176,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.1
-  m_BaseOffset: 0.04587787
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

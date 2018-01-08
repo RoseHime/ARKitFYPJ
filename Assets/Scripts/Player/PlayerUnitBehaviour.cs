@@ -137,6 +137,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (b_Selected)
+        {
+            this.GetComponent<NavMeshAgent>().enabled = true;
+        }
+        else if (!b_Selected)
+        {
+            this.GetComponent<NavMeshAgent>().enabled = false;
+
+        }
+
         if (f_HealthPoint <= 0)
         {
             Destroy(gameObject);
@@ -505,11 +515,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         if (PUN == PlayerUnitType.PUN_WORKER)
         {
-            return i_AmountOfButtons = 6;
+            return i_AmountOfButtons = 3;
         }
         else
         {
-            return i_AmountOfButtons = 5;
+            return i_AmountOfButtons = 2;
         }
     }
 
