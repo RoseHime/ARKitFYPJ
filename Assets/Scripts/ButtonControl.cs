@@ -27,7 +27,7 @@ public class ButtonControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         s_text = btn.GetComponentInChildren<Text>().text;
-        Debug.Log(b_SomethingIsSelected);
+        //Debug.Log(b_SomethingIsSelected);
     }
     
     public void TapDown()

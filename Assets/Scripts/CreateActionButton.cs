@@ -42,7 +42,14 @@ public class CreateActionButton : MonoBehaviour
             }
         }
 
-        if (GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().go_SelectUnit() == null)
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().enabled)
+        {
+            if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().go_SelectedUnit == null)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        else if (GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().go_SelectUnit() == null)
         {
             GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().Setfalse(false);
             gameObject.SetActive(false);
@@ -53,7 +60,7 @@ public class CreateActionButton : MonoBehaviour
     {
         foreach (Transform button in gameObject.transform)
         {
-            if (button.gameObject.name == "ActionButton")
+            if (button.gameObject.name == "ActionButton" || button.gameObject.name == "UpgradeActionButton")
             {
                 Destroy(button.gameObject);
             }
@@ -103,7 +110,7 @@ public class CreateActionButton : MonoBehaviour
                 secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                 //goButton.transform.localPosition = Vector3.zero;
-                secondButton.transform.position = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
+                secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
                 secondButton.GetComponentInChildren<Text>().text = "CREATE";
             }
             else if (go_selectedUnit.GetComponent<TownHallBehaviour>() != null)
@@ -117,7 +124,7 @@ public class CreateActionButton : MonoBehaviour
                 secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                 //goButton.transform.localPosition = Vector3.zero;
-                secondButton.transform.position = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
+                secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
                 secondButton.GetComponentInChildren<Text>().text = "UPGRADE (" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost + ")";
             }
         }

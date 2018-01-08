@@ -51,6 +51,16 @@ public class ChooseCommand : MonoBehaviour {
                 }
             }
         }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
+        {
+            go_BuildingPanel.SetActive(true);
+            go_CommandPanel.SetActive(false);
+        }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATE")
+        {
+            go_BarracksPanel.SetActive(true);
+            go_CommandPanel.SetActive(false);
+        }
     }
     //public void OffClickCommand()
     //{
