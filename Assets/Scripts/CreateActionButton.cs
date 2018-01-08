@@ -71,7 +71,9 @@ public class CreateActionButton : MonoBehaviour
                 goButton.transform.SetParent(go_actionPanel.transform, false);
                 goButton.transform.localScale = new Vector3(1, 1, 1);
                 goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
-                goButton.transform.position = new Vector3(go_selectButton.transform.position.x, go_selectButton.transform.position.y + go_actionButton_Length * (1 + i), 0);
+                goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+                goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+                goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * (1 + i), 0);
                 switch (i)
                 {
                     case 0:
@@ -97,9 +99,11 @@ public class CreateActionButton : MonoBehaviour
                 secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
                 secondButton.GetComponent<ChooseCommand>().go_BarracksPanel = go_barracksPanel;
                 go_barracksPanel.GetComponent<BarracksPanelInfo>().go_SelectedBarracks = go_selectedUnit;
+                secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+                secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                 //goButton.transform.localPosition = Vector3.zero;
-                secondButton.transform.position = new Vector3(go_selectButton.transform.position.x, go_selectButton.transform.position.y + go_actionButton_Length, 0);
+                secondButton.transform.position = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
                 secondButton.GetComponentInChildren<Text>().text = "CREATE";
             }
             else if (go_selectedUnit.GetComponent<TownHallBehaviour>() != null)
@@ -109,9 +113,11 @@ public class CreateActionButton : MonoBehaviour
                 secondButton.transform.SetParent(go_actionPanel.transform, false);
                 secondButton.transform.localScale = new Vector3(1, 1, 1);
                 secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+                secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                 //goButton.transform.localPosition = Vector3.zero;
-                secondButton.transform.position = new Vector3(go_selectButton.transform.position.x, go_selectButton.transform.position.y + go_actionButton_Length, 0);
+                secondButton.transform.position = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
                 secondButton.GetComponentInChildren<Text>().text = "UPGRADE (" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost + ")";
             }
         }
