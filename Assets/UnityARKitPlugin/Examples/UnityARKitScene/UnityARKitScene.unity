@@ -440,9 +440,9 @@ RectTransform:
   m_Father: {fileID: 464063223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 1}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -114, y: -49}
   m_SizeDelta: {x: 230, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64588910
@@ -1382,6 +1382,8 @@ MonoBehaviour:
   f_HealthPoint: 20
   f_range: 0.5
   f_atkDmg: 0
+  i_woodCost: 0
+  i_stoneCost: 0
   i_magicStoneCost: 0
   b_StartHarvest: 0
   b_HoldingResource: 0
@@ -1628,6 +1630,8 @@ MonoBehaviour:
   f_HealthPoint: 20
   f_range: 0.5
   f_atkDmg: 0
+  i_woodCost: 0
+  i_stoneCost: 0
   i_magicStoneCost: 0
   b_StartHarvest: 0
   b_HoldingResource: 0
@@ -1789,6 +1793,8 @@ MonoBehaviour:
   f_HealthPoint: 20
   f_range: 0.5
   f_atkDmg: 0
+  i_woodCost: 0
+  i_stoneCost: 0
   i_magicStoneCost: 0
   b_StartHarvest: 0
   b_HoldingResource: 0
@@ -3403,7 +3409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1121666030
 MonoBehaviour:
   m_ObjectHideFlags: 0

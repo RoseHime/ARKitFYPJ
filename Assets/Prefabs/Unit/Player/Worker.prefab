@@ -133,6 +133,9 @@ MonoBehaviour:
   f_HealthPoint: 20
   f_range: 0.5
   f_atkDmg: 0
+  i_woodCost: 1
+  i_stoneCost: 1
+  i_magicStoneCost: 1
   b_StartHarvest: 0
   b_HoldingResource: 0
   b_toHarvestStone: 0
