@@ -34,6 +34,7 @@ public class ChooseCommand : MonoBehaviour {
         {
             Debug.Log("OnCLick");
             ti.b_Cancelled = true;
+            go_BuildingPanel.SetActive(false);
             go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
@@ -51,6 +52,14 @@ public class ChooseCommand : MonoBehaviour {
         {
             go_BarracksPanel.SetActive(true);
             go_CommandPanel.SetActive(false);
+        }
+        else if (go_CommandButton.name == "UpgradeActionButton")
+        {
+            if (GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().LevelUp())
+            {
+                go_CommandPanel.SetActive(false);
+                ti.b_Cancelled = true;
+            }
         }
     }
     //public void OffClickCommand()

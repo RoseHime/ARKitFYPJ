@@ -37,6 +37,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float f_range;
     public float f_atkDmg;
 
+    public int i_magicStoneCost = 0;
+
     private int i_resourceWOOD;
     private int i_resourceSTONE;
     public bool b_StartHarvest;
@@ -390,13 +392,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if (b_isStoneHarvested)
             {
 
-                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreStone(i_resourceSTONE);
+                go_Depot.GetComponent<TownHallBehaviour>().StoreStone(i_resourceSTONE);
                 i_resourceSTONE = 0;
                 b_isStoneHarvested = false;
             }
             else if (b_isWoodHarvested)
             {
-                go_Depot.GetComponent<ResourceDepotBehaviour>().StoreWood(i_resourceWOOD);
+                go_Depot.GetComponent<TownHallBehaviour>().StoreWood(i_resourceWOOD);
                 i_resourceWOOD = 0;
                 b_isWoodHarvested = false;
             }

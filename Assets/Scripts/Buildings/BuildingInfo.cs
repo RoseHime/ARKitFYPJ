@@ -10,6 +10,10 @@ public class BuildingInfo : MonoBehaviour {
     float f_underAttackCooldown = 0;
     float f_previousHealth = 50;
 
+    public int i_woodCost = 0;
+    public int i_stoneCost = 0;
+    public int i_magicStoneCost = 0;
+
     private TowerBehaviour towerBehaviour;
 
     // Use this for initialization

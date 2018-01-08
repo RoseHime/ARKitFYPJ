@@ -10,11 +10,12 @@ public class CreateEntities: MonoBehaviour {
     public GameObject playerList;
     public GameObject go_playerPrefab;
 
+    private PlayerInfo playerInfo;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+        playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,6 +24,10 @@ public class CreateEntities: MonoBehaviour {
 
     public void BuildBuilding(Vector3 position)
     {
+        playerInfo.i_stone -= go_TowerPrefab.GetComponent<BuildingInfo>().i_stoneCost;
+        playerInfo.i_wood -= go_TowerPrefab.GetComponent<BuildingInfo>().i_woodCost;
+        playerInfo.i_magicStone -= go_TowerPrefab.GetComponent<BuildingInfo>().i_magicStoneCost;
+
         Vector3 originalScale = go_TowerPrefab.transform.localScale;
         GameObject tempBuilding = Instantiate(go_TowerPrefab);
         tempBuilding.transform.position = position;

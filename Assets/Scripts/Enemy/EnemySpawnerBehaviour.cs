@@ -8,22 +8,6 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 
     public float f_spawnRate = 10;
     private float f_cooldown = 0;
-
-    public int i_maxUnits = 1;
-
-    public List<GameObject> localEnemyList;
-    bool squadIsFull = false;
-
-    public bool isMoving = false;
-    public bool isRetreating = true;
-
-    public float f_morale = 50;
-    public float f_moraleIncreaseRate = 1;
-
-    float previousTotalHP = 0;
-
-    public float f_moraleCooldown = 5;
-    float f_moraleTimer = 0;
     
 	// Use this for initialization
 	void Start () {
@@ -32,134 +16,33 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (localEnemyList.Count == 0)
-        {
-            squadIsFull = false;
-        }
-
-        if (f_cooldown <= 1/f_spawnRate)
+        if (f_cooldown <= 1 / f_spawnRate)
         {
             f_cooldown += Time.deltaTime;
         }
         else
         {
-            if (localEnemyList.Count < i_maxUnits && !squadIsFull)
+            if (GameObject.FindGameObjectWithTag("EnemyList").transform.childCount < GameObject.FindGameObjectWithTag("EnemyAI").GetComponent<MasterAI>().i_UnitCapacity)
             {
-                SpawnUnit();
+                GameObject.FindGameObjectWithTag("EnemyAI").GetComponent<MasterAI>().defendingUnits.Add(SpawnUnit());
                 f_cooldown = 0;
-                if (localEnemyList.Count >= i_maxUnits)
-                {
-                    squadIsFull = true;
-                }
             }
+
         }
+    }
 
-        if (localEnemyList.Count < i_maxUnits && squadIsFull && isRetreating)
-        {
-            squadIsFull = false;
-        }
-
-        List<GameObject> thingsToRemove = new List<GameObject>();
-        foreach(GameObject thing in localEnemyList)
-        {
-            if (thing == null)
-            {
-                thingsToRemove.Add(thing);
-            }
-        }
-
-        foreach(GameObject thing in thingsToRemove)
-        {
-            localEnemyList.Remove(thing);
-        }
-
-        isMoving = CheckIfMoving();
-        UpdateMorale();
-	}
-
-    void SpawnUnit()
+    public GameObject SpawnUnit()
     {
         GameObject tempEnemy = Instantiate(go_enemyPrefab);
         tempEnemy.transform.SetParent(GameObject.FindGameObjectWithTag("EnemyList").transform);
         tempEnemy.transform.position = gameObject.transform.position;
+        //tempEnemy.transform.position = transform.GetChild(0).position;
         tempEnemy.transform.localScale = go_enemyPrefab.transform.localScale;
         tempEnemy.name = go_enemyPrefab.name;
 
         tempEnemy.GetComponent<EnemyBehaviour>().destination = transform.GetChild(0).position;
         tempEnemy.GetComponent<EnemyBehaviour>().EUS = EnemyBehaviour.EnemyUnitState.EUS_MOVE;
-
-        localEnemyList.Add(tempEnemy);
-
-        previousTotalHP += tempEnemy.GetComponent<EnemyBehaviour>().f_health;
-        f_morale += 10;
-        
-    }
-
-    public void MoveUnits(Vector3 position)
-    {
-        isMoving = true;
-        isRetreating = false;
-        //Debug.Log("MOVE LA!");
-        foreach (GameObject unit in localEnemyList)
-        {
-            unit.GetComponent<EnemyBehaviour>().destination = position;
-            unit.GetComponent<EnemyBehaviour>().EUS = EnemyBehaviour.EnemyUnitState.EUS_MOVE;
-        }
-    }
-
-    public void RetreatUnits(Vector3 position)
-    {
-        MoveUnits(position);
-        isRetreating = true;
-    }
-
-    bool CheckIfMoving()
-    {
-        bool check = false;
-        foreach (GameObject unit in localEnemyList)
-        {
-            if (unit.GetComponent<EnemyBehaviour>().EUS != EnemyBehaviour.EnemyUnitState.EUS_IDLE)
-            {
-                check = true;
-                break;
-            }
-        }
-        return check;
-    }
-
-    void UpdateMorale()
-    {
-
-        float currentTotalHP = 0;
-        foreach (GameObject unit in localEnemyList)
-        {
-            currentTotalHP += unit.GetComponent<EnemyBehaviour>().f_health;
-        }
-
-        if (previousTotalHP == currentTotalHP)
-        {
-            if (f_moraleTimer < f_moraleCooldown)
-            {
-                f_moraleTimer += Time.deltaTime;
-            }
-
-            if (f_moraleTimer >= f_moraleCooldown)
-            {
-                f_morale = Mathf.Min(100,f_morale + f_moraleIncreaseRate * Time.deltaTime);
-            }
-        }
-        else
-        {
-            f_moraleTimer = 0;
-        }
-
-
-        if (previousTotalHP > currentTotalHP)
-        {
-            f_morale = Mathf.Max(0, f_morale - 50 * (previousTotalHP - currentTotalHP) / previousTotalHP);
-        }
-
-        previousTotalHP = currentTotalHP;
+        tempEnemy.GetComponent<EnemyBehaviour>().isDefending = true;
+        return tempEnemy;
     }
 }

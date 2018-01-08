@@ -13,6 +13,11 @@ public class PlayerInfo : MonoBehaviour {
     public Text woodText;
     public Text magicStoneText;
 
+    public int i_playerLevel = 1;
+    public int i_MaxUnitCapacity = 10;
+
+    public int f_upgradeCost = 10;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,5 +28,16 @@ public class PlayerInfo : MonoBehaviour {
         stoneText.text = "" + i_stone;
         woodText.text = "" + i_wood;
         magicStoneText.text = "" + i_magicStone;
+    }
+
+    public bool LevelUp()
+    {
+        if (i_magicStone >= f_upgradeCost)
+        {
+            i_magicStone -= f_upgradeCost;
+            i_playerLevel++;
+            return true;
+        }
+        return false;
     }
 }

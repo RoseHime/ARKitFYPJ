@@ -24,6 +24,7 @@ TagManager:
   - EnemyBuildingList
   - StoneMine
   - Tree
+  - EnemyAI
   layers:
   - Default
   - TransparentFX

@@ -145,6 +145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 50
   b_IsUnderAttack: 0
+  i_woodCost: 0
+  i_stoneCost: 1
+  i_magicStoneCost: 0
 --- !u!136 &136110553570751048
 CapsuleCollider:
   m_ObjectHideFlags: 1
