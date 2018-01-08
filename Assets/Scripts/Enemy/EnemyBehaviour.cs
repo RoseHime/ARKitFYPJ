@@ -295,7 +295,7 @@ public class EnemyBehaviour : MonoBehaviour {
         Ray ray = new Ray(transform.position + new Vector3(0,1,0), -Vector3.up);
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray,out hit,float.MaxValue))
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y + 0.05f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z);
         }
     }
 
