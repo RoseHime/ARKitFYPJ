@@ -37,6 +37,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float f_range;
     public float f_atkDmg;
 
+    public int i_magicStoneCost = 0;
+
     private int i_resourceWOOD;
     private int i_resourceSTONE;
     public bool b_StartHarvest;

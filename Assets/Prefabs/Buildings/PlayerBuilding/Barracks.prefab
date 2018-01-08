@@ -155,6 +155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 300
   b_IsUnderAttack: 0
+  i_woodCost: 10
+  i_stoneCost: 10
+  i_magicStoneCost: 0
 --- !u!208 &208762002091513276
 NavMeshObstacle:
   m_ObjectHideFlags: 1
