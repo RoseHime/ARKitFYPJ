@@ -50,6 +50,7 @@ public class EnemyBehaviour : MonoBehaviour {
         if (ET == EnemyType.ET_RANGED)   
             bullet_Prefab = transform.GetChild(0).gameObject;
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = f_speed;
         //_navMeshOb = GetComponent<NavMeshObstacle>();
     }
 
