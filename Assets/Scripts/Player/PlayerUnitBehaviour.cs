@@ -135,6 +135,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (b_Selected)
+        {
+            this.GetComponent<NavMeshAgent>().enabled = true;
+        }
+        else if (!b_Selected)
+        {
+            this.GetComponent<NavMeshAgent>().enabled = false;
+
+        }
+
         if (f_HealthPoint <= 0)
         {
             Destroy(gameObject);
