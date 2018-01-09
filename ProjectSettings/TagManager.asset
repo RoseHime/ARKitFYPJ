@@ -28,6 +28,7 @@ TagManager:
   - ControlButton
   - Crosshair
   - DebugPurpose
+  - PlaneDetection
   layers:
   - Default
   - TransparentFX

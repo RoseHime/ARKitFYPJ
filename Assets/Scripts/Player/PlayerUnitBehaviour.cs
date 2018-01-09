@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerUnitBehaviour : MonoBehaviour
 {
@@ -85,9 +86,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float f_fireRate = 1;
     private float f_fireCooldown = 0;
 
+    GameObject debugLog;
+
     // Use this for initialization
     void Start()
     {
+        debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
+
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
 
@@ -98,7 +103,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         i_resourceWOOD = 0;
         i_resourceSTONE = 0;
-        T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
+        //T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
         PUS = PlayerUnitState.PUS_GUARD;
         //rb_Body = gameObject.GetComponent<Rigidbody>();
         b_Selected = false;
@@ -117,16 +122,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
             b_toHarvestTree = false;
         }
 
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position + new Vector3(0, 10, 0), -Vector3.up);
-        if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray, out hit, float.MaxValue))
-        {
-            rcHitPosition = hit.point;
-            f_distanceY = gameObject.GetComponent<Transform>().position.y - rcHitPosition.y;
-
-            offset_Y = new Vector3(0, f_distanceY, 0);
-        }
-
         f_goingUpSlope = _navMeshAgent.speed / 2;
         f_goingDownSlope = _navMeshAgent.speed * 1.5f;
         f_onLandSpeed = _navMeshAgent.speed;
@@ -137,10 +132,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (b_Selected)
-        {
-            _navMeshAgent.enabled = true;
-        }
+        debugLog.GetComponent<Text>().text = "state" + PUS + "," + "/n" +
+                                             "CurrentPos"+ v3_currentPos + "," + "/n" +
+                                             "targetpos" + v3_targetPos + "," + "/n" +
+                                             "navmesh" + _navMeshAgent.enabled +  "," + "/n" +
+                                             "isMoving" + b_Moving + "," + "/n" +
+                                             "selected" + b_Selected;
 
         if (f_HealthPoint <= 0)
         {
@@ -194,13 +191,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 b_isHarvesting = false;
             }
         }
-
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position + new Vector3(0, 10, 0), -Vector3.up);
-        if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray, out hit, float.MaxValue))
-        {
-            transform.position = new Vector3(transform.position.x, hit.point.y + f_distanceY, transform.position.z);
-        }
+        SnapToGround();
 
         switch (PUS)
         {
@@ -224,7 +215,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 {
                     this.GetComponent<NavMeshAgent>().enabled = false;
                     //rb_Body.isKinematic = true;
-                    DetectEnemyUnit();
+                    //DetectEnemyUnit();
                     break;
                 }
             case PlayerUnitState.PUS_HARVEST:
@@ -432,6 +423,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private void MoveToTargetPos()
     {
+
         v3_currentPos = gameObject.transform.position;
         if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
         {
@@ -494,6 +486,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
         go_CommandMenu.GetComponent<CreateActionButton>().go_selectedUnit = gameObject;
         go_CommandMenu.GetComponent<CreateActionButton>().CreateButtons();
         go_CommandMenu.SetActive(true);
+    }
+
+    void SnapToGround()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position + new Vector3(0, 1, 0), -Vector3.up);
+        if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray, out hit, float.MaxValue))
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+        }
     }
 
     public float GetRange()

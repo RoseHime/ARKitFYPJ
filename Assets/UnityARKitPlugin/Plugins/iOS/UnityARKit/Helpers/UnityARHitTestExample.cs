@@ -16,6 +16,9 @@ namespace UnityEngine.XR.iOS
                 {
                     child.gameObject.SetActive(true);
                 }
+                GameObject test = GameObject.FindGameObjectWithTag("PlaneDetection").gameObject;
+                test.GetComponent<UnityARCameraManager>().enabled = false; 
+
                 foreach (var hitResult in hitResults) {
                     Debug.Log ("Got hit!");
                     m_HitTransform.position = UnityARMatrixOps.GetPosition (hitResult.worldTransform);

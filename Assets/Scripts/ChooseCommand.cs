@@ -40,7 +40,7 @@ public class ChooseCommand : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
             {
                 GameObject go_ObjectHit = hit.transform.gameObject;
-                go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
+                //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
                 if (go_ObjectHit.name == "StoneMine")
                 {
                     Debug.Log("Select Stone Mine");
