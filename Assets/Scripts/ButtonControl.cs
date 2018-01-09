@@ -54,8 +54,7 @@ public class ButtonControl : MonoBehaviour {
                     btn.GetComponentInChildren<Text>().text = "Back";
                 }
             }
-            //btn.interactable = false;
-            
+            //btn.interactable = false;           
         }
 
         //If something is selected

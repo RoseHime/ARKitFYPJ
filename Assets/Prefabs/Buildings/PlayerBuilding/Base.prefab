@@ -126,6 +126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 500
   b_IsUnderAttack: 0
+  i_woodCost: 0
+  i_stoneCost: 0
+  i_magicStoneCost: 0
+  DestroyedMesh: {fileID: 4300000, guid: 67013ab1ceaa58d488d54129f1baa0a1, type: 3}
 --- !u!208 &208849874107570266
 NavMeshObstacle:
   m_ObjectHideFlags: 1

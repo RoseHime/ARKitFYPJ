@@ -68,7 +68,10 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.name == "UpgradeActionButton")
         {
-            GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().LevelUp();
+            if (GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().LevelUp())
+            {
+                go_CommandPanel.SetActive(false);
+            }
         }
     }
     //public void OffClickCommand()

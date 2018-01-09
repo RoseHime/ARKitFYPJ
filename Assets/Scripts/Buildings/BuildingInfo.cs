@@ -5,14 +5,17 @@ using UnityEngine;
 public class BuildingInfo : MonoBehaviour {
 
     public float f_health = 50;
+    protected float f_maxHealth;
     public bool b_IsUnderAttack = false;
 
-    float f_underAttackCooldown = 0;
-    float f_previousHealth = 50;
+    protected float f_underAttackCooldown = 0;
+    protected float f_previousHealth = 50;
 
     public int i_woodCost = 0;
     public int i_stoneCost = 0;
     public int i_magicStoneCost = 0;
+
+    public Mesh DestroyedMesh;
 
     private TowerBehaviour towerBehaviour;
 
@@ -22,10 +25,11 @@ public class BuildingInfo : MonoBehaviour {
         {
             towerBehaviour = transform.GetComponent<TowerBehaviour>();
         }
+        f_maxHealth = f_health;
         f_previousHealth = f_health;
 	}
 
-    void Update ()
+    protected virtual void Update ()
     {
         if (f_health <= 0)
         {
@@ -48,6 +52,14 @@ public class BuildingInfo : MonoBehaviour {
             }
         }
         f_previousHealth = f_health;
+
+        if (f_health < f_maxHealth/2)
+        {
+            if (DestroyedMesh != null)
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = DestroyedMesh;
+            }
+        }
     }
 
     public virtual string GetUnitsInfo()
