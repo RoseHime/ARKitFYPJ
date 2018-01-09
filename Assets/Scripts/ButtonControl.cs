@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class ButtonControl : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class ButtonControl : MonoBehaviour {
     private GameObject go_SelectedUnit;
     private bool b_SomethingIsSelected;
     public RawImage i_Crosshair;
+    public GameObject go_TargetBox;
 
     // Use this for initialization
     void Start () {
@@ -40,18 +42,26 @@ public class ButtonControl : MonoBehaviour {
             ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
             if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
             {
-                GameObject recipient = hit.transform.gameObject;
-                debugText.text = recipient.name + "\n" + hit.point;
-                if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
+                GameObject recipient;// = hit.transform.gameObject;
+
+                //go_TargetBox.transform.position = hit.point;
+                //recipient = go_TargetBox.GetComponent<DetectCollision>().getGO();
+                recipient = hit.transform.gameObject;
+
+                //debugText.text = recipient.name + "\n" + hit.point;
+                if (recipient != null)
                 {
-                    go_SelectedUnit = recipient;
-                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                    if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
                     {
-                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        go_SelectedUnit = recipient.gameObject;
+                        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                        {
+                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        }
+                        go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                        b_SomethingIsSelected = true;
+                        btn.GetComponentInChildren<Text>().text = "Back";
                     }
-                    go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
-                    b_SomethingIsSelected = true;
-                    btn.GetComponentInChildren<Text>().text = "Back";
                 }
             }
             //btn.interactable = false;
@@ -96,4 +106,18 @@ public class ButtonControl : MonoBehaviour {
             b_SomethingIsSelected = false;
         return true;
     }
+
+    //void raycastToNavmesh(Vector3 v3_pos)
+    //{
+    //    Ray ray;
+    //    ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
+    //    if (Physics.Raycast(ray.origin, ray.direction, touchInputMask))
+    //    {
+    //        NavMeshHit navmeshHit;
+    //        if (NavMesh.SamplePosition(hit.point, out navmeshHit, 1, 1))
+    //        {
+    //            
+    //        }
+    //    }
+    //}
 }

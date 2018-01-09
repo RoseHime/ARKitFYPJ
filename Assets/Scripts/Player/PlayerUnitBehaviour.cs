@@ -64,7 +64,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private Vector3 v3_currentPos;
     private Vector3 v3_targetPos;
     private float f_distanceY;
-    private Vector3 offset_Y;
 
     public bool b_buildBuilding;
     public bool b_Moving;
@@ -132,12 +131,22 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        debugLog.GetComponent<Text>().text = "state" + PUS + "," + "/n" +
-                                             "CurrentPos"+ v3_currentPos + "," + "/n" +
-                                             "targetpos" + v3_targetPos + "," + "/n" +
-                                             "navmesh" + _navMeshAgent.enabled +  "," + "/n" +
-                                             "isMoving" + b_Moving + "," + "/n" +
+        debugLog.GetComponent<Text>().text = "state" + PUS + "," + "\n" +
+                                             "CurrentPos"+ v3_currentPos + "," + "\n" +
+                                             "targetpos" + v3_targetPos + "," + "\n" +
+                                             "navmesh" + _navMeshAgent.enabled +  "," + "\n" +
+                                             "isMoving" + b_Moving + "," + "\n" +
                                              "selected" + b_Selected;
+
+        if (b_Selected)
+        {
+            Vector3 lastpos = transform.position;
+            transform.position.Set(0, 0, 0);
+            _navMeshAgent.enabled = true;
+            _navMeshAgent.areaMask = NavMesh.AllAreas;
+            _navMeshAgent.Warp(transform.position);
+            _navMeshAgent.radius = 0.001f;
+        }
 
         if (f_HealthPoint <= 0)
         {
@@ -213,7 +222,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             case PlayerUnitState.PUS_GUARD:
                 {
-                    this.GetComponent<NavMeshAgent>().enabled = false;
                     //rb_Body.isKinematic = true;
                     //DetectEnemyUnit();
                     break;
@@ -425,12 +433,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
 
         v3_currentPos = gameObject.transform.position;
-        if ((v3_currentPos - (v3_targetPos + offset_Y)).magnitude > 0.01f)
+        if ((v3_currentPos - v3_targetPos).magnitude > 0.000001f)
         {
             //Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
             //gameObject.transform.LookAt(v3_seeTarget);
             //gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
-            _navMeshAgent.SetDestination(v3_targetPos + offset_Y);
+            if (_navMeshAgent.isActiveAndEnabled)
+            {
+                //_navMeshAgent.SetDestination(v3_targetPos);
+                _navMeshAgent.destination = v3_targetPos;
+            }
             //GetComponent<Rigidbody>().useGravity = true;
             _navMeshAgent.SamplePathPosition(-1, 0.0f, out navMeshHit);
             if ((navMeshHit.mask == slope) && v3_targetPos.y > gameObject.transform.position.y)
