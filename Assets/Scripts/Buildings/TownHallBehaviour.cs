@@ -9,11 +9,13 @@ public class TownHallBehaviour : BuildingInfo {
     // Use this for initialization
     void Start() {
         playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
+        f_maxHealth = f_health;
+        f_previousHealth = f_health;
     }
 
     // Update is called once per frame
-    void Update() {
-
+    protected override void Update() {
+        base.Update();
     }
 
     public void StoreStone(int stone)

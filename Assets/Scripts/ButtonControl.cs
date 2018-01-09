@@ -18,6 +18,9 @@ public class ButtonControl : MonoBehaviour {
     public RawImage i_Crosshair;
     public GameObject go_TargetBox;
 
+    public GameObject go_buildPanel;
+    public GameObject go_barracksPanel;
+
     // Use this for initialization
     void Start () {
         btn = this.GetComponent<Button>();
@@ -64,8 +67,7 @@ public class ButtonControl : MonoBehaviour {
                     }
                 }
             }
-            //btn.interactable = false;
-            
+            //btn.interactable = false;           
         }
 
         //If something is selected
@@ -78,7 +80,10 @@ public class ButtonControl : MonoBehaviour {
             }
             b_SomethingIsSelected = false;
             btn.GetComponentInChildren<Text>().text = "Select";
+
             //btn.interactable = false;
+            go_barracksPanel.SetActive(false);
+            go_buildPanel.SetActive(false);
         }
 
 
