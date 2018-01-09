@@ -113,7 +113,7 @@ public class CreateActionButton : MonoBehaviour
                 secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
                 secondButton.GetComponentInChildren<Text>().text = "CREATE";
             }
-            else if (go_selectedUnit.GetComponent<TownHallBehaviour>() != null)
+            else if (go_selectedUnit.GetComponent<TownHallBehaviour>() != null && GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_playerLevel < 3)
             {
                 GameObject secondButton = (GameObject)Instantiate(go_actionButton);
                 secondButton.name = "UpgradeActionButton";
