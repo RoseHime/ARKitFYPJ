@@ -213,7 +213,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             case PlayerUnitState.PUS_GUARD:
                 {
-                    this.GetComponent<NavMeshAgent>().enabled = false;
+                    //this.GetComponent<NavMeshAgent>().enabled = false;
                     //rb_Body.isKinematic = true;
                     //DetectEnemyUnit();
                     break;

@@ -95,10 +95,10 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.05
-    agentHeight: 1
+    agentRadius: 0.005
+    agentHeight: 0.06
     agentSlope: 60
-    agentClimb: 1
+    agentClimb: 0.06
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 10
@@ -148,13 +148,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 7}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.12522683, y: 0.0863246, z: 0.010973012, w: 0.98830456}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 229804521}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.219001, y: 10.303, z: 2.561}
 --- !u!20 &10
 Camera:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: 1}
-  m_SizeDelta: {x: 230, y: 500}
+  m_SizeDelta: {x: 230, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64588910
 MonoBehaviour:
@@ -418,43 +418,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'DEBUG LOG
-
-    WOW
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l
-
-    l'
+  m_Text: Debug Log
 --- !u!222 &64588911
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -569,7 +533,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 229804520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.296, z: 0.785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9}
@@ -1152,8 +1116,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 37}
-  m_SizeDelta: {x: 230, y: 500}
+  m_AnchoredPosition: {x: 250, y: 134}
+  m_SizeDelta: {x: 230, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464063224
 MonoBehaviour:
@@ -1605,7 +1569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7d2eba0fcd30a9f4da09713e61193945, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.357
+      value: 0.084
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d2eba0fcd30a9f4da09713e61193945, type: 3}
@@ -5573,7 +5537,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 09d6ecb87f67d2b4cb31bb2b353ce2a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.171
+      value: 0.222
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 09d6ecb87f67d2b4cb31bb2b353ce2a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5590,21 +5554,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 09d6ecb87f67d2b4cb31bb2b353ce2a3, type: 3}
   m_PrefabInternal: {fileID: 1973034619}
---- !u!54 &1973034622
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1973034621}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 2
 --- !u!114 &1973034623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5653,7 +5602,7 @@ NavMeshAgent:
   m_Height: 0.02
   m_BaseOffset: 0
   m_WalkableMask: 1
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!136 &1973034625
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6016,6 +5965,8 @@ MonoBehaviour:
     m_Bits: 256
   debugText: {fileID: 64588910}
   i_Crosshair: {fileID: 1493327470}
+  go_buildPanel: {fileID: 874923027}
+  go_barracksPanel: {fileID: 258749595}
 --- !u!1 &2053640579 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: eedaa646514ca1b46b5203b45a68b91e, type: 3}
