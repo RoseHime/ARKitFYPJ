@@ -27,6 +27,7 @@ TagManager:
   - EnemyAI
   - ControlButton
   - Crosshair
+  - DebugPurpose
   layers:
   - Default
   - TransparentFX

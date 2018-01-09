@@ -15,6 +15,8 @@ public class ChooseCommand : MonoBehaviour {
     public GameObject go_BuildingPanel;
     public GameObject go_BarracksPanel;
 
+    private GameObject go_DebugPurpose;
+
     //Testing use
     //private string text;
 
@@ -24,6 +26,8 @@ public class ChooseCommand : MonoBehaviour {
         go_CommandPanel = go_CommandButton.transform.parent.gameObject;
         bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
         //go_CrossHair = GameObject.FindGameObjectWithTag("Crosshair");
+
+        go_DebugPurpose = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
     }
 
     public void OnClickCommand()
@@ -36,6 +40,7 @@ public class ChooseCommand : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
             {
                 GameObject go_ObjectHit = hit.transform.gameObject;
+                go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
                 if (go_ObjectHit.name == "StoneMine")
                 {
                     Debug.Log("Select Stone Mine");
