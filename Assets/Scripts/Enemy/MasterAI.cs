@@ -31,7 +31,7 @@ public class MasterAI : MonoBehaviour {
     void Update()
     {
         i_UnitCapacity = (playerInfo.i_playerLevel - 1) * i_unitLevelIncrement + 15;
-       
+
         if (playerInfo.i_playerLevel >= i_SeriousLevel)
         {
             if (defendingUnits.Count > 16)
@@ -39,7 +39,7 @@ public class MasterAI : MonoBehaviour {
                 GameObject unit = defendingUnits[Random.Range(0, defendingUnits.Count)];
                 if (attackingSquads[attackingSquads.Count - 1].unitList.Count < attackingSquads[attackingSquads.Count - 1].i_maxUnits)
                 {
-                    attackingSquads[attackingSquads.Count - 1].unitList.Add(unit);                   
+                    attackingSquads[attackingSquads.Count - 1].unitList.Add(unit);
                 }
                 else
                 {
