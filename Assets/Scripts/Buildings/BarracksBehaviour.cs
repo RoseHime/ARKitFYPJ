@@ -23,7 +23,7 @@ public class BarracksBehaviour : BuildingInfo {
 
     public bool LevelUp()
     {
-        if (playerInfo.i_magicStone >= i_levelUpCost)
+        if (playerInfo.i_magicStone >= i_levelUpCost && playerInfo.i_playerLevel > i_barrackLevel)
         {
             playerInfo.i_magicStone -= i_levelUpCost;
             i_barrackLevel++;
@@ -31,5 +31,14 @@ public class BarracksBehaviour : BuildingInfo {
             return true;
         }
         return false;
+    }
+
+
+    public override string GetUnitsInfo()
+    {
+        string unitInfo = "NAME:" + gameObject.name + "\n";
+        unitInfo += "HP:" + f_health;
+        unitInfo += "\nLVL:" + i_barrackLevel;
+        return unitInfo;
     }
 }
