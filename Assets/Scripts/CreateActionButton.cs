@@ -116,6 +116,7 @@ public class CreateActionButton : MonoBehaviour
                     secondButton.GetComponentInChildren<Text>().text = "CREATE";
                     if (j == 1)
                     {
+                        secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * 2, 0);
                         secondButton.name = "UpgradeBarracksButton";
                         secondButton.GetComponentInChildren<Text>().text = "UPGRADE (" + go_selectedUnit.GetComponent<BarracksBehaviour>().i_levelUpCost + ")";
                     }
