@@ -157,13 +157,6 @@ MonoBehaviour:
   go_enemyPrefab: {fileID: 1249712020433492, guid: 556f8cee0bd73be41974b73a3eb5c8de,
     type: 2}
   f_spawnRate: 1
-  i_maxUnits: 10
-  localEnemyList: []
-  isMoving: 0
-  isRetreating: 1
-  f_morale: 50
-  f_moraleIncreaseRate: 1
-  f_moraleCooldown: 5
 --- !u!114 &114863751181815570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,6 +170,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 300
   b_IsUnderAttack: 0
+  i_woodCost: 0
+  i_stoneCost: 0
+  i_magicStoneCost: 0
+  DestroyedMesh: {fileID: 4300000, guid: dad6cc2cf9368a14cacbdeb7b1816d03, type: 3}
 --- !u!208 &208502495561745426
 NavMeshObstacle:
   m_ObjectHideFlags: 1
