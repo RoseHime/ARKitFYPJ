@@ -23,7 +23,7 @@ public class BarracksBehaviour : BuildingInfo {
 
     public bool LevelUp()
     {
-        if (playerInfo.i_magicStone >= i_levelUpCost)
+        if (playerInfo.i_magicStone >= i_levelUpCost && playerInfo.i_playerLevel > i_barrackLevel)
         {
             playerInfo.i_magicStone -= i_levelUpCost;
             i_barrackLevel++;
