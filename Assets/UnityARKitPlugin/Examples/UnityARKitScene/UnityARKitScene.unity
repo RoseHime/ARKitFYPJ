@@ -765,8 +765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e022fc716803f74abee51afa6e99039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_stone: 0
-  i_wood: 0
+  i_stone: 999
+  i_wood: 999
   i_magicStone: 0
   stoneText: {fileID: 2018562070}
   woodText: {fileID: 2134747454}
@@ -1092,7 +1092,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f37b3b8f0404114abd86834b6f2b2d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: -3.92
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f37b3b8f0404114abd86834b6f2b2d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2354,6 +2354,28 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 834285768}
+--- !u!1 &837137780 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1375437485251848, guid: 8cbbfd329c822be4d80753fe14e09ad6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1445523982}
+--- !u!114 &837137781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 837137780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc157aee22935b14fbc7169b50c169c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_health: 500
+  b_IsUnderAttack: 0
+  i_woodCost: 0
+  i_stoneCost: 0
+  i_magicStoneCost: 0
+  DestroyedMesh: {fileID: 4300000, guid: 67013ab1ceaa58d488d54129f1baa0a1, type: 3}
 --- !u!1 &855358238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,13 +3880,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4309619409575874, guid: 8cbbfd329c822be4d80753fe14e09ad6, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4309619409575874, guid: 8cbbfd329c822be4d80753fe14e09ad6, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 8cbbfd329c822be4d80753fe14e09ad6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1447678391
@@ -4181,8 +4204,8 @@ MonoBehaviour:
   touchInputMask:
     serializedVersion: 2
     m_Bits: 256
-  getImage: {fileID: 0}
-  origin: {fileID: 0}
+  getImage: {fileID: 2800000, guid: aed71ed3bca9d50498fd8ad2959eeae8, type: 3}
+  origin: {fileID: 2800000, guid: 288a8fe9d63c159478d9df78975b477a, type: 3}
 --- !u!1 &1516683368
 GameObject:
   m_ObjectHideFlags: 0

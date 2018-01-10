@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33106269712367832}
   - component: {fileID: 23295683493563462}
   - component: {fileID: 95018672094265046}
-  - component: {fileID: 114859753075879152}
   - component: {fileID: 208378477895554160}
   - component: {fileID: 65697960610292454}
+  - component: {fileID: 114240961570808922}
   m_Layer: 8
   m_Name: Base
   m_TagString: SelectableBuilding
@@ -113,7 +113,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114859753075879152
+--- !u!114 &114240961570808922
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1283426498164572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2316b0d6eb262754ebd8887566d37cea, type: 3}
+  m_Script: {fileID: 11500000, guid: dc157aee22935b14fbc7169b50c169c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   f_health: 500
