@@ -139,14 +139,14 @@ public class PlayerUnitBehaviour : MonoBehaviour
                                              "isMoving" + b_Moving + "," + "/n" +
                                              "selected" + b_Selected;
 
-        if (b_Selected)
-        {
-            Vector3 lastpos = transform.position;
-            transform.position.Set(0, 0, 0);
-            _navMeshAgent.enabled = true;
-            _navMeshAgent.areaMask = NavMesh.AllAreas;
-            _navMeshAgent.Warp(lastpos);
-        }
+        //if (b_Selected)
+        //{
+        //    Vector3 lastpos = transform.position;
+        //    transform.position.Set(0, 0, 0);
+        //    _navMeshAgent.enabled = true;
+        //    _navMeshAgent.areaMask = NavMesh.AllAreas;
+        //    _navMeshAgent.Warp(lastpos);
+        //}
 
         if (f_HealthPoint <= 0)
         {
@@ -432,18 +432,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private void MoveToTargetPos()
     {
-
         v3_currentPos = gameObject.transform.position;
-        if ((v3_currentPos - (v3_targetPos)).magnitude > 0.0000001f)
+        if ((v3_currentPos - (v3_targetPos)).magnitude > 0.01)
         {
             //Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
             //gameObject.transform.LookAt(v3_seeTarget);
             //gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
-            if (_navMeshAgent.isActiveAndEnabled)
-            {
+                _navMeshAgent.ResetPath();
                 _navMeshAgent.SetDestination(v3_targetPos);
                 _navMeshAgent.SamplePathPosition(-1, 0.0f, out navMeshHit);
-            }
+            
             //GetComponent<Rigidbody>().useGravity = true;
             if ((navMeshHit.mask == slope) && v3_targetPos.y > gameObject.transform.position.y)
             {

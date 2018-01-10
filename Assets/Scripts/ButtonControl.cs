@@ -17,9 +17,14 @@ public class ButtonControl : MonoBehaviour {
     private bool b_SomethingIsSelected;
     public RawImage i_Crosshair;
     public GameObject go_TargetBox;
+    GameObject recipient;
 
     public GameObject go_buildPanel;
     public GameObject go_barracksPanel;
+
+    public bool b_ToBuild;
+    public bool b_BuildTower;
+
 
     // Use this for initialization
     void Start () {
@@ -27,6 +32,8 @@ public class ButtonControl : MonoBehaviour {
         s_text = btn.GetComponentInChildren<Text>().text;
         btn.onClick.AddListener(TapDown);
         b_SomethingIsSelected = false;
+        b_ToBuild = false;
+        recipient = null;
     }
 	
 	// Update is called once per frame
@@ -38,15 +45,13 @@ public class ButtonControl : MonoBehaviour {
     public void TapDown()
     {
         //If nothing is selected
-        if (!b_SomethingIsSelected && s_text == "Select")
+        if (!b_SomethingIsSelected && s_text == "Select" && !b_ToBuild)
         {
             //Debug.Log("You clicked");
             Ray ray;
             ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
             if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
             {
-                GameObject recipient;// = hit.transform.gameObject;
-
                 //go_TargetBox.transform.position = hit.point;
                 //recipient = go_TargetBox.GetComponent<DetectCollision>().getGO();
                 recipient = hit.transform.gameObject;
@@ -71,12 +76,22 @@ public class ButtonControl : MonoBehaviour {
         }
 
         //If something is selected
-        else if (b_SomethingIsSelected && s_text == "Back")
+        else if (b_SomethingIsSelected && s_text == "Back" && !b_ToBuild)
         {
-            if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+            if (recipient != null)
             {
-                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                {
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                    {
+                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+                    }
+                }
+                else if (recipient.tag == "SelectableBuilding")
+                {
+                    GameObject.FindGameObjectWithTag("Command").SetActive(false);
+                }
             }
             b_SomethingIsSelected = false;
             btn.GetComponentInChildren<Text>().text = "Select";
@@ -84,11 +99,27 @@ public class ButtonControl : MonoBehaviour {
             //btn.interactable = false;
             go_barracksPanel.SetActive(false);
             go_buildPanel.SetActive(false);
-            go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
+            //go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
+        }
+
+        else if (b_ToBuild && s_text == "Select")
+        {
+            Ray ray;
+            ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
+            if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+            {
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                {
+                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = true;
+                    b_ToBuild = false;
+                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                    b_SomethingIsSelected = false;
+                }
+            }
         }
 
 
-        
     }
 
     public Transform getCrossHair()
@@ -111,6 +142,11 @@ public class ButtonControl : MonoBehaviour {
         if (b == false)
             b_SomethingIsSelected = false;
         return true;
+    }
+
+    public Button getButton()
+    {
+        return btn;
     }
 
     //void raycastToNavmesh(Vector3 v3_pos)

@@ -58,6 +58,8 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
         {
+            bc.b_ToBuild = true;
+            bc.getButton().GetComponentInChildren<Text>().text = "Select";
             go_BuildingPanel.SetActive(true);
             go_CommandPanel.SetActive(false);
         }
