@@ -90,7 +90,8 @@ public class ButtonControl : MonoBehaviour {
                 }
                 else if (recipient.tag == "SelectableBuilding")
                 {
-                    GameObject.FindGameObjectWithTag("Command").SetActive(false);
+                    if (GameObject.FindGameObjectWithTag("Command"))
+                        GameObject.FindGameObjectWithTag("Command").SetActive(false);
                 }
             }
             b_SomethingIsSelected = false;
@@ -142,6 +143,12 @@ public class ButtonControl : MonoBehaviour {
         if (b == false)
             b_SomethingIsSelected = false;
         return true;
+    }
+
+    public void SetBackToSelect()
+    {
+        b_SomethingIsSelected = false;
+        btn.GetComponentInChildren<Text>().text = "Select";
     }
 
     public Button getButton()

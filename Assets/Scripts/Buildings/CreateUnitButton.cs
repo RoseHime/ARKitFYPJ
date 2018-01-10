@@ -44,6 +44,7 @@ public class CreateUnitButton : MonoBehaviour {
                 createEntitiy.BuildPlayerUnit(transform.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
                 transform.parent.parent.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
+                GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().SetBackToSelect();
             }
         }
     }
