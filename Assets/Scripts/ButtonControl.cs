@@ -84,6 +84,7 @@ public class ButtonControl : MonoBehaviour {
             //btn.interactable = false;
             go_barracksPanel.SetActive(false);
             go_buildPanel.SetActive(false);
+            go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
         }
 
 
