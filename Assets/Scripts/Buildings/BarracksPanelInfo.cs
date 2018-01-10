@@ -17,21 +17,24 @@ public class BarracksPanelInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (playerInfo.i_playerLevel > 1)
+        if (go_SelectedBarracks != null)
         {
-            go_lvl2Block.SetActive(false);
-        }
-        else
-        {
-            go_lvl2Block.SetActive(true);
-        }
-        if (playerInfo.i_playerLevel > 2)
-        {
-            go_lvl3Block.SetActive(false);
-        }
-        else
-        {
-            go_lvl3Block.SetActive(true);
+            if (go_SelectedBarracks.GetComponent<BarracksBehaviour>().i_barrackLevel > 1)
+            {
+                go_lvl2Block.SetActive(false);
+            }
+            else
+            {
+                go_lvl2Block.SetActive(true);
+            }
+            if (go_SelectedBarracks.GetComponent<BarracksBehaviour>().i_barrackLevel > 2)
+            {
+                go_lvl3Block.SetActive(false);
+            }
+            else
+            {
+                go_lvl3Block.SetActive(true);
+            }
         }
     }
 }
