@@ -73,6 +73,13 @@ public class ChooseCommand : MonoBehaviour {
                 go_CommandPanel.SetActive(false);
             }
         }
+        else if (go_CommandButton.name == "UpgradeBarracksButton")
+        {
+            if (go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit.GetComponent<BarracksBehaviour>().LevelUp())
+            {
+                go_CommandPanel.SetActive(false);
+            }
+        }
     }
     //public void OffClickCommand()
     //{

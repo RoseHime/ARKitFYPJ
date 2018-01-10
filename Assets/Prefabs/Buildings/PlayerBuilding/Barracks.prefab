@@ -38,8 +38,8 @@ GameObject:
   - component: {fileID: 23900165649191130}
   - component: {fileID: 95219875126023852}
   - component: {fileID: 208762002091513276}
-  - component: {fileID: 114093256979416312}
   - component: {fileID: 65611555038117696}
+  - component: {fileID: 114963534041224656}
   m_Layer: 8
   m_Name: Barracks
   m_TagString: SelectableBuilding
@@ -142,7 +142,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114093256979416312
+--- !u!114 &114963534041224656
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154401893956046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2316b0d6eb262754ebd8887566d37cea, type: 3}
+  m_Script: {fileID: 11500000, guid: 18720a1c8fcdddc42a2433b0ccad5cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   f_health: 300
@@ -159,6 +159,8 @@ MonoBehaviour:
   i_stoneCost: 10
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 4300000, guid: dad6cc2cf9368a14cacbdeb7b1816d03, type: 3}
+  i_barrackLevel: 1
+  i_levelUpCost: 10
 --- !u!208 &208762002091513276
 NavMeshObstacle:
   m_ObjectHideFlags: 1

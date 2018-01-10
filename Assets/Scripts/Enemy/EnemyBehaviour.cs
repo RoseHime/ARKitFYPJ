@@ -30,6 +30,8 @@ public class EnemyBehaviour : MonoBehaviour {
     private float f_fireCooldown = 0;
     public float f_defendRange = 1.0f;
 
+    public int i_magicStoneDrop = 1;
+
     private GameObject bullet_Prefab;
     private Transform T_playerList;
     private GameObject go_LockOnUnit;
@@ -93,6 +95,7 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         if (f_health <= 0)
         {
+            GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_magicStone += i_magicStoneDrop;
             Destroy(gameObject);
         }
     }

@@ -99,19 +99,28 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.name == "Barracks")
             {
-                GameObject secondButton = (GameObject)Instantiate(go_actionButton);
-                secondButton.name = "ActionButton";
-                secondButton.transform.SetParent(go_actionPanel.transform, false);
-                secondButton.transform.localScale = new Vector3(1, 1, 1);
-                secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
-                secondButton.GetComponent<ChooseCommand>().go_BarracksPanel = go_barracksPanel;
-                go_barracksPanel.GetComponent<BarracksPanelInfo>().go_SelectedBarracks = go_selectedUnit;
-                secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
-                secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+                for (int j = 0;j < 2;++j)
+                {
+                    GameObject secondButton = (GameObject)Instantiate(go_actionButton);
+                    secondButton.name = "ActionButton";
+                    secondButton.transform.SetParent(go_actionPanel.transform, false);
+                    secondButton.transform.localScale = new Vector3(1, 1, 1);
+                    secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                    secondButton.GetComponent<ChooseCommand>().go_BarracksPanel = go_barracksPanel;
+                    go_barracksPanel.GetComponent<BarracksPanelInfo>().go_SelectedBarracks = go_selectedUnit;
+                    secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+                    secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
-                //goButton.transform.localPosition = Vector3.zero;
-                secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
-                secondButton.GetComponentInChildren<Text>().text = "CREATE";
+                    //goButton.transform.localPosition = Vector3.zero;
+                    secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
+                    secondButton.GetComponentInChildren<Text>().text = "CREATE";
+                    if (j == 1)
+                    {
+                        secondButton.name = "UpgradeBarracksButton";
+                        secondButton.GetComponentInChildren<Text>().text = "UPGRADE (" + go_selectedUnit.GetComponent<BarracksBehaviour>().i_levelUpCost + ")";
+                    }
+                }
+
             }
             else if (go_selectedUnit.GetComponent<TownHallBehaviour>() != null && GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_playerLevel < 3)
             {
