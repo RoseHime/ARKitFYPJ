@@ -78,7 +78,7 @@ public class WaypointConnector : MonoBehaviour
         return go_TargetWaypoint;
     }
 
-    public Vector3 MoveToNextWaypoint(GameObject currentwayPoint, GameObject lastWaypoint)
+    public Vector3 MoveToNextWaypoint(GameObject lastWaypoint)
     {
         float distance = Mathf.Infinity;
         for (int i = 0; i < childsT.Length; i++)

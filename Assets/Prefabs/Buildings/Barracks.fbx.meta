@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 940986774803e254e8f857c282e9efa3
-timeCreated: 1514958099
+guid: adcb82b8924209245a773d8593e5beab
+timeCreated: 1515720905
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pasted__Ogre1
+    4300000: Barracks
     9500000: //RootNode
   materials:
     importMaterials: 1
