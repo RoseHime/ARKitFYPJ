@@ -1760,6 +1760,9 @@ MonoBehaviour:
   i_playerLevel: 1
   i_MaxUnitCapacity: 10
   f_upgradeCost: 10
+  f_LODHighQuality: 1
+  f_LODMedQuality: 2
+  f_LODLowQuality: 3
 --- !u!4 &274106733
 Transform:
   m_ObjectHideFlags: 0
@@ -15074,6 +15077,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 131772a050ec1d04685869f25d6a8abf, type: 2}
+    - target: {fileID: 100000, guid: 240095f03e8103940bd91d937f25831e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 240095f03e8103940bd91d937f25831e, type: 3}
   m_IsPrefabParent: 0

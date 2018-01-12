@@ -6,7 +6,6 @@ public class MasterAI : MonoBehaviour {
 
     PlayerInfo playerInfo;
 
-
     public int i_UnitCapacity = 10;
     public int i_SeriousLevel = 2;
 
@@ -14,6 +13,9 @@ public class MasterAI : MonoBehaviour {
 
     List<EnemySquad> attackingSquads;
     public List<GameObject> defendingUnits;
+
+    Transform enemyList;
+    Transform playerList;
 
 	// Use this for initialization
 	void Start () {
@@ -25,10 +27,26 @@ public class MasterAI : MonoBehaviour {
         squad.Start();
         squad.i_maxUnits = 1;
         attackingSquads.Add(squad);
+
+        enemyList = GameObject.FindGameObjectWithTag("EnemyList").transform;
+        playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (enemyList.childCount > playerList.childCount)
+        {
+            PincerStrat();
+        }
+        else
+        {
+            DefenceStrat();
+        }
+        UpdateAttackSquads();
+    }
+
+    void PincerStrat()
     {
         i_UnitCapacity = (playerInfo.i_playerLevel - 1) * i_unitLevelIncrement + 15;
 
@@ -52,8 +70,11 @@ public class MasterAI : MonoBehaviour {
                 defendingUnits.Remove(unit);
             }
         }
+    }
 
-        UpdateAttackSquads();
+    void DefenceStrat()
+    {
+
     }
 
     void UpdateAttackSquads()

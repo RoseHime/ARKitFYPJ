@@ -18,6 +18,10 @@ public class PlayerInfo : MonoBehaviour {
 
     public int f_upgradeCost = 10;
 
+    public float f_LODHighQuality = 1;
+    public float f_LODMedQuality = 2;
+    public float f_LODLowQuality = 3;
+
 	// Use this for initialization
 	void Start () {
 		
