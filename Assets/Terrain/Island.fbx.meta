@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 73470c5459640fa45aa02c86fd96b56a
-timeCreated: 1514945353
+guid: 240095f03e8103940bd91d937f25831e
+timeCreated: 1515719533
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pasted__Island
-    100004: pasted__Sea1
+    100002: Island2
+    100004: Sea1
     400000: //RootNode
-    400002: pasted__Island
-    400004: pasted__Sea1
-    2300000: pasted__Island
-    2300002: pasted__Sea1
-    3300000: pasted__Island
-    3300002: pasted__Sea1
-    4300000: pasted__Sea1
-    4300002: pasted__Island
+    400002: Island2
+    400004: Sea1
+    2300000: Island2
+    2300002: Sea1
+    3300000: Island2
+    3300002: Sea1
+    4300000: Sea1
+    4300002: Island2
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -29,6 +29,8 @@ TagManager:
   - Crosshair
   - DebugPurpose
   - PlaneDetection
+  - MoveWaypoint
+  - MoveParent
   layers:
   - Default
   - TransparentFX
@@ -41,8 +43,8 @@ TagManager:
   - TouchInput
   - GameLayer
   - ARKitPlane
-  - 
-  - 
+  - Selectable
+  - TargetPoint
   - 
   - 
   - 

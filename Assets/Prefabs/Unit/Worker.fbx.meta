@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9f37b3b8f0404114abd86834b6f2b2d3
-timeCreated: 1515550860
+guid: e63998f0630528c42af51bf1e192ea9b
+timeCreated: 1515719820
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Navmesh
+    4300000: Worker4
     9500000: //RootNode
   materials:
     importMaterials: 1

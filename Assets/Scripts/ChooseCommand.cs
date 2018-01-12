@@ -74,6 +74,7 @@ public class ChooseCommand : MonoBehaviour {
             if (GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().LevelUp())
             {
                 go_CommandPanel.SetActive(false);
+                bc.SetBackToSelect();
             }
         }
         else if (go_CommandButton.name == "UpgradeBarracksButton")
@@ -81,6 +82,7 @@ public class ChooseCommand : MonoBehaviour {
             if (go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit.GetComponent<BarracksBehaviour>().LevelUp())
             {
                 go_CommandPanel.SetActive(false);
+                bc.SetBackToSelect();
             }
         }
     }

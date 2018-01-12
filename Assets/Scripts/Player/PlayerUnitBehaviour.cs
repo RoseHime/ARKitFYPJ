@@ -36,6 +36,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
     //Unit Individual Info
     public float f_HealthPoint;
     public float f_range;
+    public float f_speed;
+    private float f_OriginSpeed;
     public float f_atkDmg;
 
     public int i_woodCost = 0;
@@ -57,28 +59,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public bool b_Selected;
     private int i_AmountOfButtons;
     private GameObject go_CommandMenu;
-    private Rigidbody rb_Body;
-    RaycastHit rcHit;
-    Vector3 rcHitPosition;
-
+  
     private Vector3 v3_currentPos;
     private Vector3 v3_targetPos;
-    private float f_distanceY;
-    private Vector3 offset_Y;
 
     public bool b_buildBuilding;
     public bool b_Moving;
-
-    //Navmesh Agent
-    [SerializeField]
-    NavMeshHit navMeshHit;
-    //Area Mask
-    private int slope;
-    private float f_goingUpSlope;
-    private float f_goingDownSlope;
-    private float f_onLandSpeed;
-
-    NavMeshAgent _navMeshAgent;
 
     //Projectile
     private GameObject bullet_Prefab;
@@ -88,18 +74,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     GameObject debugLog;
 
+    WaypointConnector WC;
+
     // Use this for initialization
     void Start()
     {
-        debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
+        // debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
+        WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
 
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
-
-        _navMeshAgent = this.GetComponent<NavMeshAgent>();
-        //_navMeshAgent.updateRotation = false;
-        //Area Mask
-        slope = 1 << NavMesh.GetAreaFromName("WalkableSlope");
 
         i_resourceWOOD = 0;
         i_resourceSTONE = 0;
@@ -122,9 +106,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             b_toHarvestTree = false;
         }
 
-        f_goingUpSlope = _navMeshAgent.speed / 2;
-        f_goingDownSlope = _navMeshAgent.speed * 1.5f;
-        f_onLandSpeed = _navMeshAgent.speed;
+        f_OriginSpeed = f_speed;
     }
 
 
@@ -132,12 +114,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        debugLog.GetComponent<Text>().text = "state" + PUS + "," + "/n" +
-                                             "CurrentPos"+ v3_currentPos + "," + "/n" +
-                                             "targetpos" + v3_targetPos + "," + "/n" +
-                                             "navmesh" + _navMeshAgent.enabled +  "," + "/n" +
-                                             "isMoving" + b_Moving + "," + "/n" +
-                                             "selected" + b_Selected;
+       //debugLog.GetComponent<Text>().text = "state" + PUS + "," + "/n" +
+       //                                     "CurrentPos"+ v3_currentPos + "," + "/n" +
+       //                                     "targetpos" + v3_targetPos + "," + "/n" +
+       //                                     "navmesh" + _navMeshAgent.enabled +  "," + "/n" +
+       //                                     "isMoving" + b_Moving + "," + "/n" +
+       //                                     "selected" + b_Selected;
 
         //if (b_Selected)
         //{
@@ -147,7 +129,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         //    _navMeshAgent.areaMask = NavMesh.AllAreas;
         //    _navMeshAgent.Warp(lastpos);
         //}
-
+        //_navMeshAgent.updatePosition = true;
         if (f_HealthPoint <= 0)
         {
             Destroy(gameObject);
@@ -178,7 +160,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
 
 
-        CheckWhetherStillOnGround();
         if (PUN != PlayerUnitType.PUN_WORKER && !b_Moving)
         {
             DetectEnemyUnit();
@@ -190,7 +171,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if (f_HarvestingTime >= 2)
             {
                 b_HoldingResource = true;
-                _navMeshAgent.speed = f_onLandSpeed;
+                f_speed = f_OriginSpeed;
                 if (b_isStoneHarvested)
                     i_resourceSTONE += go_Resource.GetComponent<StoneMineBehaviour>().CollectStone();
                 else if (b_isWoodHarvested)
@@ -201,6 +182,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             }
         }
         SnapToGround();
+        //CheckWhetherStillOnGround();
 
         switch (PUS)
         {
@@ -283,16 +265,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
             {
                 if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
                 {
-                    if (_navMeshAgent.transform.position != go_TargetedEnemy.transform.position)
-                    {
-                        _navMeshAgent.SetDestination(go_TargetedEnemy.transform.position);
-
-                    }
-                    else
-                    {
-                        //DealDmg();
-                        go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health -= 1;
-                    }
+                   //if (_navMeshAgent.transform.position != go_TargetedEnemy.transform.position)
+                   //{
+                   //    _navMeshAgent.SetDestination(go_TargetedEnemy.transform.position);
+                   //
+                   //}
+                   //else
+                   //{
+                   //    //DealDmg();
+                   //    go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health -= 1;
+                   //}
                 }
                 else if (PUN == PlayerUnitType.PUN_RANGE)
                 {
@@ -364,19 +346,17 @@ public class PlayerUnitBehaviour : MonoBehaviour
             {
                 Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
                 gameObject.transform.LookAt(lookAtMine);
-                //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                //                                                                                go_Resource.GetComponent<Transform>().position,
-                //                                                                                GetSpeed() * Time.deltaTime);
-                _navMeshAgent.SetDestination(go_Resource.GetComponent<Transform>().position);
+                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                                                                                                go_Resource.GetComponent<Transform>().position,
+                                                                                                GetSpeed() * Time.deltaTime);
             }
             else if (b_HoldingResource)
             {
                 Vector3 lookAtDepot = new Vector3(go_Depot.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Depot.GetComponent<Transform>().position.z);
                 gameObject.transform.LookAt(lookAtDepot);
-                //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                //                                                                                go_Depot.GetComponent<Transform>().position,
-                //                                                                                GetSpeed() * Time.deltaTime);
-                _navMeshAgent.SetDestination(go_Depot.GetComponent<Transform>().position);
+                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                                                                                                go_Depot.GetComponent<Transform>().position,
+                                                                                                GetSpeed() * Time.deltaTime);
             }
         }
     }
@@ -386,7 +366,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         if (collision.gameObject == go_Resource)
         {
             Debug.Log("Collided");
-            _navMeshAgent.speed = 0f;
+            f_speed = 0f;
             if (collision.gameObject.tag == "StoneMine" && b_toHarvestStone && !b_HoldingResource)
                 b_isStoneHarvested = true;
             else if (collision.gameObject.tag == "Tree" && b_toHarvestTree)
@@ -396,7 +376,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         else if (collision.gameObject == go_Depot)
         {
-            //_navMeshAgent.speed = 0f;
             if (b_isStoneHarvested)
             {
 
@@ -426,6 +405,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public void SetTargetPos(Vector3 v3_targetpos)
     {
         v3_targetPos = v3_targetpos;
+        WC.FindTargetClosestWaypoint(v3_targetPos);
         // b_Selected = false;
         b_Moving = true;
     }
@@ -433,33 +413,19 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private void MoveToTargetPos()
     {
         v3_currentPos = gameObject.transform.position;
-        if ((v3_currentPos - (v3_targetPos)).magnitude > 0.01)
+        if (v3_currentPos != WC.GetCurrentClosestWaypoint().transform.position)
         {
-            //Vector3 v3_seeTarget = new Vector3(v3_targetPos.x, gameObject.transform.position.y, v3_targetPos.z);
-            //gameObject.transform.LookAt(v3_seeTarget);
-            //gameObject.transform.position = Vector3.MoveTowards(v3_currentPos, v3_targetPos + offset_Y, f_speed * Time.deltaTime);
-                _navMeshAgent.ResetPath();
-                _navMeshAgent.SetDestination(v3_targetPos);
-                _navMeshAgent.SamplePathPosition(-1, 0.0f, out navMeshHit);
-            
-            //GetComponent<Rigidbody>().useGravity = true;
-            if ((navMeshHit.mask == slope) && v3_targetPos.y > gameObject.transform.position.y)
-            {
-                Debug.Log("Going up Slope");
-                _navMeshAgent.speed = f_goingUpSlope;
-            }
-            else if ((navMeshHit.mask == slope) && v3_targetPos.y < gameObject.transform.position.y)
-            {
-                Debug.Log("Going down  Slope");
-                _navMeshAgent.speed = f_goingDownSlope;
-            }
-            else
-            {
-                Debug.Log("Land");
-                _navMeshAgent.speed = f_onLandSpeed;
-            }
-
+            gameObject.transform.position = Vector3.MoveTowards(v3_currentPos,
+                                                                WC.GetCurrentClosestWaypoint().transform.position,
+                                                                GetSpeed() * Time.deltaTime);
         }
+
+        else if ( v3_currentPos == WC.GetCurrentClosestWaypoint().transform.position)
+        {
+            v3_currentPos = WC.GetCurrentClosestWaypoint().transform.position;
+        }
+
+
         else
         {
             if (b_buildBuilding)
@@ -483,12 +449,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     void CheckWhetherStillOnGround()
     {
-        if ((gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y) != f_distanceY)
-        {
-            gameObject.GetComponent<Transform>().transform.position.Set(gameObject.GetComponent<Transform>().transform.position.x,
-                                                                        rcHitPosition.y + f_distanceY,
-                                                                        gameObject.GetComponent<Transform>().transform.position.z);
-        }
+       //if ((gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y) != f_distanceY)
+       //{
+       //    gameObject.GetComponent<Transform>().transform.position.Set(gameObject.GetComponent<Transform>().transform.position.x,
+       //                                                                rcHitPosition.y + f_distanceY,
+       //                                                                gameObject.GetComponent<Transform>().transform.position.z);
+       //}
     }
 
     void OnClick()
@@ -504,7 +470,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
         Ray ray = new Ray(transform.position + new Vector3(0, 1, 0), -Vector3.up);
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray, out hit, float.MaxValue))
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+           transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+           // _navMeshAgent.Warp(lastpos);
+
         }
     }
 
@@ -533,7 +501,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public float GetSpeed()
     {
-        return _navMeshAgent.speed;
+        return f_speed;
     }
 
     public float GetAttack()

@@ -10,6 +10,7 @@ public class ARCameraTracker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        trackedCamera = Camera.main;
 	}
 
 	void OnDestroy()
@@ -27,4 +28,9 @@ public class ARCameraTracker : MonoBehaviour {
 			trackedCamera.projectionMatrix = UnityARSessionNativeInterface.GetARSessionNativeInterface ().GetCameraProjection ();
 		}
 	}
+
+    public Camera getCamera()
+    {
+        return trackedCamera;
+    }
 }
