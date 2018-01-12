@@ -25,7 +25,7 @@ public class ChangeCrossHair : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(transform.position);
         if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
         {
-            GameObject recipient = hit.transform.gameObject;
+            GameObject recipient = hit.collider.gameObject;
 
             //debugText.text = recipient.name + "\n" + hit.point;
             if (recipient != null)

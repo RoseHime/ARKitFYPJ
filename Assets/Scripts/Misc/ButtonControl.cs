@@ -25,6 +25,7 @@ public class ButtonControl : MonoBehaviour {
     public bool b_ToBuild;
     public bool b_BuildTower;
 
+    private Camera ARCamera;
 
     // Use this for initialization
     void Start () {
@@ -34,65 +35,61 @@ public class ButtonControl : MonoBehaviour {
         b_SomethingIsSelected = false;
         b_ToBuild = false;
         recipient = null;
+
+        ARCamera = GameObject.FindGameObjectWithTag("PlaneDetection").GetComponent<UnityARCameraManager>().m_camera;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         s_text = btn.GetComponentInChildren<Text>().text;
         //Debug.Log(b_SomethingIsSelected);
+        Ray ray;
+        //ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
+        ray = ARCamera.ScreenPointToRay(i_Crosshair.transform.position);
+        if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+        {
+            recipient = hit.collider.transform.gameObject;
+            go_TargetBox.transform.position = hit.point;
+            debugText.text = "Camera Pos:" + ARCamera.transform.position + "\n" +
+                             "Camera dir:" + ARCamera.transform.forward + "\n" +
+                             "Ray dir:" + ray.direction + "\n" +
+                             "HIt pos:" + hit.point + "\n";
+        }
     }
     
     public void TapDown()
     {
-        //If nothing is selected
-        if (!b_SomethingIsSelected && s_text == "Select" && !b_ToBuild)
+        if (!b_SomethingIsSelected && recipient != null && s_text == "Select")
         {
-            //Debug.Log("You clicked");
-            Ray ray;
-            ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
-            if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+            if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
             {
-                //go_TargetBox.transform.position = hit.point;
-                //recipient = go_TargetBox.GetComponent<DetectCollision>().getGO();
-                recipient = hit.transform.gameObject;
-
-                //debugText.text = recipient.name + "\n" + hit.point;
-                if (recipient != null)
-                {
-                    if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
-                    {
-                        go_SelectedUnit = recipient.gameObject;
-                        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
-                        {
-                            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-                        }
-                        go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
-                        b_SomethingIsSelected = true;
-                        btn.GetComponentInChildren<Text>().text = "Back";
-                    }
-                }
-            }
-            //btn.interactable = false;           
-        }
-
-        //If something is selected
-        else if (b_SomethingIsSelected && s_text == "Back" && !b_ToBuild)
-        {
-            if (recipient != null)
-            {
+                go_SelectedUnit = recipient.transform.gameObject;
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
-                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
-                    {
-                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
-                    }
+                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                    //go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().CreateCommand();
                 }
-                else if (recipient.tag == "SelectableBuilding")
+                go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+                b_SomethingIsSelected = true;
+                btn.GetComponentInChildren<Text>().text = "Back";
+            }
+        }
+
+        else if (b_SomethingIsSelected && recipient != null && s_text == "Back")
+        {
+            if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+            {
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                 {
-                    if (GameObject.FindGameObjectWithTag("Command"))
-                        GameObject.FindGameObjectWithTag("Command").SetActive(false);
+                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
                 }
+            }
+            else if (recipient.tag == "SelectableBuilding")
+            {
+                if (GameObject.FindGameObjectWithTag("Command"))
+                    GameObject.FindGameObjectWithTag("Command").SetActive(false);
             }
             b_SomethingIsSelected = false;
             btn.GetComponentInChildren<Text>().text = "Select";
@@ -103,22 +100,81 @@ public class ButtonControl : MonoBehaviour {
             //go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
         }
 
-        else if (b_ToBuild && s_text == "Select")
-        {
-            Ray ray;
-            ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
-            if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
-            {
-                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
-                {
-                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
-                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = true;
-                    b_ToBuild = false;
-                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                    b_SomethingIsSelected = false;
-                }
-            }
-        }
+        ////If nothing is selected
+        //if (!b_SomethingIsSelected && s_text == "Select" && !b_ToBuild)
+        //{
+        //    //Debug.Log("You clicked");
+        //    Ray ray;
+        //    ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
+        //    if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+        //    {
+        //        //go_TargetBox.transform.position = hit.point;
+        //        //recipient = go_TargetBox.GetComponent<DetectCollision>().getGO();
+        //        recipient = hit.transform.gameObject;
+
+        //        //debugText.text = recipient.name + "\n" + hit.point;
+        //        if (recipient != null)
+        //        {
+        //            if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
+        //            {
+        //                go_SelectedUnit = recipient.gameObject;
+        //                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+        //                {
+        //                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+        //                }
+        //                go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
+        //                b_SomethingIsSelected = true;
+        //                btn.GetComponentInChildren<Text>().text = "Back";
+        //            }
+        //        }
+        //    }
+        //    //btn.interactable = false;           
+        //}
+
+        ////If something is selected
+        //else if (b_SomethingIsSelected && s_text == "Back" && !b_ToBuild)
+        //{
+        //    if (recipient != null)
+        //    {
+        //        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+        //        {
+        //            if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+        //            {
+        //                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+        //                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+        //            }
+        //        }
+        //        else if (recipient.tag == "SelectableBuilding")
+        //        {
+        //            if (GameObject.FindGameObjectWithTag("Command"))
+        //                GameObject.FindGameObjectWithTag("Command").SetActive(false);
+        //        }
+        //    }
+        //    b_SomethingIsSelected = false;
+        //    btn.GetComponentInChildren<Text>().text = "Select";
+
+        //    //btn.interactable = false;
+        //    go_barracksPanel.SetActive(false);
+        //    go_buildPanel.SetActive(false);
+        //    //go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
+        //}
+
+        //else if (b_ToBuild && s_text == "Select")
+        //{
+        //    Ray ray;
+        //    ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
+        //    if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
+        //    {
+        //        if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+        //        {
+        //            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+        //            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_buildBuilding = true;
+        //            b_ToBuild = false;
+        //            go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+        //            b_SomethingIsSelected = false;
+        //        }
+        //    }
+        //}
 
 
     }
@@ -147,7 +203,7 @@ public class ButtonControl : MonoBehaviour {
 
     public void SetBackToSelect()
     {
-        b_SomethingIsSelected = false;
+        //b_SomethingIsSelected = false;
         btn.GetComponentInChildren<Text>().text = "Select";
     }
 
