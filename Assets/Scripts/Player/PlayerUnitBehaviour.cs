@@ -107,6 +107,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
 
         f_OriginSpeed = f_speed;
+
     }
 
 
@@ -406,13 +407,14 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         v3_targetPos = v3_targetpos;
         WC.FindTargetClosestWaypoint(v3_targetPos);
+        v3_currentPos = gameObject.transform.position;
+        WC.SetCurrentClosestWaypoint(v3_currentPos);
         // b_Selected = false;
         b_Moving = true;
     }
 
     private void MoveToTargetPos()
     {
-        v3_currentPos = gameObject.transform.position;
         if (v3_currentPos != WC.GetCurrentClosestWaypoint().transform.position)
         {
             gameObject.transform.position = Vector3.MoveTowards(v3_currentPos,

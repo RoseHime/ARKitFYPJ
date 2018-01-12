@@ -46,7 +46,7 @@ public class WaypointConnector : MonoBehaviour
         }
     }
     
-    public void FindCurrentClosestWaypoint(Vector3 pos)
+    public void SetCurrentClosestWaypoint(Vector3 pos)
     {
         foreach (Transform t_child in transform)
         {
@@ -78,13 +78,15 @@ public class WaypointConnector : MonoBehaviour
         return go_TargetWaypoint;
     }
 
-    public Vector3 MoveToNextWaypoint(GameObject lastWaypoint)
+    public void FindNextWaypont(GameObject currentWaypoint, GameObject lastWaypoint)
     {
         float distance = Mathf.Infinity;
         for (int i = 0; i < childsT.Length; i++)
         {
             if (childsT[i] == currentWaypoint)
+            {
                 continue;
+            }
             else
             {
                 if (childsT[i].GetComponent<Collider>().bounds.Intersects(currentWaypoint.GetComponent<Collider>().bounds))
@@ -96,6 +98,10 @@ public class WaypointConnector : MonoBehaviour
                 }
             }
         }
+    }
+
+    public Vector3 MoveToNextWaypoint()
+    {
         return v3_NextWaypoint;
     }
 }
