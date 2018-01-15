@@ -9,46 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1759479216081168}
+  m_RootGameObject: {fileID: 1852758292370200}
   m_IsPrefabParent: 1
---- !u!1 &1759479216081168
+--- !u!1 &1852758292370200
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4565248193978078}
-  - component: {fileID: 33186396433672138}
-  - component: {fileID: 23315575950898098}
-  - component: {fileID: 95671732405969132}
-  - component: {fileID: 114474096519257606}
-  m_Layer: 0
-  m_Name: Barracks
-  m_TagString: Untagged
+  - component: {fileID: 4269112308507992}
+  - component: {fileID: 33406221298677610}
+  - component: {fileID: 23527256693799558}
+  - component: {fileID: 95879061035511324}
+  - component: {fileID: 65962561780404114}
+  - component: {fileID: 114976088657502878}
+  - component: {fileID: 54691395336958936}
+  m_Layer: 8
+  m_Name: StoneMine
+  m_TagString: StoneMine
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4565248193978078
+--- !u!4 &4269112308507992
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1759479216081168}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_GameObject: {fileID: 1852758292370200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.31577912, y: 0.17086647, z: 1.0591125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23315575950898098
+--- !u!23 &23527256693799558
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1759479216081168}
+  m_GameObject: {fileID: 1852758292370200}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: cc845d9fa52012046b84d0b0c50af149, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,22 +77,49 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33186396433672138
+--- !u!33 &33406221298677610
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1759479216081168}
-  m_Mesh: {fileID: 4300000, guid: adcb82b8924209245a773d8593e5beab, type: 3}
---- !u!95 &95671732405969132
+  m_GameObject: {fileID: 1852758292370200}
+  m_Mesh: {fileID: 4300000, guid: 6374bfcc2334a694ab08ddc5fbb48812, type: 3}
+--- !u!54 &54691395336958936
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852758292370200}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
+--- !u!65 &65962561780404114
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852758292370200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!95 &95879061035511324
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1759479216081168}
+  m_GameObject: {fileID: 1852758292370200}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: adcb82b8924209245a773d8593e5beab, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 6374bfcc2334a694ab08ddc5fbb48812, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -99,22 +128,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114474096519257606
+--- !u!114 &114976088657502878
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1759479216081168}
+  m_GameObject: {fileID: 1852758292370200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18720a1c8fcdddc42a2433b0ccad5cb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d2f575de2ecc4944b507c5a99d465c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_health: 300
+  f_health: 50
   b_IsUnderAttack: 0
-  i_woodCost: 10
-  i_stoneCost: 10
+  i_woodCost: 0
+  i_stoneCost: 0
   i_magicStoneCost: 0
-  DestroyedMesh: {fileID: 4300000, guid: 5a60e012ed18b934593f228c24e2e35c, type: 3}
-  i_barrackLevel: 1
-  i_levelUpCost: 10
+  DestroyedMesh: {fileID: 0}
+  i_stoneDistributed: 1
+  i_totalAmountOfStones: 2000

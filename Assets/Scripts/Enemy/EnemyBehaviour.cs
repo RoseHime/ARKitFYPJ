@@ -247,7 +247,7 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             EUS = EnemyUnitState.EUS_IDLE;
             isMoving = false;
-            _navMeshAgent.ResetPath();
+            //_navMeshAgent.ResetPath();
             //_navMeshAgent.enabled = false;
             //_navMeshOb.enabled = true;
             //Debug.Log("ITS TIME TO STOP");
@@ -309,7 +309,7 @@ public class EnemyBehaviour : MonoBehaviour {
         Ray ray = new Ray(transform.position + new Vector3(0,1,0), -Vector3.up);
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray,out hit,float.MaxValue))
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
         }
     }
 
