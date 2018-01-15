@@ -80,7 +80,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     void Start()
     {
         // debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
-        WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
+        //WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
 
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);

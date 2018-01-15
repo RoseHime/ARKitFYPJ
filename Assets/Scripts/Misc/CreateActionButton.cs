@@ -32,8 +32,9 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.tag == "PlayerUnit")
             {
-                PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
-                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.GetSpeed() + "\nRANGE:" + plrUnit.f_range;
+                TestPlayerUnit plrUnit = go_selectedUnit.GetComponent<TestPlayerUnit>();
+                //PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
+                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_health + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
             }
             else if (go_selectedUnit.tag == "SelectableBuilding")
             {
@@ -42,25 +43,26 @@ public class CreateActionButton : MonoBehaviour
             }
         }
 
-        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().enabled)
-        {
-            if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().go_SelectedUnit == null)
-            {
-                gameObject.SetActive(false);
-            }
-        }
-        else if (GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().go_SelectUnit() == null)
-        {
-            GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().Setfalse(false);
-            gameObject.SetActive(false);
-        }
+        //if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().enabled)
+        //{
+        //    if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().go_SelectedUnit == null)
+        //    {
+        //        gameObject.SetActive(false);
+        //    }
+        //}
+        //else if (GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().go_SelectUnit() == null)
+        //{
+        //    GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().Setfalse(false);
+        //    gameObject.SetActive(false);
+        //}
     }
 
     public void CreateButtons()
     {
         foreach (Transform button in gameObject.transform)
         {
-            if (button.gameObject.name == "ActionButton" || button.gameObject.name == "UpgradeActionButton")
+            if (button.gameObject.name == "ActionButton" || button.gameObject.name == "UpgradeActionButton"
+                || button.gameObject.name == "UpgradeBarracksButton")
             {
                 Destroy(button.gameObject);
             }
@@ -71,7 +73,7 @@ public class CreateActionButton : MonoBehaviour
 
         if (go_selectedUnit.tag == "PlayerUnit")
         {
-            for (int i = 0; i < go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getAmountOfButton(); ++i)
+            for (int i = 0; i < go_selectedUnit.GetComponent<TestPlayerUnit>().buttonCount; ++i)
             {
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
                 goButton.name = "ActionButton";
@@ -80,16 +82,19 @@ public class CreateActionButton : MonoBehaviour
                 goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
                 goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
                 goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
-                goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * (1 + i), 0);
+                goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * (i), 0);
                 switch (i)
                 {
                     case 0:
-                        goButton.GetComponentInChildren<Text>().text = "MOVE";
+                        goButton.GetComponentInChildren<Text>().text = "CLOSE";
                         break;
                     case 1:
-                        goButton.GetComponentInChildren<Text>().text = "UPRANK";
+                        goButton.GetComponentInChildren<Text>().text = "MOVE";
                         break;
                     case 2:
+                        goButton.GetComponentInChildren<Text>().text = "UPRANK";
+                        break;
+                    case 3:
                         goButton.GetComponentInChildren<Text>().text = "BUILD";
                         break;
                 }
@@ -97,6 +102,17 @@ public class CreateActionButton : MonoBehaviour
         }
         else if (go_selectedUnit.tag == "SelectableBuilding")
         {
+
+            GameObject goButton = (GameObject)Instantiate(go_actionButton);
+            goButton.name = "ActionButton";
+            goButton.transform.SetParent(go_actionPanel.transform, false);
+            goButton.transform.localScale = new Vector3(1, 1, 1);
+            goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+            goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+            goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+            goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y, 0);
+            goButton.GetComponentInChildren<Text>().text = "CLOSE";
+
             if (go_selectedUnit.name == "Barracks")
             {
                 for (int j = 0;j < 2;++j)

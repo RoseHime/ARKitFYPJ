@@ -51,9 +51,10 @@ public class BulletBehaviour : MonoBehaviour {
             case BULLETTARGET.PLAYER:         
                 if (collisionInfo.gameObject.tag == "PlayerUnit")
                 {
-                    //Debug.Log("It went in");
-                    collisionInfo.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
+                    //Debug.Log("IT HIT:" + collisionInfo.transform.name);
+                    collisionInfo.transform.GetComponent<TestPlayerUnit>().f_health -= f_damage;
                     Destroy(gameObject);
+                    
                 }
                 else if (collisionInfo.gameObject.transform.parent == GameObject.FindGameObjectWithTag("BuildingList").transform)
                 {

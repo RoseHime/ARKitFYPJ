@@ -24,37 +24,42 @@ public class ChooseCommand : MonoBehaviour {
     {
         //b_selectedCommand = false;
         go_CommandPanel = go_CommandButton.transform.parent.gameObject;
-        bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
+        //bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
         //go_CrossHair = GameObject.FindGameObjectWithTag("Crosshair");
 
-        go_DebugPurpose = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
+        //go_DebugPurpose = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
     }
 
     public void OnClickCommand()
     {
+        TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
         if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
             Debug.Log("OnClickMOVE");
             //go_CommandPanel.SetActive(false);
-            Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
-            if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
-            {
-                GameObject go_ObjectHit = hit.transform.gameObject;
-                //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
-                if (go_ObjectHit.name == "StoneMine")
-                {
-                    Debug.Log("Select Stone Mine");
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
+            //Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
+            //if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
+            //{
+            //    GameObject go_ObjectHit = hit.transform.gameObject;
+            //    //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
+            //    if (go_ObjectHit.name == "StoneMine")
+            //    {
+            //        Debug.Log("Select Stone Mine");
+            //        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+            //        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
 
-                }
-                else
-                {
-                    Debug.Log("Walk here");
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+            //    }
+            //    else
+            //    {
+            //        Debug.Log("Walk here");
+            //        TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
+            //        input.b_MoveUnit = true;
+            //        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
 
-                }
-            }
+            //    }
+            //}
+           
+            input.b_MoveUnit = true;
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
         {
@@ -67,6 +72,13 @@ public class ChooseCommand : MonoBehaviour {
         {
             go_BarracksPanel.GetComponent<BarracksPanelInfo>().go_SelectedBarracks = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
             go_BarracksPanel.SetActive(true);
+            go_CommandPanel.SetActive(false);
+        }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CLOSE")
+        {
+            input.selectedUnit = null;
+            //go_BarracksPanel.SetActive(true);
+            go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit = null;
             go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.name == "UpgradeActionButton")

@@ -9,7 +9,9 @@ public class MasterAI : MonoBehaviour {
     public int i_UnitCapacity = 10;
     public int i_SeriousLevel = 2;
 
-    private int i_unitLevelIncrement = 5;
+    private int i_unitLevelIncrement = 1;
+    private float f_unitIncreaseTime = 60;
+    private float f_unitIncreaseTimer = 0;
 
     List<EnemySquad> attackingSquads;
     public List<GameObject> defendingUnits;
@@ -44,37 +46,61 @@ public class MasterAI : MonoBehaviour {
             DefenceStrat();
         }
         UpdateAttackSquads();
+        if ((f_unitIncreaseTimer += Time.deltaTime) > f_unitIncreaseTime)
+        {
+            i_UnitCapacity += i_unitLevelIncrement;
+            f_unitIncreaseTimer = 0;
+        }
     }
 
     void PincerStrat()
     {
-        i_UnitCapacity = (playerInfo.i_playerLevel - 1) * i_unitLevelIncrement + 15;
-
-        if (playerInfo.i_playerLevel >= i_SeriousLevel)
+        if (playerInfo.i_playerLevel >= i_SeriousLevel && defendingUnits.Count > 6)
         {
-            if (defendingUnits.Count > 16)
+            Transform Waypoints = transform.GetChild(0);
+            for (int i = 0;i < 3;++i)
             {
-                GameObject unit = defendingUnits[Random.Range(0, defendingUnits.Count)];
-                if (attackingSquads[attackingSquads.Count - 1].unitList.Count < attackingSquads[attackingSquads.Count - 1].i_maxUnits)
+                EnemySquad squad = new EnemySquad();
+                squad.Start();
+                squad.i_maxUnits = playerInfo.i_playerLevel;
+                attackingSquads.Add(squad);             
+                foreach (Transform point in Waypoints.GetChild(i))
                 {
-                    attackingSquads[attackingSquads.Count - 1].unitList.Add(unit);
+                    squad.pathToFollow.Add(point.position);
                 }
-                else
+                List<GameObject> unitsToRemove = new List<GameObject>();
+                for (int j = 0;j < defendingUnits.Count/3;++j)
                 {
-                    EnemySquad squad = new EnemySquad();
-                    squad.Start();
-                    squad.i_maxUnits = playerInfo.i_playerLevel;
-                    attackingSquads.Add(squad);
-                    attackingSquads[attackingSquads.Count - 1].unitList.Add(unit);
+                    attackingSquads[attackingSquads.Count - 1].unitList.Add(defendingUnits[j]);
+                    unitsToRemove.Add(defendingUnits[j]);
                 }
-                defendingUnits.Remove(unit);
+                foreach (GameObject unit in unitsToRemove)
+                {
+                    defendingUnits.Remove(unit);
+                }
             }
         }
     }
 
     void DefenceStrat()
     {
-
+        if (defendingUnits.Count > 10)
+        {
+            GameObject unit = defendingUnits[Random.Range(0, defendingUnits.Count)];
+            if (attackingSquads[attackingSquads.Count - 1].unitList.Count < attackingSquads[attackingSquads.Count - 1].i_maxUnits)
+            {
+                attackingSquads[attackingSquads.Count - 1].unitList.Add(unit);
+            }
+            else
+            {
+                EnemySquad squad = new EnemySquad();
+                squad.Start();
+                squad.i_maxUnits = playerInfo.i_playerLevel;
+                attackingSquads.Add(squad);
+                attackingSquads[attackingSquads.Count - 1].unitList.Add(unit);
+            }
+            defendingUnits.Remove(unit);
+        }
     }
 
     void UpdateAttackSquads()

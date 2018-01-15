@@ -126,6 +126,7 @@ public class TouchInput : MonoBehaviour {
 
         }
 #endif
+
     }
 
     public void PickTargetPoint()
