@@ -45,7 +45,7 @@ public class TestInput : MonoBehaviour {
                     if (selectedUnit == null && (recipient.tag == "SelectableBuilding" || recipient.tag == "PlayerUnit"))
                     {
                         selectedUnit = recipient;
-                        CreateActionButton actionScript = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).GetComponent<CreateActionButton>();
+                        TestCreateActionButton actionScript = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).GetComponent<TestCreateActionButton>();
                         actionScript.go_selectedUnit = selectedUnit;
                         actionScript.CreateButtons();
                         actionScript.gameObject.SetActive(true);

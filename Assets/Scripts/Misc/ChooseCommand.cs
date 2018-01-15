@@ -32,34 +32,34 @@ public class ChooseCommand : MonoBehaviour {
 
     public void OnClickCommand()
     {
-        TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
+        //TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
         if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
             Debug.Log("OnClickMOVE");
-            //go_CommandPanel.SetActive(false);
-            //Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
-            //if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
-            //{
-            //    GameObject go_ObjectHit = hit.transform.gameObject;
-            //    //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
-            //    if (go_ObjectHit.name == "StoneMine")
-            //    {
-            //        Debug.Log("Select Stone Mine");
-            //        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-            //        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
+            go_CommandPanel.SetActive(false);
+            Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
+            if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
+            {
+                GameObject go_ObjectHit = hit.transform.gameObject;
+                //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
+                if (go_ObjectHit.name == "StoneMine")
+                {
+                    Debug.Log("Select Stone Mine");
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
 
-            //    }
-            //    else
-            //    {
-            //        Debug.Log("Walk here");
-            //        TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
-            //        input.b_MoveUnit = true;
-            //        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                }
+                else
+                {
+                    Debug.Log("Walk here");
+                    //TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
+                    // input.b_MoveUnit = true;
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
 
-            //    }
-            //}
-           
-            input.b_MoveUnit = true;
+                }
+            }
+
+            //input.b_MoveUnit = true;
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
         {
@@ -76,7 +76,7 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "CLOSE")
         {
-            input.selectedUnit = null;
+            //input.selectedUnit = null;
             //go_BarracksPanel.SetActive(true);
             go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit = null;
             go_CommandPanel.SetActive(false);
