@@ -11,6 +11,10 @@ public class TestPlayerUnit : MonoBehaviour {
     public float f_speed = 1;
     public float f_range = 1;
 
+    public int i_woodCost = 1;
+    public int i_stoneCost = 1;
+    public int i_magicStoneCost = 0;
+
     // Use this for initialization
     void Start() {
         navMesh = GetComponent<NavMeshAgent>();
