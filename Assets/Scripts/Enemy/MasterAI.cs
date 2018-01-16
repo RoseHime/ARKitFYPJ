@@ -10,7 +10,7 @@ public class MasterAI : MonoBehaviour {
     public int i_SeriousLevel = 2;
 
     private int i_unitLevelIncrement = 1;
-    private float f_unitIncreaseTime = 1;
+    public float f_unitIncreaseTime = 30;
     private float f_unitIncreaseTimer = 0;
 
     List<EnemySquad> attackingSquads;
