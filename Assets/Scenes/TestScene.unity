@@ -5012,6 +5012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e5fd52d65fcbc4f82dad8d712932c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childsT: []
+  go_TargetWaypoint: {fileID: 0}
 --- !u!120 &807798698
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -13171,7 +13173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1959423097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932b6402df3aa1b47973090bd35787df, type: 3}
+  m_Script: {fileID: 11500000, guid: 915ea7161ee9bd94b960a124adf24c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   go_unitInfo: {fileID: 1713550828}

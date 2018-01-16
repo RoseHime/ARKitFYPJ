@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreateActionButton : MonoBehaviour
+public class TestCreateActionButton : MonoBehaviour
 {
 
     public GameObject go_unitInfo;
@@ -32,9 +32,9 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.tag == "PlayerUnit")
             {
-                PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
+                TestPlayerUnit plrUnit = go_selectedUnit.GetComponent<TestPlayerUnit>();
                 //PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
-                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_health + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
             }
             else if (go_selectedUnit.tag == "SelectableBuilding")
             {
@@ -73,7 +73,7 @@ public class CreateActionButton : MonoBehaviour
 
         if (go_selectedUnit.tag == "PlayerUnit")
         {
-            for (int i = 0; i < go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getAmountOfButton(); ++i)
+            for (int i = 0; i < go_selectedUnit.GetComponent<TestPlayerUnit>().buttonCount; ++i)
             {
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
                 goButton.name = "ActionButton";
@@ -115,7 +115,7 @@ public class CreateActionButton : MonoBehaviour
 
             if (go_selectedUnit.name == "Barracks")
             {
-                for (int j = 0;j < 2;++j)
+                for (int j = 0; j < 2; ++j)
                 {
                     GameObject secondButton = (GameObject)Instantiate(go_actionButton);
                     secondButton.name = "ActionButton";
@@ -158,6 +158,6 @@ public class CreateActionButton : MonoBehaviour
 
     public void DestroyButton()
     {
-       
+
     }
 }

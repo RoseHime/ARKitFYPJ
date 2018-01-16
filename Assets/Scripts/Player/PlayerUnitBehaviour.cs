@@ -40,6 +40,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private float f_OriginSpeed;
     public float f_atkDmg;
 
+    //
+    List<Transform> getpath = new List<Transform>();
+    public float reachDist = 1.0f;
+    public int currentPoint = 0;
+    //
+
     public int i_woodCost = 0;
     public int i_stoneCost = 0;
     public int i_magicStoneCost = 0;
@@ -79,8 +85,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //getpath = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>().getCreatePath();
+
         // debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
-        //WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
+        WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
 
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
@@ -406,39 +414,35 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public void SetTargetPos(Vector3 v3_targetpos)
     {
         v3_targetPos = v3_targetpos;
-        WC.FindTargetClosestWaypoint(v3_targetPos);
         v3_currentPos = gameObject.transform.position;
         WC.SetCurrentClosestWaypoint(v3_currentPos);
+        WC.FindTargetClosestWaypoint(v3_targetPos);
         // b_Selected = false;
         b_Moving = true;
     }
 
     private void MoveToTargetPos()
     {
-        if (v3_currentPos != WC.GetCurrentClosestWaypoint().transform.position)
-        {
-            gameObject.transform.position = Vector3.MoveTowards(v3_currentPos,
-                                                                WC.GetCurrentClosestWaypoint().transform.position,
-                                                                GetSpeed() * Time.deltaTime);
-        }
+        Debug.Log(WC.GetCounter());
 
-        else if ( v3_currentPos == WC.GetCurrentClosestWaypoint().transform.position)
+        if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.05f)
         {
-            v3_currentPos = WC.GetCurrentClosestWaypoint().transform.position;
-        }
+            Vector3 dir = WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position;
+            transform.position += dir * Time.deltaTime * GetSpeed();
 
-
-        else
-        {
-            if (b_buildBuilding)
+            if (dir.magnitude <= 0.05f)
             {
-                GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>().BuildBuilding(v3_currentPos);
-                b_buildBuilding = false;
+                WC.FindNextWaypoint();
+                currentPoint++;
             }
-            b_Moving = false;
-            //GetComponent<Rigidbody>().useGravity = false;
         }
     }
+
+
+    //public Transform[] getPath()
+    //{
+    //    return getpath;
+    //}
 
     void IgnoreCollision()
     {
@@ -447,16 +451,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             Physics.IgnoreCollision(go_PULChild.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
         }
-    }
-
-    void CheckWhetherStillOnGround()
-    {
-       //if ((gameObject.GetComponent<Transform>().transform.position.y - rcHitPosition.y) != f_distanceY)
-       //{
-       //    gameObject.GetComponent<Transform>().transform.position.Set(gameObject.GetComponent<Transform>().transform.position.x,
-       //                                                                rcHitPosition.y + f_distanceY,
-       //                                                                gameObject.GetComponent<Transform>().transform.position.z);
-       //}
     }
 
     void OnClick()
