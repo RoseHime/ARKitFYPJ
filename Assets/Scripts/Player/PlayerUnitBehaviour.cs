@@ -225,21 +225,21 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     GameObject DetectEnemyUnit()
     {
-        GameObject nearestTarget = null;
+        go_TargetedEnemy = null;
 
         foreach (Transform T_enemyChild in T_Enemy)
         {
             if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= GetRange())
             {
                 //DO something
-                nearestTarget = T_enemyChild.gameObject;
+                go_TargetedEnemy = T_enemyChild.gameObject;
                 PUS = PlayerUnitState.PUS_ATTACK;
                 gameObject.GetComponent<Renderer>().material.color = Color.green;
                 //Debug.Log("Detected");
             }
             else
             {
-                nearestTarget = null;
+                go_TargetedEnemy = null;
                 PUS = PlayerUnitState.PUS_GUARD;
                 gameObject.GetComponent<Renderer>().material.color = Color.gray;
             }
@@ -249,11 +249,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             if ((T_enemyBuilding.position - transform.position).sqrMagnitude < GetRange() * GetRange())
             {
-                nearestTarget = T_enemyBuilding.gameObject;
+                go_TargetedEnemy = T_enemyBuilding.gameObject;
             }
         }
 
-        return nearestTarget;
+        return go_TargetedEnemy;
     }
 
     void AttackEnemyUnit()
