@@ -19,6 +19,8 @@ public class WaypointConnector : MonoBehaviour
 
     private GameObject current_holder;
     private GameObject temp;
+    private GameObject temp2;
+    private GameObject temp3;
 
 
     // Use this for initialization
@@ -74,7 +76,7 @@ public class WaypointConnector : MonoBehaviour
         {
             float f = (t_child.position - pos).sqrMagnitude;
             float dist = Vector3.Distance(pos, t_child.position);
-            if (dist <= 0.1f)
+            if (dist <= 0.2f)
             {
                 nearestTran.Add(t_child);
             }
@@ -82,7 +84,6 @@ public class WaypointConnector : MonoBehaviour
 
         //Now set one of the closest waypoint nearest to the player
         int j = 0;
-        GameObject temp;
         while (j < nearestTran.Count)
         {
             if (j > 0)
@@ -90,14 +91,13 @@ public class WaypointConnector : MonoBehaviour
                 if ((pos - nearestTran[j].position).sqrMagnitude < (pos - nearestTran[j - 1].position).sqrMagnitude)
                 {
                     temp = nearestTran[j].gameObject;
-
-                    if (j == nearestTran.Count - 1)
-                    {
-                        //createPath[0] = temp.transform;
-                        current_holder = temp;
-                        createPath.Add(temp.transform);
-                        i_WaypointCounter += 1;
-                    }
+                }
+                if (j == nearestTran.Count - 1)
+                {
+                    //createPath[0] = temp.transform;
+                    current_holder = temp;
+                    createPath.Add(temp.transform);
+                    i_WaypointCounter += 1;
                 }
             }
             else
@@ -120,7 +120,6 @@ public class WaypointConnector : MonoBehaviour
     {
         //Find the closest waypoint to the lastpos
         List<Transform> nearestEnd = new List<Transform>();
-        GameObject temp2;
         foreach (Transform t_child in transform)
         {
             float f = (t_child.position - pos).sqrMagnitude;
@@ -137,15 +136,14 @@ public class WaypointConnector : MonoBehaviour
         {
             if (end > 0)
             {
-                if ((pos - nearestEnd[end].position).sqrMagnitude < (pos - go_TargetWaypoint.transform.position).sqrMagnitude)
+                if ((pos - nearestEnd[end].position).sqrMagnitude < (pos - temp2.transform.position).sqrMagnitude)
                 {
                     temp2 = nearestEnd[end].gameObject;
-                    if (end == nearestEnd.Count - 1)
-                    {
-                        //createPath[0] = temp.transform;
-                        go_TargetWaypoint = temp2;
-                    }
-
+                }
+                if (end == nearestEnd.Count - 1)
+                {
+                    //createPath[0] = temp.transform;
+                    go_TargetWaypoint = temp2;
                 }
             }
             else
@@ -190,21 +188,28 @@ public class WaypointConnector : MonoBehaviour
         {
             if (iTemp > 0)
             {
-               if ((GetTargetClosestWaypoint().transform.position - nearestPoint[iTemp].position).sqrMagnitude < (GetTargetClosestWaypoint().transform.position - temp.transform.position).sqrMagnitude)
+               if ((GetTargetClosestWaypoint().transform.position - nearestPoint[iTemp].position).sqrMagnitude < (GetTargetClosestWaypoint().transform.position - temp3.transform.position).sqrMagnitude)
                 {
-                    temp = nearestPoint[iTemp].gameObject;
+                    temp3 = nearestPoint[iTemp].gameObject;
                 }
                 if (iTemp == nearestPoint.Count - 1)
                 {
                     //createPath[0] = temp.transform;
-                    current_holder = temp;
-                    createPath.Add(temp.transform);
+                    current_holder = temp3;
+                    createPath.Add(temp3.transform);
                     i_WaypointCounter += 1;
                 }
             }
             else
             {
-                temp = nearestPoint[iTemp].gameObject;
+                temp3 = nearestPoint[iTemp].gameObject;
+                if (iTemp == nearestPoint.Count - 1)
+                {
+                    //createPath[0] = temp.transform;
+                    current_holder = temp3;
+                    createPath.Add(temp3.transform);
+                    i_WaypointCounter += 1;
+                }
             }
             iTemp++;
         }

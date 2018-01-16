@@ -51,10 +51,10 @@ public class ButtonControl : MonoBehaviour {
         {
             recipient = hit.collider.transform.gameObject;
             go_TargetBox.transform.position = hit.point;
-            debugText.text = "Camera Pos:" + ARCamera.transform.position + "\n" +
-                             "Camera dir:" + ARCamera.transform.forward + "\n" +
-                             "Ray dir:" + ray.direction + "\n" +
-                             "HIt pos:" + hit.point + "\n";
+            //debugText.text = "Camera Pos:" + ARCamera.transform.position + "\n" +
+            //                 "Camera dir:" + ARCamera.transform.forward + "\n" +
+            //                 "Ray dir:" + ray.direction + "\n" +
+            //                 "HIt pos:" + hit.point + "\n";
         }
     }
     

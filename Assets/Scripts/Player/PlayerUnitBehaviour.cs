@@ -87,7 +87,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         //getpath = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>().getCreatePath();
 
-        // debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
+        debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
         WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
 
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
@@ -130,15 +130,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
        //                                     "isMoving" + b_Moving + "," + "/n" +
        //                                     "selected" + b_Selected;
 
-        //if (b_Selected)
-        //{
-        //    Vector3 lastpos = transform.position;
-        //    transform.position.Set(0, 0, 0);
-        //    _navMeshAgent.enabled = true;
-        //    _navMeshAgent.areaMask = NavMesh.AllAreas;
-        //    _navMeshAgent.Warp(lastpos);
-        //}
-        //_navMeshAgent.updatePosition = true;
         if (f_HealthPoint <= 0)
         {
             Destroy(gameObject);
@@ -215,7 +206,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 {
                     //this.GetComponent<NavMeshAgent>().enabled = false;
                     //rb_Body.isKinematic = true;
-                    //DetectEnemyUnit();
+                    if (PUN != PlayerUnitType.PUN_WORKER)
+                        DetectEnemyUnit();
                     break;
                 }
             case PlayerUnitState.PUS_HARVEST:
@@ -274,16 +266,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             {
                 if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
                 {
-                   //if (_navMeshAgent.transform.position != go_TargetedEnemy.transform.position)
-                   //{
-                   //    _navMeshAgent.SetDestination(go_TargetedEnemy.transform.position);
-                   //
-                   //}
-                   //else
-                   //{
-                   //    //DealDmg();
-                   //    go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health -= 1;
-                   //}
+               
                 }
                 else if (PUN == PlayerUnitType.PUN_RANGE)
                 {
@@ -326,7 +309,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
         if (b_toHarvestStone)
         {
             b_toHarvestTree = false;
-            go_Resource = GameObject.FindGameObjectWithTag("Resources").transform.GetChild(0).gameObject;
+            foreach (Transform GetStone in GameObject.FindGameObjectWithTag("Resources").transform)
+            {
+                if (GetStone.name == s_name)
+                    go_Resource = GetStone.gameObject;
+            }
         }
         else if (b_toHarvestTree)
         {
@@ -417,6 +404,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         v3_currentPos = gameObject.transform.position;
         WC.SetCurrentClosestWaypoint(v3_currentPos);
         WC.FindTargetClosestWaypoint(v3_targetPos);
+        currentPoint = 0;
         // b_Selected = false;
         b_Moving = true;
     }
@@ -425,15 +413,21 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         Debug.Log(WC.GetCounter());
 
-        if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.05f)
-        {
-            Vector3 dir = WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position;
-            transform.position += dir * Time.deltaTime * GetSpeed();
+        debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
 
-            if (dir.magnitude <= 0.05f)
+        if (WC.go_TargetWaypoint != null)
+        {
+            if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.005f)
             {
-                WC.FindNextWaypoint();
-                currentPoint++;
+                Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
+                transform.position = Vector3.MoveTowards(gameObject.transform.position, WC.getCreatePath()[currentPoint].transform.position, GetSpeed() * Time.deltaTime);
+                transform.LookAt(LookingThere);
+
+                if ((WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position).sqrMagnitude < 0.01f)
+                {
+                    WC.FindNextWaypoint();
+                    currentPoint++;
+                }
             }
         }
     }

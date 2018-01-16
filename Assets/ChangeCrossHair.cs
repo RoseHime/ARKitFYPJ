@@ -11,6 +11,8 @@ public class ChangeCrossHair : MonoBehaviour
     public LayerMask touchInputMask;
     public Texture2D getImage;
     public Texture2D origin;
+    public Texture2D T2D_HarvestTree_Icon;
+    public Texture2D T2D_HarvestMine_Icon;
 
     // Use this for initialization
     void Start()
@@ -32,6 +34,10 @@ public class ChangeCrossHair : MonoBehaviour
             {
                 if (recipient.tag == "PlayerUnit")
                     this.GetComponent<RawImage>().texture = getImage;
+                else if (recipient.tag == "Tree")
+                    this.GetComponent<RawImage>().texture = T2D_HarvestTree_Icon;
+                else if (recipient.tag == "StoneMine")
+                    this.GetComponent<RawImage>().texture = T2D_HarvestMine_Icon;
                 else
                     this.GetComponent<RawImage>().texture = origin;
             }

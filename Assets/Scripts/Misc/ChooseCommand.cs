@@ -24,7 +24,7 @@ public class ChooseCommand : MonoBehaviour {
     {
         //b_selectedCommand = false;
         go_CommandPanel = go_CommandButton.transform.parent.gameObject;
-        //bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
+        bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
         //go_CrossHair = GameObject.FindGameObjectWithTag("Crosshair");
 
         //go_DebugPurpose = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
@@ -42,12 +42,17 @@ public class ChooseCommand : MonoBehaviour {
             {
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
-                if (go_ObjectHit.name == "StoneMine")
+                if (go_ObjectHit.tag == "StoneMine")
                 {
                     Debug.Log("Select Stone Mine");
                     bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
                     bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
-
+                }
+                else if (go_ObjectHit.tag == "Tree")
+                {
+                    Debug.Log("Select Tree");
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
                 }
                 else
                 {
