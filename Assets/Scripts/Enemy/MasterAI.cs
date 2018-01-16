@@ -10,7 +10,7 @@ public class MasterAI : MonoBehaviour {
     public int i_SeriousLevel = 2;
 
     private int i_unitLevelIncrement = 1;
-    private float f_unitIncreaseTime = 60;
+    private float f_unitIncreaseTime = 1;
     private float f_unitIncreaseTimer = 0;
 
     List<EnemySquad> attackingSquads;
@@ -24,11 +24,6 @@ public class MasterAI : MonoBehaviour {
         playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
         defendingUnits = new List<GameObject>();
         attackingSquads = new List<EnemySquad>();
-
-        EnemySquad squad = new EnemySquad();
-        squad.Start();
-        squad.i_maxUnits = 1;
-        attackingSquads.Add(squad);
 
         enemyList = GameObject.FindGameObjectWithTag("EnemyList").transform;
         playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;
@@ -46,7 +41,7 @@ public class MasterAI : MonoBehaviour {
             DefenceStrat();
         }
         UpdateAttackSquads();
-        if ((f_unitIncreaseTimer += Time.deltaTime) > f_unitIncreaseTime)
+        if ((f_unitIncreaseTimer += Time.deltaTime) > f_unitIncreaseTime && i_UnitCapacity < 30)
         {
             i_UnitCapacity += i_unitLevelIncrement;
             f_unitIncreaseTimer = 0;
@@ -57,6 +52,7 @@ public class MasterAI : MonoBehaviour {
     {
         if (playerInfo.i_playerLevel >= i_SeriousLevel && defendingUnits.Count > 6)
         {
+            Debug.Log("Strats activated");
             Transform Waypoints = transform.GetChild(0);
             for (int i = 0;i < 3;++i)
             {
@@ -86,6 +82,13 @@ public class MasterAI : MonoBehaviour {
     {
         if (defendingUnits.Count > 10)
         {
+            if (attackingSquads.Count == 0)
+            {
+                EnemySquad squad = new EnemySquad();
+                squad.Start();
+                squad.i_maxUnits = playerInfo.i_playerLevel;
+                attackingSquads.Add(squad);
+            }
             GameObject unit = defendingUnits[Random.Range(0, defendingUnits.Count)];
             if (attackingSquads[attackingSquads.Count - 1].unitList.Count < attackingSquads[attackingSquads.Count - 1].i_maxUnits)
             {
@@ -105,6 +108,7 @@ public class MasterAI : MonoBehaviour {
 
     void UpdateAttackSquads()
     {
+        //Debug.Log(attackingSquads.Count);
         foreach (EnemySquad squad in attackingSquads)
         {
             if (squad.unitList.Count >= squad.i_maxUnits && squad.pathToFollow.Count == 0)
