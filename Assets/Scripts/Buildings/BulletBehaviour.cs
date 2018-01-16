@@ -27,7 +27,7 @@ public class BulletBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        //print("Hid was here!");
         MoveBullet();
 	}
 
@@ -52,7 +52,7 @@ public class BulletBehaviour : MonoBehaviour {
                 if (collisionInfo.gameObject.tag == "PlayerUnit")
                 {
                     //Debug.Log("IT HIT:" + collisionInfo.transform.name);
-                    collisionInfo.transform.GetComponent<TestPlayerUnit>().f_health -= f_damage;
+                    collisionInfo.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
                     Destroy(gameObject);
                     
                 }
