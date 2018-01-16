@@ -10,7 +10,7 @@ public class MasterAI : MonoBehaviour {
     public int i_SeriousLevel = 2;
 
     private int i_unitLevelIncrement = 1;
-    private float f_unitIncreaseTime = 30;
+    private float f_unitIncreaseTime = 1;
     private float f_unitIncreaseTimer = 0;
 
     List<EnemySquad> attackingSquads;
@@ -82,6 +82,13 @@ public class MasterAI : MonoBehaviour {
     {
         if (defendingUnits.Count > 10)
         {
+            if (attackingSquads.Count == 0)
+            {
+                EnemySquad squad = new EnemySquad();
+                squad.Start();
+                squad.i_maxUnits = playerInfo.i_playerLevel;
+                attackingSquads.Add(squad);
+            }
             GameObject unit = defendingUnits[Random.Range(0, defendingUnits.Count)];
             if (attackingSquads[attackingSquads.Count - 1].unitList.Count < attackingSquads[attackingSquads.Count - 1].i_maxUnits)
             {
@@ -101,7 +108,7 @@ public class MasterAI : MonoBehaviour {
 
     void UpdateAttackSquads()
     {
-        Debug.Log(attackingSquads.Count);
+        //Debug.Log(attackingSquads.Count);
         foreach (EnemySquad squad in attackingSquads)
         {
             if (squad.unitList.Count >= squad.i_maxUnits && squad.pathToFollow.Count == 0)
