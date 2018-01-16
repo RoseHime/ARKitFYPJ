@@ -229,7 +229,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         foreach (Transform T_enemyChild in T_Enemy)
         {
-            if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= GetRange() * GetRange())
+            if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= GetRange())
             {
                 //DO something
                 nearestTarget = T_enemyChild.gameObject;
@@ -258,9 +258,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     void AttackEnemyUnit()
     {
-        if (go_TargetedEnemy != null)
+        if (DetectEnemyUnit() != null)
         {
-            Vector3 difference = go_TargetedEnemy.transform.position - transform.position;
+            Vector3 difference = DetectEnemyUnit().transform.position - transform.position;
 
             if (difference.sqrMagnitude < GetRange() * GetRange())
             {

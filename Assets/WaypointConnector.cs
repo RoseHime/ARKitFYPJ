@@ -41,21 +41,21 @@ public class WaypointConnector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for (int i = 0; i < childsT.Length; i++)
-        //{
-        //    currentWaypoint = childsT[i].gameObject;
-        //    for (int j = 0; j < childsT.Length; j++)
-        //    {
-        //        if (j == i)
-        //        { continue; }
-        //        else
-        //        {
-        //            nextWaypoint = childsT[j].gameObject;
-        //            //if (childsT[i].GetComponent<Collider>().bounds.Intersects(childsT[j].GetComponent<Collider>().bounds))
-        //            //    Debug.DrawLine(childsT[i].transform.position, childsT[j].transform.position);
-        //        }
-        //    }
-        //}
+       // for (int i = 0; i < childsT.Length; i++)
+       // {
+       //     currentWaypoint = childsT[i].gameObject;
+       //     for (int j = 0; j < childsT.Length; j++)
+       //     {
+       //         if (j == i)
+       //         { continue; }
+       //         else
+       //         {
+       //             nextWaypoint = childsT[j].gameObject;
+       //             if (childsT[i].GetComponent<Collider>().bounds.Intersects(childsT[j].GetComponent<Collider>().bounds))
+       //                 Debug.DrawLine(childsT[i].transform.position, childsT[j].transform.position);
+       //         }
+       //     }
+       // }
     }
 
     public void SetWayPointPath(Vector3 currpos, Vector3 lastpos)
