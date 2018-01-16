@@ -95,7 +95,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         i_resourceWOOD = 0;
         i_resourceSTONE = 0;
-        //T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
+        T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
         PUS = PlayerUnitState.PUS_GUARD;
         //rb_Body = gameObject.GetComponent<Rigidbody>();
         b_Selected = false;
