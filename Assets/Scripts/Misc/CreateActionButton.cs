@@ -20,6 +20,12 @@ public class CreateActionButton : MonoBehaviour
     public GameObject go_selectButton;
 
     public Transform UnitCamera;
+
+    public Sprite selectImage;
+    public Sprite cancelImage;
+    public Sprite uprankImage;
+    public Sprite buildImage;
+    public Sprite moveImage;
     // Use this for initialization
     void Start()
     {
@@ -79,7 +85,7 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.tag == "PlayerUnit")
             {
-                for (int i = 0; i < go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getAmountOfButton(); ++i)
+                for (int i = 0; i < 3; ++i)
                 {
                     GameObject goButton = (GameObject)Instantiate(go_actionButton);
                     goButton.name = "ActionButton";
@@ -93,15 +99,23 @@ public class CreateActionButton : MonoBehaviour
                     {
                         case 0:
                             goButton.GetComponentInChildren<Text>().text = "CLOSE";
+                            goButton.GetComponent<Image>().sprite = cancelImage;
                             break;
                         case 1:
                             goButton.GetComponentInChildren<Text>().text = "MOVE";
+                            goButton.GetComponent<Image>().sprite = moveImage;
                             break;
                         case 2:
-                            goButton.GetComponentInChildren<Text>().text = "UPRANK";
-                            break;
-                        case 3:
-                            goButton.GetComponentInChildren<Text>().text = "BUILD";
+                            if (go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                            {
+                                goButton.GetComponentInChildren<Text>().text = "BUILD";
+                                goButton.GetComponent<Image>().sprite = buildImage;
+                            }
+                            else
+                            {
+                                goButton.GetComponentInChildren<Text>().text = "UPRANK";
+                                goButton.GetComponent<Image>().sprite = uprankImage;
+                            }
                             break;
                     }
                 }
@@ -118,7 +132,7 @@ public class CreateActionButton : MonoBehaviour
                 goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
                 goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y, 0);
                 goButton.GetComponentInChildren<Text>().text = "CLOSE";
-
+                goButton.GetComponent<Image>().sprite = cancelImage;
                 if (go_selectedUnit.name == "Barracks")
                 {
                     for (int j = 0; j < 2; ++j)
