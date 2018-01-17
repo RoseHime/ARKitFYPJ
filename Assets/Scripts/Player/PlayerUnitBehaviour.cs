@@ -28,6 +28,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private Transform T_Enemy;
     private GameObject go_TargetedEnemy;
+    List<Transform> listOfEnemy = new List<Transform>();
+    private GameObject go_TempEnemyHolder;
     public Color detectedColor;
     private GameObject go_Resource;
     private GameObject go_Depot;
@@ -58,7 +60,6 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private float f_HarvestingTime;
     private bool b_isWoodHarvested;
     private bool b_isStoneHarvested;
-    private GameObject go_TargetedTree;
     public bool b_toHarvestStone;
     public bool b_toHarvestTree;
 
@@ -71,9 +72,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public bool b_buildBuilding;
     public bool b_Moving;
+    private bool b_DetectEnemy;
 
     //Projectile
-    private GameObject bullet_Prefab;
+    public GameObject bullet_Prefab;
     public float f_bulletSpeed = 0.1f;
     public float f_fireRate = 1;
     private float f_fireCooldown = 0;
@@ -100,6 +102,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         //rb_Body = gameObject.GetComponent<Rigidbody>();
         b_Selected = false;
         b_Moving = false;
+        b_DetectEnemy = false;
 
         if (PUN == PlayerUnitType.PUN_WORKER)
         {
@@ -115,6 +118,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
 
         f_OriginSpeed = f_speed;
+        go_TargetedEnemy = null;
 
     }
 
@@ -155,15 +159,15 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             if (b_Moving)
                 PUS = PlayerUnitState.PUS_MOVE;
-            else if (!b_Moving)
+            else if (!b_Moving && !b_DetectEnemy)
                 PUS = PlayerUnitState.PUS_GUARD;
         }
 
 
-        if (PUN != PlayerUnitType.PUN_WORKER && !b_Moving)
-        {
-            DetectEnemyUnit();
-        }
+        //if (PUN != PlayerUnitType.PUN_WORKER && !b_Moving)
+        //{
+        //    DetectEnemyUnit();
+        //}
      
         if (b_isHarvesting)
         {
@@ -225,31 +229,57 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     GameObject DetectEnemyUnit()
     {
-        go_TargetedEnemy = null;
-
-        foreach (Transform T_enemyChild in T_Enemy)
+        if (b_DetectEnemy == false)
         {
-            if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= GetRange())
+            List<Transform> nearbyEnemy = new List<Transform>();
+            foreach (Transform T_enemyChild in T_Enemy)
             {
-                //DO something
-                go_TargetedEnemy = T_enemyChild.gameObject;
-                PUS = PlayerUnitState.PUS_ATTACK;
-                gameObject.GetComponent<Renderer>().material.color = Color.green;
-                //Debug.Log("Detected");
+                if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= GetRange() * GetRange())
+                {
+                    //DO something
+                    nearbyEnemy.Add(T_enemyChild);
+                    //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                    //Debug.Log("Detected");
+                }
             }
-            else
-            {
-                go_TargetedEnemy = null;
-                PUS = PlayerUnitState.PUS_GUARD;
-                gameObject.GetComponent<Renderer>().material.color = Color.gray;
-            }
-        }
 
-        foreach (Transform T_enemyBuilding in GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
-        {
-            if ((T_enemyBuilding.position - transform.position).sqrMagnitude < GetRange() * GetRange())
+            int i_Enemy = 0;
+            while (i_Enemy < nearbyEnemy.Count)
             {
-                go_TargetedEnemy = T_enemyBuilding.gameObject;
+                if ( i_Enemy > 0)
+                {
+                    if ((gameObject.transform.position - nearbyEnemy[i_Enemy].position).sqrMagnitude < (gameObject.transform.position - go_TempEnemyHolder.transform.position).sqrMagnitude)
+                    {
+                        go_TempEnemyHolder = nearbyEnemy[i_Enemy].gameObject;
+                    }
+                    if (i_Enemy == nearbyEnemy.Count - 1)
+                    {
+                        PUS = PlayerUnitState.PUS_ATTACK;
+                        go_TargetedEnemy = go_TempEnemyHolder;
+                        listOfEnemy.Add(go_TargetedEnemy.transform);
+                        b_DetectEnemy = true;
+                    }
+                }
+                else
+                {
+                    go_TempEnemyHolder = nearbyEnemy[i_Enemy].gameObject;
+                    if (i_Enemy == nearbyEnemy.Count - 1)
+                    {
+                        PUS = PlayerUnitState.PUS_ATTACK;
+                        go_TargetedEnemy = go_TempEnemyHolder;
+                        listOfEnemy.Add(go_TargetedEnemy.transform);
+                        b_DetectEnemy = true;
+                    }
+                }
+                i_Enemy++;
+            }
+
+            foreach (Transform T_enemyBuilding in GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
+            {
+                if ((T_enemyBuilding.position - transform.position).sqrMagnitude < GetRange() * GetRange())
+                {
+                    go_TargetedEnemy = T_enemyBuilding.gameObject;
+                }
             }
         }
 
@@ -258,33 +288,31 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     void AttackEnemyUnit()
     {
-        if (DetectEnemyUnit() != null)
+        if (b_DetectEnemy)
         {
-            Vector3 difference = DetectEnemyUnit().transform.position - transform.position;
+            Vector3 enemyLoc = new Vector3(go_TargetedEnemy.transform.position.x, gameObject.transform.position.y, go_TargetedEnemy.transform.position.z);
+            Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
+            gameObject.transform.LookAt(enemyLoc);
+            if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
+            {
 
-            if (difference.sqrMagnitude < GetRange() * GetRange())
+            }
+            else if (PUN == PlayerUnitType.PUN_RANGE)
             {
-                if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
+                if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
-               
-                }
-                else if (PUN == PlayerUnitType.PUN_RANGE)
-                {
-                    if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
-                    {
-                        f_fireCooldown = 0;
-                        FireBullet(difference.normalized);
-                    }
+                    f_fireCooldown = 0;
+                    FireBullet(difference.normalized);
                 }
             }
-            else
+
+            if (go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health <= 0)
             {
-                //Chase?
+                listOfEnemy.Remove(go_TargetedEnemy.transform);
+                b_DetectEnemy = false;
+                go_TargetedEnemy = null;
+                PUS = PlayerUnitState.PUS_GUARD;
             }
-        }
-        else
-        {
-            PUS = PlayerUnitState.PUS_GUARD;
         }
     }
 

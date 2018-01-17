@@ -236,6 +236,7 @@ MonoBehaviour:
   b_Selected: 0
   b_buildBuilding: 0
   b_Moving: 0
+  bullet_Prefab: {fileID: 1212042755645756}
   f_bulletSpeed: 0.1
   f_fireRate: 1
 --- !u!114 &114975768477639990
