@@ -5,14 +5,12 @@ using UnityEngine;
 public class BarracksPanelInfo : MonoBehaviour {
 
     public GameObject go_SelectedBarracks;
-    private PlayerInfo playerInfo;
 
     public GameObject go_lvl2Block;
     public GameObject go_lvl3Block;
 
 	// Use this for initialization
-	void Start () {
-        playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();		
+	void Start () {	
 	}
 	
 	// Update is called once per frame

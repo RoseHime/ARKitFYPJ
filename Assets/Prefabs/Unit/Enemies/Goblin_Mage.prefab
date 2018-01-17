@@ -9,34 +9,34 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1978847197655560}
+  m_RootGameObject: {fileID: 1890677986126746}
   m_IsPrefabParent: 1
---- !u!1 &1978847197655560
+--- !u!1 &1890677986126746
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4359901983530638}
-  - component: {fileID: 33766491204115606}
-  - component: {fileID: 23604018776484608}
-  - component: {fileID: 95753169259066186}
-  - component: {fileID: 136341373977343898}
-  - component: {fileID: 114791645205695210}
+  - component: {fileID: 4358449334878068}
+  - component: {fileID: 33057149580568916}
+  - component: {fileID: 23641514192010260}
+  - component: {fileID: 95979826947237470}
+  - component: {fileID: 136953346515356332}
+  - component: {fileID: 114637575699118630}
   m_Layer: 0
   m_Name: Goblin_Mage
-  m_TagString: PlayerUnit
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4359901983530638
+--- !u!4 &4358449334878068
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978847197655560}
+  m_GameObject: {fileID: 1890677986126746}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.12774388, y: 0.17296952, z: -1.1598921}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -44,12 +44,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23604018776484608
+--- !u!23 &23641514192010260
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978847197655560}
+  m_GameObject: {fileID: 1890677986126746}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -79,20 +79,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33766491204115606
+--- !u!33 &33057149580568916
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978847197655560}
+  m_GameObject: {fileID: 1890677986126746}
   m_Mesh: {fileID: 4300000, guid: 48a9e845532a4f442a409d78bf9e5aea, type: 3}
---- !u!95 &95753169259066186
+--- !u!95 &95979826947237470
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978847197655560}
+  m_GameObject: {fileID: 1890677986126746}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 48a9e845532a4f442a409d78bf9e5aea, type: 3}
   m_Controller: {fileID: 0}
@@ -103,45 +103,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114791645205695210
+--- !u!114 &114637575699118630
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978847197655560}
+  m_GameObject: {fileID: 1890677986126746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3d738ff7bd6304cb19c56b0322c652, type: 3}
+  m_Script: {fileID: 11500000, guid: 256510b6e4bc42b4c85731d367f55e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PUN: 2
-  detectedColor: {r: 0, g: 0, b: 0, a: 0}
-  f_HealthPoint: 10
+  f_health: 10
   f_range: 0.5
+  f_atkRange: 0.5
   f_speed: 0.01
-  f_atkDmg: 1
-  reachDist: 1
-  currentPoint: 0
-  i_woodCost: 0
-  i_stoneCost: 0
-  i_magicStoneCost: 0
-  b_StartHarvest: 0
-  b_HoldingResource: 0
-  b_toHarvestStone: 0
-  b_toHarvestTree: 0
-  b_Selected: 0
-  b_buildBuilding: 0
-  b_Moving: 0
+  f_bulletSpeed: 0.1
+  f_damage: 1
+  f_fireRate: 1
+  f_defendRange: 1
+  i_magicStoneDrop: 1
   bullet_Prefab: {fileID: 1535914014752706, guid: 03c2aee621b9d8a4c93ed9b0ca515c1a,
     type: 2}
-  f_bulletSpeed: 0.1
-  f_fireRate: 1
---- !u!136 &136341373977343898
+  EUS: 1
+  ET: 0
+  destination: {x: 0, y: 0, z: 0}
+  isDefending: 0
+--- !u!136 &136953346515356332
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978847197655560}
+  m_GameObject: {fileID: 1890677986126746}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

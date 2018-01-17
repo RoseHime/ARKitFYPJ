@@ -73,7 +73,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public bool b_Moving;
 
     //Projectile
-    private GameObject bullet_Prefab;
+    public GameObject bullet_Prefab;
     public float f_bulletSpeed = 0.1f;
     public float f_fireRate = 1;
     private float f_fireCooldown = 0;
@@ -300,6 +300,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         bullet_behaviour.f_speed = f_bulletSpeed;
         bullet_behaviour.f_damage = GetAttack();
         bullet_behaviour.direction = direction;
+        bullet_behaviour.target = BulletBehaviour.BULLETTARGET.ENEMY;
 
         tempBullet.SetActive(true);
     }

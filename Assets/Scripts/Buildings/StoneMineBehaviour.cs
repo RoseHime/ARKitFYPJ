@@ -13,11 +13,6 @@ public class StoneMineBehaviour : BuildingInfo
     {
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 
     public int CollectStone()
     {

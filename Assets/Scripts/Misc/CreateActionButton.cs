@@ -9,7 +9,6 @@ public class CreateActionButton : MonoBehaviour
     public GameObject go_unitInfo;
     public GameObject go_actionButton;
     public GameObject go_actionPanel;
-    private float go_unitInfo_Length;
     private float go_actionButton_Length;
     Vector3 tempPos;
 
@@ -67,8 +66,6 @@ public class CreateActionButton : MonoBehaviour
                 Destroy(button.gameObject);
             }
         }
-
-        go_unitInfo_Length = go_unitInfo.GetComponent<RectTransform>().rect.width;
         go_actionButton_Length = go_actionButton.GetComponent<RectTransform>().rect.height;
 
         if (go_selectedUnit.tag == "PlayerUnit")
