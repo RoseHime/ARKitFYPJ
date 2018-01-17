@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_health: 120
-  f_range: 0.01
-  f_atkRange: 0.5
+  f_range: 0.5
+  f_atkRange: 0.01
   f_speed: 0.01
   f_bulletSpeed: 0.1
   f_damage: 3
