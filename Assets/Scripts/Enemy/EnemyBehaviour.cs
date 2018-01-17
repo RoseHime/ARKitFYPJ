@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
     public int i_magicStoneDrop = 1;
 
-    private GameObject bullet_Prefab;
+    public GameObject bullet_Prefab;
     private Transform T_playerList;
     private GameObject go_LockOnUnit;
     public EnemyUnitState EUS = EnemyUnitState.EUS_IDLE;
@@ -49,8 +49,12 @@ public class EnemyBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start() {
         T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;     
-        if (ET == EnemyType.ET_RANGED)   
-            bullet_Prefab = transform.GetChild(0).gameObject;
+        if (ET == EnemyType.ET_RANGED)
+        {
+            if (transform.GetChild(0) != null)
+                bullet_Prefab = transform.GetChild(0).gameObject;
+        }
+
         //_navMeshAgent = GetComponent<NavMeshAgent>();
         //_navMeshAgent.speed = f_speed;
         //_navMeshOb = GetComponent<NavMeshObstacle>();
@@ -286,6 +290,7 @@ public class EnemyBehaviour : MonoBehaviour {
         bullet_behaviour.f_speed = f_bulletSpeed;
         bullet_behaviour.f_damage = f_damage;
         bullet_behaviour.direction = direction;
+        bullet_behaviour.target = BulletBehaviour.BULLETTARGET.PLAYER;
 
         tempBullet.SetActive(true);
     }

@@ -14,11 +14,6 @@ public class TreeBehaviour : BuildingInfo
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public int CollectWood()
     {

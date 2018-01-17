@@ -328,6 +328,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         bullet_behaviour.f_speed = f_bulletSpeed;
         bullet_behaviour.f_damage = GetAttack();
         bullet_behaviour.direction = direction;
+        bullet_behaviour.target = BulletBehaviour.BULLETTARGET.ENEMY;
 
         tempBullet.SetActive(true);
     }
