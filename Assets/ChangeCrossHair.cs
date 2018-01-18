@@ -32,7 +32,7 @@ public class ChangeCrossHair : MonoBehaviour
             //debugText.text = recipient.name + "\n" + hit.point;
             if (recipient != null)
             {
-                if (recipient.tag == "PlayerUnit")
+                if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
                     this.GetComponent<RawImage>().texture = getImage;
                 else if (recipient.tag == "Tree")
                     this.GetComponent<RawImage>().texture = T2D_HarvestTree_Icon;

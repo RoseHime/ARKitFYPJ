@@ -485,11 +485,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         Debug.Log(WC.GetCounter());
 
-        debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
+        //debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
 
         if (WC.go_TargetWaypoint != null)
         {
-            if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.005f)
+            if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.001f)
             {
                 Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
                 transform.position = Vector3.MoveTowards(gameObject.transform.position, WC.getCreatePath()[currentPoint].transform.position, GetSpeed() * Time.deltaTime);
