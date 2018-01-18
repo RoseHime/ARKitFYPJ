@@ -27,6 +27,7 @@ public class CreateActionButton : MonoBehaviour
     public Sprite buildImage;
     public Sprite moveImage;
     public Sprite selectMoreImage;
+    public Sprite createUnitImage;
     // Use this for initialization
     void Start()
     {
@@ -156,11 +157,14 @@ public class CreateActionButton : MonoBehaviour
                         //goButton.transform.localPosition = Vector3.zero;
                         secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
                         secondButton.GetComponentInChildren<Text>().text = "CREATE";
+                        secondButton.GetComponent<Image>().sprite = createUnitImage;
                         if (j == 1)
                         {
                             secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * 2, 0);
                             secondButton.name = "UpgradeBarracksButton";
-                            secondButton.GetComponentInChildren<Text>().text = "UPGRADE (" + go_selectedUnit.GetComponent<BarracksBehaviour>().i_levelUpCost + ")";
+                            secondButton.GetComponentInChildren<Text>().text = "" + go_selectedUnit.GetComponent<BarracksBehaviour>().i_levelUpCost;
+                            secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
+                            secondButton.GetComponent<Image>().sprite = uprankImage;
                         }
                     }
 
@@ -177,7 +181,9 @@ public class CreateActionButton : MonoBehaviour
 
                     //goButton.transform.localPosition = Vector3.zero;
                     secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
-                    secondButton.GetComponentInChildren<Text>().text = "UPGRADE (" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost + ")";
+                    secondButton.GetComponentInChildren<Text>().text = "" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost;
+                    secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
+                    secondButton.GetComponent<Image>().sprite = uprankImage;
                 }
             }
         }     
