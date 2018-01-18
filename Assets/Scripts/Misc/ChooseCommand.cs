@@ -42,25 +42,34 @@ public class ChooseCommand : MonoBehaviour {
             {
                 GameObject go_ObjectHit = hit.transform.gameObject;
                 //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
-                if (go_ObjectHit.tag == "StoneMine")
+                if (bc.GetListOfUnit().Count < 2)
                 {
-                    Debug.Log("Select Stone Mine");
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
+                    if (go_ObjectHit.tag == "StoneMine")
+                    {
+                        Debug.Log("Select Stone Mine");
+                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
+                    }
+                    else if (go_ObjectHit.tag == "Tree")
+                    {
+                        Debug.Log("Select Tree");
+                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Walk here");
+                        //TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
+                        // input.b_MoveUnit = true;
+                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                    }
                 }
-                else if (go_ObjectHit.tag == "Tree")
+                else if (bc.GetListOfUnit().Count > 1)
                 {
-                    Debug.Log("Select Tree");
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
-                }
-                else
-                {
-                    Debug.Log("Walk here");
-                    //TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
-                    // input.b_MoveUnit = true;
-                    bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
-
+                    for(int i = 1;  i <= bc.GetListOfUnit().Count; i++)
+                    {
+                        bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                    }
                 }
             }
 
@@ -85,6 +94,27 @@ public class ChooseCommand : MonoBehaviour {
             //go_BarracksPanel.SetActive(true);
             go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit = null;
             go_CommandPanel.SetActive(false);
+
+            for (int i = 1; i <= bc.GetListOfUnit().Count; i++)
+            {
+                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                bc.GetListOfUnit().Remove(bc.GetListOfUnit()[i]);
+            }
+        }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "SELECTMORE")
+        {
+           if (bc.GetRecipient().tag == "PlayerUnit")
+            {
+                int i;
+                for(i = 0; i < bc.GetListOfUnit().Count; i++)
+                {
+                    if (bc.GetRecipient().gameObject != bc.GetListOfUnit()[i].gameObject)
+                    {
+                        bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        bc.GetListOfUnit().Add(bc.GetRecipient().transform);
+                    }
+                }
+            }
         }
         else if (go_CommandButton.name == "UpgradeActionButton")
         {

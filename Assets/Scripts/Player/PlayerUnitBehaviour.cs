@@ -73,6 +73,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public bool b_buildBuilding;
     public bool b_Moving;
     private bool b_DetectEnemy;
+    private bool b_CollidedWithEnemy;
 
     //Projectile
     public GameObject bullet_Prefab;
@@ -103,6 +104,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         b_Selected = false;
         b_Moving = false;
         b_DetectEnemy = false;
+        b_CollidedWithEnemy = false;
 
         if (PUN == PlayerUnitType.PUN_WORKER)
         {
@@ -296,6 +298,19 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
             {
 
+                if (!b_CollidedWithEnemy)
+                {
+                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
+                    f_fireCooldown = 0;
+                }
+                else if (b_CollidedWithEnemy)
+                {
+                    if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                    {
+                        f_fireCooldown = 0;
+                        go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().f_health -= GetAttack();
+                    }
+                }
             }
             else if (PUN == PlayerUnitType.PUN_RANGE)
             {
@@ -307,6 +322,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
             }
 
             if (go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health <= 0)
+            {
+                listOfEnemy.Remove(go_TargetedEnemy.transform);
+                b_DetectEnemy = false;
+                go_TargetedEnemy = null;
+                PUS = PlayerUnitState.PUS_GUARD;
+            }
+            else if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude > GetRange() * GetRange())
             {
                 listOfEnemy.Remove(go_TargetedEnemy.transform);
                 b_DetectEnemy = false;
@@ -415,6 +437,27 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 b_isWoodHarvested = false;
             }
             b_HoldingResource = false;
+        }
+
+        if (PUN == PlayerUnitType.PUN_MELEE)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                b_CollidedWithEnemy = true;
+                f_speed = 0f;
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (PUN == PlayerUnitType.PUN_MELEE)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                b_CollidedWithEnemy = false;
+                f_speed = f_OriginSpeed;
+            }
         }
     }
 
