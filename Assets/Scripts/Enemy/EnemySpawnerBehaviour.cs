@@ -35,8 +35,8 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
     {
         GameObject tempEnemy = Instantiate(go_enemyPrefab, GameObject.FindGameObjectWithTag("EnemyList").transform);
         tempEnemy.transform.position = gameObject.transform.position;
-        Debug.Log("Barracks:" + gameObject.transform.position);
-        Debug.Log("Enemy:" + gameObject.transform.position);
+        //Debug.Log("Barracks:" + gameObject.transform.position);
+        //Debug.Log("Enemy:" + gameObject.transform.position);
         //tempEnemy.transform.position = transform.GetChild(0).position;
         tempEnemy.transform.localScale = go_enemyPrefab.transform.localScale;
         tempEnemy.name = go_enemyPrefab.name;

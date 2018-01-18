@@ -125,8 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 300
   b_IsUnderAttack: 0
-  i_woodCost: 10
-  i_stoneCost: 10
+  i_woodCost: 100
+  i_stoneCost: 50
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 4300000, guid: 587248b0883a13943b7c287558e659ea, type: 3}
   i_barrackLevel: 1

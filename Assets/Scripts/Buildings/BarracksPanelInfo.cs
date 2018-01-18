@@ -6,8 +6,8 @@ public class BarracksPanelInfo : MonoBehaviour {
 
     public GameObject go_SelectedBarracks;
 
-    public GameObject go_lvl2Block;
-    public GameObject go_lvl3Block;
+    public GameObject LVL2BLOCK;
+    public GameObject LVL3BLOCK;
 
 	// Use this for initialization
 	void Start () {	
@@ -19,19 +19,19 @@ public class BarracksPanelInfo : MonoBehaviour {
         {
             if (go_SelectedBarracks.GetComponent<BarracksBehaviour>().i_barrackLevel > 1)
             {
-                go_lvl2Block.SetActive(false);
+                LVL2BLOCK.SetActive(false);
             }
             else
             {
-                go_lvl2Block.SetActive(true);
+                LVL2BLOCK.SetActive(true);
             }
             if (go_SelectedBarracks.GetComponent<BarracksBehaviour>().i_barrackLevel > 2)
             {
-                go_lvl3Block.SetActive(false);
+                LVL3BLOCK.SetActive(false);
             }
             else
             {
-                go_lvl3Block.SetActive(true);
+                LVL3BLOCK.SetActive(true);
             }
         }
     }

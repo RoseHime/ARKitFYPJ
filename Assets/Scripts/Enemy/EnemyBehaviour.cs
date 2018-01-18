@@ -51,7 +51,7 @@ public class EnemyBehaviour : MonoBehaviour {
         T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;     
         if (ET == EnemyType.ET_RANGED)
         {
-            if (transform.GetChild(0) != null)
+            if (transform.childCount > 0)
                 bullet_Prefab = transform.GetChild(0).gameObject;
         }
 
