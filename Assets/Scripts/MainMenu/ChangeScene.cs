@@ -14,4 +14,9 @@ public class ChangeScene : MonoBehaviour {
         else
             SceneManager.LoadScene(destinationScene, LoadSceneMode.Additive);
     }
+
+    public void UnloadScene(int sceneIndex)
+    {
+        SceneManager.UnloadSceneAsync(sceneIndex);
+    }
 }
