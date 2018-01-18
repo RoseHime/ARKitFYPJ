@@ -66,7 +66,7 @@ public class ChooseCommand : MonoBehaviour {
                 }
                 else if (bc.GetListOfUnit().Count > 1)
                 {
-                    for(int i = 1;  i <= bc.GetListOfUnit().Count; i++)
+                    for(int i = 0;  i < bc.GetListOfUnit().Count; i++)
                     {
                         bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
                     }
@@ -110,8 +110,9 @@ public class ChooseCommand : MonoBehaviour {
                 {
                     if (bc.GetRecipient().gameObject != bc.GetListOfUnit()[i].gameObject)
                     {
+                        if (!bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected)
+                            bc.GetListOfUnit().Add(bc.GetRecipient().transform);
                         bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-                        bc.GetListOfUnit().Add(bc.GetRecipient().transform);
                     }
                 }
             }

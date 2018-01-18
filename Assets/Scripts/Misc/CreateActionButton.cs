@@ -121,7 +121,7 @@ public class CreateActionButton : MonoBehaviour
                         case 3:
                             goButton.GetComponentInChildren<Text>().text = "SELECTMORE";
                             goButton.GetComponent<Image>().sprite = selectImage;
-                            goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x + go_actionButton.GetComponent<RectTransform>().rect.height, go_selectButton.transform.localPosition.y, 0);
+                            goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x - go_actionButton.GetComponent<RectTransform>().rect.height, go_selectButton.transform.localPosition.y, 0);
                             break;
                     }
                 }

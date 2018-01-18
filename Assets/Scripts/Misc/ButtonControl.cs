@@ -58,6 +58,8 @@ public class ButtonControl : MonoBehaviour {
             //                 "Ray dir:" + ray.direction + "\n" +
             //                 "HIt pos:" + hit.point + "\n";
         }
+
+        Debug.Log("List of Unit:" + GetListOfUnit().Count);
     }
     
     public void TapDown()
