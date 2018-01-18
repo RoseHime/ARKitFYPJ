@@ -19,13 +19,14 @@ public class CreateActionButton : MonoBehaviour
 
     public GameObject go_selectButton;
 
-    public Transform UnitCamera;
+    Transform UnitCamera;
 
     public Sprite selectImage;
     public Sprite cancelImage;
     public Sprite uprankImage;
     public Sprite buildImage;
     public Sprite moveImage;
+    public Sprite selectMoreImage;
     // Use this for initialization
     void Start()
     {
@@ -85,7 +86,7 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.tag == "PlayerUnit")
             {
-                for (int i = 0; i < 3; ++i)
+                for (int i = 0; i < 4; ++i)
                 {
                     GameObject goButton = (GameObject)Instantiate(go_actionButton);
                     goButton.name = "ActionButton";
@@ -116,6 +117,11 @@ public class CreateActionButton : MonoBehaviour
                                 goButton.GetComponentInChildren<Text>().text = "UPRANK";
                                 goButton.GetComponent<Image>().sprite = uprankImage;
                             }
+                            break;
+                        case 3:
+                            goButton.GetComponentInChildren<Text>().text = "SELECTMORE";
+                            goButton.GetComponent<Image>().sprite = selectImage;
+                            goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x + go_actionButton.GetComponent<RectTransform>().rect.height, go_selectButton.transform.localPosition.y, 0);
                             break;
                     }
                 }
