@@ -92,18 +92,18 @@ public class ChooseCommand : MonoBehaviour {
             go_BarracksPanel.SetActive(true);
             go_CommandPanel.SetActive(false);
         }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CLOSE")
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CLOSE") // No longer needed
         {
             //input.selectedUnit = null;
             //go_BarracksPanel.SetActive(true);
-            go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit = null;
-            go_CommandPanel.SetActive(false);
+            //go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit = null;
+            //go_CommandPanel.SetActive(false);
 
-            for (int i = 1; i <= bc.GetListOfUnit().Count; i++)
-            {
-                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                bc.GetListOfUnit().Remove(bc.GetListOfUnit()[i]);
-            }
+            //for (int i = 1; i <= bc.GetListOfUnit().Count; i++)
+            //{
+            //    bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+            //    bc.GetListOfUnit().Remove(bc.GetListOfUnit()[i]);
+            //}
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "SELECTMORE")
         {
