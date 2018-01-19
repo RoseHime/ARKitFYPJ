@@ -477,6 +477,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         WC.SetCurrentClosestWaypoint(v3_currentPos);
         WC.FindTargetClosestWaypoint(v3_targetPos);
         currentPoint = 0;
+
         // b_Selected = false;
         b_Moving = true;
     }
@@ -492,7 +493,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.001f)
             {
                 Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
-                transform.position = Vector3.MoveTowards(gameObject.transform.position, WC.getCreatePath()[currentPoint].transform.position, GetSpeed() * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(gameObject.transform.position, LookingThere, GetSpeed() * Time.deltaTime);
                 transform.LookAt(LookingThere);
 
                 if ((WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position).sqrMagnitude < 0.01f)
