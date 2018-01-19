@@ -68,9 +68,9 @@ public class ButtonControl : MonoBehaviour {
     {
         if (!b_SomethingIsSelected && recipient != null && s_text == "Select")
         {
-            btn.image.sprite = S_Back;
             if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
             {
+                btn.image.sprite = S_Back;
                 go_SelectedUnit = recipient.transform.gameObject;
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
@@ -90,27 +90,40 @@ public class ButtonControl : MonoBehaviour {
         else if (b_SomethingIsSelected && recipient != null && s_text == "Back")
         {
             btn.image.sprite = S_Select;
-
-            if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+            if (GetListOfUnit().Count > 1)
             {
-                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+
+                for (int i = 1; i <= GetListOfUnit().Count; i++)
                 {
-                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+                    GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                    GetListOfUnit().Remove(GetListOfUnit()[i]);
                 }
             }
-            else if (recipient.tag == "SelectableBuilding")
+            else
             {
-                if (GameObject.FindGameObjectWithTag("Command"))
-                    GameObject.FindGameObjectWithTag("Command").SetActive(false);
-            }
-            b_SomethingIsSelected = false;
-            btn.GetComponentInChildren<Text>().text = "Select";
+                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                {
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                    {
+                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+                        GetListOfUnit().Remove(go_SelectedUnit.transform);
+                    }
+                }
+                else if (recipient.tag == "SelectableBuilding")
+                {
+                    if (GameObject.FindGameObjectWithTag("Command"))
+                        GameObject.FindGameObjectWithTag("Command").SetActive(false);
+                }
+                b_SomethingIsSelected = false;
+                btn.GetComponentInChildren<Text>().text = "Select";
 
-            //btn.interactable = false;
-            go_barracksPanel.SetActive(false);
-            go_buildPanel.SetActive(false);
-            //go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
+                //btn.interactable = false;
+                go_barracksPanel.SetActive(false);
+                go_buildPanel.SetActive(false);
+                //go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
+            }
         }
 
             ////If nothing is selected

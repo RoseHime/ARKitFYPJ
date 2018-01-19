@@ -36,7 +36,7 @@ public class ChooseCommand : MonoBehaviour {
         if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
         {
             Debug.Log("OnClickMOVE");
-            go_CommandPanel.SetActive(false);
+            //go_CommandPanel.SetActive(false);
             Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
             if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
             {

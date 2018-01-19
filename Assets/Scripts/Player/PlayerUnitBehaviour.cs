@@ -361,6 +361,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public void OnHarvestMode()
     {
+        _navmeshAgent.speed = f_OriginSpeed;
+
         if (b_toHarvestStone)
         {
             b_toHarvestTree = false;
@@ -480,6 +482,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         v3_targetPos = v3_targetpos;
         v3_currentPos = gameObject.transform.position;
+        _navmeshAgent.speed = f_OriginSpeed;
         //WC.SetCurrentClosestWaypoint(v3_currentPos);
         //WC.FindTargetClosestWaypoint(v3_targetPos);
         //currentPoint = 0;
@@ -516,6 +519,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
         //}
     }
 
+    public void StopAllActions()
+    {
+        PUS = PlayerUnitState.PUS_GUARD;
+        b_Moving = false;
+        _navmeshAgent.speed = 0f;
+    }
 
     //public Transform[] getPath()
     //{
