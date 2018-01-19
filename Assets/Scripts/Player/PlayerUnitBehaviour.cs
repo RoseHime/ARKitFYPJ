@@ -83,15 +83,19 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     GameObject debugLog;
 
-    WaypointConnector WC;
+    //WaypointConnector WC;
+
+    //
+    NavMeshAgent _navmeshAgent;
 
     // Use this for initialization
     void Start()
     {
+        _navmeshAgent = gameObject.GetComponent<NavMeshAgent>();
         //getpath = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>().getCreatePath();
 
         //debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
-        WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
+        //WC = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>();
 
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
         go_CommandMenu.SetActive(false);
@@ -119,7 +123,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             b_toHarvestTree = false;
         }
 
-        f_OriginSpeed = f_speed;
+        f_OriginSpeed = _navmeshAgent.speed;//f_speed;
         go_TargetedEnemy = null;
 
     }
@@ -177,7 +181,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if (f_HarvestingTime >= 2)
             {
                 b_HoldingResource = true;
-                f_speed = f_OriginSpeed;
+                _navmeshAgent.speed = f_OriginSpeed;
                 if (b_isStoneHarvested)
                     i_resourceSTONE += go_Resource.GetComponent<StoneMineBehaviour>().CollectStone();
                 else if (b_isWoodHarvested)
@@ -393,17 +397,19 @@ public class PlayerUnitBehaviour : MonoBehaviour
             {
                 Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
                 gameObject.transform.LookAt(lookAtMine);
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                                                                                                go_Resource.GetComponent<Transform>().position,
-                                                                                                GetSpeed() * Time.deltaTime);
+                //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                //                                                                                go_Resource.GetComponent<Transform>().position,
+                //                                                                               GetSpeed() * Time.deltaTime);
+                _navmeshAgent.SetDestination(lookAtMine);
             }
             else if (b_HoldingResource)
             {
                 Vector3 lookAtDepot = new Vector3(go_Depot.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Depot.GetComponent<Transform>().position.z);
                 gameObject.transform.LookAt(lookAtDepot);
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
-                                                                                                go_Depot.GetComponent<Transform>().position,
-                                                                                                GetSpeed() * Time.deltaTime);
+                //gameObject.transform.position = Vector3.MoveTowards(gameObject.GetComponent<Transform>().position,
+                //                                                                                go_Depot.GetComponent<Transform>().position,
+                //                                                                                GetSpeed() * Time.deltaTime);
+                _navmeshAgent.SetDestination(lookAtDepot);
             }
         }
     }
@@ -413,7 +419,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         if (collision.gameObject == go_Resource)
         {
             Debug.Log("Collided");
-            f_speed = 0f;
+            _navmeshAgent.speed = 0f;
             if (collision.gameObject.tag == "StoneMine" && b_toHarvestStone && !b_HoldingResource)
                 b_isStoneHarvested = true;
             else if (collision.gameObject.tag == "Tree" && b_toHarvestTree)
@@ -474,34 +480,40 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         v3_targetPos = v3_targetpos;
         v3_currentPos = gameObject.transform.position;
-        WC.SetCurrentClosestWaypoint(v3_currentPos);
-        WC.FindTargetClosestWaypoint(v3_targetPos);
-        currentPoint = 0;
+        //WC.SetCurrentClosestWaypoint(v3_currentPos);
+        //WC.FindTargetClosestWaypoint(v3_targetPos);
+        //currentPoint = 0;
+
         // b_Selected = false;
         b_Moving = true;
     }
 
     private void MoveToTargetPos()
     {
-        Debug.Log(WC.GetCounter());
 
-        debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
-
-        if (WC.go_TargetWaypoint != null)
-        {
-            if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.005f)
-            {
-                Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
-                transform.position = Vector3.MoveTowards(gameObject.transform.position, WC.getCreatePath()[currentPoint].transform.position, GetSpeed() * Time.deltaTime);
-                transform.LookAt(LookingThere);
-
-                if ((WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position).sqrMagnitude < 0.01f)
-                {
-                    WC.FindNextWaypoint();
-                    currentPoint++;
-                }
-            }
-        }
+        _navmeshAgent.SetDestination(v3_targetPos);
+        //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
+        Vector3 LookAt = _navmeshAgent.velocity + gameObject.transform.position;
+        gameObject.transform.LookAt(LookAt);
+        //Debug.Log(WC.GetCounter());
+        //
+        ////debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
+        //
+        //if (WC.go_TargetWaypoint != null)
+        //{
+        //    if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.001f)
+        //    {
+        //        Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
+        //        transform.position = Vector3.MoveTowards(gameObject.transform.position, LookingThere, GetSpeed() * Time.deltaTime);
+        //        transform.LookAt(LookingThere);
+        //
+        //        if ((WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position).sqrMagnitude < 0.01f)
+        //        {
+        //            WC.FindNextWaypoint();
+        //            currentPoint++;
+        //        }
+        //    }
+        //}
     }
 
 

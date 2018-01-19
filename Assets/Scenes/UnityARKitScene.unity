@@ -1445,6 +1445,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &189298123 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 677196281}
+--- !u!208 &189298124
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189298123}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &190609251
 Prefab:
   m_ObjectHideFlags: 0
@@ -1683,6 +1703,15 @@ Prefab:
     - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
       propertyPath: m_Name
       value: Pine_Tree (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
@@ -2525,6 +2554,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &336340900 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 209860765}
+--- !u!208 &336340901
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 336340900}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &341636719 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
@@ -3093,6 +3142,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -3163,6 +3221,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &415981008 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1875792483}
+--- !u!208 &415981009
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415981008}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &416115737
 Prefab:
   m_ObjectHideFlags: 0
@@ -3761,6 +3839,16 @@ Prefab:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 76cf0d88d2e7013478cb2db4f70ea635, type: 2}
+    - target: {fileID: 65377015909102246, guid: 8cbbfd329c822be4d80753fe14e09ad6,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 65377015909102246, guid: 8cbbfd329c822be4d80753fe14e09ad6,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 0.08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cbbfd329c822be4d80753fe14e09ad6, type: 2}
   m_IsPrefabParent: 0
@@ -4083,6 +4171,39 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &503580019 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1860346910336672, guid: 078bdd595cb2f8f49878e1c6d993c24b,
+    type: 2}
+  m_PrefabInternal: {fileID: 104503245}
+--- !u!136 &503580020
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 503580019}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.03
+  m_Height: 0.08978719
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.044965375, z: 0}
+--- !u!208 &503580021
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 503580019}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.045, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &516720936
 Prefab:
   m_ObjectHideFlags: 0
@@ -4523,6 +4644,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &574584027 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1170880893219066, guid: 0736b2a86ea7abd4f9e5b41c53a6d2d9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1555073634}
+--- !u!54 &574584034
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 574584027}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &576318855
 Prefab:
   m_ObjectHideFlags: 0
@@ -4628,6 +4769,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -4703,6 +4853,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
     type: 2}
   m_PrefabInternal: {fileID: 579914653}
+--- !u!1 &581563693 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1581242607}
+--- !u!208 &581563694
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581563693}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &588191890
 Prefab:
   m_ObjectHideFlags: 0
@@ -5291,6 +5461,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -5433,6 +5612,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &706578379 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1582584383}
+--- !u!208 &706578380
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 706578379}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &707438787
 Prefab:
   m_ObjectHideFlags: 0
@@ -5515,11 +5714,71 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_IsPrefabParent: 0
+--- !u!1 &716410538 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1860346910336672, guid: 078bdd595cb2f8f49878e1c6d993c24b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1560325684}
+--- !u!208 &716410545
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716410538}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.060000002, y: 0.045, z: 0.04}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.045, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!1 &719058471 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1417605410}
+--- !u!208 &719058472
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 719058471}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &722546554 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
     type: 2}
   m_PrefabInternal: {fileID: 2146899507}
+--- !u!1 &729015055 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1469096136}
+--- !u!208 &729015056
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729015055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &732524261
 GameObject:
   m_ObjectHideFlags: 0
@@ -6163,6 +6422,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -6427,7 +6695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &807798696
 Transform:
   m_ObjectHideFlags: 0
@@ -8581,6 +8849,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -10169,6 +10446,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -10605,6 +10891,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -10716,6 +11011,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1254137317 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 407241013}
+--- !u!208 &1254137318
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254137317}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1257548940
 Prefab:
   m_ObjectHideFlags: 0
@@ -11943,6 +12258,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1348834607 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 777872538}
+--- !u!208 &1348834608
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1348834607}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1351964489
 Prefab:
   m_ObjectHideFlags: 0
@@ -12429,6 +12764,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -12737,6 +13081,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1466816867 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1139033822}
+--- !u!208 &1466816868
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1466816867}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1469096136
 Prefab:
   m_ObjectHideFlags: 0
@@ -12779,6 +13143,15 @@ Prefab:
     - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
       propertyPath: m_Name
       value: Pine_Tree (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
@@ -12956,6 +13329,7 @@ MonoBehaviour:
     type: 3}
   T2D_HarvestMine_Icon: {fileID: 2800000, guid: ffb5cb09f4953da47ba5e42ac4c39c68,
     type: 3}
+  T2D_Attack_Icon: {fileID: 0}
 --- !u!1001 &1501782097
 Prefab:
   m_ObjectHideFlags: 0
@@ -13353,6 +13727,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 195846900952167650, guid: 0736b2a86ea7abd4f9e5b41c53a6d2d9,
+        type: 2}
+      propertyPath: m_Speed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114775693701984334, guid: 0736b2a86ea7abd4f9e5b41c53a6d2d9,
+        type: 2}
+      propertyPath: f_speed
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0736b2a86ea7abd4f9e5b41c53a6d2d9, type: 2}
   m_IsPrefabParent: 0
@@ -13411,6 +13795,15 @@ Prefab:
     - target: {fileID: 1860346910336672, guid: 078bdd595cb2f8f49878e1c6d993c24b, type: 2}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860346910336672, guid: 078bdd595cb2f8f49878e1c6d993c24b, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 65802395661696390, guid: 078bdd595cb2f8f49878e1c6d993c24b,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 078bdd595cb2f8f49878e1c6d993c24b, type: 2}
@@ -13656,6 +14049,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -13706,6 +14108,15 @@ Prefab:
     - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
       propertyPath: m_Name
       value: Pine_Tree (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
@@ -13918,6 +14329,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
     type: 2}
   m_PrefabInternal: {fileID: 1587847989}
+--- !u!1 &1593980513 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 2097176374}
+--- !u!208 &1593980514
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593980513}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1604429487
 GameObject:
   m_ObjectHideFlags: 0
@@ -14897,6 +15328,26 @@ Prefab:
     - {fileID: 120300789231350990, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70ec1b71d4ffd3d44845f7120c20e957, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1691094380 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 579251389}
+--- !u!208 &1691094381
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1691094380}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1693901297
 Prefab:
   m_ObjectHideFlags: 0
@@ -15796,6 +16247,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1755415514}
+--- !u!1 &1757158257 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1237249156}
+--- !u!208 &1757158258
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1757158257}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.03, y: 0.068, z: 0.03}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &1761499009 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
@@ -16561,6 +17032,15 @@ Prefab:
     - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
       propertyPath: m_Name
       value: Pine_Tree (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
@@ -18520,6 +19000,15 @@ Prefab:
       propertyPath: m_Name
       value: Pine_Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 136835829473280338, guid: 57bc26816322ebb4689d4e992c992de6,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342006424586306, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57bc26816322ebb4689d4e992c992de6, type: 2}
   m_IsPrefabParent: 0
@@ -18772,6 +19261,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
     type: 2}
   m_PrefabInternal: {fileID: 31350158}
+--- !u!1 &2126603163 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1905474591981616, guid: 8cbbfd329c822be4d80753fe14e09ad6,
+    type: 2}
+  m_PrefabInternal: {fileID: 476814885}
+--- !u!208 &2126603169
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2126603163}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.04, y: 0.051000003, z: 0.04}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.051000003, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2134065874
 GameObject:
   m_ObjectHideFlags: 0

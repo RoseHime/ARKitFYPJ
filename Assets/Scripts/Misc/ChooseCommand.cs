@@ -56,6 +56,10 @@ public class ChooseCommand : MonoBehaviour {
                         bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
                         bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
                     }
+                    else if (go_ObjectHit.GetComponentInParent<Transform>().tag == "EnemyList" || go_ObjectHit.GetComponentInParent<Transform>().tag == "EnemyBuildingList")
+                    {
+                        Debug.Log("Attack enemy");
+                    }
                     else
                     {
                         Debug.Log("Walk here");
@@ -66,7 +70,7 @@ public class ChooseCommand : MonoBehaviour {
                 }
                 else if (bc.GetListOfUnit().Count > 1)
                 {
-                    for(int i = 1;  i <= bc.GetListOfUnit().Count; i++)
+                    for(int i = 0;  i < bc.GetListOfUnit().Count; i++)
                     {
                         bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
                     }
@@ -110,8 +114,9 @@ public class ChooseCommand : MonoBehaviour {
                 {
                     if (bc.GetRecipient().gameObject != bc.GetListOfUnit()[i].gameObject)
                     {
+                        if (!bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected)
+                            bc.GetListOfUnit().Add(bc.GetRecipient().transform);
                         bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-                        bc.GetListOfUnit().Add(bc.GetRecipient().transform);
                     }
                 }
             }

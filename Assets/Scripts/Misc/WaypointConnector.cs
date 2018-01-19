@@ -192,6 +192,12 @@ public class WaypointConnector : MonoBehaviour
                 {
                     temp3 = nearestPoint[iTemp].gameObject;
                 }
+               else if ((GetTargetClosestWaypoint().transform.position == nearestPoint[iTemp].transform.position))
+                {
+                    temp3 = nearestPoint[iTemp].gameObject;
+                }
+
+
                 if (iTemp == nearestPoint.Count - 1)
                 {
                     //createPath[0] = temp.transform;

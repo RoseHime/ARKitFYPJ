@@ -29,6 +29,8 @@ public class ButtonControl : MonoBehaviour {
     public bool b_BuildTower;
 
     private Camera ARCamera;
+    public Sprite S_Back;
+    public Sprite S_Select;
 
     // Use this for initialization
     void Start () {
@@ -58,12 +60,15 @@ public class ButtonControl : MonoBehaviour {
             //                 "Ray dir:" + ray.direction + "\n" +
             //                 "HIt pos:" + hit.point + "\n";
         }
+
+        Debug.Log("List of Unit:" + GetListOfUnit().Count);
     }
     
     public void TapDown()
     {
         if (!b_SomethingIsSelected && recipient != null && s_text == "Select")
         {
+            btn.image.sprite = S_Back;
             if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
             {
                 go_SelectedUnit = recipient.transform.gameObject;
@@ -84,6 +89,8 @@ public class ButtonControl : MonoBehaviour {
 
         else if (b_SomethingIsSelected && recipient != null && s_text == "Back")
         {
+            btn.image.sprite = S_Select;
+
             if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
             {
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)

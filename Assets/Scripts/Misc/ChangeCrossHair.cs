@@ -13,6 +13,7 @@ public class ChangeCrossHair : MonoBehaviour
     public Texture2D origin;
     public Texture2D T2D_HarvestTree_Icon;
     public Texture2D T2D_HarvestMine_Icon;
+    public Texture2D T2D_Attack_Icon;
 
     // Use this for initialization
     void Start()
@@ -32,12 +33,14 @@ public class ChangeCrossHair : MonoBehaviour
             //debugText.text = recipient.name + "\n" + hit.point;
             if (recipient != null)
             {
-                if (recipient.tag == "PlayerUnit")
+                if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
                     this.GetComponent<RawImage>().texture = getImage;
                 else if (recipient.tag == "Tree")
                     this.GetComponent<RawImage>().texture = T2D_HarvestTree_Icon;
                 else if (recipient.tag == "StoneMine")
                     this.GetComponent<RawImage>().texture = T2D_HarvestMine_Icon;
+                else if (recipient.GetComponentInParent<Transform>().tag == "EnemyList" || recipient.GetComponentInParent<Transform>().tag == "EnemyBuildingList")
+                    this.GetComponent<RawImage>().texture = T2D_Attack_Icon;
                 else
                     this.GetComponent<RawImage>().texture = origin;
             }
