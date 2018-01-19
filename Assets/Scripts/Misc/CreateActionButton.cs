@@ -44,16 +44,33 @@ public class CreateActionButton : MonoBehaviour
             {
                 PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
                 //PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
-                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+                //go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+                go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "" + plrUnit.f_atkDmg;
+                go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + plrUnit.f_HealthPoint;
+                go_unitInfo.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = plrUnit.transform.name;
+                UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.02f);
+                UnitCamera.LookAt(go_selectedUnit.transform);
+                UnitCamera.position += new Vector3(0, 0.015f, 0);
             }
             else if (go_selectedUnit.tag == "SelectableBuilding")
             {
                 BuildingInfo building = go_selectedUnit.GetComponent<BuildingInfo>();
-                go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
+                //go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
+                if (building.transform.GetComponent<TowerBehaviour>() != null)
+                {
+                    go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "" + building.transform.GetComponent<TowerBehaviour>().f_damage;
+                }
+                else
+                {
+                    go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "-";
+                }
+                go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + building.f_health;
+                go_unitInfo.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = building.GetUnitsInfo();
+                UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.05f);
+                UnitCamera.LookAt(go_selectedUnit.transform);
+                UnitCamera.position += new Vector3(0, 0.03f, 0);
             }
-            UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.02f);
-            UnitCamera.LookAt(go_selectedUnit.transform);
-            UnitCamera.position += new Vector3(0,0.015f,0);
+
             
         }
 
@@ -87,7 +104,7 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.tag == "PlayerUnit")
             {
-                for (int i = 0; i < 4; ++i)
+                for (int i = 1; i < 4; ++i)
                 {
                     GameObject goButton = (GameObject)Instantiate(go_actionButton);
                     goButton.name = "ActionButton";
@@ -99,7 +116,7 @@ public class CreateActionButton : MonoBehaviour
                     goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * (i), 0);
                     switch (i)
                     {
-                        case 0:
+                        case 0: // No longer needed
                             goButton.GetComponentInChildren<Text>().text = "CLOSE";
                             goButton.GetComponent<Image>().sprite = cancelImage;
                             break;

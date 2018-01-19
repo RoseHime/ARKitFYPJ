@@ -35,8 +35,8 @@ public class TownHallBehaviour : BuildingInfo {
 
     public override string GetUnitsInfo()
     {
-        string unitInfo = "NAME:" + gameObject.name + "\n";
-        unitInfo += "HP:" + f_health;
+        string unitInfo = gameObject.name;
+        //unitInfo += "HP:" + f_health;
         unitInfo += "\nLVL:" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_playerLevel;
         return unitInfo;
     }
