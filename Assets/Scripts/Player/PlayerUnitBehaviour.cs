@@ -201,6 +201,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     if (PUN == PlayerUnitType.PUN_WORKER)
                         b_StartHarvest = false;
                     //rb_Body.isKinematic = false;
+                    if (PUN != PlayerUnitType.PUN_WORKER)
+                        DetectEnemyUnit();
                     MoveToTargetPos();
                     break;
 
@@ -330,6 +332,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 listOfEnemy.Remove(go_TargetedEnemy.transform);
                 b_DetectEnemy = false;
                 go_TargetedEnemy = null;
+                b_CollidedWithEnemy = false;
+                _navmeshAgent.speed = f_OriginSpeed;
+                f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
             }
             else if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude > GetRange() * GetRange())
@@ -337,6 +342,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 listOfEnemy.Remove(go_TargetedEnemy.transform);
                 b_DetectEnemy = false;
                 go_TargetedEnemy = null;
+                b_CollidedWithEnemy = false;
+                _navmeshAgent.speed = f_OriginSpeed;
+                f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
             }
         }
@@ -483,6 +491,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         v3_targetPos = v3_targetpos;
         v3_currentPos = gameObject.transform.position;
         _navmeshAgent.speed = f_OriginSpeed;
+        _navmeshAgent.isStopped = false;
         //WC.SetCurrentClosestWaypoint(v3_currentPos);
         //WC.FindTargetClosestWaypoint(v3_targetPos);
         //currentPoint = 0;
@@ -493,31 +502,36 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private void MoveToTargetPos()
     {
-
-        _navmeshAgent.SetDestination(v3_targetPos);
-        //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
-        Vector3 LookAt = _navmeshAgent.velocity + gameObject.transform.position;
-        gameObject.transform.LookAt(LookAt);
-        //Debug.Log(WC.GetCounter());
-        //
-        ////debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
-        //
-        //if (WC.go_TargetWaypoint != null)
-        //{
-        //    if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.001f)
-        //    {
-        //        Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
-        //        transform.position = Vector3.MoveTowards(gameObject.transform.position, LookingThere, GetSpeed() * Time.deltaTime);
-        //        transform.LookAt(LookingThere);
-        //
-        //        if ((WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position).sqrMagnitude < 0.01f)
-        //        {
-        //            WC.FindNextWaypoint();
-        //            currentPoint++;
-        //        }
-        //    }
-        //}
-    }
+            _navmeshAgent.SetDestination(v3_targetPos);
+            //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
+            Vector3 LookAt = _navmeshAgent.velocity + gameObject.transform.position;
+            gameObject.transform.LookAt(LookAt);
+        if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.05f * 0.05f)
+        {
+            PUS = PlayerUnitState.PUS_GUARD;
+            b_Moving = false;
+            _navmeshAgent.isStopped = true;
+        }
+            //Debug.Log(WC.GetCounter());
+            //
+            ////debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
+            //
+            //if (WC.go_TargetWaypoint != null)
+            //{
+            //    if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.001f)
+            //    {
+            //        Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
+            //        transform.position = Vector3.MoveTowards(gameObject.transform.position, LookingThere, GetSpeed() * Time.deltaTime);
+            //        transform.LookAt(LookingThere);
+            //
+            //        if ((WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position).sqrMagnitude < 0.01f)
+            //        {
+            //            WC.FindNextWaypoint();
+            //            currentPoint++;
+            //        }
+            //    }
+            //}
+        }
 
     public void StopAllActions()
     {

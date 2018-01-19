@@ -8,9 +8,12 @@ public class CreateUnitButton : MonoBehaviour {
     public GameObject go_unitPrefab;
     PlayerInfo playerInfo;
 
-	// Use this for initialization
-	void Start () {
+    private ButtonControl bc;
+
+    // Use this for initialization
+    void Start () {
         playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
+        bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
 
         transform.GetChild(0).GetComponent<Text>().text = go_unitPrefab.name + "\nCosts:";
         if (go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_woodCost > 0)
@@ -42,9 +45,9 @@ public class CreateUnitButton : MonoBehaviour {
                 CreateEntities createEntitiy = GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>();
                 createEntitiy.go_playerPrefab = go_unitPrefab;
                 createEntitiy.BuildPlayerUnit(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
-                transform.parent.parent.parent.parent.gameObject.SetActive(false);
+                //transform.parent.parent.parent.parent.gameObject.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
-                GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().SetBackToSelect();
+                //GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().SetBackToSelect();
             }
         }
     }

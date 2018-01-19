@@ -18,7 +18,7 @@ public class ButtonControl : MonoBehaviour {
     private GameObject go_SelectedUnit;
     private bool b_SomethingIsSelected;
     public RawImage i_Crosshair;
-    public GameObject go_TargetBox;
+    //public GameObject go_TargetBox;
     private GameObject recipient;
     List<Transform> listOfUnit = new List<Transform>();
 
@@ -54,7 +54,7 @@ public class ButtonControl : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
         {
             recipient = hit.collider.transform.gameObject;
-            go_TargetBox.transform.position = hit.point;
+            //go_TargetBox.transform.position = hit.point;
             //debugText.text = "Camera Pos:" + ARCamera.transform.position + "\n" +
             //                 "Camera dir:" + ARCamera.transform.forward + "\n" +
             //                 "Ray dir:" + ray.direction + "\n" +
@@ -231,6 +231,8 @@ public class ButtonControl : MonoBehaviour {
     {
         //b_SomethingIsSelected = false;
         btn.GetComponentInChildren<Text>().text = "Select";
+        b_SomethingIsSelected = false;
+        btn.image.sprite = S_Select;
     }
 
     public Button getButton()
