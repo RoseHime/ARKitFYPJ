@@ -180,7 +180,7 @@ public class EnemyBehaviour : MonoBehaviour {
                 //transform.position += difference.normalized * Time.deltaTime * f_speed;
                 _navMeshAgent.ResetPath();
                 _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
-                Vector3 look = go_LockOnUnit.transform.position;
+                Vector3 look = _navMeshAgent.velocity;
                 look.y = transform.position.y;
                 transform.LookAt(look);
             }
