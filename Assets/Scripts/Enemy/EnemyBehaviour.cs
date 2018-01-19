@@ -178,11 +178,9 @@ public class EnemyBehaviour : MonoBehaviour {
             else
             {
                 //transform.position += difference.normalized * Time.deltaTime * f_speed;
+                LookDirection();
                 _navMeshAgent.ResetPath();
                 _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
-                Vector3 look = _navMeshAgent.velocity;
-                look.y = transform.position.y;
-                transform.LookAt(look);
             }
         }
         else
@@ -208,12 +206,10 @@ public class EnemyBehaviour : MonoBehaviour {
 
             if (difference.sqrMagnitude < f_atkRange * f_atkRange)
             {
+                LookDirection();
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
                     f_fireCooldown = 0;
-                    Vector3 look = go_LockOnUnit.transform.position;
-                    look.y = transform.position.y;
-                    transform.LookAt(look);
                     if (ET == EnemyType.ET_RANGED)
                         FireBullet(difference.normalized);
                     else
@@ -242,15 +238,13 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             EUS = EnemyUnitState.EUS_IDLE;
             isMoving = false;
-            _navMeshAgent.ResetPath();
+            //_navMeshAgent.ResetPath();
         }
         else
         {
             //transform.position += offset.normalized * Time.deltaTime * f_speed;
             _navMeshAgent.SetDestination(destination);
-            Vector3 look = destination;
-            look.y = transform.position.y;
-            transform.LookAt(look);
+            LookDirection();
         }
 
         GameObject tempPlayer = DetectPlayerUnit();
@@ -309,6 +303,7 @@ public class EnemyBehaviour : MonoBehaviour {
     void Defend()
     {
         _navMeshAgent.SetDestination(destination);
+        LookDirection();
         Vector3 difference = destination - transform.position;
         //transform.position += difference.normalized * Time.deltaTime * f_speed;
         if (difference.sqrMagnitude < 0.1f * 0.1f)
@@ -316,5 +311,12 @@ public class EnemyBehaviour : MonoBehaviour {
             EUS = EnemyUnitState.EUS_IDLE;
             _navMeshAgent.ResetPath();
         }
+    }
+
+    void LookDirection()
+    {
+        Vector3 look = _navMeshAgent.velocity + transform.position;
+        look.y = transform.position.y;
+        transform.LookAt(look);
     }
 }

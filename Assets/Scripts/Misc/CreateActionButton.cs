@@ -44,16 +44,24 @@ public class CreateActionButton : MonoBehaviour
             {
                 PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
                 //PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
-                go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+                //go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
+                go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "" + plrUnit.f_atkDmg;
+                go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + plrUnit.f_HealthPoint;
+                UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.02f);
+                UnitCamera.LookAt(go_selectedUnit.transform);
+                UnitCamera.position += new Vector3(0, 0.015f, 0);
             }
             else if (go_selectedUnit.tag == "SelectableBuilding")
             {
                 BuildingInfo building = go_selectedUnit.GetComponent<BuildingInfo>();
-                go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
+                //go_unitInfo.GetComponentInChildren<Text>().text = building.GetUnitsInfo();
+                go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "-";
+                go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + building.f_health;
+                UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.05f);
+                UnitCamera.LookAt(go_selectedUnit.transform);
+                UnitCamera.position += new Vector3(0, 0.03f, 0);
             }
-            UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.02f);
-            UnitCamera.LookAt(go_selectedUnit.transform);
-            UnitCamera.position += new Vector3(0,0.015f,0);
+
             
         }
 
