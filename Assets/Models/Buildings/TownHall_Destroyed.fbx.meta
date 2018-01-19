@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d7bc6d4104708549a72e8e71219afa4
+guid: 7e5f7f67d12291e40b10113fb4e11b7f
 timeCreated: 1516190512
 licenseType: Free
 ModelImporter:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Defense_Tower_Destroyed
+    4300000: Town_Hall_Destroyed
     9500000: //RootNode
   materials:
     importMaterials: 1

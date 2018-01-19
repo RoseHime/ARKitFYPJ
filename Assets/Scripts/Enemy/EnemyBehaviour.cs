@@ -43,8 +43,7 @@ public class EnemyBehaviour : MonoBehaviour {
     bool isMoving = false;
     public bool isDefending = false;
 
-    //NavMeshAgent _navMeshAgent;
-    //NavMeshObstacle _navMeshOb;
+    NavMeshAgent _navMeshAgent;
 
     // Use this for initialization
     void Start() {
@@ -55,9 +54,8 @@ public class EnemyBehaviour : MonoBehaviour {
                 bullet_Prefab = transform.GetChild(0).gameObject;
         }
 
-        //_navMeshAgent = GetComponent<NavMeshAgent>();
-        //_navMeshAgent.speed = f_speed;
-        //_navMeshOb = GetComponent<NavMeshObstacle>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = f_speed;
     }
 
     // Update is called once per frame
@@ -163,8 +161,7 @@ public class EnemyBehaviour : MonoBehaviour {
             if (difference.sqrMagnitude < f_atkRange * f_atkRange)
             {
                 EUS = EnemyUnitState.EUS_ATTACK;
-                //_navMeshAgent.ResetPath();
-                //_navMeshOb.enabled = true;
+                _navMeshAgent.ResetPath();
             }
             else if (difference.sqrMagnitude > f_range * f_range || ((transform.position - destination).sqrMagnitude > f_defendRange * f_defendRange && isDefending))
             {
@@ -175,21 +172,17 @@ public class EnemyBehaviour : MonoBehaviour {
                 else
                 {
                     EUS = EnemyUnitState.EUS_IDLE;
-                    //_navMeshAgent.ResetPath();
-                    //_navMeshAgent.enabled = false;
-                    //_navMeshOb.enabled = true;
+                    _navMeshAgent.ResetPath();
                 }
             }
             else
             {
-                transform.position += difference.normalized * Time.deltaTime * f_speed;
-                // _navMeshAgent.enabled = true;
-                //_navMeshAgent.ResetPath();
-                //_navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
+                //transform.position += difference.normalized * Time.deltaTime * f_speed;
+                _navMeshAgent.ResetPath();
+                _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
                 Vector3 look = go_LockOnUnit.transform.position;
                 look.y = transform.position.y;
                 transform.LookAt(look);
-                //_navMeshOb.enabled = false;
             }
         }
         else
@@ -201,9 +194,7 @@ public class EnemyBehaviour : MonoBehaviour {
             else
             {
                 EUS = EnemyUnitState.EUS_IDLE;
-                //_navMeshAgent.ResetPath();
-                //_navMeshAgent.enabled = false;
-                //_navMeshOb.enabled = true;
+                _navMeshAgent.ResetPath();
             }
         }
 
@@ -251,19 +242,15 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             EUS = EnemyUnitState.EUS_IDLE;
             isMoving = false;
-            //_navMeshAgent.ResetPath();
-            //_navMeshAgent.enabled = false;
-            //_navMeshOb.enabled = true;
-            //Debug.Log("ITS TIME TO STOP");
+            _navMeshAgent.ResetPath();
         }
         else
         {
-            transform.position += offset.normalized * Time.deltaTime * f_speed;
-            //_navMeshAgent.enabled = true;
+            //transform.position += offset.normalized * Time.deltaTime * f_speed;
+            _navMeshAgent.SetDestination(destination);
             Vector3 look = destination;
             look.y = transform.position.y;
             transform.LookAt(look);
-            //_navMeshOb.enabled = false;
         }
 
         GameObject tempPlayer = DetectPlayerUnit();
@@ -314,17 +301,20 @@ public class EnemyBehaviour : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Terrain").transform.GetComponent<Collider>().Raycast(ray,out hit,float.MaxValue))
         {
             transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            //_navMeshAgent.Warp(new Vector3(transform.position.x, hit.point.y, transform.position.z));
+            //_navMeshAgent.updatePosition = true;
         }
     }
 
     void Defend()
     {
-        //_navMeshAgent.SetDestination(destination);
+        _navMeshAgent.SetDestination(destination);
         Vector3 difference = destination - transform.position;
-        transform.position += difference.normalized * Time.deltaTime * f_speed;
-        if ((transform.position - destination).sqrMagnitude < 0.1f * 0.1f)
+        //transform.position += difference.normalized * Time.deltaTime * f_speed;
+        if (difference.sqrMagnitude < 0.1f * 0.1f)
         {
             EUS = EnemyUnitState.EUS_IDLE;
+            _navMeshAgent.ResetPath();
         }
     }
 }
