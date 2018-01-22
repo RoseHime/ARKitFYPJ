@@ -81,10 +81,15 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "BUILD")
         {
-            bc.b_ToBuild = true;
-            bc.getButton().GetComponentInChildren<Text>().text = "Select";
+            //bc.b_ToBuild = true;
+            //bc.getButton().GetComponentInChildren<Text>().text = "Select";
             go_BuildingPanel.SetActive(true);
             go_CommandPanel.SetActive(false);
+        }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "PLACE")
+        {
+            go_CommandPanel.SetActive(false);
+            bc.SetBackToSelect();
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATE")
         {

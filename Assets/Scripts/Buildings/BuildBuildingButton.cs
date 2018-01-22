@@ -41,7 +41,9 @@ public class BuildBuildingButton : MonoBehaviour {
             && playerInfo.i_magicStone >= buildingPrefab.GetComponent<BuildingInfo>().i_magicStoneCost)
         {
             GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>().go_TowerPrefab = buildingPrefab;
-            ti.b_BuildTower = true;
+            //ti.b_BuildTower = true;
+            GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).GetComponent<CreateActionButton>().CreateBuildButton();
             transform.parent.parent.gameObject.SetActive(false);
         }
 

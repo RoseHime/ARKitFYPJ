@@ -58,9 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 2706008bf8e1cc8439e831dcb8fc1c08, type: 2}
-  - {fileID: 2100000, guid: 37e7f36ea189f614ab764f879aa1a30d, type: 2}
+  - {fileID: 2100000, guid: 15cd2fee8c311c846bc28eda22c84849, type: 2}
   - {fileID: 2100000, guid: d0d9bbea285d0374f908c877c3b48a15, type: 2}
-  - {fileID: 2100000, guid: deedb05892ec7684783da44217bde311, type: 2}
+  - {fileID: 2100000, guid: 8d099d3cb28cf9d4ea7656e1343b6a3f, type: 2}
   - {fileID: 2100000, guid: 124adcabd71d6304e937daed2ae7a6cd, type: 2}
   - {fileID: 2100000, guid: 2752a1293ee00c44b9af5dc4e99245ba, type: 2}
   m_StaticBatchInfo:
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 120
   f_range: 0.5
-  f_atkRange: 0.01
+  f_atkRange: 0.06
   f_speed: 0.05
   f_bulletSpeed: 0.1
   f_damage: 3
