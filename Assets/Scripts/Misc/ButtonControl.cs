@@ -18,7 +18,7 @@ public class ButtonControl : MonoBehaviour {
     private GameObject go_SelectedUnit;
     private bool b_SomethingIsSelected;
     public RawImage i_Crosshair;
-    public GameObject go_TargetBox;
+    //public GameObject go_TargetBox;
     private GameObject recipient;
     List<Transform> listOfUnit = new List<Transform>();
 
