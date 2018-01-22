@@ -5,6 +5,7 @@ using UnityEngine;
 public class TownHallBehaviour : BuildingInfo {
 
     PlayerInfo playerInfo;
+    public GameObject workerPrefab;
 
     // Use this for initialization
     void Start() {

@@ -186,21 +186,44 @@ public class CreateActionButton : MonoBehaviour
                     }
 
                 }
-                else if (go_selectedUnit.GetComponent<TownHallBehaviour>() != null && GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_playerLevel < 3)
+                else if (go_selectedUnit.GetComponent<TownHallBehaviour>() != null)
                 {
-                    GameObject secondButton = (GameObject)Instantiate(go_actionButton);
-                    secondButton.name = "UpgradeActionButton";
-                    secondButton.transform.SetParent(go_actionPanel.transform, false);
-                    secondButton.transform.localScale = new Vector3(1, 1, 1);
-                    secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
-                    secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
-                    secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+                    for (int i = 0;i < 2;++i)
+                    {
+                        if ((i == 1 && GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_playerLevel < 3) || i == 0)
+                        {
+                            if (i == 0)
+                            {
+                                GameObject secondButton = (GameObject)Instantiate(go_actionButton);
+                                secondButton.name = "ActionButton";
+                                secondButton.transform.SetParent(go_actionPanel.transform, false);
+                                secondButton.transform.localScale = new Vector3(1, 1, 1);
+                                secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                                secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+                                secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
-                    //goButton.transform.localPosition = Vector3.zero;
-                    secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
-                    secondButton.GetComponentInChildren<Text>().text = "" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost;
-                    secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
-                    secondButton.GetComponent<Image>().sprite = uprankImage;
+                                secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
+                                secondButton.GetComponentInChildren<Text>().text = "CREATEWORKER";
+                                secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
+                                secondButton.GetComponent<Image>().sprite = buildImage;
+                            }
+                            else
+                            {
+                                GameObject secondButton = (GameObject)Instantiate(go_actionButton);
+                                secondButton.name = "UpgradeActionButton";
+                                secondButton.transform.SetParent(go_actionPanel.transform, false);
+                                secondButton.transform.localScale = new Vector3(1, 1, 1);
+                                secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                                secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+                                secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+
+                                secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * 2, 0);
+                                secondButton.GetComponentInChildren<Text>().text = "" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost;
+                                secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
+                                secondButton.GetComponent<Image>().sprite = uprankImage;
+                            }
+                        }
+                    }
                 }
             }
         }     

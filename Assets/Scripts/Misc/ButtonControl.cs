@@ -63,7 +63,7 @@ public class ButtonControl : MonoBehaviour {
             //                 "HIt pos:" + hit.point + "\n";
         }
 
-        Debug.Log("List of Unit:" + GetListOfUnit().Count);
+        //Debug.Log("List of Unit:" + GetListOfUnit().Count);
     }
     
     public void TapDown()
