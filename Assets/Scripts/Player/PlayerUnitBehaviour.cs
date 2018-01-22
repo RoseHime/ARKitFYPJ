@@ -74,12 +74,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public bool b_Moving;
     private bool b_DetectEnemy;
     private bool b_CollidedWithEnemy;
+    private bool b_AttackingEnemy;
 
     //Projectile
     public GameObject bullet_Prefab;
-    public float f_bulletSpeed = 0.1f;
-    public float f_fireRate = 1;
-    private float f_fireCooldown = 0;
+    public float f_bulletSpeed;
+    public float f_fireRate;
+    private float f_fireCooldown;
 
     GameObject debugLog;
 
@@ -201,7 +202,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     if (PUN == PlayerUnitType.PUN_WORKER)
                         b_StartHarvest = false;
                     //rb_Body.isKinematic = false;
-                    if (PUN != PlayerUnitType.PUN_WORKER)
+                    if (PUN != PlayerUnitType.PUN_WORKER && !b_AttackingEnemy)
                         DetectEnemyUnit();
                     MoveToTargetPos();
                     break;
@@ -209,7 +210,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 }
 
             case PlayerUnitState.PUS_ATTACK:
-                {
+                { 
                     AttackEnemyUnit();
                     break;
                 }
@@ -218,7 +219,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 {
                     //this.GetComponent<NavMeshAgent>().enabled = false;
                     //rb_Body.isKinematic = true;
-                    if (PUN != PlayerUnitType.PUN_WORKER)
+                    if (PUN != PlayerUnitType.PUN_WORKER && !b_AttackingEnemy)
                         DetectEnemyUnit();
                     break;
                 }
@@ -299,6 +300,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         if (b_DetectEnemy)
         {
             b_Moving = false;
+            b_AttackingEnemy = true;
             Vector3 enemyLoc = new Vector3(go_TargetedEnemy.transform.position.x, gameObject.transform.position.y, go_TargetedEnemy.transform.position.z);
             Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
             gameObject.transform.LookAt(enemyLoc);
@@ -332,9 +334,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
             {
                 listOfEnemy.Remove(go_TargetedEnemy.transform);
                 b_DetectEnemy = false;
+                b_AttackingEnemy = false;
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
-                b_Moving = true;
+                //b_Moving = true;
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
@@ -343,9 +346,10 @@ public class PlayerUnitBehaviour : MonoBehaviour
             {
                 listOfEnemy.Remove(go_TargetedEnemy.transform);
                 b_DetectEnemy = false;
+                b_AttackingEnemy = false;
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
-                b_Moving = true;
+                //b_Moving = true;
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
