@@ -27,6 +27,7 @@ public class ButtonControl : MonoBehaviour {
 
     public bool b_ToBuild;
     public bool b_BuildTower;
+    public bool b_IsWorker;
 
     private Camera ARCamera;
     public Sprite S_Back;
@@ -39,6 +40,7 @@ public class ButtonControl : MonoBehaviour {
         btn.onClick.AddListener(TapDown);
         b_SomethingIsSelected = false;
         b_ToBuild = false;
+        b_IsWorker = false;
         recipient = null;
 
         ARCamera = GameObject.FindGameObjectWithTag("PlaneDetection").GetComponent<UnityARCameraManager>().m_camera;
@@ -75,6 +77,10 @@ public class ButtonControl : MonoBehaviour {
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
                     go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().PUN == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                    {
+                        b_IsWorker = true;
+                    }
                     //go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().CreateCommand();
                 }
                 go_SelectedUnit.SendMessage("OnClick", hit.point, SendMessageOptions.DontRequireReceiver);
@@ -90,6 +96,7 @@ public class ButtonControl : MonoBehaviour {
         else if (b_SomethingIsSelected && recipient != null && s_text == "Back")
         {
             btn.image.sprite = S_Select;
+            b_IsWorker = false;
             if (GetListOfUnit().Count > 1)
             {
                 go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);

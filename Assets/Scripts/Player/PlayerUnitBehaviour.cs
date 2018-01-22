@@ -298,6 +298,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     {
         if (b_DetectEnemy)
         {
+            b_Moving = false;
             Vector3 enemyLoc = new Vector3(go_TargetedEnemy.transform.position.x, gameObject.transform.position.y, go_TargetedEnemy.transform.position.z);
             Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
             gameObject.transform.LookAt(enemyLoc);
@@ -333,6 +334,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 b_DetectEnemy = false;
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
+                b_Moving = true;
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
@@ -343,6 +345,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 b_DetectEnemy = false;
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
+                b_Moving = true;
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
@@ -506,12 +509,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
             Vector3 LookAt = _navmeshAgent.velocity + gameObject.transform.position;
             gameObject.transform.LookAt(LookAt);
-        if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.05f * 0.05f)
+        if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.01f * 0.01f)
         {
             PUS = PlayerUnitState.PUS_GUARD;
             b_Moving = false;
             _navmeshAgent.isStopped = true;
         }
+
             //Debug.Log(WC.GetCounter());
             //
             ////debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";

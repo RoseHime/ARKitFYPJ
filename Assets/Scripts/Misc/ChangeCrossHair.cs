@@ -14,11 +14,12 @@ public class ChangeCrossHair : MonoBehaviour
     public Texture2D T2D_HarvestTree_Icon;
     public Texture2D T2D_HarvestMine_Icon;
     public Texture2D T2D_Attack_Icon;
+    private ButtonControl bc;
 
     // Use this for initialization
     void Start()
     {
-
+        bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
     }
 
     // Update is called once per frame
@@ -35,9 +36,9 @@ public class ChangeCrossHair : MonoBehaviour
             {
                 if (recipient.tag == "PlayerUnit" || recipient.tag == "SelectableBuilding")
                     this.GetComponent<RawImage>().texture = getImage;
-                else if (recipient.tag == "Tree")
+                else if (recipient.tag == "Tree" && bc.b_IsWorker)
                     this.GetComponent<RawImage>().texture = T2D_HarvestTree_Icon;
-                else if (recipient.tag == "StoneMine")
+                else if (recipient.tag == "StoneMine" && bc.b_IsWorker)
                     this.GetComponent<RawImage>().texture = T2D_HarvestMine_Icon;
                 else if (recipient.GetComponentInParent<Transform>().tag == "EnemyList" || recipient.GetComponentInParent<Transform>().tag == "EnemyBuildingList")
                     this.GetComponent<RawImage>().texture = T2D_Attack_Icon;
