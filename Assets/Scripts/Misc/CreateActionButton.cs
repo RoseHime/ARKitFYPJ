@@ -31,6 +31,7 @@ public class CreateActionButton : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        go_actionButton_Length = go_actionButton.GetComponent<RectTransform>().rect.height;
         CreateButtons();
         UnitCamera = GameObject.FindGameObjectWithTag("UnitCamera").transform;
     }
@@ -66,9 +67,16 @@ public class CreateActionButton : MonoBehaviour
                 }
                 go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + building.f_health;
                 go_unitInfo.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = building.GetUnitsInfo();
-                UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.05f);
+                Vector3 cameraPoint = new Vector3(0,0,0);
+                foreach (Transform child in go_selectedUnit.transform)
+                {
+                    if (child.name == "CameraPoint")
+                    {
+                        cameraPoint = child.position;
+                    }
+                }                
+                UnitCamera.position = cameraPoint;
                 UnitCamera.LookAt(go_selectedUnit.transform);
-                UnitCamera.position += new Vector3(0, 0.03f, 0);
             }
 
             
@@ -98,7 +106,7 @@ public class CreateActionButton : MonoBehaviour
                 Destroy(button.gameObject);
             }
         }
-        go_actionButton_Length = go_actionButton.GetComponent<RectTransform>().rect.height;
+        
 
         if (go_selectedUnit != null)
         {
@@ -144,9 +152,8 @@ public class CreateActionButton : MonoBehaviour
                     }
                 }
             }
-            else if (go_selectedUnit.tag == "SelectableBuilding")
+            else if (go_selectedUnit.tag == "SelectableBuilding" && go_selectedUnit.transform.parent != GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
             {
-
                 GameObject goButton = (GameObject)Instantiate(go_actionButton);
                 goButton.name = "ActionButton";
                 goButton.transform.SetParent(go_actionPanel.transform, false);
@@ -229,8 +236,26 @@ public class CreateActionButton : MonoBehaviour
         }     
     }
 
-    public void DestroyButton()
+    public void CreateBuildButton()
     {
-       
+        foreach (Transform button in gameObject.transform)
+        {
+            if (button.gameObject.name == "ActionButton" || button.gameObject.name == "UpgradeActionButton"
+                || button.gameObject.name == "UpgradeBarracksButton")
+            {
+                Destroy(button.gameObject);
+            }
+        }
+
+        GameObject goButton = (GameObject)Instantiate(go_actionButton);
+        goButton.name = "ActionButton";
+        goButton.transform.SetParent(go_actionPanel.transform, false);
+        goButton.transform.localScale = new Vector3(1, 1, 1);
+        goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+        goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+        goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+        goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
+        goButton.GetComponentInChildren<Text>().text = "PLACE";
+        goButton.GetComponent<Image>().sprite = buildImage;
     }
 }

@@ -59,7 +59,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 078db5521077bdc47818b513d6576494, type: 2}
   - {fileID: 2100000, guid: 0add670c4725e944fa4b74bb8c4cf603, type: 2}
-  - {fileID: 2100000, guid: f5b34da4e8e9ecf45a11e06f1a495536, type: 2}
+  - {fileID: 2100000, guid: 88f5a9438320b1e44841b07dc7161330, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_health: 50
   f_range: 0.5
-  f_atkRange: 0.01
+  f_atkRange: 0.06
   f_speed: 0.05
   f_bulletSpeed: 0.1
   f_damage: 6
