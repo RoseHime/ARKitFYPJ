@@ -54,14 +54,14 @@ public class ButtonControl : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
         {
             recipient = hit.collider.transform.gameObject;
-            go_TargetBox.transform.position = hit.point;
+            //go_TargetBox.transform.position = hit.point;
             //debugText.text = "Camera Pos:" + ARCamera.transform.position + "\n" +
             //                 "Camera dir:" + ARCamera.transform.forward + "\n" +
             //                 "Ray dir:" + ray.direction + "\n" +
             //                 "HIt pos:" + hit.point + "\n";
         }
 
-        Debug.Log("List of Unit:" + GetListOfUnit().Count);
+        //Debug.Log("List of Unit:" + GetListOfUnit().Count);
     }
     
     public void TapDown()
@@ -231,6 +231,8 @@ public class ButtonControl : MonoBehaviour {
     {
         //b_SomethingIsSelected = false;
         btn.GetComponentInChildren<Text>().text = "Select";
+        b_SomethingIsSelected = false;
+        btn.image.sprite = S_Select;
     }
 
     public Button getButton()

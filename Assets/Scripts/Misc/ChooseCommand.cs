@@ -137,6 +137,23 @@ public class ChooseCommand : MonoBehaviour {
                 bc.SetBackToSelect();
             }
         }
+        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATEWORKER")
+        {
+            GameObject selectedBase = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
+
+            PlayerInfo playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
+            TownHallBehaviour townHall = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit.GetComponent<TownHallBehaviour>();
+            if (playerInfo.i_stone >= townHall.workerPrefab.GetComponent<PlayerUnitBehaviour>().i_stoneCost && playerInfo.i_wood >= townHall.workerPrefab.GetComponent<PlayerUnitBehaviour>().i_woodCost
+                && playerInfo.i_magicStone >= townHall.workerPrefab.GetComponent<PlayerUnitBehaviour>().i_magicStoneCost)
+            {
+                CreateEntities createEntitiy = GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>();
+                createEntitiy.go_playerPrefab = townHall.workerPrefab;
+                createEntitiy.BuildPlayerUnit(townHall.transform.GetChild(0).position);
+                //go_CommandPanel.SetActive(false);
+                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
+                bc.SetBackToSelect();
+            }
+        }
     }
     //public void OffClickCommand()
     //{
