@@ -26,6 +26,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     }
     PlayerUnitState PUS;
 
+    private Animator _animator;
     private Transform T_Enemy;
     private GameObject go_TargetedEnemy;
     List<Transform> listOfEnemy = new List<Transform>();
@@ -96,6 +97,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     void Start()
     {
         _navmeshAgent = gameObject.GetComponent<NavMeshAgent>();
+        _animator = gameObject.GetComponent<Animator>();
         //getpath = GameObject.FindGameObjectWithTag("MoveParent").GetComponent<WaypointConnector>().getCreatePath();
 
         //debugLog = GameObject.FindGameObjectWithTag("DebugPurpose").transform.GetChild(0).gameObject;
@@ -154,6 +156,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         else if (!b_StartHarvest)
         {
+            _navmeshAgent.stoppingDistance = 0f;
             b_toHarvestStone = false;
             b_toHarvestTree = false;
         }
@@ -181,10 +184,14 @@ public class PlayerUnitBehaviour : MonoBehaviour
      
         if (b_isHarvesting)
         {
+            _animator.ResetTrigger("b_IsMoving");
+            _animator.SetTrigger("b_isHarvesting");
             f_HarvestingTime += Time.deltaTime;
             if (f_HarvestingTime >= 2)
             {
                 b_HoldingResource = true;
+                _animator.ResetTrigger("b_isHarvesting");
+                _animator.SetTrigger("b_IsMoving");
                 _navmeshAgent.speed = f_OriginSpeed;
                 if (b_isStoneHarvested)
                     i_resourceSTONE += go_Resource.GetComponent<StoneMineBehaviour>().CollectStone();
@@ -319,6 +326,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 {
                     if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                     {
+                        _animator.SetTrigger("B_IsAttacking");
                         f_fireCooldown = 0;
                         go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().f_health -= GetAttack();
                     }
@@ -326,6 +334,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             }
             else if (PUN == PlayerUnitType.PUN_RANGE)
             {
+                _animator.SetTrigger("B_IsAttacking");
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
                     f_fireCooldown = 0;
@@ -341,6 +350,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
                 //b_Moving = true;
+                _animator.ResetTrigger("B_IsAttacking");
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
@@ -352,6 +362,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 b_AttackingEnemy = false;
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
+                _animator.ResetTrigger("B_IsAttacking");
                 //b_Moving = true;
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
@@ -380,6 +391,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public void OnHarvestMode()
     {
         _navmeshAgent.speed = f_OriginSpeed;
+        _navmeshAgent.stoppingDistance = 0.07f;
+        _animator.SetTrigger("b_IsMoving");
 
         if (b_toHarvestStone)
         {
@@ -410,7 +423,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             }
         }
 
-        if (b_StartHarvest)
+        if (b_StartHarvest && _navmeshAgent.speed > 0)
         {
             //GetComponent<Rigidbody>().useGravity = true;
             if (!b_HoldingResource)
@@ -440,6 +453,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
         {
             Debug.Log("Collided");
             _navmeshAgent.speed = 0f;
+            gameObject.transform.GetComponent<PlayerUnitBehaviour>().f_speed = 0f;
+            _animator.SetTrigger("b_isHarvesting");
+
             if (collision.gameObject.tag == "StoneMine" && b_toHarvestStone && !b_HoldingResource)
                 b_isStoneHarvested = true;
             else if (collision.gameObject.tag == "Tree" && b_toHarvestTree)
@@ -520,6 +536,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private void MoveToTargetPos()
     {
             _navmeshAgent.SetDestination(v3_targetPos);
+        _animator.SetTrigger("b_IsMoving");
             //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
             Vector3 LookAt = _navmeshAgent.velocity + gameObject.transform.position;
             gameObject.transform.LookAt(LookAt);
@@ -533,6 +550,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
             PUS = PlayerUnitState.PUS_GUARD;
             b_Moving = false;
+            _animator.ResetTrigger("b_IsMoving");
             _navmeshAgent.isStopped = true;
         }
 
