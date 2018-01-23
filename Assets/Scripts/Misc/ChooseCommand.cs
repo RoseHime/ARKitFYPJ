@@ -88,6 +88,13 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "PLACE")
         {
+            Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
+            if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
+            {
+                bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+
+                bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_buildBuilding = true;
+            }
             go_CommandPanel.SetActive(false);
             bc.SetBackToSelect();
         }

@@ -82,6 +82,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public float f_fireRate;
     private float f_fireCooldown;
 
+    //ForWorker Building
+    public GameObject go_BuildingPrefab;
+
     GameObject debugLog;
 
     //WaypointConnector WC;
@@ -507,6 +510,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
         b_Moving = true;
     }
 
+    public void ConstructBuilding(Vector3 pos)
+    {
+        GameObject prefab = GameObject.FindGameObjectWithTag("GameFunctions").gameObject;
+        prefab.GetComponent<CreateEntities>().go_TowerPrefab = go_BuildingPrefab;
+        prefab.GetComponent<CreateEntities>().BuildBuilding(pos);
+    }
+
     private void MoveToTargetPos()
     {
             _navmeshAgent.SetDestination(v3_targetPos);
@@ -515,6 +525,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
             gameObject.transform.LookAt(LookAt);
         if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.01f * 0.01f)
         {
+            if (b_buildBuilding)
+            {
+                ConstructBuilding(v3_targetPos);
+                b_buildBuilding = false;
+            }
+
             PUS = PlayerUnitState.PUS_GUARD;
             b_Moving = false;
             _navmeshAgent.isStopped = true;

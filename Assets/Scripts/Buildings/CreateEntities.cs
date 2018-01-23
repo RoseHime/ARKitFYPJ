@@ -34,6 +34,9 @@ public class CreateEntities: MonoBehaviour {
         tempBuilding.name = go_TowerPrefab.name;
         tempBuilding.transform.parent = GameObject.FindGameObjectWithTag("BuildingList").transform;
         tempBuilding.transform.localScale = originalScale;
+        Vector3 lookDirection = new Vector3(Camera.main.transform.position.x, tempBuilding.transform.position.y, Camera.main.transform.position.z);
+        tempBuilding.transform.LookAt(lookDirection);
+       
     }
 
     public void BuildPlayerUnit(Vector3 position)
