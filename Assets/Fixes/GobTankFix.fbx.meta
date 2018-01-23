@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 0c2edd0e778054441a15b6d4617f7234
+timeCreated: 1516700851
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: GoblinTank_Head
+    100002: GoblinTank_Head2
+    100004: GoblinTank_Hips
+    100006: GoblinTank_LeftArm
+    100008: GoblinTank_LeftElbow
+    100010: GoblinTank_LeftFoot
+    100012: GoblinTank_LeftHand
+    100014: GoblinTank_LeftHand2
+    100016: GoblinTank_LeftKnee
+    100018: GoblinTank_LeftLeg
+    100020: GoblinTank_LeftThumb
+    100022: GoblinTank_LeftThumb2
+    100024: GoblinTank_LeftWrist
+    100026: GoblinTank_Neck
+    100028: GoblinTank_RightArm
+    100030: GoblinTank_RightElbow
+    100032: GoblinTank_RightFoot
+    100034: GoblinTank_RightHand1
+    100036: GoblinTank_RightHand2
+    100038: GoblinTank_RightKnee
+    100040: GoblinTank_RightLeg
+    100042: GoblinTank_RightThumb
+    100044: GoblinTank_RightWrist
+    100046: GoblinTank_Spine
+    100048: GoblinTank_Spine2
+    100050: //RootNode
+    100052: Tank
+    100054: Tank_Sizing
+    400000: GoblinTank_Head
+    400002: GoblinTank_Head2
+    400004: GoblinTank_Hips
+    400006: GoblinTank_LeftArm
+    400008: GoblinTank_LeftElbow
+    400010: GoblinTank_LeftFoot
+    400012: GoblinTank_LeftHand
+    400014: GoblinTank_LeftHand2
+    400016: GoblinTank_LeftKnee
+    400018: GoblinTank_LeftLeg
+    400020: GoblinTank_LeftThumb
+    400022: GoblinTank_LeftThumb2
+    400024: GoblinTank_LeftWrist
+    400026: GoblinTank_Neck
+    400028: GoblinTank_RightArm
+    400030: GoblinTank_RightElbow
+    400032: GoblinTank_RightFoot
+    400034: GoblinTank_RightHand1
+    400036: GoblinTank_RightHand2
+    400038: GoblinTank_RightKnee
+    400040: GoblinTank_RightLeg
+    400042: GoblinTank_RightThumb
+    400044: GoblinTank_RightWrist
+    400046: GoblinTank_Spine
+    400048: GoblinTank_Spine2
+    400050: //RootNode
+    400052: Tank
+    400054: Tank_Sizing
+    4300000: Tank
+    7400000: Attack
+    9500000: //RootNode
+    13700000: Tank
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 28
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Tank
+        weight: 1
+      - path: Tank_Sizing
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_LeftLeg
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_LeftLeg/GoblinTank_LeftKnee
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_LeftLeg/GoblinTank_LeftKnee/GoblinTank_LeftFoot
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_RightLeg
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_RightLeg/GoblinTank_RightKnee
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_RightLeg/GoblinTank_RightKnee/GoblinTank_RightFoot
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_LeftArm
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_LeftArm/GoblinTank_LeftElbow
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_LeftArm/GoblinTank_LeftElbow/GoblinTank_LeftWrist
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_LeftArm/GoblinTank_LeftElbow/GoblinTank_LeftWrist/GoblinTank_LeftHand
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_LeftArm/GoblinTank_LeftElbow/GoblinTank_LeftWrist/GoblinTank_LeftHand/GoblinTank_LeftHand2
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_LeftArm/GoblinTank_LeftElbow/GoblinTank_LeftWrist/GoblinTank_LeftThumb
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_LeftArm/GoblinTank_LeftElbow/GoblinTank_LeftWrist/GoblinTank_LeftThumb/GoblinTank_LeftThumb2
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_Neck
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_Neck/GoblinTank_Head
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_Neck/GoblinTank_Head/GoblinTank_Head2
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_RightArm
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_RightArm/GoblinTank_RightElbow
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_RightArm/GoblinTank_RightElbow/GoblinTank_RightWrist
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_RightArm/GoblinTank_RightElbow/GoblinTank_RightWrist/GoblinTank_RightHand1
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_RightArm/GoblinTank_RightElbow/GoblinTank_RightWrist/GoblinTank_RightHand1/GoblinTank_RightHand2
+        weight: 1
+      - path: Tank_Sizing/GoblinTank_Hips/GoblinTank_Spine/GoblinTank_Spine2/GoblinTank_RightArm/GoblinTank_RightElbow/GoblinTank_RightWrist/GoblinTank_RightThumb
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
