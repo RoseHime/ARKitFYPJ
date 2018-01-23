@@ -403,7 +403,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         go_Depot = GameObject.FindGameObjectWithTag("BuildingList");
         foreach (Transform go_PlayerBuilding in go_Depot.transform)
         {
-            if (go_PlayerBuilding.gameObject.name == "Base")
+            if (go_PlayerBuilding.gameObject.name == "TownHall")
             {
                 go_Depot = go_PlayerBuilding.gameObject;
                 break;

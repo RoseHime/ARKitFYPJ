@@ -1,0 +1,526 @@
+fileFormatVersion: 2
+guid: 7e676f12a77d77748b762276c1b0a003
+timeCreated: 1516690428
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: HobgoblinShaman_Head
+    100004: HobgoblinShaman_Head2
+    100006: HobgoblinShaman_Hips
+    100008: HobgoblinShaman_Hood
+    100010: HobgoblinShaman_Hood2
+    100012: HobgoblinShaman_LeftArm
+    100014: HobgoblinShaman_LeftElbow
+    100016: HobgoblinShaman_LeftFoot
+    100018: HobgoblinShaman_LeftHand1
+    100020: HobgoblinShaman_LeftHand2
+    100022: HobgoblinShaman_LeftKnee
+    100024: HobgoblinShaman_LeftLeg
+    100026: HobgoblinShaman_LeftThumb
+    100028: HobgoblinShaman_LeftThumb2
+    100030: HobgoblinShaman_LeftToe
+    100032: HobgoblinShaman_LeftWrist
+    100034: HobgoblinShaman_Neck
+    100036: HobgoblinShaman_RightArm
+    100038: HobgoblinShaman_RightElbow
+    100040: HobgoblinShaman_RightFoot
+    100042: HobgoblinShaman_RightHand1
+    100044: HobgoblinShaman_RightHand2
+    100046: HobgoblinShaman_RightKnee
+    100048: HobgoblinShaman_RightLeg
+    100050: HobgoblinShaman_RightThumb
+    100052: HobgoblinShaman_RightThumb2
+    100054: HobgoblinShaman_RightToe
+    100056: HobgoblinShaman_RightWrist
+    100058: HobgoblinShaman_Spine
+    100060: HobgoblinShaman_Spine2
+    100062: Shaman
+    100064: Shaman_Sizing
+    400000: //RootNode
+    400002: HobgoblinShaman_Head
+    400004: HobgoblinShaman_Head2
+    400006: HobgoblinShaman_Hips
+    400008: HobgoblinShaman_Hood
+    400010: HobgoblinShaman_Hood2
+    400012: HobgoblinShaman_LeftArm
+    400014: HobgoblinShaman_LeftElbow
+    400016: HobgoblinShaman_LeftFoot
+    400018: HobgoblinShaman_LeftHand1
+    400020: HobgoblinShaman_LeftHand2
+    400022: HobgoblinShaman_LeftKnee
+    400024: HobgoblinShaman_LeftLeg
+    400026: HobgoblinShaman_LeftThumb
+    400028: HobgoblinShaman_LeftThumb2
+    400030: HobgoblinShaman_LeftToe
+    400032: HobgoblinShaman_LeftWrist
+    400034: HobgoblinShaman_Neck
+    400036: HobgoblinShaman_RightArm
+    400038: HobgoblinShaman_RightElbow
+    400040: HobgoblinShaman_RightFoot
+    400042: HobgoblinShaman_RightHand1
+    400044: HobgoblinShaman_RightHand2
+    400046: HobgoblinShaman_RightKnee
+    400048: HobgoblinShaman_RightLeg
+    400050: HobgoblinShaman_RightThumb
+    400052: HobgoblinShaman_RightThumb2
+    400054: HobgoblinShaman_RightToe
+    400056: HobgoblinShaman_RightWrist
+    400058: HobgoblinShaman_Spine
+    400060: HobgoblinShaman_Spine2
+    400062: Shaman
+    400064: Shaman_Sizing
+    4300000: Shaman
+    7400000: Run
+    7400002: Idle
+    7400004: Attack
+    7400006: Death
+    9500000: //RootNode
+    13700000: Shaman
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Shaman
+        weight: 1
+      - path: Shaman_Sizing
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot/HobgoblinShaman_LeftToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot/HobgoblinShaman_RightToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood/HobgoblinShaman_Hood2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1/HobgoblinShaman_LeftHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb/HobgoblinShaman_LeftThumb2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head/HobgoblinShaman_Head2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1/HobgoblinShaman_RightHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb/HobgoblinShaman_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 16
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Shaman
+        weight: 1
+      - path: Shaman_Sizing
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot/HobgoblinShaman_LeftToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot/HobgoblinShaman_RightToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood/HobgoblinShaman_Hood2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1/HobgoblinShaman_LeftHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb/HobgoblinShaman_LeftThumb2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head/HobgoblinShaman_Head2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1/HobgoblinShaman_RightHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb/HobgoblinShaman_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Shaman
+        weight: 1
+      - path: Shaman_Sizing
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot/HobgoblinShaman_LeftToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot/HobgoblinShaman_RightToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood/HobgoblinShaman_Hood2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1/HobgoblinShaman_LeftHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb/HobgoblinShaman_LeftThumb2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head/HobgoblinShaman_Head2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1/HobgoblinShaman_RightHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb/HobgoblinShaman_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 50
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Shaman
+        weight: 1
+      - path: Shaman_Sizing
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_LeftLeg/HobgoblinShaman_LeftKnee/HobgoblinShaman_LeftFoot/HobgoblinShaman_LeftToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_RightLeg/HobgoblinShaman_RightKnee/HobgoblinShaman_RightFoot/HobgoblinShaman_RightToe
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Hood/HobgoblinShaman_Hood2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftHand1/HobgoblinShaman_LeftHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_LeftArm/HobgoblinShaman_LeftElbow/HobgoblinShaman_LeftWrist/HobgoblinShaman_LeftThumb/HobgoblinShaman_LeftThumb2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_Neck/HobgoblinShaman_Head/HobgoblinShaman_Head2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightHand1/HobgoblinShaman_RightHand2
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb
+        weight: 1
+      - path: Shaman_Sizing/HobgoblinShaman_Hips/HobgoblinShaman_Spine/HobgoblinShaman_Spine2/HobgoblinShaman_RightArm/HobgoblinShaman_RightElbow/HobgoblinShaman_RightWrist/HobgoblinShaman_RightThumb/HobgoblinShaman_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

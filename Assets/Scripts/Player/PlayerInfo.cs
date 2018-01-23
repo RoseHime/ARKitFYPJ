@@ -22,6 +22,8 @@ public class PlayerInfo : MonoBehaviour {
     public float f_LODMedQuality = 2;
     public float f_LODLowQuality = 3;
 
+    public GameObject winLoseScreen;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -32,6 +34,20 @@ public class PlayerInfo : MonoBehaviour {
         stoneText.text = "" + i_stone;
         woodText.text = "" + i_wood;
         magicStoneText.text = "" + i_magicStone;
+
+        if (GameObject.FindGameObjectWithTag("EnemyBuildingList") != null && !winLoseScreen.activeSelf)
+        {
+            if (!CheckForEnemyBase())
+            {
+                winLoseScreen.SetActive(true);
+                winLoseScreen.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else if (!CheckForPlayerBase())
+            {
+                winLoseScreen.SetActive(true);
+                winLoseScreen.transform.GetChild(1).gameObject.SetActive(true);
+            }
+        }
     }
 
     public bool LevelUp()
@@ -41,6 +57,30 @@ public class PlayerInfo : MonoBehaviour {
             i_stone -= f_upgradeCost;
             i_playerLevel++;
             return true;
+        }
+        return false;
+    }
+
+    bool CheckForEnemyBase()
+    {
+        foreach (Transform building in GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
+        {
+            if (building.GetComponent<TownHallBehaviour>() != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool CheckForPlayerBase()
+    {
+        foreach (Transform building in GameObject.FindGameObjectWithTag("BuildingList").transform)
+        {
+            if (building.GetComponent<TownHallBehaviour>() != null)
+            {
+                return true;
+            }
         }
         return false;
     }

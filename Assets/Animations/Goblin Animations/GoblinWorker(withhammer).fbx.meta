@@ -1,0 +1,506 @@
+fileFormatVersion: 2
+guid: 29e5d3ebc9f5ee243819b2a0a1317327
+timeCreated: 1516685976
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: GoblinWorker_Head
+    100004: GoblinWorker_Head2
+    100006: GoblinWorker_Hips
+    100008: GoblinWorker_LeftArm
+    100010: GoblinWorker_LeftElbow
+    100012: GoblinWorker_LeftFoot
+    100014: GoblinWorker_LeftHand
+    100016: GoblinWorker_LeftHand2
+    100018: GoblinWorker_LeftKnee
+    100020: GoblinWorker_LeftLeg
+    100022: GoblinWorker_LeftThumb
+    100024: GoblinWorker_LeftThumb2
+    100026: GoblinWorker_LeftToe
+    100028: GoblinWorker_LeftWrist
+    100030: GoblinWorker_Neck
+    100032: GoblinWorker_RightArm
+    100034: GoblinWorker_RightElbow
+    100036: GoblinWorker_RightFoot
+    100038: GoblinWorker_RightHand1
+    100040: GoblinWorker_RightHand2
+    100042: GoblinWorker_RightKnee
+    100044: GoblinWorker_RightLeg
+    100046: GoblinWorker_RightThumb
+    100048: GoblinWorker_RightThumb2
+    100050: GoblinWorker_RightToe
+    100052: GoblinWorker_RightWrist
+    100054: GoblinWorker_Spine
+    100056: GoblinWorker_Spine2
+    100058: Worker
+    100060: Worker_Sizing
+    400000: //RootNode
+    400002: GoblinWorker_Head
+    400004: GoblinWorker_Head2
+    400006: GoblinWorker_Hips
+    400008: GoblinWorker_LeftArm
+    400010: GoblinWorker_LeftElbow
+    400012: GoblinWorker_LeftFoot
+    400014: GoblinWorker_LeftHand
+    400016: GoblinWorker_LeftHand2
+    400018: GoblinWorker_LeftKnee
+    400020: GoblinWorker_LeftLeg
+    400022: GoblinWorker_LeftThumb
+    400024: GoblinWorker_LeftThumb2
+    400026: GoblinWorker_LeftToe
+    400028: GoblinWorker_LeftWrist
+    400030: GoblinWorker_Neck
+    400032: GoblinWorker_RightArm
+    400034: GoblinWorker_RightElbow
+    400036: GoblinWorker_RightFoot
+    400038: GoblinWorker_RightHand1
+    400040: GoblinWorker_RightHand2
+    400042: GoblinWorker_RightKnee
+    400044: GoblinWorker_RightLeg
+    400046: GoblinWorker_RightThumb
+    400048: GoblinWorker_RightThumb2
+    400050: GoblinWorker_RightToe
+    400052: GoblinWorker_RightWrist
+    400054: GoblinWorker_Spine
+    400056: GoblinWorker_Spine2
+    400058: Worker
+    400060: Worker_Sizing
+    4300000: Worker
+    7400000: Run
+    7400002: Idle
+    7400004: Building/Harvesting
+    7400006: Death
+    9500000: //RootNode
+    13700000: Worker
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Worker
+        weight: 1
+      - path: Worker_Sizing
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot/GoblinWorker_LeftToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot/GoblinWorker_RightToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand/GoblinWorker_LeftHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb/GoblinWorker_LeftThumb2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head/GoblinWorker_Head2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1/GoblinWorker_RightHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb/GoblinWorker_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 16
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Worker
+        weight: 1
+      - path: Worker_Sizing
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot/GoblinWorker_LeftToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot/GoblinWorker_RightToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand/GoblinWorker_LeftHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb/GoblinWorker_LeftThumb2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head/GoblinWorker_Head2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1/GoblinWorker_RightHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb/GoblinWorker_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Building/Harvesting
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Worker
+        weight: 1
+      - path: Worker_Sizing
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot/GoblinWorker_LeftToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot/GoblinWorker_RightToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand/GoblinWorker_LeftHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb/GoblinWorker_LeftThumb2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head/GoblinWorker_Head2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1/GoblinWorker_RightHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb/GoblinWorker_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Worker
+        weight: 1
+      - path: Worker_Sizing
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_LeftLeg/GoblinWorker_LeftKnee/GoblinWorker_LeftFoot/GoblinWorker_LeftToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_RightLeg/GoblinWorker_RightKnee/GoblinWorker_RightFoot/GoblinWorker_RightToe
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftHand/GoblinWorker_LeftHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_LeftArm/GoblinWorker_LeftElbow/GoblinWorker_LeftWrist/GoblinWorker_LeftThumb/GoblinWorker_LeftThumb2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_Neck/GoblinWorker_Head/GoblinWorker_Head2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightHand1/GoblinWorker_RightHand2
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb
+        weight: 1
+      - path: Worker_Sizing/GoblinWorker_Hips/GoblinWorker_Spine/GoblinWorker_Spine2/GoblinWorker_RightArm/GoblinWorker_RightElbow/GoblinWorker_RightWrist/GoblinWorker_RightThumb/GoblinWorker_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

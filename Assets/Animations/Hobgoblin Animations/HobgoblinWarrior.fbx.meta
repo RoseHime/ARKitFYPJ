@@ -1,0 +1,506 @@
+fileFormatVersion: 2
+guid: 92060fabe12a0a14383405df2fb67d9d
+timeCreated: 1516689512
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: HobgoblinWarrior_Head
+    100004: HobgoblinWarrior_Head2
+    100006: HobgoblinWarrior_Hips
+    100008: HobgoblinWarrior_LeftArm
+    100010: HobgoblinWarrior_LeftElbow
+    100012: HobgoblinWarrior_LeftFoot
+    100014: HobgoblinWarrior_LeftHand1
+    100016: HobgoblinWarrior_LeftHand2
+    100018: HobgoblinWarrior_LeftKnee
+    100020: HobgoblinWarrior_LeftLeg
+    100022: HobgoblinWarrior_LeftThumb
+    100024: HobgoblinWarrior_LeftThumb2
+    100026: HobgoblinWarrior_LeftToe
+    100028: HobgoblinWarrior_LeftWrist
+    100030: HobgoblinWarrior_Neck
+    100032: HobgoblinWarrior_RightArm
+    100034: HobgoblinWarrior_RightElbow
+    100036: HobgoblinWarrior_RightFoot
+    100038: HobgoblinWarrior_RightHand1
+    100040: HobgoblinWarrior_RightHand2
+    100042: HobgoblinWarrior_RightKnee
+    100044: HobgoblinWarrior_RightLeg
+    100046: HobgoblinWarrior_RightThumb
+    100048: HobgoblinWarrior_RightThumb2
+    100050: HobgoblinWarrior_RightToe
+    100052: HobgoblinWarrior_RightWrist
+    100054: HobgoblinWarrior_Spine
+    100056: HobgoblinWarrior_Spine2
+    100058: Warrior
+    100060: Warrior_Sizing
+    400000: //RootNode
+    400002: HobgoblinWarrior_Head
+    400004: HobgoblinWarrior_Head2
+    400006: HobgoblinWarrior_Hips
+    400008: HobgoblinWarrior_LeftArm
+    400010: HobgoblinWarrior_LeftElbow
+    400012: HobgoblinWarrior_LeftFoot
+    400014: HobgoblinWarrior_LeftHand1
+    400016: HobgoblinWarrior_LeftHand2
+    400018: HobgoblinWarrior_LeftKnee
+    400020: HobgoblinWarrior_LeftLeg
+    400022: HobgoblinWarrior_LeftThumb
+    400024: HobgoblinWarrior_LeftThumb2
+    400026: HobgoblinWarrior_LeftToe
+    400028: HobgoblinWarrior_LeftWrist
+    400030: HobgoblinWarrior_Neck
+    400032: HobgoblinWarrior_RightArm
+    400034: HobgoblinWarrior_RightElbow
+    400036: HobgoblinWarrior_RightFoot
+    400038: HobgoblinWarrior_RightHand1
+    400040: HobgoblinWarrior_RightHand2
+    400042: HobgoblinWarrior_RightKnee
+    400044: HobgoblinWarrior_RightLeg
+    400046: HobgoblinWarrior_RightThumb
+    400048: HobgoblinWarrior_RightThumb2
+    400050: HobgoblinWarrior_RightToe
+    400052: HobgoblinWarrior_RightWrist
+    400054: HobgoblinWarrior_Spine
+    400056: HobgoblinWarrior_Spine2
+    400058: Warrior
+    400060: Warrior_Sizing
+    4300000: Warrior
+    7400000: Run
+    7400002: Idle
+    7400004: Attack
+    7400006: Death
+    9500000: //RootNode
+    13700000: Warrior
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Warrior
+        weight: 1
+      - path: Warrior_Sizing
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot/HobgoblinWarrior_LeftToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot/HobgoblinWarrior_RightToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1/HobgoblinWarrior_LeftHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb/HobgoblinWarrior_LeftThumb2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head/HobgoblinWarrior_Head2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1/HobgoblinWarrior_RightHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb/HobgoblinWarrior_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 16
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Warrior
+        weight: 1
+      - path: Warrior_Sizing
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot/HobgoblinWarrior_LeftToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot/HobgoblinWarrior_RightToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1/HobgoblinWarrior_LeftHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb/HobgoblinWarrior_LeftThumb2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head/HobgoblinWarrior_Head2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1/HobgoblinWarrior_RightHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb/HobgoblinWarrior_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Warrior
+        weight: 1
+      - path: Warrior_Sizing
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot/HobgoblinWarrior_LeftToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot/HobgoblinWarrior_RightToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1/HobgoblinWarrior_LeftHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb/HobgoblinWarrior_LeftThumb2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head/HobgoblinWarrior_Head2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1/HobgoblinWarrior_RightHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb/HobgoblinWarrior_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Warrior
+        weight: 1
+      - path: Warrior_Sizing
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_LeftLeg/HobgoblinWarrior_LeftKnee/HobgoblinWarrior_LeftFoot/HobgoblinWarrior_LeftToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_RightLeg/HobgoblinWarrior_RightKnee/HobgoblinWarrior_RightFoot/HobgoblinWarrior_RightToe
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftHand1/HobgoblinWarrior_LeftHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_LeftArm/HobgoblinWarrior_LeftElbow/HobgoblinWarrior_LeftWrist/HobgoblinWarrior_LeftThumb/HobgoblinWarrior_LeftThumb2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_Neck/HobgoblinWarrior_Head/HobgoblinWarrior_Head2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightHand1/HobgoblinWarrior_RightHand2
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb
+        weight: 1
+      - path: Warrior_Sizing/HobgoblinWarrior_Hips/HobgoblinWarrior_Spine/HobgoblinWarrior_Spine2/HobgoblinWarrior_RightArm/HobgoblinWarrior_RightElbow/HobgoblinWarrior_RightWrist/HobgoblinWarrior_RightThumb/HobgoblinWarrior_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
