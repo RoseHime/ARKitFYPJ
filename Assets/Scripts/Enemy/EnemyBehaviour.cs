@@ -45,17 +45,16 @@ public class EnemyBehaviour : MonoBehaviour {
 
     NavMeshAgent _navMeshAgent;
 
+    Animator _animator;
+
     // Use this for initialization
     void Start() {
         T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;     
-        if (ET == EnemyType.ET_RANGED)
-        {
-            if (transform.childCount > 0)
-                bullet_Prefab = transform.GetChild(0).gameObject;
-        }
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = f_speed;
+
+        _animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -97,6 +96,7 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         if (f_health <= 0)
         {
+            _animator.SetTrigger("b_IsDead");
             GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_magicStone += i_magicStoneDrop;
             Destroy(gameObject);
         }
@@ -133,6 +133,8 @@ public class EnemyBehaviour : MonoBehaviour {
     void Idle()
     {
         GameObject tempPlayer = DetectPlayerUnit();
+        _animator.ResetTrigger("b_IsAttacking");
+        _animator.ResetTrigger("b_IsMoving");
         if (tempPlayer != null)
         {
             if ((tempPlayer.transform.position - transform.position).sqrMagnitude <= f_range * f_range)
@@ -156,6 +158,8 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         if (go_LockOnUnit != null)
         {
+            _animator.SetTrigger("b_IsMoving");
+            _animator.ResetTrigger("b_IsAttacking");
             Vector3 difference = go_LockOnUnit.transform.position - transform.position;
 
             if (difference.sqrMagnitude < f_atkRange * f_atkRange)
@@ -180,7 +184,7 @@ public class EnemyBehaviour : MonoBehaviour {
                 //transform.position += difference.normalized * Time.deltaTime * f_speed;
                 LookDirection();
                 _navMeshAgent.ResetPath();
-                _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);
+                _navMeshAgent.SetDestination(go_LockOnUnit.transform.position);                
             }
         }
         else
@@ -193,6 +197,7 @@ public class EnemyBehaviour : MonoBehaviour {
             {
                 EUS = EnemyUnitState.EUS_IDLE;
                 _navMeshAgent.ResetPath();
+
             }
         }
 
@@ -206,6 +211,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
             if (difference.sqrMagnitude < f_atkRange * f_atkRange)
             {
+                _animator.SetTrigger("b_IsAttacking");
                 LookDirection();
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
@@ -231,6 +237,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
     void Move()
     {
+        _animator.SetTrigger("b_IsMoving");
         isMoving = true;
         Vector3 offset = destination - transform.position;
         offset.y = 0;
