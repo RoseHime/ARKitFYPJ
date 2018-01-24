@@ -189,7 +189,7 @@ MonoBehaviour:
   i_stoneCost: 100
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 4300000, guid: 7e5f7f67d12291e40b10113fb4e11b7f, type: 3}
-  workerPrefab: {fileID: 1170880893219066, guid: 0736b2a86ea7abd4f9e5b41c53a6d2d9,
+  workerPrefab: {fileID: 1301454349507494, guid: 2ff446a04b522014497e5c3211380b2c,
     type: 2}
 --- !u!208 &208758827595448930
 NavMeshObstacle:

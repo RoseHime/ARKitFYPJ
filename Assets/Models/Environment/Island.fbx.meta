@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: 9044e38da2789f24ab9ded1c60d47697
-timeCreated: 1516696116
+guid: dfbabea1b06a55f44818d3cb6f261b68
+timeCreated: 1516768316
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Island
+    100004: Sea
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    400002: Island
+    400004: Sea
+    2300000: Island
+    2300002: Sea
+    3300000: Island
+    3300002: Sea
     4300000: Island
+    4300002: Sea
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -18,11 +25,9 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -59,7 +64,6 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -70,10 +74,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
-    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

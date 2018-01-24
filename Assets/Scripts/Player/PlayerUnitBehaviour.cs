@@ -148,11 +148,19 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         if (b_Selected)
         {
-            gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            foreach (Transform child in gameObject.transform)
+            {
+                if (child.transform.tag == "SelectionIcon")
+                    child.gameObject.SetActive(true);
+            }
         }
         else
         {
-            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            foreach (Transform child in gameObject.transform)
+            {
+                if (child.transform.tag == "SelectionIcon")
+                    child.gameObject.SetActive(false);
+            }
         }
 
         if (f_HealthPoint <= 0)
@@ -325,17 +333,19 @@ public class PlayerUnitBehaviour : MonoBehaviour
             gameObject.transform.LookAt(enemyLoc);
             if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
             {
-                _navmeshAgent.stoppingDistance = 0.07f;
-                if (!b_CollidedWithEnemy)
+                //_navmeshAgent.stoppingDistance = 0.05f;
+                if (difference.sqrMagnitude > GetRange() * GetRange())
                 {
-                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
+                    _animator.SetTrigger("b_IsMoving");
+                    //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
+                    _navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
                     f_fireCooldown = 0;
                 }
-                else if (b_CollidedWithEnemy)
+                else if (difference.sqrMagnitude < GetRange() * GetRange())
                 {
                     if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                     {
-                        _animator.SetTrigger("B_IsAttacking");
+                        _animator.SetTrigger("b_IsAttacking");
                         f_fireCooldown = 0;
                         go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().f_health -= GetAttack();
                     }
@@ -343,9 +353,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
             }
             else if (PUN == PlayerUnitType.PUN_RANGE)
             {
-                _animator.SetTrigger("B_IsAttacking");
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
+                    _animator.SetTrigger("b_IsAttacking");
                     f_fireCooldown = 0;
                     FireBullet(difference.normalized);
                 }
@@ -359,7 +369,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
                 //b_Moving = true;
-                _animator.ResetTrigger("B_IsAttacking");
+                _animator.ResetTrigger("b_IsAttacking");
+                _animator.ResetTrigger("b_IsMoving");
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
                 PUS = PlayerUnitState.PUS_GUARD;
@@ -371,7 +382,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 b_AttackingEnemy = false;
                 go_TargetedEnemy = null;
                 b_CollidedWithEnemy = false;
-                _animator.ResetTrigger("B_IsAttacking");
+                _animator.ResetTrigger("b_IsAttacking");
+                _animator.ResetTrigger("b_IsMoving");
                 //b_Moving = true;
                 _navmeshAgent.speed = f_OriginSpeed;
                 f_speed = f_OriginSpeed;
@@ -400,11 +412,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public void OnHarvestMode()
     {
         _navmeshAgent.speed = f_OriginSpeed;
-        _navmeshAgent.stoppingDistance = 0.07f;
         _animator.SetTrigger("b_IsMoving");
 
         if (b_toHarvestStone)
         {
+            _navmeshAgent.stoppingDistance = 0.07f;
             b_toHarvestTree = false;
             foreach (Transform GetStone in GameObject.FindGameObjectWithTag("Resources").transform)
             {
@@ -414,6 +426,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         else if (b_toHarvestTree)
         {
+            _navmeshAgent.stoppingDistance = 0.045f;
+
             b_toHarvestStone = false;
             foreach (Transform GetTree in GameObject.FindGameObjectWithTag("Resources").transform)
             {

@@ -959,7 +959,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 43eeef139660996429402897cdc8f4b6, type: 2}
+  - {fileID: 2100000, guid: 19ac05c874e9f9349a1b68a82b0cc989, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1031,13 +1031,13 @@ MonoBehaviour:
   PUN: 1
   detectedColor: {r: 0, g: 0, b: 0, a: 0}
   f_HealthPoint: 50
-  f_range: 0.1
+  f_range: 0.05
   f_speed: 0.05
-  f_atkDmg: 30
+  f_atkDmg: 2
   reachDist: 1
   currentPoint: 0
-  i_woodCost: 0
-  i_stoneCost: 0
+  i_woodCost: 10
+  i_stoneCost: 5
   i_magicStoneCost: 0
   b_StartHarvest: 0
   b_HoldingResource: 0
@@ -1051,7 +1051,6 @@ MonoBehaviour:
   f_bulletSpeed: 0.1
   f_fireRate: 0.5
   go_BuildingPrefab: {fileID: 0}
-  _sprite: {fileID: 0}
 --- !u!136 &136062943443743568
 CapsuleCollider:
   m_ObjectHideFlags: 1
