@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using UnityEngine.Collections;
 
 public class ChooseCommand : MonoBehaviour {
@@ -165,7 +166,9 @@ public class ChooseCommand : MonoBehaviour {
             {
                 CreateEntities createEntitiy = GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>();
                 createEntitiy.go_playerPrefab = townHall.workerPrefab;
-                createEntitiy.BuildPlayerUnit(townHall.transform.GetChild(0).position);
+                GameObject unit = createEntitiy.BuildPlayerUnit(townHall.transform.position);
+                unit.GetComponent<NavMeshAgent>().SetDestination(townHall.transform.GetChild(0).position);
+                unit.transform.LookAt(townHall.transform.GetChild(0).position);
                 //go_CommandPanel.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
                 bc.SetBackToSelect();
