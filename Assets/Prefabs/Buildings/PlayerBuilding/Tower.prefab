@@ -172,9 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_fireRate: 1
   b_active: 1
-  f_damage: 1
+  f_damage: 2
   f_bulletSpeed: 0.3
-  f_range: 1
+  f_range: 0.5
   bullet_Prefab: {fileID: 1535914014752706, guid: 03c2aee621b9d8a4c93ed9b0ca515c1a,
     type: 2}
   type: 0

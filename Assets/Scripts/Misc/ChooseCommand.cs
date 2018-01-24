@@ -129,6 +129,7 @@ public class ChooseCommand : MonoBehaviour {
                         if (!bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected)
                             bc.GetListOfUnit().Add(bc.GetRecipient().transform);
                         bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        go_CommandPanel.GetComponent<CreateActionButton>().CreateButtons();
                     }
                 }
             }

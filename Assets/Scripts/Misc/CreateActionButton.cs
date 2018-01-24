@@ -11,6 +11,7 @@ public class CreateActionButton : MonoBehaviour
     public GameObject go_actionPanel;
     private float go_actionButton_Length;
     Vector3 tempPos;
+    public ButtonControl bc;
 
     public GameObject go_selectedUnit;
 
@@ -114,43 +115,46 @@ public class CreateActionButton : MonoBehaviour
             {
                 for (int i = 1; i < 4; ++i)
                 {
-                    GameObject goButton = (GameObject)Instantiate(go_actionButton);
-                    goButton.name = "ActionButton";
-                    goButton.transform.SetParent(go_actionPanel.transform, false);
-                    goButton.transform.localScale = new Vector3(1, 1, 1);
-                    goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
-                    goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
-                    goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
-                    goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * (i), 0);
-                    switch (i)
+                    if ((i == 0 && bc.GetListOfUnit().Count <= 1) || i == 1 || (i == 2 && bc.GetListOfUnit().Count <= 1) || i == 3)
                     {
-                        case 0: // No longer needed
-                            goButton.GetComponentInChildren<Text>().text = "CLOSE";
-                            goButton.GetComponent<Image>().sprite = cancelImage;
-                            break;
-                        case 1:
-                            goButton.GetComponentInChildren<Text>().text = "MOVE";
-                            goButton.GetComponent<Image>().sprite = moveImage;
-                            break;
-                        case 2:
-                            if (go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
-                            {
-                                goButton.GetComponentInChildren<Text>().text = "BUILD";
-                                goButton.GetComponent<Image>().sprite = buildImage;
-                            }
-                            else
-                            {
-                                goButton.GetComponentInChildren<Text>().text = "UPRANK";
-                                goButton.GetComponent<Image>().sprite = uprankImage;
-                            }
-                            break;
-                        case 3:
-                            goButton.GetComponentInChildren<Text>().text = "SELECTMORE";
-                            goButton.GetComponent<Image>().sprite = selectMoreImage;
-                            goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x - go_actionButton.GetComponent<RectTransform>().rect.height, go_selectButton.transform.localPosition.y, 0);
-                            break;
+                        GameObject goButton = (GameObject)Instantiate(go_actionButton);
+                        goButton.name = "ActionButton";
+                        goButton.transform.SetParent(go_actionPanel.transform, false);
+                        goButton.transform.localScale = new Vector3(1, 1, 1);
+                        goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                        goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+                        goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+                        goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * (i), 0);
+                        switch (i)
+                        {
+                            case 0: // No longer needed
+                                goButton.GetComponentInChildren<Text>().text = "CLOSE";
+                                goButton.GetComponent<Image>().sprite = cancelImage;
+                                break;
+                            case 1:
+                                goButton.GetComponentInChildren<Text>().text = "MOVE";
+                                goButton.GetComponent<Image>().sprite = moveImage;
+                                break;
+                            case 2:
+                                if (go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                                {
+                                    goButton.GetComponentInChildren<Text>().text = "BUILD";
+                                    goButton.GetComponent<Image>().sprite = buildImage;
+                                }
+                                else
+                                {
+                                    goButton.GetComponentInChildren<Text>().text = "UPRANK";
+                                    goButton.GetComponent<Image>().sprite = uprankImage;
+                                }
+                                break;
+                            case 3:
+                                goButton.GetComponentInChildren<Text>().text = "SELECTMORE";
+                                goButton.GetComponent<Image>().sprite = selectMoreImage;
+                                goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x - go_actionButton.GetComponent<RectTransform>().rect.height, go_selectButton.transform.localPosition.y, 0);
+                                break;
+                        }
                     }
-                }
+                }                
             }
             else if (go_selectedUnit.tag == "SelectableBuilding" && go_selectedUnit.transform.parent != GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
             {
