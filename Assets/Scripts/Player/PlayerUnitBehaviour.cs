@@ -165,6 +165,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         if (f_HealthPoint <= 0)
         {
+            go_CommandMenu.SetActive(false);
             Destroy(gameObject);
         }
         if (b_StartHarvest)
@@ -334,14 +335,14 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
             {
                 //_navmeshAgent.stoppingDistance = 0.05f;
-                if (difference.sqrMagnitude > GetRange() * GetRange())
+                if (difference.sqrMagnitude > 0.08f * 0.08f)
                 {
                     _animator.SetTrigger("b_IsMoving");
                     //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
                     _navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
                     f_fireCooldown = 0;
                 }
-                else if (difference.sqrMagnitude < GetRange() * GetRange())
+                else if (difference.sqrMagnitude < 0.08f * 0.08f)
                 {
                     if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                     {
