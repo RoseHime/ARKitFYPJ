@@ -146,6 +146,15 @@ public class PlayerUnitBehaviour : MonoBehaviour
        //                                     "isMoving" + b_Moving + "," + "/n" +
        //                                     "selected" + b_Selected;
 
+        if (b_Selected)
+        {
+            gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        }
+
         if (f_HealthPoint <= 0)
         {
             Destroy(gameObject);
@@ -316,7 +325,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             gameObject.transform.LookAt(enemyLoc);
             if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
             {
-
+                _navmeshAgent.stoppingDistance = 0.07f;
                 if (!b_CollidedWithEnemy)
                 {
                     gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
@@ -540,7 +549,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
             Vector3 LookAt = _navmeshAgent.velocity + gameObject.transform.position;
             gameObject.transform.LookAt(LookAt);
-        if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.01f * 0.01f)
+        if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.03f * 0.03f)
         {
             if (b_buildBuilding)
             {
@@ -575,9 +584,17 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //}
         }
 
+    public void ShowSelected()
+    {
+
+    }
+
     public void StopAllActions()
     {
         PUS = PlayerUnitState.PUS_GUARD;
+        _animator.ResetTrigger("b_IsAttacking");
+        _animator.ResetTrigger("b_IsMoving");
+        _animator.ResetTrigger("b_isHarvesting");
         b_Moving = false;
         _navmeshAgent.speed = 0f;
     }

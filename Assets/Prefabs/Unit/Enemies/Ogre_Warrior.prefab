@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95033327748517306}
   - component: {fileID: 114237951898036578}
   - component: {fileID: 136417194674361192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ogre_Warrior
   m_TagString: Enemy
   m_Icon: {fileID: 0}

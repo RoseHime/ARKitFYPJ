@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95496215163986110}
   - component: {fileID: 114836668147407090}
   - component: {fileID: 136868891194542460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ogre_Mage
   m_TagString: Enemy
   m_Icon: {fileID: 0}

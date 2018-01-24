@@ -33,6 +33,7 @@ TagManager:
   - MoveParent
   - UnitCamera
   - AudioSource
+  - SelectionIcon
   layers:
   - Default
   - TransparentFX

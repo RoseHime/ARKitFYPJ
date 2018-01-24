@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95865028031140164}
   - component: {fileID: 114749469063505112}
   - component: {fileID: 136702811464686714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ogre_Tank
   m_TagString: Enemy
   m_Icon: {fileID: 0}

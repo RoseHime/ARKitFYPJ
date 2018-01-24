@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 136961910073835068}
   - component: {fileID: 195424818429885982}
   - component: {fileID: 114731631894288500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoblinMage
   m_TagString: Enemy
   m_Icon: {fileID: 0}
