@@ -66,6 +66,28 @@ public class ButtonControl : MonoBehaviour {
         }
 
         //Debug.Log("List of Unit:" + GetListOfUnit().Count);
+
+        foreach (Transform unit in GetListOfUnit())
+        {
+            if (unit == null)
+            {
+                GetListOfUnit().Remove(unit);
+            }
+        }
+
+        if (GetListOfUnit().Count == 0 && go_SelectedUnit == null)
+        {
+            btn.image.sprite = S_Select;
+            b_IsWorker = false;
+            b_NotWorker = false;
+            b_SomethingIsSelected = false;
+            go_SelectedUnit = null;
+            btn.GetComponentInChildren<Text>().text = "Select";
+            go_barracksPanel.SetActive(false);
+            go_buildPanel.SetActive(false);
+            if (GameObject.FindGameObjectWithTag("Command"))
+                GameObject.FindGameObjectWithTag("Command").SetActive(false);
+        }
     }
     
     public void TapDown()
