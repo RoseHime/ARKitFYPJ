@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class CreateUnitButton : MonoBehaviour {
 
@@ -44,7 +45,11 @@ public class CreateUnitButton : MonoBehaviour {
             {
                 CreateEntities createEntitiy = GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>();
                 createEntitiy.go_playerPrefab = go_unitPrefab;
-                createEntitiy.BuildPlayerUnit(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
+                GameObject unit = createEntitiy.BuildPlayerUnit(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.position);
+                //unit.transform.position = Vector3.MoveTowards(unit.transform.position, transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position, unit.GetComponent<PlayerUnitBehaviour>().GetSpeed() * Time.deltaTime);
+                //unit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
+                unit.GetComponent<NavMeshAgent>().SetDestination(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
+                unit.transform.LookAt(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
                 //transform.parent.parent.parent.parent.gameObject.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
                 //GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().SetBackToSelect();

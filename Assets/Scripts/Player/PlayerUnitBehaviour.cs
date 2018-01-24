@@ -523,6 +523,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public void SetTargetPos(Vector3 v3_targetpos)
     {
+        _navmeshAgent = GetComponent<NavMeshAgent>();
         v3_targetPos = v3_targetpos;
         v3_currentPos = gameObject.transform.position;
         _navmeshAgent.speed = f_OriginSpeed;
@@ -532,6 +533,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
         //currentPoint = 0;
 
         // b_Selected = false;
+        b_Moving = true;
+    }
+
+    public void SetSpawnTargetPos(Vector3 v3_targetpos)
+    {
+        v3_targetPos = v3_targetpos;
+        v3_currentPos = gameObject.transform.position;
         b_Moving = true;
     }
 
@@ -582,7 +590,15 @@ public class PlayerUnitBehaviour : MonoBehaviour
             //        }
             //    }
             //}
-        }
+    }
+
+    public void MoveTo(Vector3 position)
+    {
+        b_Moving = true;
+        //v3_targetPos = position;
+        SetTargetPos(position);
+        PUS = PlayerUnitState.PUS_MOVE;
+    }
 
     public void ShowSelected()
     {
