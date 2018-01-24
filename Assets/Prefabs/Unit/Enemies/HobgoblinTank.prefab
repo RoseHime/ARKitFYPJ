@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 114095699124843936}
   - component: {fileID: 136436854404200884}
   - component: {fileID: 195198608142762188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HobgoblinTank
   m_TagString: Enemy
   m_Icon: {fileID: 0}

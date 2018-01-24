@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 114251359330732280}
   - component: {fileID: 136527082413787596}
   - component: {fileID: 195996804495891816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HobgoblinShaman
   m_TagString: Enemy
   m_Icon: {fileID: 0}

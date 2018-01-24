@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 136854627980975676}
   - component: {fileID: 195022938991913838}
   - component: {fileID: 114951274916728828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Goblin Warrior
   m_TagString: Enemy
   m_Icon: {fileID: 0}

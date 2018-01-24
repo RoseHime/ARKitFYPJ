@@ -127,8 +127,13 @@ public class ChooseCommand : MonoBehaviour {
                     if (bc.GetRecipient().gameObject != bc.GetListOfUnit()[i].gameObject)
                     {
                         if (!bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected)
+                        {
+                            //bc.GetRecipient().GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(true);
+                            bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
                             bc.GetListOfUnit().Add(bc.GetRecipient().transform);
-                        bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                        }
+                        //bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+
                     }
                 }
             }

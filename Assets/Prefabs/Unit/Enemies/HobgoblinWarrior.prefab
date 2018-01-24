@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 114016548677000564}
   - component: {fileID: 136824974437629166}
   - component: {fileID: 195718555694940252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HobgoblinWarrior
   m_TagString: Enemy
   m_Icon: {fileID: 0}

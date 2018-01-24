@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 136148717540913852}
   - component: {fileID: 195414544997451228}
   - component: {fileID: 114184520832349828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoblinTank
   m_TagString: Enemy
   m_Icon: {fileID: 0}

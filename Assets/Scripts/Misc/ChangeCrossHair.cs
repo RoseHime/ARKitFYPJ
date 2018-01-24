@@ -40,8 +40,11 @@ public class ChangeCrossHair : MonoBehaviour
                     this.GetComponent<RawImage>().texture = T2D_HarvestTree_Icon;
                 else if (recipient.tag == "StoneMine" && bc.b_IsWorker)
                     this.GetComponent<RawImage>().texture = T2D_HarvestMine_Icon;
-                else if (recipient.GetComponentInParent<Transform>().tag == "EnemyList" || recipient.GetComponentInParent<Transform>().tag == "EnemyBuildingList")
+                else if (bc.b_NotWorker &&
+                         (recipient.tag == "Enemy" || recipient.transform.parent.tag == "EnemyBuildingList"))
+                {
                     this.GetComponent<RawImage>().texture = T2D_Attack_Icon;
+                }
                 else
                     this.GetComponent<RawImage>().texture = origin;
             }

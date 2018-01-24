@@ -28,6 +28,7 @@ public class ButtonControl : MonoBehaviour {
     public bool b_ToBuild;
     public bool b_BuildTower;
     public bool b_IsWorker;
+    public bool b_NotWorker;
 
     private Camera ARCamera;
     public Sprite S_Back;
@@ -41,6 +42,7 @@ public class ButtonControl : MonoBehaviour {
         b_SomethingIsSelected = false;
         b_ToBuild = false;
         b_IsWorker = false;
+        b_NotWorker = false;
         recipient = null;
 
         ARCamera = GameObject.FindGameObjectWithTag("PlaneDetection").GetComponent<UnityARCameraManager>().m_camera;
@@ -50,7 +52,7 @@ public class ButtonControl : MonoBehaviour {
     void Update()
     {
         s_text = btn.GetComponentInChildren<Text>().text;
-        //Debug.Log(b_SomethingIsSelected);
+        Debug.Log(GetListOfUnit().Count);
         //ray = Camera.main.ScreenPointToRay(i_Crosshair.transform.position);
         ray = ARCamera.ScreenPointToRay(i_Crosshair.transform.position);
         if (Physics.Raycast(ray, out hit, float.MaxValue, touchInputMask))
@@ -77,9 +79,14 @@ public class ButtonControl : MonoBehaviour {
                 if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
                 {
                     go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                    //go_SelectedUnit.GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(true);
                     if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().PUN == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
                     {
                         b_IsWorker = true;
+                    }
+                    else
+                    {
+                        b_NotWorker = true;
                     }
                     //go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().CreateCommand();
                 }
@@ -97,15 +104,22 @@ public class ButtonControl : MonoBehaviour {
         {
             btn.image.sprite = S_Select;
             b_IsWorker = false;
+            b_NotWorker = false;
             if (GetListOfUnit().Count > 1)
             {
+                b_SomethingIsSelected = false;
+                btn.GetComponentInChildren<Text>().text = "Select";
+                //go_SelectedUnit.transform.GetChild(2).gameObject.SetActive(false);
+                //go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
                 go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
 
-                for (int i = 1; i <= GetListOfUnit().Count; i++)
+                for (int i = 0; i < GetListOfUnit().Count; i++)
                 {
+                   // GetListOfUnit()[i].transform.GetChild(2).gameObject.SetActive(false);
                     GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                    GetListOfUnit().Remove(GetListOfUnit()[i]);
+
                 }
+                GetListOfUnit().Clear();
             }
             else
             {
@@ -113,6 +127,8 @@ public class ButtonControl : MonoBehaviour {
                 {
                     if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
                     {
+                        go_SelectedUnit.transform.GetChild(2).gameObject.SetActive(false);
+                        //go_SelectedUnit.GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(false);
                         go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
                         go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
                         GetListOfUnit().Remove(go_SelectedUnit.transform);
