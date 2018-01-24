@@ -412,11 +412,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
     public void OnHarvestMode()
     {
         _navmeshAgent.speed = f_OriginSpeed;
-        _navmeshAgent.stoppingDistance = 0.07f;
         _animator.SetTrigger("b_IsMoving");
 
         if (b_toHarvestStone)
         {
+            _navmeshAgent.stoppingDistance = 0.07f;
             b_toHarvestTree = false;
             foreach (Transform GetStone in GameObject.FindGameObjectWithTag("Resources").transform)
             {
@@ -426,6 +426,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         else if (b_toHarvestTree)
         {
+            _navmeshAgent.stoppingDistance = 0.045f;
+
             b_toHarvestStone = false;
             foreach (Transform GetTree in GameObject.FindGameObjectWithTag("Resources").transform)
             {

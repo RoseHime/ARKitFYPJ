@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 195570779030607794}
   - component: {fileID: 54990910613226954}
   m_Layer: 8
-  m_Name: GoblinWorker(withhammer)
+  m_Name: GoblinWorker
   m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1036,8 +1036,8 @@ MonoBehaviour:
   f_atkDmg: 1
   reachDist: 1
   currentPoint: 0
-  i_woodCost: 0
-  i_stoneCost: 0
+  i_woodCost: 5
+  i_stoneCost: 1
   i_magicStoneCost: 0
   b_StartHarvest: 0
   b_HoldingResource: 0
