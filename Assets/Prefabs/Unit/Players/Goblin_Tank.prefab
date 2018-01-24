@@ -153,7 +153,8 @@ MonoBehaviour:
   bullet_Prefab: {fileID: 1535914014752706, guid: 03c2aee621b9d8a4c93ed9b0ca515c1a,
     type: 2}
   f_bulletSpeed: 0.1
-  f_fireRate: 1
+  f_fireRate: 0.5
+  go_BuildingPrefab: {fileID: 0}
 --- !u!136 &136888558304422140
 CapsuleCollider:
   m_ObjectHideFlags: 1

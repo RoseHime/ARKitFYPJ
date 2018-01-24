@@ -959,7 +959,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 43eeef139660996429402897cdc8f4b6, type: 2}
+  - {fileID: 2100000, guid: 861b2a5f83dbd8f459676be86ffedf78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1051,7 +1051,6 @@ MonoBehaviour:
   f_bulletSpeed: 0.1
   f_fireRate: 0.5
   go_BuildingPrefab: {fileID: 0}
-  _sprite: {fileID: 0}
 --- !u!136 &136284214840361420
 CapsuleCollider:
   m_ObjectHideFlags: 1

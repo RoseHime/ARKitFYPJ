@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PUN: 2
   detectedColor: {r: 0, g: 0, b: 0, a: 0}
-  f_HealthPoint: 50
+  f_HealthPoint: 5000
   f_range: 0.1
   f_speed: 0.05
   f_atkDmg: 10
@@ -152,7 +152,8 @@ MonoBehaviour:
   bullet_Prefab: {fileID: 1212042755645756, guid: 98f3f1a9780e0164882ea7609781aca4,
     type: 2}
   f_bulletSpeed: 0.1
-  f_fireRate: 1
+  f_fireRate: 0.3
+  go_BuildingPrefab: {fileID: 0}
 --- !u!136 &136502158014021408
 CapsuleCollider:
   m_ObjectHideFlags: 1

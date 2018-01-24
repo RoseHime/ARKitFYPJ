@@ -959,7 +959,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 43eeef139660996429402897cdc8f4b6, type: 2}
+  - {fileID: 2100000, guid: 07a219df4a46ba447adc02e73508678d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1030,10 +1030,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PUN: 2
   detectedColor: {r: 0, g: 0, b: 0, a: 0}
-  f_HealthPoint: 50
+  f_HealthPoint: 35
   f_range: 0.1
   f_speed: 0.05
-  f_atkDmg: 10
+  f_atkDmg: 5
   reachDist: 1
   currentPoint: 0
   i_woodCost: 0
@@ -1051,7 +1051,6 @@ MonoBehaviour:
   f_bulletSpeed: 0.1
   f_fireRate: 1
   go_BuildingPrefab: {fileID: 0}
-  _sprite: {fileID: 0}
 --- !u!136 &136199200423839598
 CapsuleCollider:
   m_ObjectHideFlags: 1

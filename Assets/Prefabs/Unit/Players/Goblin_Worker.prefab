@@ -134,7 +134,7 @@ MonoBehaviour:
   f_HealthPoint: 10
   f_range: 0.1
   f_speed: 0.01
-  f_atkDmg: 1
+  f_atkDmg: 0
   reachDist: 1
   currentPoint: 0
   i_woodCost: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
     type: 2}
   f_bulletSpeed: 0.1
   f_fireRate: 0.5
+  go_BuildingPrefab: {fileID: 0}
 --- !u!136 &136332909574687476
 CapsuleCollider:
   m_ObjectHideFlags: 1
