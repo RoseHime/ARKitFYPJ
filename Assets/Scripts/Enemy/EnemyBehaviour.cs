@@ -212,7 +212,9 @@ public class EnemyBehaviour : MonoBehaviour {
             if (difference.sqrMagnitude < f_atkRange * f_atkRange)
             {
                 _animator.SetTrigger("b_IsAttacking");
-                LookDirection();
+                Vector3 look = go_LockOnUnit.transform.position;
+                look.y = transform.position.y;
+                transform.LookAt(look);
                 if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                 {
                     f_fireCooldown = 0;
