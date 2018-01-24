@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 95842865438703644}
   - component: {fileID: 114711320164906522}
   - component: {fileID: 65895824902744116}
-  - component: {fileID: 208577046883725444}
   m_Layer: 8
   m_Name: Barracks
   m_TagString: SelectableBuilding
@@ -190,18 +189,3 @@ MonoBehaviour:
   DestroyedMesh: {fileID: 4300000, guid: 587248b0883a13943b7c287558e659ea, type: 3}
   i_barrackLevel: 1
   i_levelUpCost: 10
---- !u!208 &208577046883725444
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1016608765754592}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.048, y: 0.019000001, z: 0.056}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.020000001, z: 0}
-  m_TimeToStationary: 0.5
