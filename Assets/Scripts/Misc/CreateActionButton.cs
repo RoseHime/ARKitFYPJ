@@ -115,7 +115,7 @@ public class CreateActionButton : MonoBehaviour
             {
                 for (int i = 1; i < 4; ++i)
                 {
-                    if ((i == 0 && bc.GetListOfUnit().Count <= 1) || i == 1 || (i == 2 && bc.GetListOfUnit().Count <= 1) || i == 3)
+                    if ((i == 0 && bc.GetListOfUnit().Count <= 1) || i == 1 || (i == 2 && bc.GetListOfUnit().Count <= 1 && go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER) || i == 3)
                     {
                         GameObject goButton = (GameObject)Instantiate(go_actionButton);
                         goButton.name = "ActionButton";
@@ -141,7 +141,7 @@ public class CreateActionButton : MonoBehaviour
                                     goButton.GetComponentInChildren<Text>().text = "BUILD";
                                     goButton.GetComponent<Image>().sprite = buildImage;
                                 }
-                                else
+                                else // not needed anymore
                                 {
                                     goButton.GetComponentInChildren<Text>().text = "UPRANK";
                                     goButton.GetComponent<Image>().sprite = uprankImage;
