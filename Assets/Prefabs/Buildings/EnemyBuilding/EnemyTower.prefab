@@ -177,7 +177,10 @@ MonoBehaviour:
   i_woodCost: 0
   i_stoneCost: 0
   i_magicStoneCost: 0
-  DestroyedMesh: {fileID: 4300000, guid: 87b5ff4830a6b504ea2e5e4cb39e755f, type: 3}
+  DestroyedMesh: {fileID: 4300000, guid: bea2cf5e73afe3f48815caa0635a1ccd, type: 3}
+  DestroyedMaterials:
+  - {fileID: 2100000, guid: 51581f5d2595ae146b368a398ebfc061, type: 2}
+  - {fileID: 2100000, guid: ab51a4f4d65742c48ac9346c0a05f3ed, type: 2}
 --- !u!136 &136649687532371668
 CapsuleCollider:
   m_ObjectHideFlags: 1

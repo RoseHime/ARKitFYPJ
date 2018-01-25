@@ -189,6 +189,9 @@ MonoBehaviour:
   i_stoneCost: 100
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 4300000, guid: 7e5f7f67d12291e40b10113fb4e11b7f, type: 3}
+  DestroyedMaterials:
+  - {fileID: 2100000, guid: 9b7269bb33158514cb92ca8bebd45a34, type: 2}
+  - {fileID: 2100000, guid: 116c1cc577bc8d642b28427dea18466c, type: 2}
   workerPrefab: {fileID: 1301454349507494, guid: 2ff446a04b522014497e5c3211380b2c,
     type: 2}
 --- !u!208 &208758827595448930

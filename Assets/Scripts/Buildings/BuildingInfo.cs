@@ -17,6 +17,8 @@ public class BuildingInfo : MonoBehaviour {
 
     public Mesh DestroyedMesh;
 
+    public Material[] DestroyedMaterials;
+
     private TowerBehaviour towerBehaviour;
 
     // Use this for initialization
@@ -58,6 +60,7 @@ public class BuildingInfo : MonoBehaviour {
             if (DestroyedMesh != null)
             {
                 gameObject.GetComponent<MeshFilter>().mesh = DestroyedMesh;
+                GetComponent<MeshRenderer>().materials = DestroyedMaterials;
             }
         }
     }

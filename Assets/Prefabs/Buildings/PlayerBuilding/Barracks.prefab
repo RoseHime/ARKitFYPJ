@@ -188,6 +188,8 @@ MonoBehaviour:
   i_stoneCost: 50
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 4300000, guid: 587248b0883a13943b7c287558e659ea, type: 3}
+  DestroyedMaterials:
+  - {fileID: 2100000, guid: fbef0a1b84b417341b9e7fac53f37968, type: 2}
   i_barrackLevel: 1
   i_levelUpCost: 10
 --- !u!208 &208580272395962042

@@ -141,7 +141,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1573299231873638}
-  m_Mesh: {fileID: 4300000, guid: 273f5703339112445ae85f4d6d6f7577, type: 3}
+  m_Mesh: {fileID: 4300000, guid: d1569baa03d41d04393aea9c5eb457df, type: 3}
 --- !u!114 &114966267372613294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +158,10 @@ MonoBehaviour:
   i_woodCost: 75
   i_stoneCost: 50
   i_magicStoneCost: 0
-  DestroyedMesh: {fileID: 4300000, guid: 8d7bc6d4104708549a72e8e71219afa4, type: 3}
+  DestroyedMesh: {fileID: 4300000, guid: bea2cf5e73afe3f48815caa0635a1ccd, type: 3}
+  DestroyedMaterials:
+  - {fileID: 2100000, guid: 51581f5d2595ae146b368a398ebfc061, type: 2}
+  - {fileID: 2100000, guid: da8d2e54c273b0641a90cb6dd217ec94, type: 2}
 --- !u!114 &114990696881342362
 MonoBehaviour:
   m_ObjectHideFlags: 1
