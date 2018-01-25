@@ -41,7 +41,7 @@ public class MasterAI : MonoBehaviour {
             DefenceStrat();
         }
         UpdateAttackSquads();
-        if ((f_unitIncreaseTimer += Time.deltaTime) > f_unitIncreaseTime && i_UnitCapacity < 30)
+        if ((f_unitIncreaseTimer += Time.deltaTime) > f_unitIncreaseTime && i_UnitCapacity < 20)
         {
             i_UnitCapacity += i_unitLevelIncrement;
             f_unitIncreaseTimer = 0;
