@@ -354,7 +354,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     //_navmeshAgent.stoppingDistance = 0.05f;
                     if (go_TargetedEnemy.tag == "Enemy")
                     {
-                        if (difference.sqrMagnitude > 0.03f * 0.03f)
+                        if (difference.sqrMagnitude > 0.05f * 0.05f)
                         {
                             _navmeshAgent.stoppingDistance = 0.01f;
                             _animator.SetTrigger("b_IsMoving");
@@ -376,7 +376,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     }
                     else
                     {
-                        if (difference.sqrMagnitude > 0.08f * 0.08f)
+                        if (difference.sqrMagnitude > 0.1f * 0.1f)
                         {
                             _navmeshAgent.stoppingDistance = 0.06f;
 
