@@ -189,6 +189,8 @@ MonoBehaviour:
   i_stoneCost: 0
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 4300000, guid: 5a60e012ed18b934593f228c24e2e35c, type: 3}
+  DestroyedMaterials:
+  - {fileID: 2100000, guid: ac5f74b262447254e966297c921f36f3, type: 2}
 --- !u!114 &114733743903961018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,8 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c268fe6b497ede841b34bcd11e2979cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_enemyPrefab: {fileID: 1164473817162140, guid: 2bd50cae661017348a37f85c9206f728,
-    type: 2}
+  go_enemyPrefab: {fileID: 0}
   f_spawnRate: 2
 --- !u!208 &208429821638855154
 NavMeshObstacle:
