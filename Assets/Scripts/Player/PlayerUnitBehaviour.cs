@@ -165,6 +165,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         if (f_HealthPoint <= 0)
         {
+            go_CommandMenu.SetActive(false);
             Destroy(gameObject);
         }
         if (b_StartHarvest)
@@ -265,7 +266,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     GameObject DetectEnemyUnit()
     {
-        if (b_DetectEnemy == false)
+        if (b_DetectEnemy == false && go_TargetedEnemy == null)
         {
             List<Transform> nearbyEnemy = new List<Transform>();
             foreach (Transform T_enemyChild in T_Enemy)
@@ -334,15 +335,18 @@ public class PlayerUnitBehaviour : MonoBehaviour
             if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
             {
                 //_navmeshAgent.stoppingDistance = 0.05f;
-                if (difference.sqrMagnitude > GetRange() * GetRange())
+                if (difference.sqrMagnitude > 0.04f * 0.04f)
                 {
+                    _navmeshAgent.stoppingDistance = 0.03f;
                     _animator.SetTrigger("b_IsMoving");
-                    //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
-                    _navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
+                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
+                    //_navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
                     f_fireCooldown = 0;
                 }
-                else if (difference.sqrMagnitude < GetRange() * GetRange())
+                else
                 {
+                    _animator.ResetTrigger("b_IsMoving");
+
                     if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                     {
                         _animator.SetTrigger("b_IsAttacking");
@@ -360,35 +364,34 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     FireBullet(difference.normalized);
                 }
             }
-
-            if (go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health <= 0)
-            {
-                listOfEnemy.Remove(go_TargetedEnemy.transform);
-                b_DetectEnemy = false;
-                b_AttackingEnemy = false;
-                go_TargetedEnemy = null;
-                b_CollidedWithEnemy = false;
-                //b_Moving = true;
-                _animator.ResetTrigger("b_IsAttacking");
-                _animator.ResetTrigger("b_IsMoving");
-                _navmeshAgent.speed = f_OriginSpeed;
-                f_speed = f_OriginSpeed;
-                PUS = PlayerUnitState.PUS_GUARD;
-            }
-            else if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude > GetRange() * GetRange())
-            {
-                listOfEnemy.Remove(go_TargetedEnemy.transform);
-                b_DetectEnemy = false;
-                b_AttackingEnemy = false;
-                go_TargetedEnemy = null;
-                b_CollidedWithEnemy = false;
-                _animator.ResetTrigger("b_IsAttacking");
-                _animator.ResetTrigger("b_IsMoving");
-                //b_Moving = true;
-                _navmeshAgent.speed = f_OriginSpeed;
-                f_speed = f_OriginSpeed;
-                PUS = PlayerUnitState.PUS_GUARD;
-            }
+        }
+        if (go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health <= 0)
+        {
+            listOfEnemy.Remove(go_TargetedEnemy.transform);
+            b_DetectEnemy = false;
+            b_AttackingEnemy = false;
+            go_TargetedEnemy = null;
+            b_CollidedWithEnemy = false;
+            //b_Moving = true;
+            _animator.ResetTrigger("b_IsAttacking");
+            _animator.ResetTrigger("b_IsMoving");
+            _navmeshAgent.speed = f_OriginSpeed;
+            f_speed = f_OriginSpeed;
+            PUS = PlayerUnitState.PUS_GUARD;
+        }
+        else if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude > GetRange() * GetRange())
+        {
+            listOfEnemy.Remove(go_TargetedEnemy.transform);
+            b_DetectEnemy = false;
+            b_AttackingEnemy = false;
+            go_TargetedEnemy = null;
+            b_CollidedWithEnemy = false;
+            _animator.ResetTrigger("b_IsAttacking");
+            _animator.ResetTrigger("b_IsMoving");
+            //b_Moving = true;
+            _navmeshAgent.speed = f_OriginSpeed;
+            f_speed = f_OriginSpeed;
+            PUS = PlayerUnitState.PUS_GUARD;
         }
     }
 
@@ -569,8 +572,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
         _navmeshAgent.SetDestination(v3_targetPos);
         _animator.SetTrigger("b_IsMoving");
             //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
-            Vector3 LookAt = _navmeshAgent.velocity + gameObject.transform.position;
-            gameObject.transform.LookAt(LookAt);
+            Vector3 dir = _navmeshAgent.velocity + gameObject.transform.position;
+        Vector3 lookAt = new Vector3(dir.x, gameObject.transform.position.y, dir.z);
+            gameObject.transform.LookAt(lookAt);
         if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.03f * 0.03f)
         {
             if (b_buildBuilding)

@@ -1020,7 +1020,7 @@ MonoBehaviour:
   f_atkDmg: 1
   reachDist: 1
   currentPoint: 0
-  i_woodCost: 100
+  i_woodCost: 30
   i_stoneCost: 10
   i_magicStoneCost: 0
   b_StartHarvest: 0
