@@ -206,7 +206,7 @@ public class CreateActionButton : MonoBehaviour
                             if (i == 0)
                             {
                                 GameObject secondButton = (GameObject)Instantiate(go_actionButton);
-                                secondButton.name = "ActionButton";
+                                secondButton.name = "WorkerActionButton";
                                 secondButton.transform.SetParent(go_actionPanel.transform, false);
                                 secondButton.transform.localScale = new Vector3(1, 1, 1);
                                 secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
@@ -214,7 +214,7 @@ public class CreateActionButton : MonoBehaviour
                                 secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                                 secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
-                                secondButton.GetComponentInChildren<Text>().text = "CREATEWORKER";
+                                secondButton.GetComponentInChildren<Text>().text = "CREATEWORKER (5 stone & 5 wood)";
                                 secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
                                 secondButton.GetComponent<Image>().sprite = buildImage;
                             }
