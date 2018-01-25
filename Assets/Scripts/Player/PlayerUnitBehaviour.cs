@@ -152,7 +152,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         //                                     "selected" + b_Selected;
         if (b_Selected)
         {
-            Debug.Log(PUS);
+            //Debug.Log(PUS);
 
             foreach (Transform child in gameObject.transform)
             {
