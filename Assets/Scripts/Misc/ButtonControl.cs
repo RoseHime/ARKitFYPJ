@@ -156,7 +156,7 @@ public class ButtonControl : MonoBehaviour {
                         GetListOfUnit().Remove(go_SelectedUnit.transform);
                     }
                 }
-                else if (recipient.tag == "SelectableBuilding")
+                else if (go_SelectedUnit.tag == "SelectableBuilding")
                 {
                     if (GameObject.FindGameObjectWithTag("Command"))
                         GameObject.FindGameObjectWithTag("Command").SetActive(false);

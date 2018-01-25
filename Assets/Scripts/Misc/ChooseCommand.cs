@@ -157,7 +157,7 @@ public class ChooseCommand : MonoBehaviour {
                 bc.SetBackToSelect();
             }
         }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATEWORKER")
+        else if (go_CommandButton.name == "WorkerActionButton")
         {
             GameObject selectedBase = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
 
