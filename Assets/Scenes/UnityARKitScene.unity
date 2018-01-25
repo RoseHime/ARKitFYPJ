@@ -445,7 +445,7 @@ Prefab:
     - target: {fileID: 114733743903961018, guid: 0fd23a0ddd7785d43981381ddd972387,
         type: 2}
       propertyPath: f_spawnRate
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1683679027385866, guid: 0fd23a0ddd7785d43981381ddd972387, type: 2}
       propertyPath: m_IsActive
@@ -1927,7 +1927,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 229804520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.757, z: -1.531}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9}
@@ -9177,7 +9177,7 @@ Prefab:
     - target: {fileID: 114733743903961018, guid: 0fd23a0ddd7785d43981381ddd972387,
         type: 2}
       propertyPath: f_spawnRate
-      value: 1
+      value: 0.000001
       objectReference: {fileID: 0}
     - target: {fileID: 1683679027385866, guid: 0fd23a0ddd7785d43981381ddd972387, type: 2}
       propertyPath: m_IsActive
@@ -12139,15 +12139,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4307633297030258, guid: 4bec660e359c5ff4783defcaffbf90f6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.006
+      value: -0.2787
       objectReference: {fileID: 0}
     - target: {fileID: 4307633297030258, guid: 4bec660e359c5ff4783defcaffbf90f6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.161
+      value: 0.163
       objectReference: {fileID: 0}
     - target: {fileID: 4307633297030258, guid: 4bec660e359c5ff4783defcaffbf90f6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.035
+      value: -1.2067
       objectReference: {fileID: 0}
     - target: {fileID: 4307633297030258, guid: 4bec660e359c5ff4783defcaffbf90f6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12177,6 +12177,11 @@ Prefab:
         type: 2}
       propertyPath: f_HealthPoint
       value: 5000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342610628643888, guid: 4bec660e359c5ff4783defcaffbf90f6,
+        type: 2}
+      propertyPath: f_atkDmg
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bec660e359c5ff4783defcaffbf90f6, type: 2}

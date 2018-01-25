@@ -57,9 +57,11 @@ public class ChooseCommand : MonoBehaviour {
                         bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
                         bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
                     }
-                    else if (go_ObjectHit.GetComponentInParent<Transform>().tag == "EnemyList" || go_ObjectHit.GetComponentInParent<Transform>().tag == "EnemyBuildingList")
+                    else if ((go_ObjectHit.tag == "Enemy" || go_ObjectHit.transform.parent.tag == "EnemyBuildingList") &&
+                             bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().PUN != PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
                     {
                         Debug.Log("Attack enemy");
+                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetEnemyTargetPos(go_ObjectHit);
                     }
                     else
                     {

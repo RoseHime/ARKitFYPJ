@@ -28,6 +28,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     private Animator _animator;
     private Transform T_Enemy;
+    private Transform T_ENemyBase;
     private GameObject go_TargetedEnemy;
     List<Transform> listOfEnemy = new List<Transform>();
     private GameObject go_TempEnemyHolder;
@@ -76,6 +77,8 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private bool b_DetectEnemy;
     private bool b_CollidedWithEnemy;
     private bool b_AttackingEnemy;
+    private bool b_TargetedEnemy;
+    private bool b_MovingToEnemy;
 
     //Projectile
     public GameObject bullet_Prefab;
@@ -109,11 +112,13 @@ public class PlayerUnitBehaviour : MonoBehaviour
         i_resourceWOOD = 0;
         i_resourceSTONE = 0;
         T_Enemy = GameObject.FindGameObjectWithTag("EnemyList").transform;
+        T_ENemyBase = GameObject.FindGameObjectWithTag("EnemyBuildingList").transform;
         PUS = PlayerUnitState.PUS_GUARD;
         //rb_Body = gameObject.GetComponent<Rigidbody>();
         b_Selected = false;
         b_Moving = false;
         b_DetectEnemy = false;
+        b_TargetedEnemy = false;
         b_CollidedWithEnemy = false;
 
         if (PUN == PlayerUnitType.PUN_WORKER)
@@ -139,15 +144,16 @@ public class PlayerUnitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //debugLog.GetComponent<Text>().text = "state" + PUS + "," + "/n" +
-       //                                     "CurrentPos"+ v3_currentPos + "," + "/n" +
-       //                                     "targetpos" + v3_targetPos + "," + "/n" +
-       //                                     "navmesh" + _navMeshAgent.enabled +  "," + "/n" +
-       //                                     "isMoving" + b_Moving + "," + "/n" +
-       //                                     "selected" + b_Selected;
-
+        //debugLog.GetComponent<Text>().text = "state" + PUS + "," + "/n" +
+        //                                     "CurrentPos"+ v3_currentPos + "," + "/n" +
+        //                                     "targetpos" + v3_targetPos + "," + "/n" +
+        //                                     "navmesh" + _navMeshAgent.enabled +  "," + "/n" +
+        //                                     "isMoving" + b_Moving + "," + "/n" +
+        //                                     "selected" + b_Selected;
         if (b_Selected)
         {
+            Debug.Log(PUS);
+
             foreach (Transform child in gameObject.transform)
             {
                 if (child.transform.tag == "SelectionIcon")
@@ -188,10 +194,12 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         else
         {
-            if (b_Moving)
+            if (b_Moving || b_MovingToEnemy)
                 PUS = PlayerUnitState.PUS_MOVE;
-            else if (!b_Moving && !b_DetectEnemy)
+            else if (!b_Moving && !b_DetectEnemy && !b_TargetedEnemy)
                 PUS = PlayerUnitState.PUS_GUARD;
+            else if (b_TargetedEnemy)
+                PUS = PlayerUnitState.PUS_ATTACK;
         }
 
 
@@ -232,7 +240,11 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     //rb_Body.isKinematic = false;
                     if (PUN != PlayerUnitType.PUN_WORKER && !b_AttackingEnemy)
                         DetectEnemyUnit();
-                    MoveToTargetPos();
+
+                    if (b_Moving)
+                        MoveToTargetPos();
+                    else if (b_MovingToEnemy)
+                        MoveToEnemyPos();
                     break;
 
                 }
@@ -279,6 +291,14 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     //Debug.Log("Detected");
                 }
             }
+            foreach (Transform T_enemyBuilding in T_ENemyBase)
+            {
+                if ((T_enemyBuilding.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= GetRange() * GetRange())
+                {
+                    nearbyEnemy.Add(T_enemyBuilding);
+                }
+            }
+
 
             int i_Enemy = 0;
             while (i_Enemy < nearbyEnemy.Count)
@@ -311,13 +331,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                 i_Enemy++;
             }
 
-            foreach (Transform T_enemyBuilding in GameObject.FindGameObjectWithTag("EnemyBuildingList").transform)
-            {
-                if ((T_enemyBuilding.position - transform.position).sqrMagnitude < GetRange() * GetRange())
-                {
-                    go_TargetedEnemy = T_enemyBuilding.gameObject;
-                }
-            }
+         
         }
 
         return go_TargetedEnemy;
@@ -325,52 +339,91 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     void AttackEnemyUnit()
     {
-        if (b_DetectEnemy)
+        if (go_TargetedEnemy != null)
         {
-            b_Moving = false;
-            b_AttackingEnemy = true;
-            Vector3 enemyLoc = new Vector3(go_TargetedEnemy.transform.position.x, gameObject.transform.position.y, go_TargetedEnemy.transform.position.z);
-            Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
-            gameObject.transform.LookAt(enemyLoc);
-            if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
+            if (b_DetectEnemy || b_TargetedEnemy)
             {
-                //_navmeshAgent.stoppingDistance = 0.05f;
-                if (difference.sqrMagnitude > 0.04f * 0.04f)
+                listOfEnemy.Clear();
+                b_Moving = false;
+                b_AttackingEnemy = true;
+                Vector3 enemyLoc = new Vector3(go_TargetedEnemy.transform.position.x, gameObject.transform.position.y, go_TargetedEnemy.transform.position.z);
+                Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
+                gameObject.transform.LookAt(enemyLoc);
+                if (PUN == PlayerUnitType.PUN_MELEE || PUN == PlayerUnitType.PUN_TANK)
                 {
-                    _navmeshAgent.stoppingDistance = 0.03f;
-                    _animator.SetTrigger("b_IsMoving");
-                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
-                    //_navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
-                    f_fireCooldown = 0;
-                }
-                else
-                {
-                    _animator.ResetTrigger("b_IsMoving");
+                    //_navmeshAgent.stoppingDistance = 0.05f;
+                    if (go_TargetedEnemy.tag == "Enemy")
+                    {
+                        if (difference.sqrMagnitude > 0.03f * 0.03f)
+                        {
+                            _navmeshAgent.stoppingDistance = 0.01f;
+                            _animator.SetTrigger("b_IsMoving");
+                            //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
+                            _navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
+                            f_fireCooldown = 0;
+                        }
+                        else
+                        {
+                            _animator.ResetTrigger("b_IsMoving");
 
+                            if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                            {
+                                _animator.SetTrigger("b_IsAttacking");
+                                f_fireCooldown = 0;
+                                go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().f_health -= GetAttack();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (difference.sqrMagnitude > 0.07f * 0.07f)
+                        {
+                            _navmeshAgent.stoppingDistance = 0.05f;
+
+                            _animator.SetTrigger("b_IsMoving");
+                            //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
+                            _navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
+                            f_fireCooldown = 0;
+                        }
+                        else
+                        {
+                            _animator.ResetTrigger("b_IsMoving");
+
+                            if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                            {
+                                _animator.SetTrigger("b_IsAttacking");
+                                f_fireCooldown = 0;
+                                if (go_TargetedEnemy.name != "Base")
+                                    go_TargetedEnemy.gameObject.GetComponent<BuildingInfo>().f_health -= GetAttack();
+                                else
+                                    go_TargetedEnemy.gameObject.GetComponent<TownHallBehaviour>().f_health -= GetAttack();
+                            }
+                        }
+                    }
+                }
+                else if (PUN == PlayerUnitType.PUN_RANGE)
+                {
                     if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                     {
                         _animator.SetTrigger("b_IsAttacking");
                         f_fireCooldown = 0;
-                        go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().f_health -= GetAttack();
+                        FireBullet(difference.normalized);
                     }
                 }
             }
-            else if (PUN == PlayerUnitType.PUN_RANGE)
-            {
-                if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
-                {
-                    _animator.SetTrigger("b_IsAttacking");
-                    f_fireCooldown = 0;
-                    FireBullet(difference.normalized);
-                }
-            }
         }
-        if (go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health <= 0)
+
+
+        //if ((go_TargetedEnemy.tag == "Enemy" && go_TargetedEnemy.GetComponent<EnemyBehaviour>().f_health <= 0) || 
+        //    (go_TargetedEnemy.tag == "SelectableBuilding" && go_TargetedEnemy.GetComponent<BuildingInfo>().f_health <= 0) ||
+        //   (go_TargetedEnemy.name == "Base" && go_TargetedEnemy.GetComponent<TownHallBehaviour>().f_health <= 0))
+        if (go_TargetedEnemy == null)
         {
-            listOfEnemy.Remove(go_TargetedEnemy.transform);
+            //listOfEnemy.Remove(go_TargetedEnemy.transform);
+            listOfEnemy.Clear();
             b_DetectEnemy = false;
             b_AttackingEnemy = false;
-            go_TargetedEnemy = null;
+            b_TargetedEnemy = false;
             b_CollidedWithEnemy = false;
             //b_Moving = true;
             _animator.ResetTrigger("b_IsAttacking");
@@ -381,7 +434,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         }
         else if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude > GetRange() * GetRange())
         {
-            listOfEnemy.Remove(go_TargetedEnemy.transform);
+            //listOfEnemy.Remove(go_TargetedEnemy.transform);
             b_DetectEnemy = false;
             b_AttackingEnemy = false;
             go_TargetedEnemy = null;
@@ -560,6 +613,17 @@ public class PlayerUnitBehaviour : MonoBehaviour
         b_Moving = true;
     }
 
+    public GameObject SetEnemyTargetPos(GameObject go_Enemy)
+    {
+        v3_targetPos = go_Enemy.transform.position;
+        go_TargetedEnemy = go_Enemy;
+        listOfEnemy.Add(go_TargetedEnemy.transform);
+        v3_currentPos = gameObject.transform.position;
+        b_MovingToEnemy = true;
+
+        return go_TargetedEnemy;
+    }
+
     public void ConstructBuilding(Vector3 pos)
     {
         GameObject prefab = GameObject.FindGameObjectWithTag("GameFunctions").gameObject;
@@ -588,35 +652,22 @@ public class PlayerUnitBehaviour : MonoBehaviour
             _animator.ResetTrigger("b_IsMoving");
             _navmeshAgent.isStopped = true;
         }
-
-            //Debug.Log(WC.GetCounter());
-            //
-            ////debugLog.GetComponent<Text>().text = (WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude + "\n";
-            //
-            //if (WC.go_TargetWaypoint != null)
-            //{
-            //    if ((WC.go_TargetWaypoint.transform.position - gameObject.transform.position).sqrMagnitude > 0.001f)
-            //    {
-            //        Vector3 LookingThere = new Vector3(WC.getCreatePath()[currentPoint].transform.position.x, gameObject.transform.position.y, WC.getCreatePath()[currentPoint].transform.position.z);
-            //        transform.position = Vector3.MoveTowards(gameObject.transform.position, LookingThere, GetSpeed() * Time.deltaTime);
-            //        transform.LookAt(LookingThere);
-            //
-            //        if ((WC.getCreatePath()[currentPoint].transform.position - gameObject.transform.position).sqrMagnitude < 0.01f)
-            //        {
-            //            WC.FindNextWaypoint();
-            //            currentPoint++;
-            //        }
-            //    }
-            //}
     }
 
-    //public void MoveTo(Vector3 position)
-    //{
-    //    b_Moving = true;
-    //    //v3_targetPos = position;
-    //    SetTargetPos(position);
-    //    PUS = PlayerUnitState.PUS_MOVE;
-    //}
+    private void MoveToEnemyPos()
+    {
+        _navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
+        _animator.SetTrigger("b_IsMoving");
+        Vector3 dir = _navmeshAgent.velocity + gameObject.transform.position;
+        Vector3 lookAt = new Vector3(dir.x, gameObject.transform.position.y, dir.z);
+        gameObject.transform.LookAt(lookAt);
+        if ((gameObject.transform.position - go_TargetedEnemy.transform.position).sqrMagnitude < GetRange() * GetRange())
+        {
+            b_TargetedEnemy = true;
+            _animator.ResetTrigger("b_IsMoving");
+            b_MovingToEnemy = false;
+        }
+    }
 
     public void ShowSelected()
     {
@@ -630,6 +681,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         _animator.ResetTrigger("b_IsMoving");
         _animator.ResetTrigger("b_isHarvesting");
         b_Moving = false;
+        b_TargetedEnemy = false;
         _navmeshAgent.speed = 0f;
     }
 
