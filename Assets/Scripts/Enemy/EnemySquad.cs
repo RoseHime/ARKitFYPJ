@@ -20,7 +20,20 @@ public class EnemySquad {
 	
 	// Update is called once per frame
 	public void Update () {
-		if (i_currentWaypoint < pathToFollow.Count)
+        List<GameObject> unitsToRemove = new List<GameObject>();
+        foreach (GameObject unit in unitList)
+        {
+            if (unit == null)
+            {
+                unitsToRemove.Add(unit);
+            }
+        }
+        foreach (GameObject unit in unitsToRemove)
+        {
+            unitList.Remove(unit);
+        }
+
+            if (i_currentWaypoint < pathToFollow.Count)
         {
             bool check = true;
             foreach (GameObject unit in unitList)
