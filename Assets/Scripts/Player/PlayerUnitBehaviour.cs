@@ -376,9 +376,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     }
                     else
                     {
-                        if (difference.sqrMagnitude > 0.07f * 0.07f)
+                        if (difference.sqrMagnitude > 0.08f * 0.08f)
                         {
-                            _navmeshAgent.stoppingDistance = 0.05f;
+                            _navmeshAgent.stoppingDistance = 0.06f;
 
                             _animator.SetTrigger("b_IsMoving");
                             //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
@@ -388,6 +388,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                         else
                         {
                             _animator.ResetTrigger("b_IsMoving");
+                            _navmeshAgent.ResetPath();
 
                             if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                             {
