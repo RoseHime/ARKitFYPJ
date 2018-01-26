@@ -607,7 +607,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public void SetTargetPos(Vector3 v3_targetpos)
     {
-        //_navmeshAgent = GetComponent<NavMeshAgent>();
+        _navmeshAgent = GetComponent<NavMeshAgent>();
         v3_targetPos = v3_targetpos;
         v3_currentPos = gameObject.transform.position;
         _navmeshAgent.speed = f_OriginSpeed;
@@ -650,7 +650,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         _navmeshAgent.SetDestination(v3_targetPos);
         _animator.SetTrigger("b_IsMoving");
             //Vector3 dir = gameObject.transform.position - _navmeshAgent.nextPosition;
-            Vector3 dir = _navmeshAgent.velocity + gameObject.transform.position;
+        Vector3 dir = _navmeshAgent.velocity + gameObject.transform.position;
         Vector3 lookAt = new Vector3(dir.x, gameObject.transform.position.y, dir.z);
             gameObject.transform.LookAt(lookAt);
         if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.03f * 0.03f)

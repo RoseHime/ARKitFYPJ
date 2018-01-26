@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4238090112941270}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: CameraPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
