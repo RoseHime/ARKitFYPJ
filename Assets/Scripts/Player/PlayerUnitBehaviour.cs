@@ -64,6 +64,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     private bool b_isStoneHarvested;
     public bool b_toHarvestStone;
     public bool b_toHarvestTree;
+    private Vector3 v3_CurrentHarvestTarget;
 
     public bool b_Selected;
     private int i_AmountOfButtons;
@@ -354,9 +355,9 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     //_navmeshAgent.stoppingDistance = 0.05f;
                     if (go_TargetedEnemy.tag == "Enemy")
                     {
-                        if (difference.sqrMagnitude > 0.05f * 0.05f)
+                        if (difference.sqrMagnitude > 0.08f * 0.08f)
                         {
-                            _navmeshAgent.stoppingDistance = 0.01f;
+                            _navmeshAgent.stoppingDistance = 0.04f;
                             _animator.SetTrigger("b_IsMoving");
                             //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
                             _navmeshAgent.SetDestination(go_TargetedEnemy.transform.position);
@@ -378,7 +379,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
                     {
                         if (difference.sqrMagnitude > 0.1f * 0.1f)
                         {
-                            _navmeshAgent.stoppingDistance = 0.06f;
+                            _navmeshAgent.stoppingDistance = 0.1f;
 
                             _animator.SetTrigger("b_IsMoving");
                             //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, go_TargetedEnemy.transform.position, GetSpeed() * Time.deltaTime);
@@ -473,7 +474,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
         if (b_toHarvestStone)
         {
-            _navmeshAgent.stoppingDistance = 0.07f;
+            _navmeshAgent.stoppingDistance = 0.05f;
             b_toHarvestTree = false;
             foreach (Transform GetStone in GameObject.FindGameObjectWithTag("Resources").transform)
             {
@@ -489,9 +490,21 @@ public class PlayerUnitBehaviour : MonoBehaviour
             foreach (Transform GetTree in GameObject.FindGameObjectWithTag("Resources").transform)
             {
                 if (GetTree.name == s_name)
+                {
                     go_Resource = GetTree.gameObject;
+                    v3_CurrentHarvestTarget = go_Resource.transform.position;
+                }
+                else if (go_Resource == null && (GetTree.position - v3_CurrentHarvestTarget).sqrMagnitude < 0.005f)
+                {
+                    if (GetTree.tag == "Tree")
+                    {
+                        go_Resource = GetTree.gameObject;
+                        v3_CurrentHarvestTarget = go_Resource.transform.position;
+                    }
+                }
             }
         }
+
 
         go_Depot = GameObject.FindGameObjectWithTag("BuildingList");
         foreach (Transform go_PlayerBuilding in go_Depot.transform)
@@ -506,7 +519,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         if (b_StartHarvest && _navmeshAgent.speed > 0)
         {
             //GetComponent<Rigidbody>().useGravity = true;
-            if (!b_HoldingResource)
+            if (!b_HoldingResource && go_Resource != null)
             {
                 Vector3 lookAtMine = new Vector3(go_Resource.GetComponent<Transform>().position.x, gameObject.transform.position.y, go_Resource.GetComponent<Transform>().position.z);
                 gameObject.transform.LookAt(lookAtMine);

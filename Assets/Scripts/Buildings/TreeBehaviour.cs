@@ -5,13 +5,21 @@ using UnityEngine;
 public class TreeBehaviour : BuildingInfo
 {
 
-    public int i_woodDistributed = 1;
+    public int i_woodDistributed = 3;
     public int i_totalAmountOfWood = 2000;
 
     // Use this for initialization
     void Start()
     {
 
+    }
+
+    public void Update()
+    {
+        if (i_totalAmountOfWood <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

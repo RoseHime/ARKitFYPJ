@@ -13,6 +13,8 @@ public class ChooseCommand : MonoBehaviour {
     private ButtonControl bc;
     private RaycastHit hit;
 
+    private bool b_OnHold;
+
     public GameObject go_BuildingPanel;
     public GameObject go_BarracksPanel;
 
@@ -75,7 +77,38 @@ public class ChooseCommand : MonoBehaviour {
                 {
                     for(int i = 0;  i < bc.GetListOfUnit().Count; i++)
                     {
-                        bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                        if (bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().PUN == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                        {
+                            if (go_ObjectHit.tag == "StoneMine")
+                            {
+                                Debug.Log("Select Stone Mine");
+                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
+                            }
+                            else if (go_ObjectHit.tag == "Tree")
+                            {
+                                Debug.Log("Select Tree");
+                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
+                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
+                            }
+                            else
+                            {
+                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                            }
+                        }
+                        else
+                        {
+                            if ((go_ObjectHit.tag == "Enemy" || go_ObjectHit.transform.parent.tag == "EnemyBuildingList") &&
+                             bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().PUN != PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                            {
+                                Debug.Log("Attack enemy");
+                                bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetEnemyTargetPos(go_ObjectHit);
+                            }
+                            else
+                            {
+                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                            }
+                        }
                     }
                 }
             }
@@ -120,27 +153,6 @@ public class ChooseCommand : MonoBehaviour {
             //    bc.GetListOfUnit().Remove(bc.GetListOfUnit()[i]);
             //}
         }
-        else if (go_CommandButton.GetComponentInChildren<Text>().text == "SELECTMORE")
-        {
-           if (bc.GetRecipient().tag == "PlayerUnit")
-            {
-                int i;
-                for(i = 0; i < bc.GetListOfUnit().Count; i++)
-                {
-                    if (bc.GetRecipient().gameObject != bc.GetListOfUnit()[i].gameObject)
-                    {
-                        if (!bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected)
-                        {
-                            //bc.GetRecipient().GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(true);
-                            bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-                            bc.GetListOfUnit().Add(bc.GetRecipient().transform);
-                        }
-                        //bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
-                    }
-                }
-                go_CommandPanel.GetComponent<CreateActionButton>().CreateButtons();
-            }
-        }
         else if (go_CommandButton.name == "UpgradeActionButton")
         {
             if (GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().LevelUp())
@@ -177,6 +189,22 @@ public class ChooseCommand : MonoBehaviour {
             }
         }
     }
+
+    public void OnHoldCommand()
+    {
+        if (go_CommandButton.GetComponentInChildren<Text>().text == "SELECTMORE")
+        {
+            b_OnHold = true;
+        }
+    }
+    public void OffHoldCommand()
+    {
+        if (go_CommandButton.GetComponentInChildren<Text>().text == "SELECTMORE")
+        {
+            b_OnHold = false;
+        }
+    }
+
     //public void OffClickCommand()
     //{
     //    if (go_CommandButton.GetComponentInChildren<Text>().text == "MOVE")
@@ -198,5 +226,27 @@ public class ChooseCommand : MonoBehaviour {
 
     private void Update()
     {
+        if (b_OnHold)
+        {
+            if (bc.GetRecipient().tag == "PlayerUnit")
+            {
+                int i;
+                for (i = 0; i < bc.GetListOfUnit().Count; i++)
+                {
+                    if (bc.GetRecipient().gameObject != bc.GetListOfUnit()[i].gameObject)
+                    {
+                        if (!bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected)
+                        {
+                            //bc.GetRecipient().GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(true);
+                            bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                            bc.GetListOfUnit().Add(bc.GetRecipient().transform);
+                        }
+                        //bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                    }
+                }
+                if (!b_OnHold)
+                    go_CommandPanel.GetComponent<CreateActionButton>().CreateButtons();
+            }
+        }
     }
 }

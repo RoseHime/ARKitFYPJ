@@ -1074,7 +1074,7 @@ MonoBehaviour:
   PUN: 2
   detectedColor: {r: 0, g: 0, b: 0, a: 0}
   f_HealthPoint: 30
-  f_range: 0.1
+  f_range: 0.3
   f_speed: 0.02
   f_atkDmg: 3
   reachDist: 1

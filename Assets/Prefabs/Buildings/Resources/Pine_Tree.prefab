@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54199777604835894}
   - component: {fileID: 136835829473280338}
   - component: {fileID: 114673013272401044}
+  - component: {fileID: 208381804573147010}
   m_Layer: 8
   m_Name: Pine_Tree
   m_TagString: Tree
@@ -133,7 +134,8 @@ MonoBehaviour:
   i_stoneCost: 0
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 0}
-  i_woodDistributed: 1
+  DestroyedMaterials: []
+  i_woodDistributed: 3
   i_totalAmountOfWood: 2000
 --- !u!136 &136835829473280338
 CapsuleCollider:
@@ -148,3 +150,18 @@ CapsuleCollider:
   m_Height: 0.13573685
   m_Direction: 1
   m_Center: {x: 0, y: 0.067919225, z: 0}
+--- !u!208 &208381804573147010
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1342006424586306}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.061000004, y: 0.068, z: 0.054}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.068, z: 0}
+  m_TimeToStationary: 0.5
