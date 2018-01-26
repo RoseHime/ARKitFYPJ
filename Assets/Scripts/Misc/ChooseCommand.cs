@@ -170,7 +170,6 @@ public class ChooseCommand : MonoBehaviour {
                 createEntitiy.go_playerPrefab = townHall.workerPrefab;
                 GameObject unit = createEntitiy.BuildPlayerUnit(townHall.transform.position);
                 unit.GetComponent<NavMeshAgent>().SetDestination(townHall.transform.GetChild(0).position);
-                unit.transform.LookAt(townHall.transform.GetChild(0).position);
                 //go_CommandPanel.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
                 bc.SetBackToSelect();
