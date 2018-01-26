@@ -594,7 +594,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
 
     public void SetTargetPos(Vector3 v3_targetpos)
     {
-        //_navmeshAgent = GetComponent<NavMeshAgent>();
+        _navmeshAgent = GetComponent<NavMeshAgent>();
         v3_targetPos = v3_targetpos;
         v3_currentPos = gameObject.transform.position;
         _navmeshAgent.speed = f_OriginSpeed;
