@@ -98,11 +98,10 @@ public class ChooseCommand : MonoBehaviour {
                         }
                         else
                         {
-                            if ((go_ObjectHit.tag == "Enemy" || go_ObjectHit.transform.parent.tag == "EnemyBuildingList") &&
-                             bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().PUN != PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                            if ((go_ObjectHit.tag == "Enemy" || go_ObjectHit.transform.parent.tag == "EnemyBuildingList"))
                             {
                                 Debug.Log("Attack enemy");
-                                bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetEnemyTargetPos(go_ObjectHit);
+                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetEnemyTargetPos(go_ObjectHit);
                             }
                             else
                             {
@@ -183,6 +182,8 @@ public class ChooseCommand : MonoBehaviour {
                 GameObject unit = createEntitiy.BuildPlayerUnit(townHall.transform.position);
                 unit.GetComponent<NavMeshAgent>().Warp(unit.transform.position);
                 unit.GetComponent<NavMeshAgent>().SetDestination(townHall.transform.GetChild(0).position);
+                unit.transform.LookAt(ownHall.transform.GetChild(0).position);
+
                 //go_CommandPanel.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
                 bc.SetBackToSelect();
