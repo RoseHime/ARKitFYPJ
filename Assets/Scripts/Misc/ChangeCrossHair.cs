@@ -77,6 +77,26 @@ public class ChangeCrossHair : MonoBehaviour
                 else
                     this.GetComponent<RawImage>().texture = origin;
             }
+            else
+            {
+                Image buttonComponent = null;
+                foreach (Transform button in CommandPanel.transform)
+                {
+                    if (button.GetChild(0).GetComponent<Text>() != null)
+                    {
+                        if (button.GetChild(0).GetComponent<Text>().text == "MOVE")
+                        {
+                            buttonComponent = button.GetComponent<Image>();
+                            break;
+                        }
+                    }
+                }
+
+                if (buttonComponent != null)
+                {
+                    buttonComponent.sprite = defaultButtonIcon;
+                }
+            }
         }
     }
 }
