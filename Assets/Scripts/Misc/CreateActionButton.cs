@@ -50,9 +50,9 @@ public class CreateActionButton : MonoBehaviour
                 go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "" + plrUnit.f_atkDmg;
                 go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + plrUnit.f_HealthPoint;
                 go_unitInfo.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = plrUnit.transform.name;
-                UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.02f);
+                UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.04f);
                 UnitCamera.LookAt(go_selectedUnit.transform);
-                UnitCamera.position += new Vector3(0, 0.015f, 0);
+                UnitCamera.position += new Vector3(0, 0.03f, 0);
             }
             else if (go_selectedUnit.tag == "SelectableBuilding")
             {

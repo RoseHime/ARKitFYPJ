@@ -182,7 +182,7 @@ public class ChooseCommand : MonoBehaviour {
                 GameObject unit = createEntitiy.BuildPlayerUnit(townHall.transform.position);
                 unit.GetComponent<NavMeshAgent>().Warp(unit.transform.position);
                 unit.GetComponent<NavMeshAgent>().SetDestination(townHall.transform.GetChild(0).position);
-                unit.transform.LookAt(ownHall.transform.GetChild(0).position);
+                unit.transform.LookAt(townHall.transform.GetChild(0).position);
 
                 //go_CommandPanel.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
@@ -198,11 +198,13 @@ public class ChooseCommand : MonoBehaviour {
             b_OnHold = true;
         }
     }
+
     public void OffHoldCommand()
     {
         if (go_CommandButton.GetComponentInChildren<Text>().text == "SELECTMORE")
         {
             b_OnHold = false;
+            go_CommandPanel.GetComponent<CreateActionButton>().CreateButtons();
         }
     }
 
@@ -245,8 +247,7 @@ public class ChooseCommand : MonoBehaviour {
                         //bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
                     }
                 }
-                if (!b_OnHold)
-                    go_CommandPanel.GetComponent<CreateActionButton>().CreateButtons();
+
             }
         }
     }
