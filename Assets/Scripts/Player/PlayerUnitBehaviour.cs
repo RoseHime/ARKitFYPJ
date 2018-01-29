@@ -653,7 +653,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         Vector3 dir = _navmeshAgent.velocity + gameObject.transform.position;
         Vector3 lookAt = new Vector3(dir.x, gameObject.transform.position.y, dir.z);
             gameObject.transform.LookAt(lookAt);
-        if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.03f * 0.03f)
+        if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < 0.05f * 0.05f)
         {
             if (b_buildBuilding)
             {
