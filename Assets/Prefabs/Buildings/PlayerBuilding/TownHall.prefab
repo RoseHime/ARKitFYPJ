@@ -112,6 +112,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -128,6 +129,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -192,7 +194,7 @@ MonoBehaviour:
   DestroyedMaterials:
   - {fileID: 2100000, guid: 9b7269bb33158514cb92ca8bebd45a34, type: 2}
   - {fileID: 2100000, guid: 116c1cc577bc8d642b28427dea18466c, type: 2}
-  workerPrefab: {fileID: 1301454349507494, guid: 2ff446a04b522014497e5c3211380b2c,
+  workerPrefab: {fileID: 1693052358693444, guid: f602a998aa537624e9f2bcd00568f57c,
     type: 2}
 --- !u!208 &208758827595448930
 NavMeshObstacle:
