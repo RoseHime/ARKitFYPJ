@@ -45,7 +45,7 @@ public class ButtonControl : MonoBehaviour {
         b_NotWorker = false;
         recipient = null;
 
-        ARCamera = GameObject.FindGameObjectWithTag("PlaneDetection").GetComponent<UnityARCameraManager>().m_camera;
+        ARCamera = Camera.main;
     }
 
     // Update is called once per frame
