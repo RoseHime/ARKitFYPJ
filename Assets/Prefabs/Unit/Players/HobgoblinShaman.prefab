@@ -279,8 +279,9 @@ GameObject:
   - component: {fileID: 4310391905342564}
   - component: {fileID: 95104771804906042}
   - component: {fileID: 136196967456299760}
-  - component: {fileID: 114435228708464180}
   - component: {fileID: 195031707888931308}
+  - component: {fileID: 114752583796861906}
+  - component: {fileID: 114450902015977106}
   m_Layer: 8
   m_Name: HobgoblinShaman
   m_TagString: PlayerUnit
@@ -1060,7 +1061,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114435228708464180
+--- !u!114 &114450902015977106
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1068,32 +1069,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1518748605542380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3d738ff7bd6304cb19c56b0322c652, type: 3}
+  m_Script: {fileID: 11500000, guid: f3dace8396afe2f4c868f502d217b99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PUN: 2
-  detectedColor: {r: 0, g: 0, b: 0, a: 0}
-  f_HealthPoint: 30
-  f_range: 0.3
-  f_speed: 0.02
-  f_atkDmg: 3
-  reachDist: 1
-  currentPoint: 0
-  i_woodCost: 100
-  i_stoneCost: 50
-  i_magicStoneCost: 5
-  b_StartHarvest: 0
-  b_HoldingResource: 0
-  b_toHarvestStone: 0
-  b_toHarvestTree: 0
+  PUS: 0
+  f_HealthPoint: 65
+  f_DetectRange: 0.35
+  f_UnitAttackRange: 0.2
+  f_BaseAttackRange: 0.2
+  f_AttackDamage: 10
+  i_woodCost: 50
+  i_stoneCost: 30
+  i_magicStoneCost: 2
+--- !u!114 &114752583796861906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518748605542380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7420ce82168e14ab9b8e827ff170ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   b_Selected: 0
   b_buildBuilding: 0
-  b_Moving: 0
-  bullet_Prefab: {fileID: 1535914014752706, guid: 03c2aee621b9d8a4c93ed9b0ca515c1a,
-    type: 2}
+  go_BuildingPrefab: {fileID: 0}
+  bullet_Prefab: {fileID: 0}
   f_bulletSpeed: 0.3
   f_fireRate: 1.5
-  go_BuildingPrefab: {fileID: 0}
 --- !u!136 &136196967456299760
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1195,7 +1200,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.05
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

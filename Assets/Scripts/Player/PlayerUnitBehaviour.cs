@@ -16,7 +16,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
     }
     public PlayerUnitType PUN;
 
-    enum PlayerUnitState
+    public enum PlayerUnitState
     {
         PUS_GUARD,
         PUS_ATTACK,
@@ -24,7 +24,7 @@ public class PlayerUnitBehaviour : MonoBehaviour
         PUS_HARVEST,
         PUS_MAX_STATES
     }
-    PlayerUnitState PUS;
+    public PlayerUnitState PUS;
 
     private Animator _animator;
     private Transform T_Enemy;

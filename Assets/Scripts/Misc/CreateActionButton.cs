@@ -44,11 +44,11 @@ public class CreateActionButton : MonoBehaviour
         {
             if (go_selectedUnit.tag == "PlayerUnit")
             {
-                PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
+                PlayerUnitInfo plrUnit = go_selectedUnit.GetComponent<PlayerUnitInfo>();
                 //PlayerUnitBehaviour plrUnit = go_selectedUnit.GetComponent<PlayerUnitBehaviour>();
                 //go_unitInfo.GetComponentInChildren<Text>().text = "HP:" + plrUnit.f_HealthPoint + "\nSPD:" + plrUnit.f_speed + "\nRANGE:" + plrUnit.f_range;
-                go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "" + plrUnit.f_atkDmg;
-                go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + plrUnit.f_HealthPoint;
+                go_unitInfo.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "" + plrUnit.GetUnitAttackDmg();
+                go_unitInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + plrUnit.GetUnitHealth();
                 go_unitInfo.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = plrUnit.transform.name;
                 UnitCamera.position = go_selectedUnit.transform.position + (go_selectedUnit.transform.forward * 0.04f);
                 UnitCamera.LookAt(go_selectedUnit.transform);
@@ -115,7 +115,7 @@ public class CreateActionButton : MonoBehaviour
             {
                 for (int i = 1; i < 4; ++i)
                 {
-                    if ((i == 0 && bc.GetListOfUnit().Count <= 1) || i == 1 || (i == 2 && bc.GetListOfUnit().Count <= 1 && go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER) || i == 3)
+                    if ((i == 0 && bc.GetListOfUnit().Count <= 1) || i == 1 || (i == 2 && bc.GetListOfUnit().Count <= 1 && go_selectedUnit.GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_WORKER) || i == 3)
                     {
                         GameObject goButton = (GameObject)Instantiate(go_actionButton);
                         goButton.name = "ActionButton";
@@ -136,7 +136,7 @@ public class CreateActionButton : MonoBehaviour
                                 goButton.GetComponent<Image>().sprite = moveImage;
                                 break;
                             case 2:
-                                if (go_selectedUnit.GetComponent<PlayerUnitBehaviour>().getType() == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                                if (go_selectedUnit.GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
                                 {
                                     goButton.GetComponentInChildren<Text>().text = "BUILD";
                                     goButton.GetComponent<Image>().sprite = buildImage;

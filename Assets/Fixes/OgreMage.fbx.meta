@@ -1,0 +1,387 @@
+fileFormatVersion: 2
+guid: 5aa62c1c543bb36499523c86d277c870
+timeCreated: 1517198959
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Control_Head
+    100002: Control_Hips
+    100004: Control_LeftArm
+    100006: Control_LeftCoat
+    100008: Control_LeftElbow
+    100010: Control_LeftHand
+    100012: Control_LeftThumb
+    100014: Control_LeftWrist
+    100016: Control_Neck
+    100018: Control_RightArm
+    100020: Control_RightCoat
+    100022: Control_RightElbow
+    100024: Control_RighttHand
+    100026: Control_RighttThumb
+    100028: Control_RightWrist
+    100030: Control_Skirt
+    100032: Control_Spine
+    100034: Control_Spine2
+    100036: Controls
+    100038: Group_LeftArm
+    100040: Group_LeftCoat
+    100042: Group_LeftElbow
+    100044: Group_LeftHand
+    100046: Group_LeftThumb
+    100048: Group_LeftWrist
+    100050: Group_RightArm
+    100052: Group_RightCoat
+    100054: Group_RightElbow
+    100056: Group_RightHand
+    100058: Group_RightThumb
+    100060: Group_RightWrist
+    100062: Group_Skirt
+    100064: Mage
+    100066: Mage_Sizing
+    100068: //RootNode
+    100070: OgreMage_Head
+    100072: OgreMage_Head2
+    100074: OgreMage_Hips
+    100076: OgreMage_LeftArm
+    100078: OgreMage_LeftCoat
+    100080: OgreMage_LeftCoat 1
+    100082: OgreMage_LeftElbow
+    100084: OgreMage_LeftFoot
+    100086: OgreMage_LeftHand1
+    100088: OgreMage_LeftHand2
+    100090: OgreMage_LeftKnee
+    100092: OgreMage_LeftLeg
+    100094: OgreMage_LeftThumb
+    100096: OgreMage_LeftThumb2
+    100098: OgreMage_LeftToe
+    100100: OgreMage_LeftWrist
+    100102: OgreMage_Neck
+    100104: OgreMage_RightArm
+    100106: OgreMage_RightCoat
+    100108: OgreMage_RightCoat 1
+    100110: OgreMage_RightElbow
+    100112: OgreMage_RightFoot
+    100114: OgreMage_RightHand1
+    100116: OgreMage_RightHand2
+    100118: OgreMage_RightKnee
+    100120: OgreMage_RightLeg
+    100122: OgreMage_RightThumb
+    100124: OgreMage_RightThumb2
+    100126: OgreMage_RightToe
+    100128: OgreMage_RightWrist
+    100130: OgreMage_Skirt
+    100132: OgreMage_Skirt2
+    100134: OgreMage_Spine
+    100136: OgreMage_Spine2
+    400000: Control_Head
+    400002: Control_Hips
+    400004: Control_LeftArm
+    400006: Control_LeftCoat
+    400008: Control_LeftElbow
+    400010: Control_LeftHand
+    400012: Control_LeftThumb
+    400014: Control_LeftWrist
+    400016: Control_Neck
+    400018: Control_RightArm
+    400020: Control_RightCoat
+    400022: Control_RightElbow
+    400024: Control_RighttHand
+    400026: Control_RighttThumb
+    400028: Control_RightWrist
+    400030: Control_Skirt
+    400032: Control_Spine
+    400034: Control_Spine2
+    400036: Controls
+    400038: Group_LeftArm
+    400040: Group_LeftCoat
+    400042: Group_LeftElbow
+    400044: Group_LeftHand
+    400046: Group_LeftThumb
+    400048: Group_LeftWrist
+    400050: Group_RightArm
+    400052: Group_RightCoat
+    400054: Group_RightElbow
+    400056: Group_RightHand
+    400058: Group_RightThumb
+    400060: Group_RightWrist
+    400062: Group_Skirt
+    400064: Mage
+    400066: Mage_Sizing
+    400068: //RootNode
+    400070: OgreMage_Head
+    400072: OgreMage_Head2
+    400074: OgreMage_Hips
+    400076: OgreMage_LeftArm
+    400078: OgreMage_LeftCoat
+    400080: OgreMage_LeftCoat 1
+    400082: OgreMage_LeftElbow
+    400084: OgreMage_LeftFoot
+    400086: OgreMage_LeftHand1
+    400088: OgreMage_LeftHand2
+    400090: OgreMage_LeftKnee
+    400092: OgreMage_LeftLeg
+    400094: OgreMage_LeftThumb
+    400096: OgreMage_LeftThumb2
+    400098: OgreMage_LeftToe
+    400100: OgreMage_LeftWrist
+    400102: OgreMage_Neck
+    400104: OgreMage_RightArm
+    400106: OgreMage_RightCoat
+    400108: OgreMage_RightCoat 1
+    400110: OgreMage_RightElbow
+    400112: OgreMage_RightFoot
+    400114: OgreMage_RightHand1
+    400116: OgreMage_RightHand2
+    400118: OgreMage_RightKnee
+    400120: OgreMage_RightLeg
+    400122: OgreMage_RightThumb
+    400124: OgreMage_RightThumb2
+    400126: OgreMage_RightToe
+    400128: OgreMage_RightWrist
+    400130: OgreMage_Skirt
+    400132: OgreMage_Skirt2
+    400134: OgreMage_Spine
+    400136: OgreMage_Spine2
+    4300000: Mage
+    7400000: Run
+    9500000: //RootNode
+    13700000: Mage
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mage
+        weight: 1
+      - path: Mage_Sizing
+        weight: 1
+      - path: Mage_Sizing/Controls
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Control_Neck
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Control_Neck/Control_Head
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow/Control_LeftElbow
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow/Control_LeftElbow/Group_LeftWrist
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow/Control_LeftElbow/Group_LeftWrist/Control_LeftWrist
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow/Control_LeftElbow/Group_LeftWrist/Control_LeftWrist/Group_LeftHand
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow/Control_LeftElbow/Group_LeftWrist/Control_LeftWrist/Group_LeftHand/Control_LeftHand
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow/Control_LeftElbow/Group_LeftWrist/Control_LeftWrist/Group_LeftThumb
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_LeftArm/Control_LeftArm/Group_LeftElbow/Control_LeftElbow/Group_LeftWrist/Control_LeftWrist/Group_LeftThumb/Control_LeftThumb
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow/Control_RightElbow
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow/Control_RightElbow/Group_RightWrist
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow/Control_RightElbow/Group_RightWrist/Control_RightWrist
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow/Control_RightElbow/Group_RightWrist/Control_RightWrist/Group_RightHand
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow/Control_RightElbow/Group_RightWrist/Control_RightWrist/Group_RightHand/Control_RighttHand
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow/Control_RightElbow/Group_RightWrist/Control_RightWrist/Group_RightThumb
+        weight: 1
+      - path: Mage_Sizing/Controls/Control_Hips/Control_Spine/Control_Spine2/Group_RightArm/Control_RightArm/Group_RightElbow/Control_RightElbow/Group_RightWrist/Control_RightWrist/Group_RightThumb/Control_RighttThumb
+        weight: 1
+      - path: Mage_Sizing/Controls/Group_LeftCoat
+        weight: 1
+      - path: Mage_Sizing/Controls/Group_LeftCoat/Control_LeftCoat
+        weight: 1
+      - path: Mage_Sizing/Controls/Group_RightCoat
+        weight: 1
+      - path: Mage_Sizing/Controls/Group_RightCoat/Control_RightCoat
+        weight: 1
+      - path: Mage_Sizing/Controls/Group_Skirt
+        weight: 1
+      - path: Mage_Sizing/Controls/Group_Skirt/Control_Skirt
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_LeftLeg
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_LeftLeg/OgreMage_LeftCoat
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_LeftLeg/OgreMage_LeftCoat/OgreMage_LeftCoat
+          1
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_LeftLeg/OgreMage_LeftKnee
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_LeftLeg/OgreMage_LeftKnee/OgreMage_LeftFoot
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_LeftLeg/OgreMage_LeftKnee/OgreMage_LeftFoot/OgreMage_LeftToe
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_RightLeg
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_RightLeg/OgreMage_RightCoat
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_RightLeg/OgreMage_RightCoat/OgreMage_RightCoat
+          1
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_RightLeg/OgreMage_RightKnee
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_RightLeg/OgreMage_RightKnee/OgreMage_RightFoot
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_RightLeg/OgreMage_RightKnee/OgreMage_RightFoot/OgreMage_RightToe
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Skirt
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Skirt/OgreMage_Skirt2
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_LeftArm
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_LeftArm/OgreMage_LeftElbow
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_LeftArm/OgreMage_LeftElbow/OgreMage_LeftWrist
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_LeftArm/OgreMage_LeftElbow/OgreMage_LeftWrist/OgreMage_LeftHand1
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_LeftArm/OgreMage_LeftElbow/OgreMage_LeftWrist/OgreMage_LeftHand1/OgreMage_LeftHand2
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_LeftArm/OgreMage_LeftElbow/OgreMage_LeftWrist/OgreMage_LeftThumb
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_LeftArm/OgreMage_LeftElbow/OgreMage_LeftWrist/OgreMage_LeftThumb/OgreMage_LeftThumb2
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_Neck
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_Neck/OgreMage_Head
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_Neck/OgreMage_Head/OgreMage_Head2
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_RightArm
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_RightArm/OgreMage_RightElbow
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_RightArm/OgreMage_RightElbow/OgreMage_RightWrist
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_RightArm/OgreMage_RightElbow/OgreMage_RightWrist/OgreMage_RightHand1
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_RightArm/OgreMage_RightElbow/OgreMage_RightWrist/OgreMage_RightHand1/OgreMage_RightHand2
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_RightArm/OgreMage_RightElbow/OgreMage_RightWrist/OgreMage_RightThumb
+        weight: 1
+      - path: Mage_Sizing/OgreMage_Hips/OgreMage_Spine/OgreMage_Spine2/OgreMage_RightArm/OgreMage_RightElbow/OgreMage_RightWrist/OgreMage_RightThumb/OgreMage_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

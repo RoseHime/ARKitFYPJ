@@ -47,53 +47,37 @@ public class ChooseCommand : MonoBehaviour {
                 //go_DebugPurpose.GetComponent<Text>().text = "point location: " + hit.point;
                 if (bc.GetListOfUnit().Count < 2)
                 {
-                    if (go_ObjectHit.tag == "StoneMine")
+                    if (go_ObjectHit.tag == "StoneMine" || go_ObjectHit.tag == "Tree")
                     {
-                        Debug.Log("Select Stone Mine");
-                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
-                    }
-                    else if (go_ObjectHit.tag == "Tree")
-                    {
-                        Debug.Log("Select Tree");
-                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
+                        bc.go_SelectUnit().GetComponent<PlayerFSM>().GetBuildingTargetPos(go_ObjectHit.transform);
                     }
                     else if ((go_ObjectHit.tag == "Enemy" || go_ObjectHit.transform.parent.tag == "EnemyBuildingList") &&
-                             bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().PUN != PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                             bc.go_SelectUnit().GetComponent<PlayerUnitInfo>().GetUnitType() != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
                     {
                         Debug.Log("Attack enemy");
-                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetEnemyTargetPos(go_ObjectHit);
+                        bc.go_SelectUnit().GetComponent<PlayerFSM>().GetEnemyTargetPos(go_ObjectHit);
                     }
                     else
                     {
                         Debug.Log("Walk here");
                         //TestInput input = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestInput>();
                         // input.b_MoveUnit = true;
-                        bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                        bc.go_SelectUnit().GetComponent<PlayerFSM>().SetTargetPos(hit.point);
                     }
                 }
                 else if (bc.GetListOfUnit().Count > 1)
                 {
                     for(int i = 0;  i < bc.GetListOfUnit().Count; i++)
                     {
-                        if (bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().PUN == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                        if (bc.GetListOfUnit()[i].GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
                         {
-                            if (go_ObjectHit.tag == "StoneMine")
+                            if (go_ObjectHit.tag == "StoneMine" || go_ObjectHit.tag == "Tree")
                             {
-                                Debug.Log("Select Stone Mine");
-                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_toHarvestStone = true;
-                            }
-                            else if (go_ObjectHit.tag == "Tree")
-                            {
-                                Debug.Log("Select Tree");
-                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetBuildingTargetPos(hit.point, go_ObjectHit.name);
-                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_toHarvestTree = true;
+                                bc.GetListOfUnit()[i].GetComponent<PlayerFSM>().GetBuildingTargetPos(go_ObjectHit.transform);
                             }
                             else
                             {
-                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                                bc.GetListOfUnit()[i].GetComponent<PlayerFSM>().SetTargetPos(hit.point);
                             }
                         }
                         else
@@ -101,11 +85,11 @@ public class ChooseCommand : MonoBehaviour {
                             if ((go_ObjectHit.tag == "Enemy" || go_ObjectHit.transform.parent.tag == "EnemyBuildingList"))
                             {
                                 Debug.Log("Attack enemy");
-                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetEnemyTargetPos(go_ObjectHit);
+                                bc.GetListOfUnit()[i].GetComponent<PlayerFSM>().GetBuildingTargetPos(go_ObjectHit.transform);
                             }
                             else
                             {
-                                bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                                bc.GetListOfUnit()[i].GetComponent<PlayerFSM>().SetTargetPos(hit.point);
                             }
                         }
                     }
@@ -126,9 +110,9 @@ public class ChooseCommand : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
             if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
             {
-                bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().SetTargetPos(hit.point);
+                bc.go_SelectUnit().GetComponent<PlayerFSM>().SetTargetPos(hit.point);
 
-                bc.go_SelectUnit().GetComponent<PlayerUnitBehaviour>().b_buildBuilding = true;
+                bc.go_SelectUnit().GetComponent<PlayerFSM>().b_buildBuilding = true;
             }
             go_CommandPanel.SetActive(false);
             bc.SetBackToSelect();
@@ -148,7 +132,6 @@ public class ChooseCommand : MonoBehaviour {
 
             //for (int i = 1; i <= bc.GetListOfUnit().Count; i++)
             //{
-            //    bc.GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_Selected = false;
             //    bc.GetListOfUnit().Remove(bc.GetListOfUnit()[i]);
             //}
         }
@@ -174,8 +157,8 @@ public class ChooseCommand : MonoBehaviour {
 
             PlayerInfo playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
             TownHallBehaviour townHall = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit.GetComponent<TownHallBehaviour>();
-            if (playerInfo.i_stone >= townHall.workerPrefab.GetComponent<PlayerUnitBehaviour>().i_stoneCost && playerInfo.i_wood >= townHall.workerPrefab.GetComponent<PlayerUnitBehaviour>().i_woodCost
-                && playerInfo.i_magicStone >= townHall.workerPrefab.GetComponent<PlayerUnitBehaviour>().i_magicStoneCost)
+            if (playerInfo.i_stone >= townHall.workerPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost && playerInfo.i_wood >= townHall.workerPrefab.GetComponent<PlayerUnitInfo>().i_woodCost
+                && playerInfo.i_magicStone >= townHall.workerPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost)
             {
                 CreateEntities createEntitiy = GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>();
                 createEntitiy.go_playerPrefab = townHall.workerPrefab;
@@ -238,13 +221,12 @@ public class ChooseCommand : MonoBehaviour {
                 {
                     if (bc.GetRecipient().gameObject != bc.GetListOfUnit()[i].gameObject)
                     {
-                        if (!bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected)
+                        if (!bc.GetRecipient().GetComponent<PlayerFSM>().b_Selected)
                         {
                             //bc.GetRecipient().GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(true);
-                            bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                            bc.GetRecipient().GetComponent<PlayerFSM>().b_Selected = true;
                             bc.GetListOfUnit().Add(bc.GetRecipient().transform);
                         }
-                        //bc.GetRecipient().GetComponent<PlayerUnitBehaviour>().b_Selected = true;
                     }
                 }
 

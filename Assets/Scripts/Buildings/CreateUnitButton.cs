@@ -17,17 +17,17 @@ public class CreateUnitButton : MonoBehaviour {
         bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
 
         transform.GetChild(0).GetComponent<Text>().text = go_unitPrefab.name + "\nCosts:";
-        if (go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_woodCost > 0)
+        if (go_unitPrefab.GetComponent<PlayerUnitInfo>().i_woodCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nWood:" + go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_woodCost;
+            transform.GetChild(0).GetComponent<Text>().text += "\nWood:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_woodCost;
         }
-        if (go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_stoneCost > 0)
+        if (go_unitPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nStone:" + go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_stoneCost;
+            transform.GetChild(0).GetComponent<Text>().text += "\nStone:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost;
         }
-        if (go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_magicStoneCost > 0)
+        if (go_unitPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nMagicStone:" + go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_magicStoneCost;
+            transform.GetChild(0).GetComponent<Text>().text += "\nMagicStone:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost;
         }
     }
 	
@@ -38,8 +38,8 @@ public class CreateUnitButton : MonoBehaviour {
 
     public void OnClick()
     {
-        if (playerInfo.i_stone >= go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_stoneCost && playerInfo.i_wood >= go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_woodCost 
-            && playerInfo.i_magicStone >= go_unitPrefab.GetComponent<PlayerUnitBehaviour>().i_magicStoneCost)
+        if (playerInfo.i_stone >= go_unitPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost && playerInfo.i_wood >= go_unitPrefab.GetComponent<PlayerUnitInfo>().i_woodCost 
+            && playerInfo.i_magicStone >= go_unitPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost)
         {
             if (go_unitPrefab != null)
             {
@@ -47,10 +47,8 @@ public class CreateUnitButton : MonoBehaviour {
                 createEntitiy.go_playerPrefab = go_unitPrefab;
                 GameObject unit = createEntitiy.BuildPlayerUnit(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.position);
                 //unit.transform.position = Vector3.MoveTowards(unit.transform.position, transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position, unit.GetComponent<PlayerUnitBehaviour>().GetSpeed() * Time.deltaTime);
-                //unit.GetComponent<PlayerUnitBehaviour>().SetTargetPos(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
                 unit.GetComponent<NavMeshAgent>().Warp(unit.transform.position);
                 unit.GetComponent<NavMeshAgent>().SetDestination(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
-                //unit.GetComponent<PlayerUnitBehaviour>().b_Moving = true;
                 //transform.parent.parent.parent.parent.gameObject.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
                 //GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().SetBackToSelect();
