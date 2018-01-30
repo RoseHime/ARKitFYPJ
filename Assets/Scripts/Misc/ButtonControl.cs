@@ -98,11 +98,11 @@ public class ButtonControl : MonoBehaviour {
             {
                 btn.image.sprite = S_Back;
                 go_SelectedUnit = recipient.transform.gameObject;
-                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                if (go_SelectedUnit.GetComponent<PlayerFSM>() != null)
                 {
-                    go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = true;
+                    go_SelectedUnit.GetComponent<PlayerFSM>().b_Selected = true;
                     //go_SelectedUnit.GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(true);
-                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().PUN == PlayerUnitBehaviour.PlayerUnitType.PUN_WORKER)
+                    if (go_SelectedUnit.GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
                     {
                         b_IsWorker = true;
                     }
@@ -133,26 +133,26 @@ public class ButtonControl : MonoBehaviour {
                 btn.GetComponentInChildren<Text>().text = "Select";
                 //go_SelectedUnit.transform.GetChild(2).gameObject.SetActive(false);
                 //go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+                go_SelectedUnit.GetComponent<PlayerFSM>().getCommandMenu().SetActive(false);
 
                 for (int i = 0; i < GetListOfUnit().Count; i++)
                 {
                    // GetListOfUnit()[i].transform.GetChild(2).gameObject.SetActive(false);
-                    GetListOfUnit()[i].GetComponent<PlayerUnitBehaviour>().b_Selected = false;
+                    GetListOfUnit()[i].GetComponent<PlayerFSM>().b_Selected = false;
 
                 }
                 GetListOfUnit().Clear();
             }
             else
             {
-                if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>() != null)
+                if (go_SelectedUnit.GetComponent<PlayerFSM>() != null)
                 {
-                    if (go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected)
+                    if (go_SelectedUnit.GetComponent<PlayerFSM>().b_Selected)
                     {
                         go_SelectedUnit.transform.GetChild(2).gameObject.SetActive(false);
                         //go_SelectedUnit.GetComponentInChildren<Transform>().Find("Plane").gameObject.SetActive(false);
-                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().b_Selected = false;
-                        go_SelectedUnit.GetComponent<PlayerUnitBehaviour>().getCommand().SetActive(false);
+                        go_SelectedUnit.GetComponent<PlayerFSM>().b_Selected = false;
+                        go_SelectedUnit.GetComponent<PlayerFSM>().getCommandMenu().SetActive(false);
                         GetListOfUnit().Remove(go_SelectedUnit.transform);
                     }
                 }

@@ -385,7 +385,8 @@ GameObject:
   - component: {fileID: 95142166774585536}
   - component: {fileID: 136727701764626984}
   - component: {fileID: 195696274133063434}
-  - component: {fileID: 114649786619471032}
+  - component: {fileID: 114220031985627556}
+  - component: {fileID: 114112049916734558}
   m_Layer: 8
   m_Name: GoblinTank
   m_TagString: PlayerUnit
@@ -1001,7 +1002,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114649786619471032
+--- !u!114 &114112049916734558
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1009,32 +1010,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1818939716382808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3d738ff7bd6304cb19c56b0322c652, type: 3}
+  m_Script: {fileID: 11500000, guid: f3dace8396afe2f4c868f502d217b99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PUN: 0
-  detectedColor: {r: 0, g: 0, b: 0, a: 0}
+  PUN: 3
+  PUS: 0
   f_HealthPoint: 100
-  f_range: 0.25
-  f_speed: 0.05
-  f_atkDmg: 1
-  reachDist: 1
-  currentPoint: 0
+  f_DetectRange: 0.25
+  f_UnitAttackRange: 0.05
+  f_BaseAttackRange: 0.1
+  f_AttackDamage: 2
   i_woodCost: 30
   i_stoneCost: 10
   i_magicStoneCost: 0
-  b_StartHarvest: 0
-  b_HoldingResource: 0
-  b_toHarvestStone: 0
-  b_toHarvestTree: 0
+--- !u!114 &114220031985627556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818939716382808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7420ce82168e14ab9b8e827ff170ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   b_Selected: 0
   b_buildBuilding: 0
-  b_Moving: 0
-  bullet_Prefab: {fileID: 1535914014752706, guid: 03c2aee621b9d8a4c93ed9b0ca515c1a,
-    type: 2}
+  go_BuildingPrefab: {fileID: 0}
+  bullet_Prefab: {fileID: 0}
   f_bulletSpeed: 0.1
   f_fireRate: 0.5
-  go_BuildingPrefab: {fileID: 0}
 --- !u!136 &136727701764626984
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1134,7 +1139,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.05
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

@@ -289,7 +289,7 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         if (target.tag == "PlayerUnit")
         {
-            target.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
+            target.transform.GetComponent<PlayerUnitInfo>().f_HealthPoint -= f_damage;
         }
         else if (target.transform.parent == GameObject.FindGameObjectWithTag("BuildingList").transform)
         {

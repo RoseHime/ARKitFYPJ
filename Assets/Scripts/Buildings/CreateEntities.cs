@@ -41,9 +41,9 @@ public class CreateEntities: MonoBehaviour {
 
     public GameObject BuildPlayerUnit(Vector3 position)
     {
-        playerInfo.i_stone -= go_playerPrefab.GetComponent<PlayerUnitBehaviour>().i_stoneCost;
-        playerInfo.i_wood -= go_playerPrefab.GetComponent<PlayerUnitBehaviour>().i_woodCost;
-        playerInfo.i_magicStone -= go_playerPrefab.GetComponent<PlayerUnitBehaviour>().i_magicStoneCost;
+        playerInfo.i_stone -= go_playerPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost;
+        playerInfo.i_wood -= go_playerPrefab.GetComponent<PlayerUnitInfo>().i_woodCost;
+        playerInfo.i_magicStone -= go_playerPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost;
 
         Vector3 originalScale = go_playerPrefab.transform.localScale;
         GameObject temp = Instantiate(go_playerPrefab);

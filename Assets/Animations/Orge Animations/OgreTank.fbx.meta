@@ -1,0 +1,526 @@
+fileFormatVersion: 2
+guid: 7317970319b648342a4bc685e2a3cd33
+timeCreated: 1517197300
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: OgreTank_Head
+    100004: OgreTank_Head2
+    100006: OgreTank_Hips
+    100008: OgreTank_LeftArm
+    100010: OgreTank_LeftElbow
+    100012: OgreTank_LeftFoot
+    100014: OgreTank_LeftHand1
+    100016: OgreTank_LeftHand2
+    100018: OgreTank_LeftKnee
+    100020: OgreTank_LeftLeg
+    100022: OgreTank_LeftThumb
+    100024: OgreTank_LeftThumb2
+    100026: OgreTank_LeftToe
+    100028: OgreTank_LeftWrist
+    100030: OgreTank_Neck
+    100032: OgreTank_RightArm
+    100034: OgreTank_RightElbow
+    100036: OgreTank_RightFoot
+    100038: OgreTank_RightHand1
+    100040: OgreTank_RightHand2
+    100042: OgreTank_RightKnee
+    100044: OgreTank_RightLeg
+    100046: OgreTank_RightThumb
+    100048: OgreTank_RightThumb2
+    100050: OgreTank_RightToe
+    100052: OgreTank_RightWrist
+    100054: OgreTank_Skirt
+    100056: OgreTank_Skirt2
+    100058: OgreTank_Spine
+    100060: OgreTank_Spine2
+    100062: Tank
+    100064: Tank_Sizing
+    400000: //RootNode
+    400002: OgreTank_Head
+    400004: OgreTank_Head2
+    400006: OgreTank_Hips
+    400008: OgreTank_LeftArm
+    400010: OgreTank_LeftElbow
+    400012: OgreTank_LeftFoot
+    400014: OgreTank_LeftHand1
+    400016: OgreTank_LeftHand2
+    400018: OgreTank_LeftKnee
+    400020: OgreTank_LeftLeg
+    400022: OgreTank_LeftThumb
+    400024: OgreTank_LeftThumb2
+    400026: OgreTank_LeftToe
+    400028: OgreTank_LeftWrist
+    400030: OgreTank_Neck
+    400032: OgreTank_RightArm
+    400034: OgreTank_RightElbow
+    400036: OgreTank_RightFoot
+    400038: OgreTank_RightHand1
+    400040: OgreTank_RightHand2
+    400042: OgreTank_RightKnee
+    400044: OgreTank_RightLeg
+    400046: OgreTank_RightThumb
+    400048: OgreTank_RightThumb2
+    400050: OgreTank_RightToe
+    400052: OgreTank_RightWrist
+    400054: OgreTank_Skirt
+    400056: OgreTank_Skirt2
+    400058: OgreTank_Spine
+    400060: OgreTank_Spine2
+    400062: Tank
+    400064: Tank_Sizing
+    4300000: Tank
+    7400000: Run
+    7400002: Idle
+    7400004: Attack
+    7400006: Death
+    9500000: //RootNode
+    13700000: Tank
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Tank
+        weight: 1
+      - path: Tank_Sizing
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot/OgreTank_LeftToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot/OgreTank_RightToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt/OgreTank_Skirt2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1/OgreTank_LeftHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb/OgreTank_LeftThumb2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head/OgreTank_Head2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1/OgreTank_RightHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb/OgreTank_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 16
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Tank
+        weight: 1
+      - path: Tank_Sizing
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot/OgreTank_LeftToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot/OgreTank_RightToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt/OgreTank_Skirt2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1/OgreTank_LeftHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb/OgreTank_LeftThumb2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head/OgreTank_Head2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1/OgreTank_RightHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb/OgreTank_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Tank
+        weight: 1
+      - path: Tank_Sizing
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot/OgreTank_LeftToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot/OgreTank_RightToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt/OgreTank_Skirt2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1/OgreTank_LeftHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb/OgreTank_LeftThumb2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head/OgreTank_Head2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1/OgreTank_RightHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb/OgreTank_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Tank
+        weight: 1
+      - path: Tank_Sizing
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_LeftLeg/OgreTank_LeftKnee/OgreTank_LeftFoot/OgreTank_LeftToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_RightLeg/OgreTank_RightKnee/OgreTank_RightFoot/OgreTank_RightToe
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Skirt/OgreTank_Skirt2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftHand1/OgreTank_LeftHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_LeftArm/OgreTank_LeftElbow/OgreTank_LeftWrist/OgreTank_LeftThumb/OgreTank_LeftThumb2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_Neck/OgreTank_Head/OgreTank_Head2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightHand1/OgreTank_RightHand2
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb
+        weight: 1
+      - path: Tank_Sizing/OgreTank_Hips/OgreTank_Spine/OgreTank_Spine2/OgreTank_RightArm/OgreTank_RightElbow/OgreTank_RightWrist/OgreTank_RightThumb/OgreTank_RightThumb2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

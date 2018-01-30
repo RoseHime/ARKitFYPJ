@@ -52,7 +52,7 @@ public class BulletBehaviour : MonoBehaviour {
                 if (collisionInfo.gameObject.tag == "PlayerUnit")
                 {
                     //Debug.Log("IT HIT:" + collisionInfo.transform.name);
-                    collisionInfo.transform.GetComponent<PlayerUnitBehaviour>().f_HealthPoint -= f_damage;
+                    collisionInfo.transform.GetComponent<PlayerUnitInfo>().f_HealthPoint -= f_damage;
                     Destroy(gameObject);
                     
                 }
