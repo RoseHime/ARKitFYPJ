@@ -6,9 +6,15 @@ using UnityEngine.AI;
 public class EnemySpawnerBehaviour : MonoBehaviour {
 
     public GameObject go_enemyPrefab;
+    public GameObject go_secondPrefab;
+    public GameObject go_thirdPrefab;
 
+    public float f_levelTimer = 300; // 5 minutes
     public float f_spawnRate = 10;
     private float f_cooldown = 0;
+    private float f_levelCooldown = 0;
+
+    public int i_level = 1;
     
 	// Use this for initialization
 	void Start () {
@@ -17,6 +23,27 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (i_level < 3)
+        {
+            f_levelCooldown += Time.deltaTime;
+            if (f_levelCooldown > f_levelTimer)
+            {
+                f_levelCooldown = 0;
+                i_level++;
+
+                if (i_level == 2)
+                {
+                    go_enemyPrefab = go_secondPrefab;
+                }
+                else if (i_level == 3)
+                {
+                    go_enemyPrefab = go_thirdPrefab;
+                }
+            }
+        }
+
+
         if (f_cooldown <= 1 / f_spawnRate)
         {
             f_cooldown += Time.deltaTime;
