@@ -185,6 +185,7 @@ public class PlayerFSM : MonoBehaviour {
         //If reached target point
         if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < getAgent().stoppingDistance * getAgent().stoppingDistance)
         {
+            getAgent().avoidancePriority = 50;
             _animator.ResetTrigger("b_IsMoving");
             if (b_buildBuilding)
             {
@@ -207,15 +208,15 @@ public class PlayerFSM : MonoBehaviour {
             List<Transform> nearbyEnemy = new List<Transform>();
             nearbyEnemy.Clear();
 
-            foreach (Transform T_enemyChild in T_EnemyUnit)
-            {
-                if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
+                foreach (Transform T_enemyChild in T_EnemyUnit)
                 {
-                    nearbyEnemy.Add(T_enemyChild);
-                    gameObject.GetComponent<PlayerUnitInfo>().SetUnitState(PlayerUnitInfo.PlayerUnitState.PUS_ATTACK);
-                    break;
+                    if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
+                    {
+                        nearbyEnemy.Add(T_enemyChild);
+                        gameObject.GetComponent<PlayerUnitInfo>().SetUnitState(PlayerUnitInfo.PlayerUnitState.PUS_ATTACK);
+                        break;
+                    }
                 }
-            }
             foreach (Transform T_enemyChild in T_EnemyBase)
             {
                 if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
@@ -246,7 +247,7 @@ public class PlayerFSM : MonoBehaviour {
                     go_TempEnemyHolder = nearbyEnemy[i_Enemy].gameObject;
                     if (i_Enemy == nearbyEnemy.Count - 1)
                     {
-                     
+
                         go_TargetedEnemy = go_TempEnemyHolder;
                     }
                 }
@@ -281,6 +282,7 @@ public class PlayerFSM : MonoBehaviour {
                 else
                 {
                     getAgent().isStopped = true;
+                    getAgent().avoidancePriority = 100;
 
                     //Look at the target
                     Vector3 lookAtEnemy = new Vector3(go_TargetedEnemy.transform.position.x, gameObject.transform.position.y, go_TargetedEnemy.transform.position.z);

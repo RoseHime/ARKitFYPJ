@@ -9,10 +9,14 @@ public class UnitManager : MonoBehaviour {
 
     bool b_Reupdating;
 
+    private GameObject go_Pivot;
+
 	// Use this for initialization
 	void Start () {
         AddToListAtStart();
         b_Reupdating = false;
+
+        go_Pivot = GameObject.FindGameObjectWithTag("Pivot").transform.GetChild(0).gameObject;
 	}
 	
 	// Update is called once per frame
@@ -20,8 +24,9 @@ public class UnitManager : MonoBehaviour {
 
         Debug.Log("Count" + listOfUnit.Count);
         Debug.Log("Capacity" + listOfUnit.Capacity);
-
-        UpdateState();
+        
+        if(go_Pivot.activeSelf)
+            UpdateState();
         //Update list of unit in the game without readding the unit that is added.
         // UpdateList();
         for (int i = 0; i < listOfUnit.Count; i++)

@@ -466,7 +466,7 @@ Prefab:
         type: 2}
       propertyPath: go_thirdPrefab
       value: 
-      objectReference: {fileID: 1087068658491086, guid: 2dfff943334d3564e8e1018a21890d1c,
+      objectReference: {fileID: 1519976381358636, guid: 9b6a0df5fd518ea4c8f3d4622dedd05f,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fd23a0ddd7785d43981381ddd972387, type: 2}
@@ -837,11 +837,11 @@ GameObject:
   - component: {fileID: 95153554}
   m_Layer: 8
   m_Name: Pivot
-  m_TagString: Untagged
+  m_TagString: Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &95153554
 Transform:
   m_ObjectHideFlags: 0
@@ -2373,7 +2373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_stone: 999
   i_wood: 999
-  i_magicStone: 0
+  i_magicStone: 999
   stoneText: {fileID: 2018562070}
   woodText: {fileID: 2134747454}
   magicStoneText: {fileID: 601926366}
@@ -3278,7 +3278,7 @@ Prefab:
         type: 2}
       propertyPath: go_thirdPrefab
       value: 
-      objectReference: {fileID: 1650182813797612, guid: a1d8dd1f76446364a87e6c3ea1dc8f6a,
+      objectReference: {fileID: 1268062456547720, guid: ec23cc2f8d5492e438c6690457568d1a,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fd23a0ddd7785d43981381ddd972387, type: 2}
@@ -4305,6 +4305,7 @@ GameObject:
   - component: {fileID: 478401844}
   - component: {fileID: 478401843}
   - component: {fileID: 478401842}
+  - component: {fileID: 478401846}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -4392,6 +4393,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 478401846}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &478401844
@@ -4427,6 +4439,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 478401840}
+--- !u!114 &478401846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478401840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41730481fe6cb244b847f81ab64bdbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &481034315 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
@@ -7708,7 +7731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &852915504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9479,7 +9502,7 @@ Prefab:
         type: 2}
       propertyPath: go_thirdPrefab
       value: 
-      objectReference: {fileID: 1647010255436682, guid: 0540a0277cffd1449bdd924e244d06c8,
+      objectReference: {fileID: 1781190939294636, guid: 629c56da9978f274ea7a891f57569135,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fd23a0ddd7785d43981381ddd972387, type: 2}
@@ -12567,7 +12590,7 @@ GameObject:
   - component: {fileID: 1286139109}
   m_Layer: 8
   m_Name: HitCubeParent
-  m_TagString: Untagged
+  m_TagString: Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

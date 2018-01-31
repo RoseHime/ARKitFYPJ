@@ -35,6 +35,7 @@ TagManager:
   - AudioSource
   - SelectionIcon
   - UnitManager
+  - Pivot
   layers:
   - Default
   - TransparentFX
