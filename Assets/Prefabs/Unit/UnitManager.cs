@@ -5,24 +5,43 @@ using UnityEngine;
 public class UnitManager : MonoBehaviour {
 
     public GameObject go_PlayerUnitList;
-    List<Transform> listOfUnit = new List<Transform>();
+    public List<Transform> listOfUnit = new List<Transform>();
+
+    bool b_Reupdating;
+
+    private GameObject go_Pivot;
 
 	// Use this for initialization
 	void Start () {
         AddToListAtStart();
+        b_Reupdating = false;
+
+        go_Pivot = GameObject.FindGameObjectWithTag("Pivot").transform.GetChild(0).gameObject;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
-        UpdateState();
-        //Update list of unit in the game without readding the unit that is added.
-       // UpdateList();
-
+        Debug.Log("Count" + listOfUnit.Count);
+        Debug.Log("Capacity" + listOfUnit.Capacity);
         
+        if(go_Pivot.activeSelf)
+            UpdateState();
+        //Update list of unit in the game without readding the unit that is added.
+        // UpdateList();
+        for (int i = 0; i < listOfUnit.Count; i++)
+        {
+            if (listOfUnit[i] != null)
+            {
+                b_Reupdating = true;
+            }
+        }
 
-	}
+        if (b_Reupdating)
+        {
+            ReupdateList();
+        }
+    }
 
     void AddToListAtStart()
     {
@@ -61,40 +80,56 @@ public class UnitManager : MonoBehaviour {
     {
         for (int i = 0; i < listOfUnit.Count; i++)
         {
-            if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_MOVE)
+            if (listOfUnit[i] != null)
             {
-                listOfUnit[i].GetComponent<PlayerFSM>().MoveToTargetPos();
-                //If unit type is not worker to detect enemy
-                if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
+                if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_MOVE)
                 {
-                    listOfUnit[i].GetComponent<PlayerFSM>().DetectEnemy();
+                    listOfUnit[i].GetComponent<PlayerFSM>().MoveToTargetPos();
+                    //If unit type is not worker to detect enemy
+                    if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
+                    {
+                        listOfUnit[i].GetComponent<PlayerFSM>().DetectEnemy();
+                    }
+                }
+                else if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_GUARD)
+                {
+                    //If unit type is not worker to enemy detect
+                    if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
+                    {
+                        listOfUnit[i].GetComponent<PlayerFSM>().DetectEnemy();
+                    }
+                }
+                else if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_HARVEST)
+                {
+                    //If unit type is worker
+                    if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
+                    {
+                        listOfUnit[i].GetComponent<PlayerFSM>().OnHarvestMode();
+                        listOfUnit[i].GetComponent<PlayerFSM>().StartHarvesting();
+                    }
+                }
+                else if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_ATTACK)
+                {
+                    //If unit type is not worker to fight
+                    if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
+                    {
+                        listOfUnit[i].GetComponent<PlayerFSM>().AttackEnemy();
+                    }
                 }
             }
-            else if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_GUARD)
+        }
+    }
+
+    void ReupdateList()
+    {
+        if (b_Reupdating)
+        {
+            listOfUnit.Clear();
+            foreach (Transform unitChild in go_PlayerUnitList.transform)
             {
-                //If unit type is not worker to enemy detect
-                if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
-                {
-                    listOfUnit[i].GetComponent<PlayerFSM>().DetectEnemy();
-                }
+                listOfUnit.Add(unitChild);
             }
-            else if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_HARVEST)
-            {
-                //If unit type is worker
-                if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
-                {
-                    listOfUnit[i].GetComponent<PlayerFSM>().OnHarvestMode();
-                    listOfUnit[i].GetComponent<PlayerFSM>().StartHarvesting();
-                }
-            }
-            else if (listOfUnit[i].GetComponent<PlayerUnitInfo>().PUS == PlayerUnitInfo.PlayerUnitState.PUS_ATTACK)
-            {
-                //If unit type is not worker to fight
-                if (listOfUnit[i].GetComponent<PlayerUnitInfo>().GetUnitType() != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
-                {
-                    listOfUnit[i].GetComponent<PlayerFSM>().AttackEnemy();
-                }
-            }
+            b_Reupdating = false;
         }
     }
 

@@ -185,6 +185,7 @@ public class PlayerFSM : MonoBehaviour {
         //If reached target point
         if ((gameObject.transform.position - v3_targetPos).sqrMagnitude < getAgent().stoppingDistance * getAgent().stoppingDistance)
         {
+            getAgent().avoidancePriority = 50;
             _animator.ResetTrigger("b_IsMoving");
             if (b_buildBuilding)
             {
@@ -207,15 +208,15 @@ public class PlayerFSM : MonoBehaviour {
             List<Transform> nearbyEnemy = new List<Transform>();
             nearbyEnemy.Clear();
 
-            foreach (Transform T_enemyChild in T_EnemyUnit)
-            {
-                if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
+                foreach (Transform T_enemyChild in T_EnemyUnit)
                 {
-                    nearbyEnemy.Add(T_enemyChild);
-                    gameObject.GetComponent<PlayerUnitInfo>().SetUnitState(PlayerUnitInfo.PlayerUnitState.PUS_ATTACK);
-                    break;
+                    if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
+                    {
+                        nearbyEnemy.Add(T_enemyChild);
+                        gameObject.GetComponent<PlayerUnitInfo>().SetUnitState(PlayerUnitInfo.PlayerUnitState.PUS_ATTACK);
+                        break;
+                    }
                 }
-            }
             foreach (Transform T_enemyChild in T_EnemyBase)
             {
                 if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
@@ -246,7 +247,7 @@ public class PlayerFSM : MonoBehaviour {
                     go_TempEnemyHolder = nearbyEnemy[i_Enemy].gameObject;
                     if (i_Enemy == nearbyEnemy.Count - 1)
                     {
-                     
+
                         go_TargetedEnemy = go_TempEnemyHolder;
                     }
                 }
@@ -266,7 +267,7 @@ public class PlayerFSM : MonoBehaviour {
             {
                 if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude >= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackRange())
                 {
-                    getAgent().stoppingDistance = 0.01f;
+                    getAgent().stoppingDistance = 0.02f;
                     getAgent().isStopped = false;
                     //Find the direction
                     Vector3 dir = getAgent().velocity + gameObject.transform.position;
@@ -281,6 +282,7 @@ public class PlayerFSM : MonoBehaviour {
                 else
                 {
                     getAgent().isStopped = true;
+                    getAgent().avoidancePriority = 100;
 
                     //Look at the target
                     Vector3 lookAtEnemy = new Vector3(go_TargetedEnemy.transform.position.x, gameObject.transform.position.y, go_TargetedEnemy.transform.position.z);
@@ -405,9 +407,15 @@ public class PlayerFSM : MonoBehaviour {
     public void OnHarvestMode()
     {
         _animator.SetTrigger("b_IsMoving");
-        getAgent().stoppingDistance = 0.07f;
+
+        //Hardcore stop distance for harvesting purpose =_=
+        if (T_Resource.tag == "StoneMine")
+            getAgent().stoppingDistance = 0.08f;
+        else if (T_Resource.tag == "Tree")
+            getAgent().stoppingDistance = 0.06f;
+
         getAgent().autoBraking = false;
-        getAgent().avoidancePriority = 100;
+        getAgent().avoidancePriority = 50;
 
         //Find the direction
         Vector3 dir = getAgent().velocity + gameObject.transform.position;
@@ -426,8 +434,9 @@ public class PlayerFSM : MonoBehaviour {
                 b_isHarvesting = true;
 
                 //Stop moving when reach
-                getAgent().isStopped = true;
                 Vector3 lookAtResource = new Vector3(T_Resource.position.x, gameObject.transform.position.y, T_Resource.position.z);
+                getAgent().isStopped = true;
+
                 gameObject.transform.LookAt(lookAtResource);
             }
             else
@@ -525,6 +534,7 @@ public class PlayerFSM : MonoBehaviour {
         _animator.ResetTrigger("b_IsAttacking");
         _animator.ResetTrigger("b_isHarvesting");
         go_TargetedEnemy = null;
+        getAgent().isStopped = true;
     }
 
     //Open up menu when unit is selected

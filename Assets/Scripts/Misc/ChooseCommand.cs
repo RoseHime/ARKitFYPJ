@@ -85,7 +85,7 @@ public class ChooseCommand : MonoBehaviour {
                             if ((go_ObjectHit.tag == "Enemy" || go_ObjectHit.transform.parent.tag == "EnemyBuildingList"))
                             {
                                 Debug.Log("Attack enemy");
-                                bc.GetListOfUnit()[i].GetComponent<PlayerFSM>().GetBuildingTargetPos(go_ObjectHit.transform);
+                                bc.GetListOfUnit()[i].GetComponent<PlayerFSM>().GetEnemyTargetPos(go_ObjectHit);
                             }
                             else
                             {

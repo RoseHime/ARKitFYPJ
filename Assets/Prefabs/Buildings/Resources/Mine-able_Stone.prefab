@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 65802395661696390}
   - component: {fileID: 114628464461569742}
   - component: {fileID: 54133988515523356}
+  - component: {fileID: 208598184016548988}
   m_Layer: 0
   m_Name: Mine-able_Stone
   m_TagString: StoneMine
@@ -54,6 +55,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -69,6 +71,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -109,7 +112,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.11943661, y: 0.08978719, z: 0.10978706}
+  m_Size: {x: 0.08, y: 0.08978719, z: 0.08}
   m_Center: {x: 0, y: 0.044965375, z: 0}
 --- !u!95 &95598317064836190
 Animator:
@@ -145,5 +148,21 @@ MonoBehaviour:
   i_stoneCost: 0
   i_magicStoneCost: 0
   DestroyedMesh: {fileID: 0}
-  i_stoneDistributed: 1
+  DestroyedMaterials: []
+  i_stoneDistributed: 5
   i_totalAmountOfStones: 2000
+--- !u!208 &208598184016548988
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860346910336672}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.05, y: 0.045, z: 0.05}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.045, z: 0}
+  m_TimeToStationary: 0.5

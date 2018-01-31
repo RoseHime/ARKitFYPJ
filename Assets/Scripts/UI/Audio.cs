@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Audio : MonoBehaviour {
 
@@ -10,9 +11,17 @@ public class Audio : MonoBehaviour {
     private PlayerInfo pi;
     private bool b_NextSong;
 
-	// Use this for initialization
-	void Start () {
-        pi = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
+    Scene currentScene;
+    string sceneName;
+
+    // Use this for initialization
+    void Start () {
+
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+        
+        if (sceneName == "UnityARKitScene")
+            pi = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
 
         b_NextSong = false;
         audio = GetComponent<AudioSource>();
@@ -24,14 +33,23 @@ public class Audio : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
 
-        if (!b_NextSong && pi.i_playerLevel == 2)
+        if (sceneName == "UnityARKitScene")
         {
-            b_NextSong = true;
-            audio.Stop();
-            audio.clip = clip2;
-            audio.Play();
+            if (!b_NextSong && pi.i_playerLevel == 2)
+            {
+                b_NextSong = true;
+                audio.Stop();
+                audio.clip = clip2;
+                audio.Play();
+            }
         }
 	}
+
+    public void StopMusic()
+    {
+        audio.Stop();
+    }
+
 }
