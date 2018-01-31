@@ -10,11 +10,13 @@ public class CreateUnitButton : MonoBehaviour {
     PlayerInfo playerInfo;
 
     private ButtonControl bc;
+    private UnitManager um;
 
     // Use this for initialization
     void Start () {
         playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
         bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
+        um = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
 
         transform.GetChild(0).GetComponent<Text>().text = go_unitPrefab.name + "\nCosts:";
         if (go_unitPrefab.GetComponent<PlayerUnitInfo>().i_woodCost > 0)
@@ -49,6 +51,10 @@ public class CreateUnitButton : MonoBehaviour {
                 //unit.transform.position = Vector3.MoveTowards(unit.transform.position, transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position, unit.GetComponent<PlayerUnitBehaviour>().GetSpeed() * Time.deltaTime);
                 unit.GetComponent<NavMeshAgent>().Warp(unit.transform.position);
                 unit.GetComponent<NavMeshAgent>().SetDestination(transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position);
+                //if ((transform.parent.parent.parent.parent.GetComponent<BarracksPanelInfo>().go_SelectedBarracks.transform.GetChild(0).position - unit.GetComponent<Transform>().position).sqrMagnitude < 0.2f *0.2f)
+                //{
+                //    um.listOfUnit.Add(unit.transform);
+                //}
                 //transform.parent.parent.parent.parent.gameObject.SetActive(false);
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
                 //GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>().SetBackToSelect();

@@ -194,7 +194,7 @@ MonoBehaviour:
   DestroyedMaterials:
   - {fileID: 2100000, guid: 9b7269bb33158514cb92ca8bebd45a34, type: 2}
   - {fileID: 2100000, guid: 116c1cc577bc8d642b28427dea18466c, type: 2}
-  workerPrefab: {fileID: 1693052358693444, guid: f602a998aa537624e9f2bcd00568f57c,
+  workerPrefab: {fileID: 1080975587968206, guid: 284456d95e97d6945aaf097e12e522a5,
     type: 2}
 --- !u!208 &208758827595448930
 NavMeshObstacle:

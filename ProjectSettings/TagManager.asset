@@ -34,6 +34,7 @@ TagManager:
   - UnitCamera
   - AudioSource
   - SelectionIcon
+  - UnitManager
   layers:
   - Default
   - TransparentFX

@@ -11,14 +11,17 @@ public class CreateEntities: MonoBehaviour {
     public GameObject go_playerPrefab;
 
     private PlayerInfo playerInfo;
+    private UnitManager um;
 
     // Use this for initialization
     void Start () {
         playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
+        um = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -51,6 +54,7 @@ public class CreateEntities: MonoBehaviour {
         temp.name = go_playerPrefab.name;
         temp.transform.parent = playerList.transform;
         temp.transform.localScale = originalScale;
+        um.listOfUnit.Add(temp.transform);
         return temp;
     }
 }
