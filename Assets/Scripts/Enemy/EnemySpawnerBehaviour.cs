@@ -44,18 +44,17 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
         }
 
 
-        if (f_cooldown <= 1 / f_spawnRate)
+        if (GameObject.FindGameObjectWithTag("EnemyList").transform.childCount < GameObject.FindGameObjectWithTag("EnemyAI").GetComponent<MasterAI>().i_UnitCapacity)
         {
-            f_cooldown += Time.deltaTime;
-        }
-        else
-        {
-            if (GameObject.FindGameObjectWithTag("EnemyList").transform.childCount < GameObject.FindGameObjectWithTag("EnemyAI").GetComponent<MasterAI>().i_UnitCapacity)
+            if (f_cooldown <= 1 / f_spawnRate)
+            {
+                f_cooldown += Time.deltaTime;
+            }
+            else
             {
                 GameObject.FindGameObjectWithTag("EnemyAI").GetComponent<MasterAI>().defendingUnits.Add(SpawnUnit());
                 f_cooldown = 0;
             }
-
         }
     }
 
