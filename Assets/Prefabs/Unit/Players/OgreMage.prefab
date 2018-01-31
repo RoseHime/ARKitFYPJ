@@ -1192,7 +1192,7 @@ MonoBehaviour:
   b_Selected: 0
   b_buildBuilding: 0
   go_BuildingPrefab: {fileID: 0}
-  bullet_Prefab: {fileID: 1535914014752706, guid: 03c2aee621b9d8a4c93ed9b0ca515c1a,
+  bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
     type: 2}
   f_bulletSpeed: 0.5
   f_fireRate: 3
