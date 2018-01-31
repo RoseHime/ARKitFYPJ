@@ -4247,7 +4247,7 @@ Prefab:
         type: 2}
       propertyPath: workerPrefab
       value: 
-      objectReference: {fileID: 1693052358693444, guid: f602a998aa537624e9f2bcd00568f57c,
+      objectReference: {fileID: 1891219494618846, guid: 5416cad0f5843c1438b55a0a85283eda,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cbbfd329c822be4d80753fe14e09ad6, type: 2}
