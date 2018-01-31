@@ -354,10 +354,23 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
+<<<<<<< HEAD:Assets/Prefabs/Unit/Players/GoblinWorker.prefab
   - component: {fileID: 4476242680038694}
   m_Layer: 0
   m_Name: GoblinWorker_Neck
   m_TagString: Untagged
+=======
+  - component: {fileID: 4298604030708358}
+  - component: {fileID: 95006598786605580}
+  - component: {fileID: 136637871495561816}
+  - component: {fileID: 54579811822902744}
+  - component: {fileID: 195717990574019430}
+  - component: {fileID: 114024500186663126}
+  - component: {fileID: 114686624403378764}
+  m_Layer: 8
+  m_Name: GoblinWorker
+  m_TagString: PlayerUnit
+>>>>>>> b01a37da5a6f8d41bb374746bb158123c5cfda4a:Assets/Prefabs/Unit/Players/GoblinWorker.prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1055,7 +1068,8 @@ MonoBehaviour:
   b_Selected: 0
   b_buildBuilding: 0
   go_BuildingPrefab: {fileID: 0}
-  bullet_Prefab: {fileID: 0}
+  bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
+    type: 2}
   f_bulletSpeed: 0
   f_fireRate: 0
 --- !u!136 &136499860844939138

@@ -27,7 +27,6 @@ public class BulletBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //print("Hid was here!");
         MoveBullet();
 	}
 
@@ -71,6 +70,7 @@ public class BulletBehaviour : MonoBehaviour {
         if ((f_lifetimeCounter += Time.deltaTime) < f_lifetime)
         {
             gameObject.transform.position += direction * f_speed * Time.deltaTime;
+            gameObject.transform.LookAt(transform.position + direction);
         }
         else
         {

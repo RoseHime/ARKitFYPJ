@@ -102,7 +102,7 @@ public class CreateActionButton : MonoBehaviour
         foreach (Transform button in gameObject.transform)
         {
             if (button.gameObject.name == "ActionButton" || button.gameObject.name == "UpgradeActionButton"
-                || button.gameObject.name == "UpgradeBarracksButton")
+                || button.gameObject.name == "UpgradeBarracksButton" || button.gameObject.name == "WorkerActionButton")
             {
                 Destroy(button.gameObject);
             }
