@@ -779,7 +779,7 @@ Transform:
   m_GameObject: {fileID: 1268062456547720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.80661374, y: -0.22903967, z: 0.2905676}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4468636994749426}
   - {fileID: 4749570542841814}
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   f_fireRate: 2
   f_defendRange: 1
   i_magicStoneDrop: 3
-  bullet_Prefab: {fileID: 1535914014752706, guid: 03c2aee621b9d8a4c93ed9b0ca515c1a,
+  bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
     type: 2}
   EUS: 1
   ET: 0

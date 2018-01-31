@@ -590,7 +590,7 @@ Transform:
   m_GameObject: {fileID: 1863744672147084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.63023233, y: -0.2276432, z: 0.43517184}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4894460614127500}
   - {fileID: 4282370210005762}
@@ -1025,7 +1025,8 @@ MonoBehaviour:
   b_Selected: 0
   b_buildBuilding: 0
   go_BuildingPrefab: {fileID: 0}
-  bullet_Prefab: {fileID: 0}
+  bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
+    type: 2}
   f_bulletSpeed: 0.1
   f_fireRate: 1
 --- !u!136 &136304501522351034
@@ -1050,6 +1051,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1070,6 +1072,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
