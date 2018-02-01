@@ -158,6 +158,7 @@ public class PlayerFSM : MonoBehaviour {
     // Give unit a target position to move to
     public void SetTargetPos(Vector3 v3_targetpos)
     {
+        go_TargetedEnemy = null;
         v3_targetPos = v3_targetpos;
         getAgent().speed = gameObject.GetComponent<PlayerUnitInfo>().GetOriginSpeed();
 
@@ -265,6 +266,9 @@ public class PlayerFSM : MonoBehaviour {
             //If enemy unit not within attack range
             if (go_TargetedEnemy.tag == "Enemy")
             {
+                //Find the difference between enemy and own unit
+                Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
+
                 if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude >= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackRange())
                 {
                     getAgent().stoppingDistance = 0.02f;
@@ -298,6 +302,15 @@ public class PlayerFSM : MonoBehaviour {
                             f_fireCooldown = 0;
                             //Enemy unit get damaged
                             go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().f_health -= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackDmg();
+                        }
+                    }
+                    //if it a range unit
+                    else if (gameObject.GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_RANGE)
+                    {
+                        if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                        {
+                            f_fireCooldown = 0;
+                            FireBullet(difference.normalized);
                         }
                     }
 

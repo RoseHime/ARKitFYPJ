@@ -896,11 +896,11 @@ GameObject:
   - component: {fileID: 95153554}
   m_Layer: 8
   m_Name: Pivot
-  m_TagString: Pivot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &95153554
 Transform:
   m_ObjectHideFlags: 0
@@ -4617,7 +4617,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.06, y: 0.068, z: 0.06}
+  m_Extents: {x: 0.04, y: 0.068, z: 0.04}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -5951,7 +5951,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.060000002, y: 0.045, z: 0.060000002}
+  m_Extents: {x: 0.04, y: 0.068, z: 0.04}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -7240,7 +7240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877fb9bb13235f240a82753d0dc7ff18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_unitPrefab: {fileID: 1141818712567154, guid: 03aeab16d26b1df4e9a9991d21cb2306,
+  go_unitPrefab: {fileID: 1141818712567154, guid: e01b1a52ee4272347af79f5a93371781,
     type: 2}
 --- !u!114 &834285771
 MonoBehaviour:
@@ -7927,7 +7927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877fb9bb13235f240a82753d0dc7ff18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_unitPrefab: {fileID: 1863744672147084, guid: 03028a204c3e42a45a0389d54774974f,
+  go_unitPrefab: {fileID: 1917702822117262, guid: 03028a204c3e42a45a0389d54774974f,
     type: 2}
 --- !u!114 &868477259
 MonoBehaviour:
@@ -9683,7 +9683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877fb9bb13235f240a82753d0dc7ff18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_unitPrefab: {fileID: 1838653096569940, guid: 0d3c04f2c67ce6546803bff70678bd72,
+  go_unitPrefab: {fileID: 1964277523151168, guid: 0d3c04f2c67ce6546803bff70678bd72,
     type: 2}
 --- !u!114 &1034549484
 MonoBehaviour:
@@ -12135,7 +12135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877fb9bb13235f240a82753d0dc7ff18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_unitPrefab: {fileID: 1995133782060860, guid: d24941a2ca8294540b83b8761accabc9,
+  go_unitPrefab: {fileID: 1652120106347342, guid: d24941a2ca8294540b83b8761accabc9,
     type: 2}
 --- !u!114 &1271607650
 MonoBehaviour:
@@ -12537,7 +12537,7 @@ GameObject:
   - component: {fileID: 1286139109}
   m_Layer: 8
   m_Name: HitCubeParent
-  m_TagString: Untagged
+  m_TagString: Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
