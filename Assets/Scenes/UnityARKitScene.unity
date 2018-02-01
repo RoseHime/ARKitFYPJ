@@ -737,6 +737,16 @@ Prefab:
       propertyPath: m_Name
       value: GoblinMage (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114976250819602112, guid: 436958d56f6a5bd4996038836069da93,
+        type: 2}
+      propertyPath: f_HealthPoint
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114976250819602112, guid: 436958d56f6a5bd4996038836069da93,
+        type: 2}
+      propertyPath: f_BaseAttackRange
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 436958d56f6a5bd4996038836069da93, type: 2}
   m_IsPrefabParent: 0
@@ -4755,7 +4765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &555720248
 Transform:
   m_ObjectHideFlags: 0
@@ -7436,6 +7446,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114976250819602112, guid: 436958d56f6a5bd4996038836069da93,
+        type: 2}
+      propertyPath: f_BaseAttackRange
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 436958d56f6a5bd4996038836069da93, type: 2}
   m_IsPrefabParent: 0
@@ -9235,6 +9250,11 @@ Prefab:
     - target: {fileID: 1124764314723238, guid: 436958d56f6a5bd4996038836069da93, type: 2}
       propertyPath: m_Name
       value: GoblinMage (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114976250819602112, guid: 436958d56f6a5bd4996038836069da93,
+        type: 2}
+      propertyPath: f_BaseAttackRange
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 436958d56f6a5bd4996038836069da93, type: 2}
@@ -18733,7 +18753,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4646612159627824, guid: 5416cad0f5843c1438b55a0a85283eda, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4646612159627824, guid: 5416cad0f5843c1438b55a0a85283eda, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y

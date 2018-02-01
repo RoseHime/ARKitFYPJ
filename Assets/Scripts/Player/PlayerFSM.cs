@@ -263,12 +263,13 @@ public class PlayerFSM : MonoBehaviour {
         if (go_TargetedEnemy != null)
         {
             getAgent().avoidancePriority = 0;
+
+            //Find the difference between enemy and own unit
+            Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
+
             //If enemy unit not within attack range
             if (go_TargetedEnemy.tag == "Enemy")
             {
-                //Find the difference between enemy and own unit
-                Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
-
                 if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude >= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackRange())
                 {
                     getAgent().stoppingDistance = 0.02f;
@@ -364,6 +365,15 @@ public class PlayerFSM : MonoBehaviour {
                                 go_TargetedEnemy.gameObject.GetComponent<BuildingInfo>().f_health -= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackDmg();
                             else
                                 go_TargetedEnemy.gameObject.GetComponent<TownHallBehaviour>().f_health -= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackDmg();
+                        }
+                    }
+                    //if it a range unit
+                    else if (gameObject.GetComponent<PlayerUnitInfo>().GetUnitType() == PlayerUnitInfo.PlayerUnitType.PUN_RANGE)
+                    {
+                        if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                        {
+                            f_fireCooldown = 0;
+                            FireBullet(difference.normalized);
                         }
                     }
 
@@ -563,7 +573,7 @@ public class PlayerFSM : MonoBehaviour {
     {
         GameObject tempBullet = Instantiate(bullet_Prefab);
         tempBullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletPool").transform);
-        tempBullet.transform.position = gameObject.transform.position;
+        tempBullet.transform.position = gameObject.transform.position + new Vector3(0, GetComponent<Collider>().bounds.size.y / 2, 0);
         tempBullet.transform.localScale = bullet_Prefab.transform.lossyScale;
         tempBullet.name = "TempBullet";
 

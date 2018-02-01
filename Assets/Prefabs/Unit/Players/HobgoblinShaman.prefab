@@ -1079,7 +1079,7 @@ MonoBehaviour:
   f_HealthPoint: 65
   f_DetectRange: 0.35
   f_UnitAttackRange: 0.2
-  f_BaseAttackRange: 0.2
+  f_BaseAttackRange: 0.3
   f_AttackDamage: 10
   i_woodCost: 50
   i_stoneCost: 30
