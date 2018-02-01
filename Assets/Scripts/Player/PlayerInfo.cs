@@ -52,9 +52,9 @@ public class PlayerInfo : MonoBehaviour {
 
     public bool LevelUp()
     {
-        if (i_stone >= f_upgradeCost)
+        if (i_magicStone >= f_upgradeCost)
         {
-            i_stone -= f_upgradeCost;
+            i_magicStone -= f_upgradeCost;
             i_playerLevel++;
             return true;
         }
