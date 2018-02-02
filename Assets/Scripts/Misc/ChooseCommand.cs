@@ -19,6 +19,7 @@ public class ChooseCommand : MonoBehaviour {
     public GameObject go_BarracksPanel;
 
     private GameObject go_DebugPurpose;
+    public GameObject go_ConfirmUpgrade;
 
     //Testing use
     //private string text;
@@ -137,19 +138,15 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.name == "UpgradeActionButton")
         {
-            if (GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().LevelUp())
-            {
-                go_CommandPanel.SetActive(false);
-                bc.SetBackToSelect();
-            }
+            //go_CommandPanel.SetActive(false);
+            go_ConfirmUpgrade.GetComponent<UpgradeBuilding>().building = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
+            go_ConfirmUpgrade.SetActive(true);           
         }
         else if (go_CommandButton.name == "UpgradeBarracksButton")
         {
-            if (go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit.GetComponent<BarracksBehaviour>().LevelUp())
-            {
-                go_CommandPanel.SetActive(false);
-                bc.SetBackToSelect();
-            }
+            //go_CommandPanel.SetActive(false);
+            go_ConfirmUpgrade.GetComponent<UpgradeBuilding>().building = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
+            go_ConfirmUpgrade.SetActive(true);           
         }
         else if (go_CommandButton.name == "WorkerActionButton")
         {

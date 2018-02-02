@@ -29,6 +29,8 @@ public class CreateActionButton : MonoBehaviour
     public Sprite moveImage;
     public Sprite selectMoreImage;
     public Sprite createUnitImage;
+
+    public GameObject go_ConfirmButton;
     // Use this for initialization
     void Start()
     {
@@ -122,6 +124,7 @@ public class CreateActionButton : MonoBehaviour
                         goButton.transform.SetParent(go_actionPanel.transform, false);
                         goButton.transform.localScale = new Vector3(1, 1, 1);
                         goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                        goButton.GetComponent<ChooseCommand>().go_ConfirmUpgrade = go_ConfirmButton;
                         goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
                         goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
                         goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * (i), 0);
@@ -163,6 +166,7 @@ public class CreateActionButton : MonoBehaviour
                 goButton.transform.SetParent(go_actionPanel.transform, false);
                 goButton.transform.localScale = new Vector3(1, 1, 1);
                 goButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                goButton.GetComponent<ChooseCommand>().go_ConfirmUpgrade = go_ConfirmButton;
                 goButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
                 goButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
                 goButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y, 0);
@@ -178,6 +182,7 @@ public class CreateActionButton : MonoBehaviour
                         secondButton.transform.localScale = new Vector3(1, 1, 1);
                         secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
                         secondButton.GetComponent<ChooseCommand>().go_BarracksPanel = go_barracksPanel;
+                        secondButton.GetComponent<ChooseCommand>().go_ConfirmUpgrade = go_ConfirmButton;
                         go_barracksPanel.GetComponent<BarracksPanelInfo>().go_SelectedBarracks = go_selectedUnit;
                         secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
                         secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
@@ -190,8 +195,9 @@ public class CreateActionButton : MonoBehaviour
                         {
                             secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * 2, 0);
                             secondButton.name = "UpgradeBarracksButton";
-                            secondButton.GetComponentInChildren<Text>().text = "" + go_selectedUnit.GetComponent<BarracksBehaviour>().i_levelUpCost;
-                            secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
+                            secondButton.GetComponentInChildren<Text>().text = "UPGRADEBARRACKS";
+                            //secondButton.GetComponentInChildren<Text>().text = "" + go_selectedUnit.GetComponent<BarracksBehaviour>().i_levelUpCost;
+                            //secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
                             secondButton.GetComponent<Image>().sprite = uprankImage;
                         }
                     }
@@ -210,6 +216,7 @@ public class CreateActionButton : MonoBehaviour
                                 secondButton.transform.SetParent(go_actionPanel.transform, false);
                                 secondButton.transform.localScale = new Vector3(1, 1, 1);
                                 secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                                secondButton.GetComponent<ChooseCommand>().go_ConfirmUpgrade = go_ConfirmButton;
                                 secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
                                 secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
@@ -225,12 +232,13 @@ public class CreateActionButton : MonoBehaviour
                                 secondButton.transform.SetParent(go_actionPanel.transform, false);
                                 secondButton.transform.localScale = new Vector3(1, 1, 1);
                                 secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
+                                secondButton.GetComponent<ChooseCommand>().go_ConfirmUpgrade = go_ConfirmButton;
                                 secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
                                 secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                                 secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length * 2, 0);
-                                secondButton.GetComponentInChildren<Text>().text = "" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost;
-                                secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
+                                //secondButton.GetComponentInChildren<Text>().text = "" + GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().f_upgradeCost;
+                                //secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
                                 secondButton.GetComponent<Image>().sprite = uprankImage;
                             }
                         }

@@ -17,6 +17,7 @@ public class PlayerInfo : MonoBehaviour {
     public int i_MaxUnitCapacity = 10;
 
     public int f_upgradeCost = 10;
+    public int i_maxLevel = 3;
 
     public float f_LODHighQuality = 1;
     public float f_LODMedQuality = 2;
@@ -56,6 +57,7 @@ public class PlayerInfo : MonoBehaviour {
         {
             i_magicStone -= f_upgradeCost;
             i_playerLevel++;
+            f_upgradeCost *= 2;
             return true;
         }
         return false;
