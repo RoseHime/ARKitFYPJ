@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour {
 
@@ -21,6 +22,9 @@ public class EnemyBehaviour : MonoBehaviour {
     }
 
     public float f_health = 50;
+    private float f_maxHealth;
+    private float f_previousHealth;
+
     public float f_range = 0.5f;
     public float f_atkRange = 0.1f;
     public float f_speed = 0.01f;
@@ -47,6 +51,12 @@ public class EnemyBehaviour : MonoBehaviour {
 
     Animator _animator;
 
+    private Image healthbar;
+
+    public float f_healthBarDisplayTime = 5;
+    float f_healthBarDisplayTimer = 0;
+    bool isAttacked = false;
+
     // Use this for initialization
     void Start() {
         T_playerList = GameObject.FindGameObjectWithTag("PlayerList").transform;     
@@ -55,6 +65,10 @@ public class EnemyBehaviour : MonoBehaviour {
         _navMeshAgent.speed = f_speed;
 
         _animator = gameObject.GetComponent<Animator>();
+        f_previousHealth = f_health;
+        f_maxHealth = f_health;
+
+        healthbar = transform.Find("HP").GetChild(1).GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -94,6 +108,27 @@ public class EnemyBehaviour : MonoBehaviour {
 
     void DeathCheck()
     {
+        if (f_health < f_previousHealth)
+        {
+            f_previousHealth = f_health;
+            isAttacked = true;
+            f_healthBarDisplayTimer = 0;
+        }
+        if (isAttacked)
+        {
+            if ((f_healthBarDisplayTimer += Time.deltaTime) >= f_healthBarDisplayTime)
+            {
+                isAttacked = false;
+                healthbar.transform.parent.gameObject.SetActive(false);
+            }
+            else
+            {
+                healthbar.transform.parent.gameObject.SetActive(true);
+            }
+        }
+
+        healthbar.fillAmount = f_health / f_maxHealth;
+
         if (f_health <= 0)
         {
             _animator.SetTrigger("b_IsDead");
