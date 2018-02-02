@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerFSM : MonoBehaviour {
 
@@ -18,6 +19,9 @@ public class PlayerFSM : MonoBehaviour {
         return false;       // else it false;
     }
 
+    public bool b_IsAttacked;                      // To check if unit is attacked
+    public float f_timer;
+
     /* Worker Only */
     public bool b_buildBuilding;                   // For worker, if to build structure     
     public GameObject go_BuildingPrefab;           // For worker, to get the structure prefab
@@ -29,6 +33,10 @@ public class PlayerFSM : MonoBehaviour {
 
     private Animator _animator;                                     //Unit Animator Component
     public Animator getAnimator() { return _animator; }
+
+    [Header("Unity Stuff")]
+    private Image _healthbar;
+    private float f_MaxHealth;
 
     /* Find Object */
     private GameObject go_CommandMenu;                          //Unit Menu
@@ -71,6 +79,8 @@ public class PlayerFSM : MonoBehaviour {
         //Get Unit Component
         _navmeshAgent = gameObject.GetComponent<NavMeshAgent>();
         _animator = gameObject.GetComponent<Animator>();
+        _healthbar = this.transform.Find("HP").GetChild(1).GetComponent<Image>();
+        f_MaxHealth = this.transform.GetComponent<PlayerUnitInfo>().GetUnitHealth();
 
         //Find GameObject
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
@@ -111,7 +121,23 @@ public class PlayerFSM : MonoBehaviour {
             getAgent().avoidancePriority = 50;
         }
 
+        //Debug.Log(f_timer);
+
+        //If unit is hitted, show hp bar;
+        if (b_IsAttacked)
+        {
+            this.transform.Find("HP").gameObject.SetActive(true);
+            //set active of HP bar to false after 10 sec
+            if ((f_timer += Time.deltaTime) > 10)
+            {
+                f_timer = 0;
+                b_IsAttacked = false;
+                this.transform.Find("HP").gameObject.SetActive(false);
+            }
+        }
+
         //If unit's HP reach 0 or less.
+        _healthbar.fillAmount = gameObject.GetComponent<PlayerUnitInfo>().GetUnitHealth() / f_MaxHealth;
         if (gameObject.GetComponent<PlayerUnitInfo>().GetUnitHealth() <= 0)
         {
             getCommandMenu().SetActive(false);
