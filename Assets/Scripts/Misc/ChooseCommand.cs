@@ -122,7 +122,7 @@ public class ChooseCommand : MonoBehaviour {
         {
             go_BarracksPanel.GetComponent<BarracksPanelInfo>().go_SelectedBarracks = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
             go_BarracksPanel.SetActive(true);
-            go_CommandPanel.SetActive(false);
+            //go_CommandPanel.SetActive(false);
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "CLOSE") // No longer needed
         {
