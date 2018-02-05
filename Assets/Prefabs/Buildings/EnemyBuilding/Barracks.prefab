@@ -84,7 +84,7 @@ Transform:
   m_GameObject: {fileID: 1683679027385866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.118, y: 0.17289706, z: -1.251}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4550204796040634}
   - {fileID: 4101509474554336}
@@ -113,6 +113,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -128,6 +129,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -203,7 +205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   go_enemyPrefab: {fileID: 0}
+  go_secondPrefab: {fileID: 0}
+  go_thirdPrefab: {fileID: 0}
+  f_levelTimer: 300
   f_spawnRate: 2
+  i_level: 1
 --- !u!208 &208429821638855154
 NavMeshObstacle:
   m_ObjectHideFlags: 1

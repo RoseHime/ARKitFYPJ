@@ -218,9 +218,9 @@ GameObject:
   - component: {fileID: 114890736303219902}
   - component: {fileID: 136741459546193814}
   - component: {fileID: 195404800644528044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OgreTank
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1144,6 +1144,7 @@ MonoBehaviour:
   ET: 1
   destination: {x: 0, y: 0, z: 0}
   isDefending: 0
+  f_healthBarDisplayTime: 5
 --- !u!114 &114930081421475878
 MonoBehaviour:
   m_ObjectHideFlags: 1

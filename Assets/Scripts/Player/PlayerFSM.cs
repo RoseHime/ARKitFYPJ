@@ -329,6 +329,7 @@ public class PlayerFSM : MonoBehaviour {
                             f_fireCooldown = 0;
                             //Enemy unit get damaged
                             go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().f_health -= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackDmg();
+                            //go_TargetedEnemy.gameObject.GetComponent<EnemyBehaviour>().b_IsAttacked = true;
                         }
                     }
                     //if it a range unit

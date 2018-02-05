@@ -53,9 +53,9 @@ GameObject:
   - component: {fileID: 114643354441046984}
   - component: {fileID: 136539904434005976}
   - component: {fileID: 195371119094324222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OgreMage
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1260,6 +1260,7 @@ MonoBehaviour:
   ET: 0
   destination: {x: 0, y: 0, z: 0}
   isDefending: 0
+  f_healthBarDisplayTime: 5
 --- !u!114 &114910754827329000
 MonoBehaviour:
   m_ObjectHideFlags: 1

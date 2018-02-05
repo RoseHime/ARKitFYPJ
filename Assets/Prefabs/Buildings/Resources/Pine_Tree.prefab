@@ -9,49 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1342006424586306}
+  m_RootGameObject: {fileID: 1942245204949968}
   m_IsPrefabParent: 1
---- !u!1 &1342006424586306
+--- !u!1 &1942245204949968
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4444231148476382}
-  - component: {fileID: 33670460901296210}
-  - component: {fileID: 23816353523942146}
-  - component: {fileID: 95697074117612272}
-  - component: {fileID: 54199777604835894}
-  - component: {fileID: 136835829473280338}
-  - component: {fileID: 114673013272401044}
-  - component: {fileID: 208381804573147010}
+  - component: {fileID: 4859207474768188}
+  - component: {fileID: 33248964613418844}
+  - component: {fileID: 23366149741490244}
+  - component: {fileID: 54678124657767690}
+  - component: {fileID: 136191373089002808}
+  - component: {fileID: 114904157867365980}
+  - component: {fileID: 208694925723523642}
   m_Layer: 8
   m_Name: Pine_Tree
   m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!4 &4444231148476382
+--- !u!4 &4859207474768188
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
+  m_GameObject: {fileID: 1942245204949968}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.32284355, y: 0.17081553, z: 1.1843032}
+  m_LocalPosition: {x: 0.6446581, y: 0.091222435, z: 0.2920332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23816353523942146
+--- !u!23 &23366149741490244
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
+  m_GameObject: {fileID: 1942245204949968}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -80,19 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33670460901296210
+--- !u!33 &33248964613418844
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
-  m_Mesh: {fileID: 4300000, guid: 8311cf317f828e74e9368a9676619a45, type: 3}
---- !u!54 &54199777604835894
+  m_GameObject: {fileID: 1942245204949968}
+  m_Mesh: {fileID: 4300004, guid: 83c5ae02e4356ea43ae417254e6b4903, type: 3}
+--- !u!54 &54678124657767690
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
+  m_GameObject: {fileID: 1942245204949968}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -102,29 +101,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
---- !u!95 &95697074117612272
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8311cf317f828e74e9368a9676619a45, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114673013272401044
+--- !u!114 &114904157867365980
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
+  m_GameObject: {fileID: 1942245204949968}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad812a2716dffb640a73b771d8d3f3e0, type: 3}
@@ -139,25 +121,25 @@ MonoBehaviour:
   DestroyedMaterials: []
   i_woodDistributed: 3
   i_totalAmountOfWood: 2000
---- !u!136 &136835829473280338
+--- !u!136 &136191373089002808
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
+  m_GameObject: {fileID: 1942245204949968}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.061013736
+  m_Radius: 0.03
   m_Height: 0.13573685
   m_Direction: 1
   m_Center: {x: 0, y: 0.067919225, z: 0}
---- !u!208 &208381804573147010
+--- !u!208 &208694925723523642
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342006424586306}
+  m_GameObject: {fileID: 1942245204949968}
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
