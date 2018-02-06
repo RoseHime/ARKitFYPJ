@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1559923752647688}
+  m_RootGameObject: {fileID: 1525007566410000}
   m_IsPrefabParent: 1
---- !u!1 &1559923752647688
+--- !u!1 &1525007566410000
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4280433215589850}
-  - component: {fileID: 33363762979806348}
-  - component: {fileID: 23447763451225848}
+  - component: {fileID: 4936416627187330}
+  - component: {fileID: 33237850760311158}
+  - component: {fileID: 23229703576196462}
   m_Layer: 0
   m_Name: Fence2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4280433215589850
+--- !u!4 &4936416627187330
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559923752647688}
+  m_GameObject: {fileID: 1525007566410000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.44527456, y: 0.0946324, z: 0.41406572}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,12 +41,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23447763451225848
+--- !u!23 &23229703576196462
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559923752647688}
+  m_GameObject: {fileID: 1525007566410000}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -75,10 +75,10 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33363762979806348
+--- !u!33 &33237850760311158
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559923752647688}
-  m_Mesh: {fileID: 4300060, guid: 1a6a68d51ddfacd48a2ed7114ce1ac6f, type: 3}
+  m_GameObject: {fileID: 1525007566410000}
+  m_Mesh: {fileID: 4300060, guid: b945f81e2ef0f4d409895a6c13e37479, type: 3}
