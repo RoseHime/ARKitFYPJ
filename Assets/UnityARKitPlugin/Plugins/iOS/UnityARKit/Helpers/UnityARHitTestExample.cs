@@ -6,13 +6,14 @@ namespace UnityEngine.XR.iOS
 	public class UnityARHitTestExample : MonoBehaviour
 	{
 		public Transform m_HitTransform;
+
         private UnityARHitTestExample hitScript;
 
         bool HitTestWithResultType (ARPoint point, ARHitTestResultType resultTypes)
         {
             List<ARHitTestResult> hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface ().HitTest (point, resultTypes);
             if (hitResults.Count > 0) {
-                GameObject.FindGameObjectWithTag("Canvas").SetActive(true);
+                //GameObject.FindGameObjectWithTag("Canvas").SetActive(true);
                 foreach(Transform child in transform)
                 {
                     child.gameObject.SetActive(true);
