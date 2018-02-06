@@ -31,6 +31,7 @@ public class CreateActionButton : MonoBehaviour
     public Sprite createUnitImage;
 
     public GameObject go_ConfirmButton;
+    public GameObject go_ConfirmWorker;
     // Use this for initialization
     void Start()
     {
@@ -217,12 +218,13 @@ public class CreateActionButton : MonoBehaviour
                                 secondButton.transform.localScale = new Vector3(1, 1, 1);
                                 secondButton.GetComponent<ChooseCommand>().go_BuildingPanel = go_buildPanel;
                                 secondButton.GetComponent<ChooseCommand>().go_ConfirmUpgrade = go_ConfirmButton;
+                                secondButton.GetComponent<ChooseCommand>().go_ConfirmWorker = go_ConfirmWorker;
                                 secondButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
                                 secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                                 secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
-                                secondButton.GetComponentInChildren<Text>().text = "CREATEWORKER (5 stone & 5 wood)";
-                                secondButton.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 255);
+                                secondButton.GetComponentInChildren<Text>().text = "Create Worker";
+                                secondButton.GetComponentInChildren<Text>().color = new Color(1, 1, 1, 255);
                                 secondButton.GetComponent<Image>().sprite = buildImage;
                             }
                             else
@@ -253,7 +255,7 @@ public class CreateActionButton : MonoBehaviour
         foreach (Transform button in gameObject.transform)
         {
             if (button.gameObject.name == "ActionButton" || button.gameObject.name == "UpgradeActionButton"
-                || button.gameObject.name == "UpgradeBarracksButton")
+                || button.gameObject.name == "UpgradeBarracksButton" || button.gameObject.name == "WorkerActionButton")
             {
                 Destroy(button.gameObject);
             }

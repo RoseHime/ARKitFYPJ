@@ -84,7 +84,7 @@ public class PlayerFSM : MonoBehaviour {
 
         //Find GameObject
         go_CommandMenu = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).gameObject;
-        go_CommandMenu.SetActive(false);
+        //go_CommandMenu.SetActive(false);
 
         T_EnemyUnit = GameObject.FindGameObjectWithTag("EnemyList").transform;
         T_EnemyBase = GameObject.FindGameObjectWithTag("EnemyBuildingList").transform;
@@ -140,7 +140,8 @@ public class PlayerFSM : MonoBehaviour {
         _healthbar.fillAmount = gameObject.GetComponent<PlayerUnitInfo>().GetUnitHealth() / f_MaxHealth;
         if (gameObject.GetComponent<PlayerUnitInfo>().GetUnitHealth() <= 0)
         {
-            getCommandMenu().SetActive(false);
+            if (b_Selected)
+                getCommandMenu().SetActive(false);
             Destroy(gameObject);
         }
 

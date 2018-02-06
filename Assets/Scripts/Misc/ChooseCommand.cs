@@ -20,6 +20,7 @@ public class ChooseCommand : MonoBehaviour {
 
     private GameObject go_DebugPurpose;
     public GameObject go_ConfirmUpgrade;
+    public GameObject go_ConfirmWorker;
 
     //Testing use
     //private string text;
@@ -150,24 +151,8 @@ public class ChooseCommand : MonoBehaviour {
         }
         else if (go_CommandButton.name == "WorkerActionButton")
         {
-            GameObject selectedBase = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
-
-            PlayerInfo playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
-            TownHallBehaviour townHall = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit.GetComponent<TownHallBehaviour>();
-            if (playerInfo.i_stone >= townHall.workerPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost && playerInfo.i_wood >= townHall.workerPrefab.GetComponent<PlayerUnitInfo>().i_woodCost
-                && playerInfo.i_magicStone >= townHall.workerPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost)
-            {
-                CreateEntities createEntitiy = GameObject.FindGameObjectWithTag("GameFunctions").GetComponent<CreateEntities>();
-                createEntitiy.go_playerPrefab = townHall.workerPrefab;
-                GameObject unit = createEntitiy.BuildPlayerUnit(townHall.transform.position);
-                unit.GetComponent<NavMeshAgent>().Warp(unit.transform.position);
-                unit.GetComponent<NavMeshAgent>().SetDestination(townHall.transform.GetChild(0).position);
-                unit.transform.LookAt(townHall.transform.GetChild(0).position);
-
-                //go_CommandPanel.SetActive(false);
-                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TouchInput>().b_Cancelled = true;
-                bc.SetBackToSelect();
-            }
+            go_ConfirmWorker.GetComponent<CreateWorker>().building = go_CommandPanel.GetComponent<CreateActionButton>().go_selectedUnit;
+            go_ConfirmWorker.SetActive(true);
         }
     }
 
