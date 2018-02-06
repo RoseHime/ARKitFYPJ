@@ -12,6 +12,7 @@ namespace UnityEngine.XR.iOS
         {
             List<ARHitTestResult> hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface ().HitTest (point, resultTypes);
             if (hitResults.Count > 0) {
+                GameObject.FindGameObjectWithTag("Canvas").SetActive(true);
                 foreach(Transform child in transform)
                 {
                     child.gameObject.SetActive(true);
