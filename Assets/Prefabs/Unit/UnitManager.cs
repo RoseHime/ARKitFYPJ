@@ -22,8 +22,8 @@ public class UnitManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log("Count" + listOfUnit.Count);
-        Debug.Log("Capacity" + listOfUnit.Capacity);
+        //Debug.Log("Count" + listOfUnit.Count);
+        //Debug.Log("Capacity" + listOfUnit.Capacity);
         
         if(go_Pivot.activeSelf)
             UpdateState();
