@@ -29,6 +29,7 @@ public class CreateActionButton : MonoBehaviour
     public Sprite moveImage;
     public Sprite selectMoreImage;
     public Sprite createUnitImage;
+    public Sprite createWorkerImage;
 
     public GameObject go_ConfirmButton;
     public GameObject go_ConfirmWorker;
@@ -223,9 +224,9 @@ public class CreateActionButton : MonoBehaviour
                                 secondButton.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
 
                                 secondButton.transform.localPosition = new Vector3(go_selectButton.transform.localPosition.x, go_selectButton.transform.localPosition.y + go_actionButton_Length, 0);
-                                secondButton.GetComponentInChildren<Text>().text = "Create Worker";
+                                secondButton.GetComponentInChildren<Text>().text = " ";
                                 secondButton.GetComponentInChildren<Text>().color = new Color(1, 1, 1, 255);
-                                secondButton.GetComponent<Image>().sprite = buildImage;
+                                secondButton.GetComponent<Image>().sprite = createWorkerImage;
                             }
                             else
                             {
