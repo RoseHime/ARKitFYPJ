@@ -531,7 +531,7 @@ GameObject:
   m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1712599260006646
 GameObject:
@@ -1278,7 +1278,7 @@ MonoBehaviour:
   bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
     type: 2}
   f_bulletSpeed: 0.5
-  f_fireRate: 3
+  f_fireRate: 2
 --- !u!114 &114652765283416072
 MonoBehaviour:
   m_ObjectHideFlags: 1

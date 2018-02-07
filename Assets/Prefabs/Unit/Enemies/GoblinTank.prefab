@@ -517,7 +517,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1985551372417048
 GameObject:
@@ -1038,6 +1038,7 @@ MonoBehaviour:
   ET: 1
   destination: {x: 0, y: 0, z: 0}
   isDefending: 0
+  f_healthBarDisplayTime: 5
 --- !u!114 &114263382857540654
 MonoBehaviour:
   m_ObjectHideFlags: 1
