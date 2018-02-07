@@ -17,6 +17,10 @@ namespace UnityEngine.XR.iOS
                 foreach(Transform child in transform)
                 {
                     child.gameObject.SetActive(true);
+                    if (child.GetSiblingIndex() == 2)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                 }
                 GameObject test = GameObject.FindGameObjectWithTag("PlaneDetection").gameObject;
                 test.GetComponent<UnityARCameraManager>().enabled = false; 

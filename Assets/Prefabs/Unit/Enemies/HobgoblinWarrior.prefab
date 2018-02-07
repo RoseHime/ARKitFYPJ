@@ -457,7 +457,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1871268447835414
 GameObject:
@@ -1104,7 +1104,7 @@ MonoBehaviour:
   f_health: 50
   f_range: 0.5
   f_atkRange: 0.1
-  f_speed: 0.05
+  f_speed: 0.1
   f_bulletSpeed: 0.1
   f_damage: 6
   f_fireRate: 2

@@ -44,7 +44,7 @@ GameObject:
   m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1024236218905544
 GameObject:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   go_BuildingPrefab: {fileID: 0}
   bullet_Prefab: {fileID: 0}
   f_bulletSpeed: 0.1
-  f_fireRate: 5
+  f_fireRate: 3
 --- !u!114 &114281149792017410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1351,7 +1351,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.01
-  m_Speed: 0.05
+  m_Speed: 0.1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0

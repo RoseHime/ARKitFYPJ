@@ -133,7 +133,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1185448303272922
 GameObject:
@@ -1057,10 +1057,10 @@ MonoBehaviour:
   f_health: 100
   f_range: 0.5
   f_atkRange: 0.1
-  f_speed: 0.05
+  f_speed: 0.1
   f_bulletSpeed: 0.1
   f_damage: 10
-  f_fireRate: 2
+  f_fireRate: 3
   f_defendRange: 1
   i_magicStoneDrop: 3
   bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
