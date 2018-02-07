@@ -22,7 +22,7 @@ namespace UnityEngine.XR.iOS
                         child.gameObject.SetActive(false);
                     }
                 }
-                GameObject test = GameObject.FindGameObjectWithTag("PlaneDetection").gameObject;
+                GameObject test = GameObject.FindGameObjectWithTag("PlaneDetection").transform.GetChild(0).gameObject;
                 test.GetComponent<UnityARCameraManager>().enabled = false; 
 
                 foreach (var hitResult in hitResults) {
