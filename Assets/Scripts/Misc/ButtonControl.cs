@@ -24,6 +24,8 @@ public class ButtonControl : MonoBehaviour {
 
     public GameObject go_buildPanel;
     public GameObject go_barracksPanel;
+    public GameObject go_Confirmation;
+    public GameObject go_CreateWorker;
 
     public bool b_ToBuild;
     public bool b_BuildTower;
@@ -167,6 +169,8 @@ public class ButtonControl : MonoBehaviour {
                 //btn.interactable = false;
                 go_barracksPanel.SetActive(false);
                 go_buildPanel.SetActive(false);
+                go_CreateWorker.SetActive(false);
+                go_Confirmation.SetActive(false);
                 //go_barracksPanel.GetComponentInParent<GameObject>().SetActive(false);
             }
         }
