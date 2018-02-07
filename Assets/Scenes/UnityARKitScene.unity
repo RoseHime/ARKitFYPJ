@@ -11022,7 +11022,7 @@ GameObject:
   - component: {fileID: 936323731}
   - component: {fileID: 936323733}
   - component: {fileID: 936323732}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Waiting Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23660,7 +23660,7 @@ GameObject:
   - component: {fileID: 1859506466}
   - component: {fileID: 1859506468}
   - component: {fileID: 1859506467}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24916,13 +24916,13 @@ GameObject:
   - component: {fileID: 1931962569}
   - component: {fileID: 1931962568}
   - component: {fileID: 1931962567}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Pre-game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1931962566
 RectTransform:
   m_ObjectHideFlags: 0
