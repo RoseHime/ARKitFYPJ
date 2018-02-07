@@ -13,6 +13,7 @@ public class Audio : MonoBehaviour {
 
     Scene currentScene;
     string sceneName;
+    bool nextScene;
 
     // Use this for initialization
     void Start () {
@@ -20,9 +21,6 @@ public class Audio : MonoBehaviour {
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         
-        if (sceneName == "UnityARKitScene")
-            pi = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
-
         b_NextSong = false;
         audio = GetComponent<AudioSource>();
         audio.clip = clip1;
@@ -36,6 +34,12 @@ public class Audio : MonoBehaviour {
     void Update() {
 
         if (sceneName == "UnityARKitScene")
+        {
+            pi = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
+            nextScene = true;
+        }
+
+        if (nextScene)
         {
             if (!b_NextSong && pi.i_playerLevel == 2)
             {
