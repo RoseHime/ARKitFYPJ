@@ -17,12 +17,14 @@ public class pauseScript : MonoBehaviour {
         if (!gameisPaused)
         {
             go_pauseMenu.SetActive(true);
+            Time.timeScale = 0;
             gameisPaused = true;
 
         }
         else if (gameisPaused)
         {
             go_pauseMenu.SetActive(false);
+            Time.timeScale = 1;
             gameisPaused = false;
         }
 

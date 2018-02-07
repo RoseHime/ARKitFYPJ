@@ -146,7 +146,10 @@ namespace GoogleARCore.HelloAR
 
                     // Make Andy model a child of the anchor.
                     //andyObject.transform.parent = anchor.transform;
-                    andyObject.transform.GetChild(0).gameObject.SetActive(true);
+                    foreach (Transform child in andyObject.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
 
                     isSpawned = true;
                 }

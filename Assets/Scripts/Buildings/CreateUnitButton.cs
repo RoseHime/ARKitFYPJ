@@ -18,18 +18,20 @@ public class CreateUnitButton : MonoBehaviour {
         bc = GameObject.FindGameObjectWithTag("ControlButton").GetComponent<ButtonControl>();
         um = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
 
-        transform.GetChild(0).GetComponent<Text>().text = go_unitPrefab.name + "\nCosts:";
+        transform.GetChild(0).GetComponent<Text>().text = go_unitPrefab.name;
+        //transform.GetChild(1).GetComponent<Text>().text = "Costs:";
+        transform.GetChild(1).GetComponent<Text>().text = "";
         if (go_unitPrefab.GetComponent<PlayerUnitInfo>().i_woodCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nWood:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_woodCost;
+            transform.GetChild(1).GetComponent<Text>().text += "Wood:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_woodCost + "\n";
         }
         if (go_unitPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nStone:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost;
+            transform.GetChild(1).GetComponent<Text>().text += "Stone:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_stoneCost + "\n";
         }
         if (go_unitPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nMagicStone:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost;
+            transform.GetChild(1).GetComponent<Text>().text += "Bone:" + go_unitPrefab.GetComponent<PlayerUnitInfo>().i_magicStoneCost + "\n";
         }
     }
 	
