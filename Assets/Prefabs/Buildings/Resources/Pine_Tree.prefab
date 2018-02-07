@@ -120,7 +120,7 @@ MonoBehaviour:
   DestroyedMesh: {fileID: 0}
   DestroyedMaterials: []
   i_woodDistributed: 3
-  i_totalAmountOfWood: 2000
+  i_totalAmountOfWood: 300
 --- !u!136 &136191373089002808
 CapsuleCollider:
   m_ObjectHideFlags: 1

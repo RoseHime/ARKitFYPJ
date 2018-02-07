@@ -132,7 +132,7 @@ MonoBehaviour:
   DestroyedMesh: {fileID: 0}
   DestroyedMaterials: []
   i_stoneDistributed: 5
-  i_totalAmountOfStones: 2000
+  i_totalAmountOfStones: 500
 --- !u!208 &208520524675301786
 NavMeshObstacle:
   m_ObjectHideFlags: 1
