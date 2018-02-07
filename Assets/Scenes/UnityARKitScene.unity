@@ -1102,7 +1102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &95153554
 Transform:
   m_ObjectHideFlags: 0
@@ -2852,7 +2852,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 261181304}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.67146504, y: 0.09338653, z: -0.37821555}
+  m_LocalPosition: {x: 0.673, y: 0.093, z: -0.238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1305544766}
@@ -9579,7 +9579,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 854132238}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5275554, y: 0.09201903, z: -0.39772552}
+  m_LocalPosition: {x: 0.5518, y: 0.0923, z: -0.3955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1305544766}
@@ -11404,7 +11404,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 977057145}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.54432666, y: 0.093352824, z: -0.53244835}
+  m_LocalPosition: {x: 0.503, y: 0.092, z: -0.498}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1305544766}
@@ -13957,7 +13957,7 @@ GameObject:
   - component: {fileID: 1121666031}
   m_Layer: 0
   m_Name: ARCameraManager
-  m_TagString: PlaneDetection
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15024,7 +15024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1240709734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17549,7 +17549,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1356443495}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.58361906, y: 0.09260257, z: -0.3554128}
+  m_LocalPosition: {x: 0.6016, y: 0.0925, z: -0.3565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1305544766}
@@ -23055,7 +23055,7 @@ GameObject:
   - component: {fileID: 1792863259}
   m_Layer: 0
   m_Name: ARKit
-  m_TagString: Untagged
+  m_TagString: PlaneDetection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23290,6 +23290,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4137872470655746, guid: 70ec1b71d4ffd3d44845f7120c20e957,
     type: 2}
   m_PrefabInternal: {fileID: 1769004803}
+--- !u!1 &1820722721 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1400459027840288, guid: 0dfa2b201d2464e44963a00452080901,
+    type: 2}
+  m_PrefabInternal: {fileID: 1788464054}
 --- !u!1001 &1821947578
 Prefab:
   m_ObjectHideFlags: 0
@@ -24758,7 +24763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1931962566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25672,9 +25677,9 @@ MonoBehaviour:
   moveImage: {fileID: 21300000, guid: 9c000db49b825c642a0b04832e5f487d, type: 3}
   selectMoreImage: {fileID: 21300000, guid: 0330889be42b6ef4f99b006e4f24d708, type: 3}
   createUnitImage: {fileID: 21300000, guid: f436ec5b70e82024bbbcac32e3aa7bb5, type: 3}
-  createWorkerImage: {fileID: 0}
+  createWorkerImage: {fileID: 21300000, guid: 454b93d3b8db15140a35698e5d2c5f2c, type: 3}
   go_ConfirmButton: {fileID: 2063126699}
-  go_ConfirmWorker: {fileID: 0}
+  go_ConfirmWorker: {fileID: 1820722721}
 --- !u!1 &1961736228
 GameObject:
   m_ObjectHideFlags: 0
@@ -27009,7 +27014,7 @@ MonoBehaviour:
   debugText: {fileID: 64588910}
   i_Crosshair: {fileID: 1493327470}
   go_buildPanel: {fileID: 874923027}
-  go_barracksPanel: {fileID: 0}
+  go_barracksPanel: {fileID: 562706163}
   b_ToBuild: 0
   b_BuildTower: 0
   b_IsWorker: 0
