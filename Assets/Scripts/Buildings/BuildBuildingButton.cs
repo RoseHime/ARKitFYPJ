@@ -18,20 +18,21 @@ public class BuildBuildingButton : MonoBehaviour {
         ti = go_MainCamera.GetComponent<TouchInput>();
         playerInfo = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
 
-        transform.GetChild(0).GetComponent<Text>().text = buildingPrefab.name + "\nCosts:";
+        transform.GetChild(0).GetComponent<Text>().text = buildingPrefab.name;
+        transform.GetChild(1).GetComponent<Text>().text = "";
         if (buildingPrefab.GetComponent<BuildingInfo>().i_woodCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nWood:" + buildingPrefab.GetComponent<BuildingInfo>().i_woodCost;
+            transform.GetChild(1).GetComponent<Text>().text += "Wood:" + buildingPrefab.GetComponent<BuildingInfo>().i_woodCost + "\n";
         }
 
         if (buildingPrefab.GetComponent<BuildingInfo>().i_stoneCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nStone:" + buildingPrefab.GetComponent<BuildingInfo>().i_stoneCost;
+            transform.GetChild(1).GetComponent<Text>().text += "Stone:" + buildingPrefab.GetComponent<BuildingInfo>().i_stoneCost + "\n";
         }
 
         if (buildingPrefab.GetComponent<BuildingInfo>().i_magicStoneCost > 0)
         {
-            transform.GetChild(0).GetComponent<Text>().text += "\nMagicStone:" + buildingPrefab.GetComponent<BuildingInfo>().i_magicStoneCost;
+            transform.GetChild(1).GetComponent<Text>().text += "Bone:" + buildingPrefab.GetComponent<BuildingInfo>().i_magicStoneCost + "\n";
         }
     }
 
