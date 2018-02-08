@@ -3024,9 +3024,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e022fc716803f74abee51afa6e99039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_stone: 10
-  i_wood: 10
-  i_magicStone: 0
+  i_stone: 9999
+  i_wood: 9999
+  i_magicStone: 9999
   stoneText: {fileID: 2018562070}
   woodText: {fileID: 2134747454}
   magicStoneText: {fileID: 601926366}
@@ -5891,7 +5891,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 93, y: 46}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 90, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &553480192
 MonoBehaviour:
@@ -9972,7 +9972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &874923028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13645,7 +13645,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 93, y: -47}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 90, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093214147
 MonoBehaviour:
@@ -15165,7 +15165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1240709734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23196,6 +23196,24 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 77d557eebb9eaf04ca703914fa903382,
         type: 3}
+    - target: {fileID: 1400459027840288, guid: 0dfa2b201d2464e44963a00452080901, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224510249215033010, guid: 0dfa2b201d2464e44963a00452080901,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 224606956725865986, guid: 0dfa2b201d2464e44963a00452080901,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638304108648882, guid: 0dfa2b201d2464e44963a00452080901, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dfa2b201d2464e44963a00452080901, type: 2}
   m_IsPrefabParent: 0
