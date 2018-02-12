@@ -112,12 +112,18 @@ public class ChooseCommand : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(bc.getCrossHair().position);
             if (Physics.Raycast(ray, out hit, float.MaxValue, bc.touchInputMask))
             {
-                bc.go_SelectUnit().GetComponent<PlayerFSM>().SetTargetPos(hit.point);
+                if (hit.transform == GameObject.FindGameObjectWithTag("Terrain").transform)
+                {
+                    bc.go_SelectUnit().GetComponent<PlayerFSM>().SetTargetPos(hit.point);
 
-                bc.go_SelectUnit().GetComponent<PlayerFSM>().b_buildBuilding = true;
+                    bc.go_SelectUnit().GetComponent<PlayerFSM>().b_buildBuilding = true;
+
+                    //go_CommandPanel.SetActive(false);
+                    //bc.SetBackToSelect();
+                    go_CommandPanel.GetComponent<CreateActionButton>().CreateButtons();
+                }
             }
-            go_CommandPanel.SetActive(false);
-            bc.SetBackToSelect();
+
         }
         else if (go_CommandButton.GetComponentInChildren<Text>().text == "CREATE")
         {

@@ -32,7 +32,7 @@ public class MasterAI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (enemyList.childCount > playerList.childCount)
+        if (enemyList.childCount > GetAttackerUnitCount())
         {
             PincerStrat();
         }
@@ -124,5 +124,18 @@ public class MasterAI : MonoBehaviour {
             squad.Update();
             
         }
+    }
+
+    int GetAttackerUnitCount()
+    {
+        int counter = 0;
+        foreach (Transform unit in playerList)
+        {
+            if (unit.GetComponent<PlayerUnitInfo>().PUN != PlayerUnitInfo.PlayerUnitType.PUN_WORKER)
+            {
+                counter++;
+            }
+        }
+        return counter;
     }
 }
