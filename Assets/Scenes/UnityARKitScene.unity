@@ -3113,9 +3113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e022fc716803f74abee51afa6e99039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_stone: 9999
-  i_wood: 9999
-  i_magicStone: 9999
+  i_stone: 10
+  i_wood: 10
+  i_magicStone: 0
   stoneText: {fileID: 2018562070}
   woodText: {fileID: 2134747454}
   magicStoneText: {fileID: 601926366}
@@ -3602,6 +3602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: SettingScene
+  nextScene: 0
 --- !u!114 &343261607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5501,6 +5502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: MainMenu
+  nextScene: 0
 --- !u!114 &478401843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14786,6 +14788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: MainMenu
+  nextScene: 0
 --- !u!1 &1153389248
 GameObject:
   m_ObjectHideFlags: 0
@@ -23917,6 +23920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: HelpScene
+  nextScene: 0
 --- !u!114 &1855491375
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 1161350137}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1630,6 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: UnityARKitScene
+  nextScene: 0
 --- !u!4 &1472879990 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 36c6701658a33574886f7e53c540b848, type: 3}
@@ -1873,6 +1874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: SettingScene
+  nextScene: 0
 --- !u!114 &1976985172
 MonoBehaviour:
   m_ObjectHideFlags: 0

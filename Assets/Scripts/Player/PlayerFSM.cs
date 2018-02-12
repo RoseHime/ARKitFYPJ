@@ -195,7 +195,7 @@ public class PlayerFSM : MonoBehaviour {
     public void MoveToTargetPos()
     {
         getAgent().isStopped = false;
-        getAgent().stoppingDistance = 0.05f;
+        getAgent().stoppingDistance = 0.1f;
         getAgent().avoidancePriority = 0;
         getAnimator().SetTrigger("b_IsMoving");
 
