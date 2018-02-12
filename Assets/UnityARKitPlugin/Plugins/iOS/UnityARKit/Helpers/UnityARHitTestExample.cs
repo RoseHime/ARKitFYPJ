@@ -48,7 +48,7 @@ namespace UnityEngine.XR.iOS
                     ARPoint point = new ARPoint
                     {
                         x = screenPosition.x,
-                        y = screenPosition.y
+                        y = screenPosition.y,
                     };
 
                     // prioritize reults types

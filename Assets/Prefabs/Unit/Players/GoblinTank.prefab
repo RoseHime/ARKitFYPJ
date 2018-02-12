@@ -1200,7 +1200,7 @@ MonoBehaviour:
   bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
     type: 2}
   f_bulletSpeed: 0.1
-  f_fireRate: 0.5
+  f_fireRate: 1
 --- !u!136 &136230083220081748
 CapsuleCollider:
   m_ObjectHideFlags: 1

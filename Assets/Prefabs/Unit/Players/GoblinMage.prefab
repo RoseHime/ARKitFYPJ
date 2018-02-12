@@ -1093,7 +1093,7 @@ MonoBehaviour:
   bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
     type: 2}
   f_bulletSpeed: 0.1
-  f_fireRate: 1
+  f_fireRate: 0.8
 --- !u!114 &114501603799857492
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -297,7 +297,8 @@ public class PlayerFSM : MonoBehaviour {
             //If enemy unit not within attack range
             if (go_TargetedEnemy.tag == "Enemy")
             {
-                if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude >= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackRange())
+                if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude >= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackRange()
+                     && f_fireCooldown <= 0)
                 {
                     getAgent().stoppingDistance = 0.02f;
                     getAgent().isStopped = false;

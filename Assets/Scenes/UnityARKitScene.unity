@@ -178,7 +178,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 100
-  field of view: 50
+  field of view: 100
   orthographic: 0
   orthographic size: 100
   m_Depth: -1
@@ -1612,7 +1612,7 @@ Prefab:
     - target: {fileID: 114289056244274124, guid: 436958d56f6a5bd4996038836069da93,
         type: 2}
       propertyPath: f_fireRate
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 436958d56f6a5bd4996038836069da93, type: 2}
@@ -3113,9 +3113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e022fc716803f74abee51afa6e99039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_stone: 10
-  i_wood: 10
-  i_magicStone: 0
+  i_stone: 9999
+  i_wood: 9999
+  i_magicStone: 9999
   stoneText: {fileID: 2018562070}
   woodText: {fileID: 2134747454}
   magicStoneText: {fileID: 601926366}
@@ -3965,7 +3965,7 @@ Prefab:
         type: 2}
       propertyPath: DestroyedMaterials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9b7269bb33158514cb92ca8bebd45a34, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 114966267372613294, guid: 9deb00e279c955748aefce7146844fac,
         type: 2}
       propertyPath: DestroyedMaterials.Array.data[1]
@@ -5980,7 +5980,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 93, y: 46}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 90, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &553480192
 MonoBehaviour:
@@ -13814,7 +13814,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 93, y: -47}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 90, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093214147
 MonoBehaviour:
@@ -23465,6 +23465,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224510249215033010, guid: 0dfa2b201d2464e44963a00452080901,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 224606956725865986, guid: 0dfa2b201d2464e44963a00452080901,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dfa2b201d2464e44963a00452080901, type: 2}
   m_IsPrefabParent: 0
@@ -25191,7 +25201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1931962566
 RectTransform:
   m_ObjectHideFlags: 0
