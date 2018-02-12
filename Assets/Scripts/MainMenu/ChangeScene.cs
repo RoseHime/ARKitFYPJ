@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour {
 
     public string destinationScene;
+    public bool nextScene;
 
 	public void onClick(bool additive)
     {
+        nextScene = true;
         if (!additive)
             SceneManager.LoadScene(destinationScene);
         else

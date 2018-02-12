@@ -13,11 +13,12 @@ public class Audio : MonoBehaviour {
 
     Scene currentScene;
     string sceneName;
-    bool nextScene;
+
+    GameObject go_Start;
 
     // Use this for initialization
     void Start () {
-
+        go_Start = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).gameObject;
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         
@@ -33,14 +34,9 @@ public class Audio : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (sceneName == "UnityARKitScene")
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("UnityARKitScene"))
         {
             pi = GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>();
-            nextScene = true;
-        }
-
-        if (nextScene)
-        {
             if (!b_NextSong && pi.i_playerLevel == 2)
             {
                 b_NextSong = true;
@@ -49,6 +45,17 @@ public class Audio : MonoBehaviour {
                 audio.Play();
             }
         }
+
+        //if(go_Start.GetComponent<ChangeScene>().nextScene)
+        //{
+        //    if (!b_NextSong && pi.i_playerLevel == 2)
+        //    {
+        //        b_NextSong = true;
+        //        audio.Stop();
+        //        audio.clip = clip2;
+        //        audio.Play();
+        //    }
+        //}
 	}
 
     public void StopMusic()
