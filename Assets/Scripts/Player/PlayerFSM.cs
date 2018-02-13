@@ -18,6 +18,7 @@ public class PlayerFSM : MonoBehaviour {
             return true;    // return true;
         return false;       // else it false;
     }
+    public bool isDead;                            // To check if unit is dead.
 
     public bool b_IsAttacked;                      // To check if unit is attacked
     public float f_timer;
@@ -110,11 +111,18 @@ public class PlayerFSM : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
 
         //Render a circle below the unit to show that it is selected
         RenderSelectionIcon();
-        SnapToGround();
+        if (isDead) // if unit is dead
+        {
+            DeathAnimation();
+        }
+        else
+        {
+            SnapToGround();
+        }
 
         if (gameObject.GetComponent<PlayerUnitInfo>().GetUnitState() == PlayerUnitInfo.PlayerUnitState.PUS_GUARD)
         {
@@ -142,7 +150,7 @@ public class PlayerFSM : MonoBehaviour {
         {
             if (b_Selected)
                 getCommandMenu().SetActive(false);
-            Destroy(gameObject);
+            isDead = true;
         }
 
     }
@@ -236,7 +244,10 @@ public class PlayerFSM : MonoBehaviour {
             List<Transform> nearbyEnemy = new List<Transform>();
             nearbyEnemy.Clear();
 
-                foreach (Transform T_enemyChild in T_EnemyUnit)
+
+            foreach (Transform T_enemyChild in T_EnemyUnit)
+            {
+                if (T_enemyChild.GetComponent<EnemyBehaviour>().isDead == false)
                 {
                     if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
                     {
@@ -245,6 +256,7 @@ public class PlayerFSM : MonoBehaviour {
                         break;
                     }
                 }
+            }
             foreach (Transform T_enemyChild in T_EnemyBase)
             {
                 if ((T_enemyChild.position - gameObject.GetComponent<Transform>().position).sqrMagnitude <= gameObject.GetComponent<PlayerUnitInfo>().GetUnitDetectRange())
@@ -295,7 +307,7 @@ public class PlayerFSM : MonoBehaviour {
             Vector3 difference = go_TargetedEnemy.transform.position - gameObject.transform.position;
 
             //If enemy unit not within attack range
-            if (go_TargetedEnemy.tag == "Enemy")
+            if (go_TargetedEnemy.tag == "Enemy" && go_TargetedEnemy.GetComponent<EnemyBehaviour>().isDead == false)
             {
                 if ((go_TargetedEnemy.transform.position - gameObject.GetComponent<Transform>().position).sqrMagnitude >= gameObject.GetComponent<PlayerUnitInfo>().GetUnitAttackRange()
                      && f_fireCooldown <= 0)
@@ -568,6 +580,11 @@ public class PlayerFSM : MonoBehaviour {
                 b_isHarvesting = false;
             }
         }
+    }
+
+    void DeathAnimation()
+    {
+        Destroy(gameObject);
     }
 
     //Worker Only, for construct purpose
