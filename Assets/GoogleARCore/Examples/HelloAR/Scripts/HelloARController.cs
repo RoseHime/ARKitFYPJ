@@ -150,7 +150,7 @@ namespace GoogleARCore.HelloAR
                     {
                         child.gameObject.SetActive(true);
                     }
-
+                    andyObject.transform.GetChild(2).gameObject.SetActive(false);
                     isSpawned = true;
                 }
             }
