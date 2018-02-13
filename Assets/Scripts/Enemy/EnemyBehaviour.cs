@@ -46,6 +46,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
     bool isMoving = false;
     public bool isDefending = false;
+    public bool isDead = false;
 
     NavMeshAgent _navMeshAgent;
 
@@ -56,6 +57,8 @@ public class EnemyBehaviour : MonoBehaviour {
     public float f_healthBarDisplayTime = 5;
     float f_healthBarDisplayTimer = 0;
     bool isAttacked = false;
+    float f_deathAnimationTimer = 0.0f;
+    float f_deathTimer = 0.0f;
 
     // Use this for initialization
     void Start() {
@@ -73,7 +76,15 @@ public class EnemyBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        SnapToGround();
+        if (isDead)
+        {
+            DeathAnimation();
+        }
+        else
+        {
+            SnapToGround();
+        }
+        
         switch (EUS)
         {
             case EnemyUnitState.EUS_MOVE:
@@ -132,8 +143,22 @@ public class EnemyBehaviour : MonoBehaviour {
         if (f_health <= 0)
         {
             _animator.SetTrigger("b_IsDead");
+            GetComponent<NavMeshAgent>().enabled = false;
             GameObject.FindGameObjectWithTag("PlayerInfo").GetComponent<PlayerInfo>().i_magicStone += i_magicStoneDrop;
-            Destroy(gameObject);
+            isDead = true;
+        }
+    }
+
+    void DeathAnimation()
+    {
+        if ((f_deathAnimationTimer += Time.deltaTime) > 1.5)
+        {
+            transform.position -= new Vector3(0, 0.025f, 0) * Time.deltaTime;
+            f_deathTimer += Time.deltaTime;
+            if (f_deathTimer > 2)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -145,7 +170,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
         foreach (Transform go_playerUnitChild in T_playerList)
         {
-            if ((go_playerUnitChild.position - transform.position).sqrMagnitude < tempDist)
+            if ((go_playerUnitChild.position - transform.position).sqrMagnitude < tempDist && go_playerUnitChild && go_playerUnitChild.GetComponent<PlayerUnitInfo>().f_HealthPoint > 0)
             {
                 tempDist = (go_playerUnitChild.position - transform.position).sqrMagnitude;
                 nearestUnit = go_playerUnitChild.gameObject;
@@ -242,28 +267,36 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         if (go_LockOnUnit != null)
         {
-            Vector3 difference = go_LockOnUnit.transform.position - transform.position;
-
-            if (difference.sqrMagnitude < f_atkRange * f_atkRange)
+            if (go_LockOnUnit.GetComponent<PlayerUnitInfo>().f_HealthPoint > 0)
             {
-                _animator.SetTrigger("b_IsAttacking");
-                Vector3 look = go_LockOnUnit.transform.position;
-                look.y = transform.position.y;
-                transform.LookAt(look);
-                if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
+                Vector3 difference = go_LockOnUnit.transform.position - transform.position;
+
+                if (difference.sqrMagnitude < f_atkRange * f_atkRange)
                 {
-                    f_fireCooldown = 0;
-                    if (ET == EnemyType.ET_RANGED)
-                        FireBullet(difference.normalized);
-                    else
+                    _animator.SetTrigger("b_IsAttacking");
+                    Vector3 look = go_LockOnUnit.transform.position;
+                    look.y = transform.position.y;
+                    transform.LookAt(look);
+                    if ((f_fireCooldown += Time.deltaTime) >= 1 / f_fireRate)
                     {
-                        AttackUnit(go_LockOnUnit);
+                        f_fireCooldown = 0;
+                        if (ET == EnemyType.ET_RANGED)
+                            FireBullet(difference.normalized);
+                        else
+                        {
+                            AttackUnit(go_LockOnUnit);
+                        }
                     }
+                }
+                else
+                {
+                    EUS = EnemyUnitState.EUS_CHASE;
                 }
             }
             else
             {
-                EUS = EnemyUnitState.EUS_CHASE;
+                go_LockOnUnit = null;
+                EUS = EnemyUnitState.EUS_IDLE;
             }
         }
         else
