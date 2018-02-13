@@ -1089,6 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   b_Selected: 0
+  isDead: 0
   b_IsAttacked: 0
   f_timer: 0
   b_buildBuilding: 0
@@ -1096,7 +1097,7 @@ MonoBehaviour:
   bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
     type: 2}
   f_bulletSpeed: 0.1
-  f_fireRate: 2
+  f_fireRate: 1.5
 --- !u!114 &114174991680039254
 MonoBehaviour:
   m_ObjectHideFlags: 1
