@@ -18,7 +18,10 @@ public class PlayerFSM : MonoBehaviour {
             return true;    // return true;
         return false;       // else it false;
     }
+
     public bool isDead;                            // To check if unit is dead.
+    float f_deathAnimationTimer = 0.0f;
+    float f_deathTimer = 0.0f;
 
     public bool b_IsAttacked;                      // To check if unit is attacked
     public float f_timer;
@@ -148,6 +151,8 @@ public class PlayerFSM : MonoBehaviour {
         _healthbar.fillAmount = gameObject.GetComponent<PlayerUnitInfo>().GetUnitHealth() / f_MaxHealth;
         if (gameObject.GetComponent<PlayerUnitInfo>().GetUnitHealth() <= 0)
         {
+            _animator.SetTrigger("b_IsDead");
+            GetComponent<NavMeshAgent>().enabled = false;
             if (b_Selected)
                 getCommandMenu().SetActive(false);
             isDead = true;
@@ -584,7 +589,15 @@ public class PlayerFSM : MonoBehaviour {
 
     void DeathAnimation()
     {
-        Destroy(gameObject);
+        if ((f_deathAnimationTimer += Time.deltaTime) > 1.5)
+        {
+            transform.position -= new Vector3(0, 0.025f, 0) * Time.deltaTime;
+            f_deathTimer += Time.deltaTime;
+            if (f_deathTimer > 2)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     //Worker Only, for construct purpose
