@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc157aee22935b14fbc7169b50c169c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_health: 200
+  f_health: 500
   b_IsUnderAttack: 0
   i_woodCost: 200
   i_stoneCost: 100

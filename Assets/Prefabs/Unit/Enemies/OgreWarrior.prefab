@@ -1060,7 +1060,7 @@ MonoBehaviour:
   f_speed: 0.1
   f_bulletSpeed: 0.1
   f_damage: 10
-  f_fireRate: 3
+  f_fireRate: 2
   f_defendRange: 0.5
   i_magicStoneDrop: 3
   bullet_Prefab: {fileID: 1164616799167228, guid: 99e07a668bd5555468b4743c640a77b5,
@@ -1069,6 +1069,7 @@ MonoBehaviour:
   ET: 1
   destination: {x: 0, y: 0, z: 0}
   isDefending: 0
+  isDead: 0
   f_healthBarDisplayTime: 5
 --- !u!114 &114046197303539904
 MonoBehaviour:

@@ -1271,6 +1271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   b_Selected: 0
+  isDead: 0
   b_IsAttacked: 0
   f_timer: 0
   b_buildBuilding: 0
@@ -1344,7 +1345,7 @@ MonoBehaviour:
   f_DetectRange: 0.45
   f_UnitAttackRange: 0.3
   f_BaseAttackRange: 0.4
-  f_AttackDamage: 150
+  f_AttackDamage: 30
   i_woodCost: 120
   i_stoneCost: 120
   i_magicStoneCost: 6

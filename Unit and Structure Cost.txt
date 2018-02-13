@@ -1,0 +1,64 @@
+Unit
+--------------------	
+Goblin Worker
+--------------------
+Health      : 100
+Damage      : 0
+Damage Rate : 0
+Move Speed  : 0.05
+Range       : 0
+Wood  Cost  : 5
+Stone Cost  : 2
+Bone  Cost  : 0
+
+--------------------	--------------------	--------------------
+Goblin Warrior		Goblin Tank		Goblin Mage
+--------------------	--------------------	--------------------
+Health      : 50	Health      : 100	Health      : 35
+Damage      : 5		Damage      : 2		Damage      : 5
+Damage Rate : 1		Damage Rate : 1		Damage Rate : 0.8
+Move Speed  : 0.1	Move Speed  : 0.05	Move Speed  : 0.05
+Range       : 0.25	Range       : 0.25	Range       : 0.25
+Wood  Cost  : 10	Wood  Cost  : 30	Wood  Cost  : 20
+Stone Cost  : 5		Stone Cost  : 10	Stone Cost  : 10
+Bone  Cost  : 0		Bone  Cost  : 0		Bone  Cost  : 0
+
+
+--------------------	--------------------	--------------------
+Hobgoblin Warrior	Hobgoblin Tank		Hobgoblin Shaman
+--------------------	--------------------	--------------------
+Health      : 100	Health      : 150	Health      : 65
+Damage      : 50	Damage      : 20 	Damage      : 10
+Damage Rate : 1.5	Damage Rate : 1		Damage Rate : 1.3
+Move Speed  : 0.1	Move Speed  : 0.05	Move Speed  : 0.05
+Range       : 0.35	Range       : 0.35	Range       : 0.35
+Wood  Cost  : 50	Wood  Cost  : 60	Wood  Cost  : 50
+Stone Cost  : 50	Stone Cost  : 50	Stone Cost  : 30
+Bone  Cost  : 2 	Bone  Cost  : 2		Bone  Cost  : 2
+
+
+--------------------	--------------------	--------------------
+Orge Warrior		Orge Tank		Orge Mage
+--------------------	--------------------	--------------------
+Health      : 200	Health      : 400	Health      : 80
+Damage      : 80	Damage      : 40	Damage      : 150
+Damage Rate : 2		Damage Rate : 1 	Damage Rate : 1.8
+Move Speed  : 0.1	Move Speed  : 0.05	Move Speed  : 0.05
+Range       : 0.45	Range       : 0.45	Range       : 0.45
+Wood  Cost  : 100	Wood  Cost  : 95	Wood  Cost  : 120
+Stone Cost  : 100	Stone Cost  : 150	Stone Cost  : 120
+Bone  Cost  : 5 	Bone  Cost  : 5 	Bone  Cost  : 6
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Structure
+--------------------	--------------------	--------------------
+TownHall		Barrack			Defense Tower
+--------------------	--------------------	--------------------
+Health      : 500	Health      : 300	Health      : 50
+Wood  Cost  : 200       Wood  Cost  : 100	Wood  Cost  : 75
+Stone Cost  : 100	Stone Cost  : 50	Stone Cost  : 50
+Bone  Cost  : 0 	Bone  Cost  : 0 	Bone  Cost  : 0
+
+
+

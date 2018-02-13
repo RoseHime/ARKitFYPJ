@@ -1139,13 +1139,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   b_Selected: 0
+  isDead: 0
   b_IsAttacked: 0
   f_timer: 0
   b_buildBuilding: 0
   go_BuildingPrefab: {fileID: 0}
   bullet_Prefab: {fileID: 0}
   f_bulletSpeed: 0.1
-  f_fireRate: 3
+  f_fireRate: 2
 --- !u!114 &114281149792017410
 MonoBehaviour:
   m_ObjectHideFlags: 1
